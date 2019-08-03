@@ -10,23 +10,22 @@ public class EnemyMovement : MonoBehaviour
     private GameObject Player;
     private SpriteRenderer sprite;
 
-    [SerializeField]
-    private float CoolDown = 6f;
-    float m_CoolDownTL;
+    private float CoolDownBefore;
 
     private void Start()
     {
-        m_CoolDownTL = CoolDown;
+        CoolDownBefore = Rand();
         sprite = GetComponentInChildren<SpriteRenderer>();
         Player = GameObject.FindGameObjectWithTag("Player");
+
         var offset = Player.transform.position - transform.position;
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        sprite.transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+        transform.rotation = Quaternion.Euler(0, 0, angle + 180);
     }
 
     private void Update()
     {
-        m_CoolDownTL = Mathf.Max(m_CoolDownTL - Time.deltaTime , 0);
+        CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime , 0);
         MoveToward();
         Rotation();
 
@@ -42,25 +41,25 @@ public class EnemyMovement : MonoBehaviour
     {
         var offset = Player.transform.position - transform.position;
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        sprite.transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+        transform.rotation = Quaternion.Euler(0, 0, angle + 180);
     }
 
     private void ExtraSpeed()
     {
-        if (m_CoolDownTL < CoolDown * 0.4f)
+        if (CoolDownBefore < 2f)
         {
             EnemySpeed = 3.5f;
         }
 
-        if(m_CoolDownTL == 0)
+        if(CoolDownBefore == 0)
         {
-            m_CoolDownTL = CoolDown;
+            CoolDownBefore = Rand();
+            Debug.Log(CoolDownBefore);
             EnemySpeed = 2f;
         }
     }
-
-    private void ExtraStop()
+    private float Rand()
     {
-
+        return Random.Range(4f, 7f);
     }
 }
