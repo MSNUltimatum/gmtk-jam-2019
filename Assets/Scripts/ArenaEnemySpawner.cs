@@ -5,19 +5,19 @@ using UnityEngine;
 public class ArenaEnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private float timeToEachSpawn = 15;
+    private float timeToEachSpawn = 5;
     [SerializeField]
     private float timeToNextSpawn = 0;
 
     [SerializeField]
-    private GameObject[] enemyWaves;
+    private GameObject[] enemyWaves = null;
 
     static Random random = new Random();
 
     void Start()
     {
         // Get reference for UI current enemy name
-        currentEnemy = GetComponent<UICurrentEnemy>();
+        currentEnemy = GetComponent<CurrentEnemy>();
     }
 
     public static List<int> GenerateRandom(int count, int max)
@@ -44,6 +44,21 @@ public class ArenaEnemySpawner : MonoBehaviour
         return result;
     }
 
+    public void ChangeTheBoy(GameObject oldBoy)
+    {
+        boysList.Remove(oldBoy);
+        if (boysList.Count != 0)
+        {
+            var nextBoy = boysList[Random.Range(0, boysList.Count)];
+            currentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
+            nextBoy.GetComponent<MonsterLife>().MakeBoy();
+        }
+        else
+        {
+            anyBoy = false;
+        }
+    }
+
     void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
@@ -59,16 +74,20 @@ public class ArenaEnemySpawner : MonoBehaviour
         
         for (int i = 0; i < enemiesInWave; i++)
         {
+            var enemy = enemyWave.transform.GetChild(i).gameObject;
             if (i == 0)
             {
-                currentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[0]]);
+                if (!anyBoy)
+                {
+                    anyBoy = true;
+                    currentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[0]], enemy);
+                    enemy.GetComponent<MonsterLife>().MakeBoy();
+                }
             }
-            enemyWave.transform.GetChild(i)
-                .GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
+            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
+            boysList.Add(enemy);
             // Установить случайную позицию персонажам?
         }
-
-        
     }
 
     // Update is called once per frame
@@ -86,8 +105,10 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
+    private bool anyBoy = false;
     private int spawnIndex = 0;
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
-    private UICurrentEnemy currentEnemy;
+    private CurrentEnemy currentEnemy;
+    private List<GameObject> boysList = new List<GameObject>();
 }

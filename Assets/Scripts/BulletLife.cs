@@ -16,7 +16,16 @@ public class BulletLife : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            Destroy(coll.gameObject);
+            var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
+            if (monsterComp)
+            {
+                monsterComp.Damage();
+            }
+            else
+            {
+                Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
+                Destroy(coll.gameObject);
+            }
             Destroy(gameObject);
         }
 

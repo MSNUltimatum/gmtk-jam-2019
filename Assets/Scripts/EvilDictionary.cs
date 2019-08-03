@@ -10,6 +10,6 @@ public class EvilDictionary : MonoBehaviour
         "Unemployment", "Fear",
         "Who am I?", "Corruption", "Doubt",
         "Betrayal", "Fall", "Not for me",
-        "Envy"
+        "Envy", "Doom"
     };
 }

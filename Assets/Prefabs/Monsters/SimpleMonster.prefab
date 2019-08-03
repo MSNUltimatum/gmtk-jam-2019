@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 2873645921850147139}
   - component: {fileID: 2873645921850147138}
   - component: {fileID: 2873645921850147137}
+  - component: {fileID: 1986228130421800251}
   m_Layer: 0
   m_Name: SimpleMonster
   m_TagString: Enemy
@@ -365,3 +366,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1986228130421800251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873645921850147136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
