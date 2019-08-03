@@ -10,13 +10,16 @@ public class CharacterShooting : MonoBehaviour
     [SerializeField]
     private float reloadTimeSec = 1.5f;
 
-    private void CmdShoot(Vector3 mousePos, Vector3 screenPoint, Vector3 selfEulerAngles)
+    [SerializeField]
+    private float randomShootingAngle = 10f;
+
+    private void CmdShoot(Vector3 mousePos, Vector3 screenPoint)
     {
         var bullet = Instantiate(Bullet, transform.position, new Quaternion());
 
         var offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-       // angle += selfEulerAngles.z;
+        angle += Random.Range(-randomShootingAngle, randomShootingAngle);
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         bullet.transform.Translate(Vector2.right * 0.5f); 
     }
@@ -32,7 +35,7 @@ public class CharacterShooting : MonoBehaviour
         {
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
-            CmdShoot(mousePos, screenPoint, transform.rotation.eulerAngles);
+            CmdShoot(mousePos, screenPoint);
             reloadTimeLeft = reloadTimeSec;
         }
     }
