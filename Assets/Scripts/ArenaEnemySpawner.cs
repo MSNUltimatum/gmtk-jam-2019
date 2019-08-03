@@ -14,6 +14,9 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     static Random random = new Random();
 
+    [SerializeField]
+    private Vector2 RoomBounds = new Vector2(15, 10);
+
     void Start()
     {
         // Get reference for UI current enemy name
@@ -87,6 +90,9 @@ public class ArenaEnemySpawner : MonoBehaviour
             enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
             boysList.Add(enemy);
             // Установить случайную позицию персонажам?
+            enemy.transform.position =
+                new Vector2(Random.Range(-RoomBounds.x, RoomBounds.x),
+                Random.Range(-RoomBounds.y, RoomBounds.y));
         }
     }
 

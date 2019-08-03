@@ -33,12 +33,12 @@ public class TeleportEnemy : EnemyMovement
         if(CoolDownBefore == 0)
         {
             CoolDownBefore = Rand();
-            float Xpos = Random.Range(Player.transform.position.x, transform.position.x);
-            float YPos = Random.Range(Player.transform.position.y, transform.position.y);
+            float Xpos = Random.Range(-100, 100);
+            float YPos = Random.Range(-100, 100);
             var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
             vect.Normalize();
-            vect *= 3f;
-            transform.position = vect;
+            //vect *= 1f;
+            transform.position = -vect;
         }
     }
 
