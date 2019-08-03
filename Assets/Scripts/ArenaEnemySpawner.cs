@@ -10,9 +10,15 @@ public class ArenaEnemySpawner : MonoBehaviour
     private float timeToNextSpawn = 0;
 
     [SerializeField]
-    private GameObject[] enemyWaves;
+    private GameObject[] enemyWaves = null;
 
     static Random random = new Random();
+
+    void Start()
+    {
+        // Get reference for UI current enemy name
+        currentEnemy = GetComponent<CurrentEnemy>();
+    }
 
     public static List<int> GenerateRandom(int count, int max)
     {
@@ -23,7 +29,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         for (int top = max - count; top < max; top++)
         {
             // May strike a duplicate.
-            int value = Random.Range(0, max);
+            int value = Random.Range(0, top);
             if (candidates.Add(value))
             {
                 result.Add(value);
@@ -38,6 +44,21 @@ public class ArenaEnemySpawner : MonoBehaviour
         return result;
     }
 
+    public void ChangeTheBoy(GameObject oldBoy)
+    {
+        boysList.Remove(oldBoy);
+        if (boysList.Count != 0)
+        {
+            var nextBoy = boysList[Random.Range(0, boysList.Count)];
+            currentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
+            nextBoy.GetComponent<MonsterLife>().MakeBoy();
+        }
+        else
+        {
+            anyBoy = false;
+        }
+    }
+
     void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
@@ -46,13 +67,26 @@ public class ArenaEnemySpawner : MonoBehaviour
         int enemiesInWave = enemyWave.transform.childCount;
         // Первый в случайной последовательности будет первым активным врагом в сцене
         List<int> randomSequence = GenerateRandom(enemiesInWave, currentEvilDictionary.EvilNames.Length);
+        foreach (var number in randomSequence)
+        {
+            print(number);
+        }
         
         for (int i = 0; i < enemiesInWave; i++)
         {
-            enemyWave.transform.GetChild(i)
-                .GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
-            // Установить случайную позицию, случайные имена
-            //GameObject.Instantiate(monster, transform.position, Quaternion.identity);
+            var enemy = enemyWave.transform.GetChild(i).gameObject;
+            if (i == 0)
+            {
+                if (!anyBoy)
+                {
+                    anyBoy = true;
+                    currentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[0]], enemy);
+                    enemy.GetComponent<MonsterLife>().MakeBoy();
+                }
+            }
+            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
+            boysList.Add(enemy);
+            // Установить случайную позицию персонажам?
         }
     }
 
@@ -71,7 +105,10 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
+    private bool anyBoy = false;
     private int spawnIndex = 0;
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
+    private CurrentEnemy currentEnemy;
+    private List<GameObject> boysList = new List<GameObject>();
 }
