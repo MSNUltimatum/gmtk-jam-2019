@@ -24,25 +24,14 @@ public class CharacterMovement : MonoBehaviour
         direction += new Vector2(Input.GetAxis("Horizontal"), 0);
         direction += new Vector2(0, Input.GetAxis("Vertical"));
         direction.Normalize();
-        
         Movement(direction);
-        float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3(0, 0, rotation);
+        var mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Quaternion rot = Quaternion.LookRotation(transform.position - mousepos, Vector3.forward);
+        transform.rotation = rot;
     }
-
     private void Movement(Vector2 direction)
     {
-        transform.Translate(direction * speed / SpeedBySecond);
-    }
-
-    private void FlipXSprite(bool FleepX)
-    {
-       // if()
-    }
-
-    private void FlipYSprite(bool FleepY)
-    {
-        CharacterSprite.flipY = FleepY;
+        transform.Translate(direction * speed / SpeedBySecond,Space.World);
     }
 
 }
