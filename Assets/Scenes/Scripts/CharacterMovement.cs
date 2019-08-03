@@ -10,14 +10,12 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector2 movement;
     private SpriteRenderer CharacterSprite;
-    private Rigidbody2D rb2d;
 
     private bool isHorisontal = false;
 
     private void Start()
     {
         CharacterSprite = GetComponentInChildren<SpriteRenderer>();
-        rb2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
