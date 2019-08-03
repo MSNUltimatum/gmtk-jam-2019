@@ -8,7 +8,7 @@ public class RandomMovableEnemy : MonoBehaviour
     protected float EnemySpeed = 2f;
     Vector3 direct;
     private float CoolDownBefore;
-    private float CoolDown = 0.25f;
+    private float CoolDown = 1f;
     private SpriteRenderer sprite;
     protected GameObject Player;
 
@@ -46,8 +46,7 @@ public class RandomMovableEnemy : MonoBehaviour
         vect.Normalize();
         vect.x += Random.Range(-1f, 1f);
         vect.y += Random.Range(-1f, 1f);
-        vect.Normalize();
-        direct = vect;
+        direct = vect + Player.transform.position;
         CoolDownBefore = CoolDown;
         }
         
