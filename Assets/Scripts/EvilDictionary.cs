@@ -10,11 +10,11 @@ public class EvilDictionary : MonoBehaviour
         "Unemployment", "Fear",
         "Who am I?", "Corruption", "Doubt",
         "Betrayal", "Fall", "Not for me",
-        "Envy", "Doom", "depression", "dejection",
-        "misery", "agony", "excruciation",
-        "laceration", "grief", "sorrow", "desolation",
-        "dolor", "breakdown", "loneliness", "cheerless",
-        "mirthless", "dull", "madness", "desperation",
-        "insanity", "fury", "wrath", "enragement", "frustration"
+        "Envy", "Doom", "Depression", "Dejection",
+        "Misery", "Agony", "Excruciation",
+        "Laceration", "Grief", "Sorrow", "Desolation",
+        "Dolor", "Breakdown", "Loneliness", "Cheerless",
+        "Mirthless", "Dull", "Madness", "Desperation",
+        "Insanity", "Fury", "Wrath", "Enragement", "Frustration"
     };
 }
