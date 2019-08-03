@@ -7,6 +7,9 @@ public class CharacterShooting : MonoBehaviour
     [SerializeField]
     private GameObject Bullet;
 
+    [SerializeField]
+    private float reloadTimeSec = 1.5f;
+
     private void CmdShoot(Vector3 mousePos, Vector3 screenPoint, Vector3 selfEulerAngles)
     {
         var bullet = Instantiate(Bullet, transform.position, new Quaternion());
@@ -20,12 +23,20 @@ public class CharacterShooting : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (reloadTimeLeft > 0)
+        {
+            reloadTimeLeft -= Time.deltaTime;
+        }
+
+        if(Input.GetButtonDown("Fire1") && reloadTimeLeft <= 0)
         {
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
             CmdShoot(mousePos, screenPoint, transform.rotation.eulerAngles);
+            reloadTimeLeft = reloadTimeSec;
         }
     }
+
+    private float reloadTimeLeft = 0;
 
 }
