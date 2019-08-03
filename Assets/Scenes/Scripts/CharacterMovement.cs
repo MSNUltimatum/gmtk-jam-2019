@@ -20,17 +20,22 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        Movement();
+        Rotation();
+    }
+    private void Rotation()
+    {
+        var mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Quaternion rot = Quaternion.LookRotation(transform.position - mousepos, Vector3.forward);
+        transform.rotation = rot;
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+    }
+    private void Movement()
+    {
         Vector2 direction = new Vector2();
         direction += new Vector2(Input.GetAxis("Horizontal"), 0);
         direction += new Vector2(0, Input.GetAxis("Vertical"));
         direction.Normalize();
-        Movement(direction);
-        var mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion rot = Quaternion.LookRotation(transform.position - mousepos, Vector3.forward);
-        transform.rotation = rot;
-    }
-    private void Movement(Vector2 direction)
-    {
         transform.Translate(direction * speed / SpeedBySecond,Space.World);
     }
 
