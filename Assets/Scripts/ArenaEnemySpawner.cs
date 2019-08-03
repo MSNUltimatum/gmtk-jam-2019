@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArenaEnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private float timeToEachSpawn = 5;
+    private float timeToEachSpawn = 15;
     [SerializeField]
     private float timeToNextSpawn = 0;
 
@@ -23,7 +23,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         for (int top = max - count; top < max; top++)
         {
             // May strike a duplicate.
-            int value = Random.Range(0, max);
+            int value = Random.Range(0, top);
             if (candidates.Add(value))
             {
                 result.Add(value);
@@ -46,6 +46,10 @@ public class ArenaEnemySpawner : MonoBehaviour
         int enemiesInWave = enemyWave.transform.childCount;
         // Первый в случайной последовательности будет первым активным врагом в сцене
         List<int> randomSequence = GenerateRandom(enemiesInWave, currentEvilDictionary.EvilNames.Length);
+        foreach (var number in randomSequence)
+        {
+            print(number);
+        }
         
         for (int i = 0; i < enemiesInWave; i++)
         {
