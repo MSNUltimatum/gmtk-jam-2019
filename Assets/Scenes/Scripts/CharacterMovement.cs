@@ -10,12 +10,14 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector2 movement;
     private SpriteRenderer CharacterSprite;
+    private Rigidbody2D rb2d;
 
     private bool isHorisontal = false;
 
     private void Start()
     {
         CharacterSprite = GetComponentInChildren<SpriteRenderer>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -35,7 +37,10 @@ public class CharacterMovement : MonoBehaviour
         Vector2 direction = new Vector2();
         direction += new Vector2(Input.GetAxis("Horizontal"), 0);
         direction += new Vector2(0, Input.GetAxis("Vertical"));
-        direction.Normalize();
+        if (direction.magnitude > 1)
+        {
+            direction.Normalize();
+        }
         transform.Translate(direction * speed / SpeedBySecond,Space.World);
     }
 
