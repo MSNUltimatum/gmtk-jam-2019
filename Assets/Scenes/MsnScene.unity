@@ -218,11 +218,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639212871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e8dfb8e9294c649b7576947696aec2, type: 3}
+  m_Script: {fileID: 11500000, guid: cb88fe879c2765e48858ed716d07844f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 1
-  Bullet: {fileID: 2687670097024200911, guid: a4f43bc1130580e49bae35c9e0453d68, type: 3}
+  EnemySpeed: 2
 --- !u!1001 &5038236623018306818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,6 +354,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878501644482203695, guid: c15a97cb33e380b4ea36e86d15058d77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878501643914452026, guid: c15a97cb33e380b4ea36e86d15058d77,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878501643914452026, guid: c15a97cb33e380b4ea36e86d15058d77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878501643914452026, guid: c15a97cb33e380b4ea36e86d15058d77,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
