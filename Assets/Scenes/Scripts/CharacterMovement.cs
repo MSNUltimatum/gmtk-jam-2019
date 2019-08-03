@@ -11,6 +11,8 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 movement;
     private SpriteRenderer CharacterSprite;
 
+    private bool isHorisontal = false;
+
     private void Start()
     {
         CharacterSprite = GetComponentInChildren<SpriteRenderer>();
@@ -22,18 +24,10 @@ public class CharacterMovement : MonoBehaviour
         direction += new Vector2(Input.GetAxis("Horizontal"), 0);
         direction += new Vector2(0, Input.GetAxis("Vertical"));
         direction.Normalize();
+        
         Movement(direction);
-
-        if (direction.x != 0)
-        {
-            bool Flip = Mathf.Sign(direction.x) == 1 ? false : true;
-            FlipXSprite(Flip);
-        }
-        if(direction.y != 0)
-        {
-            bool Flip = Mathf.Sign(direction.y) == 1 ? false : true;
-            FlipYSprite(Flip);
-        }
+        float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.eulerAngles = new Vector3(0, 0, rotation);
     }
 
     private void Movement(Vector2 direction)
