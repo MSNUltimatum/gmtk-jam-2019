@@ -14,6 +14,12 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     static Random random = new Random();
 
+    void Start()
+    {
+        // Get reference for UI current enemy name
+        currentEnemy = GetComponent<UICurrentEnemy>();
+    }
+
     public static List<int> GenerateRandom(int count, int max)
     {
         List<int> result = new List<int>(count);
@@ -53,11 +59,16 @@ public class ArenaEnemySpawner : MonoBehaviour
         
         for (int i = 0; i < enemiesInWave; i++)
         {
+            if (i == 0)
+            {
+                currentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[0]]);
+            }
             enemyWave.transform.GetChild(i)
                 .GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
-            // Установить случайную позицию, случайные имена
-            //GameObject.Instantiate(monster, transform.position, Quaternion.identity);
+            // Установить случайную позицию персонажам?
         }
+
+        
     }
 
     // Update is called once per frame
@@ -78,4 +89,5 @@ public class ArenaEnemySpawner : MonoBehaviour
     private int spawnIndex = 0;
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
+    private UICurrentEnemy currentEnemy;
 }
