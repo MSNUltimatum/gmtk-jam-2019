@@ -11,7 +11,6 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        sprite = GetComponentInChildren<SpriteRenderer>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -30,6 +29,6 @@ public class EnemyMovement : MonoBehaviour
     protected virtual void Rotation()
     {
         float z = Mathf.Atan2((Player.transform.position.y - transform.position.y), (Player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
-        sprite.transform.eulerAngles = new Vector3(0, 0, z);
+        transform.eulerAngles = new Vector3(0, 0, z);
     }
 }

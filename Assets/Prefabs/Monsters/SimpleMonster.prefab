@@ -424,5 +424,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb88fe879c2765e48858ed716d07844f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 2
+  EnemySpeed: 3
   RandomImpact: 1.5

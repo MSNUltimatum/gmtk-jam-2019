@@ -37,8 +37,8 @@ public class TeleportEnemy : EnemyMovement
             float YPos = Random.Range(-100, 100);
             var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
             vect.Normalize();
-            vect *= 5f;
-            transform.position = Player.transform.position - new Vector3(vect.x, vect.y);
+            vect *= 3f;
+            transform.position =  Player.transform.position + new Vector3(vect.x, vect.y);
         }
     }
 

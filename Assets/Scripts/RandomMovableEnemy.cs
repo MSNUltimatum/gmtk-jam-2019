@@ -53,8 +53,9 @@ public class RandomMovableEnemy : MonoBehaviour
             {
                 var vect = Player.transform.position + direct / 2;
                 vect.Normalize();
-                vect.x += Random.Range(-RandomImpact, RandomImpact);
-                vect.y += Random.Range(-RandomImpact, RandomImpact);
+                var distanceBasedValue = RandomImpact * Vector2.Distance(Player.transform.position, transform.position) / 3; 
+                vect.x += Random.Range(-distanceBasedValue, distanceBasedValue);
+                vect.y += Random.Range(-distanceBasedValue, distanceBasedValue);
                 direct = vect + Player.transform.position;
             }
             CoolDownBefore = Random.Range(CoolDown / 3, CoolDown);
