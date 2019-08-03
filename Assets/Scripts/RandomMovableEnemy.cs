@@ -12,6 +12,9 @@ public class RandomMovableEnemy : MonoBehaviour
     private SpriteRenderer sprite;
     protected GameObject Player;
 
+    [SerializeField]
+    private float RandomImpact = 1.5f;
+
     protected void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -35,19 +38,26 @@ public class RandomMovableEnemy : MonoBehaviour
 
     protected  void Rotation()
     {
-        float z = Mathf.Atan2((Player.transform.position.y - transform.position.y), (Player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
-       sprite.transform.eulerAngles = new Vector3(0, 0, z);
+       float z = Mathf.Atan2((Player.transform.position.y - transform.position.y), (Player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
+       transform.eulerAngles = new Vector3(0, 0, z);
     }
 
     private void NewDirect()
     {
-        if (CoolDownBefore == 0) { 
-            var vect = Player.transform.position + direct / 2;
-        vect.Normalize();
-        vect.x += Random.Range(-1f, 1f);
-        vect.y += Random.Range(-1f, 1f);
-        direct = vect + Player.transform.position;
-        CoolDownBefore = CoolDown;
+        if (CoolDownBefore == 0) {
+            if (Random.Range(0, 5) == 0)
+            {
+                direct = transform.position;
+            }
+            else
+            {
+                var vect = Player.transform.position + direct / 2;
+                vect.Normalize();
+                vect.x += Random.Range(-RandomImpact, RandomImpact);
+                vect.y += Random.Range(-RandomImpact, RandomImpact);
+                direct = vect + Player.transform.position;
+            }
+            CoolDownBefore = Random.Range(CoolDown / 3, CoolDown);
         }
         
     }
