@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 8122783078331616383, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 21.27
+      value: 18.41
       objectReference: {fileID: 0}
     - target: {fileID: 8122783078331616383, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
@@ -167,11 +167,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8122783078656520589, guid: 0d86570df5d218e4293d07ddf7d4760c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d86570df5d218e4293d07ddf7d4760c, type: 3}
 --- !u!224 &9044752506186241433 stripped
@@ -187,11 +182,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8109258291629398258}
     m_Modifications:
-    - target: {fileID: 4653389663735491910, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_Name
-      value: ReptileMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,12 +240,12 @@ PrefabInstance:
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19.857416
+      value: 17.68
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.18
+      value: -7.59
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
@@ -297,30 +287,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
+    - target: {fileID: 4653389663735491910, guid: c810a750a555ce84091332819db92524,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
+      propertyPath: m_Name
+      value: ReptileMonster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c810a750a555ce84091332819db92524, type: 3}
@@ -337,11 +307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8109258291629398258}
     m_Modifications:
-    - target: {fileID: 4653389663735491910, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_Name
-      value: ReptileMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -400,12 +365,12 @@ PrefabInstance:
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -9.2
+      value: -11.72
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.83
+      value: -4.9
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
@@ -447,30 +412,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
+    - target: {fileID: 4653389663735491910, guid: c810a750a555ce84091332819db92524,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
+      propertyPath: m_Name
+      value: ReptileMonster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c810a750a555ce84091332819db92524, type: 3}
@@ -487,11 +432,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8109258291629398258}
     m_Modifications:
-    - target: {fileID: 4653389663735491910, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_Name
-      value: ReptileMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,12 +490,12 @@ PrefabInstance:
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5.33
+      value: 4.17
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 10.29
+      value: 8.04
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
@@ -597,30 +537,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
+    - target: {fileID: 4653389663735491910, guid: c810a750a555ce84091332819db92524,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
+      propertyPath: m_Name
+      value: ReptileMonster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c810a750a555ce84091332819db92524, type: 3}
@@ -747,31 +667,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleMonster
       objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590711, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
 --- !u!224 &6298533454706340163 stripped
@@ -897,31 +792,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleMonster
       objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590711, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
 --- !u!224 &6298533455120566520 stripped
@@ -1046,31 +916,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SimpleMonster
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590711, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
