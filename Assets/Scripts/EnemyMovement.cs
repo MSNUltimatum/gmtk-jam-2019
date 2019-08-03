@@ -5,32 +5,31 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private float EnemySpeed = 15f;
+    protected float EnemySpeed = 2f;
+    protected GameObject Player;
+    private SpriteRenderer sprite;
 
-    private GameObject Player;
-    
-    private void Start()
+    protected virtual void Start()
     {
+        sprite = GetComponentInChildren<SpriteRenderer>();
         Player = GameObject.FindGameObjectWithTag("Player");
-        var offset = Player.transform.position - transform.position;
-        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle + 180);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         MoveToward();
         Rotation();
+
     }
 
-    private void MoveToward()
+    protected virtual void MoveToward()
     {
         transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, EnemySpeed * Time.deltaTime);
     }
-    private void Rotation()
+
+    protected virtual void Rotation()
     {
-        var offset = Player.transform.position - transform.position;
-        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+        float z = Mathf.Atan2((Player.transform.position.y - transform.position.y), (Player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
+        sprite.transform.eulerAngles = new Vector3(0, 0, z);
     }
 }
