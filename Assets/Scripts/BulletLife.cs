@@ -22,6 +22,9 @@ public class BulletLife : MonoBehaviour
 
         if (coll.gameObject.tag == "Environment")
         {
+            if (coll.gameObject.GetComponent<DestructibleWall>() != null) {
+                Destroy(coll.gameObject);
+            }
             Destroy(gameObject);
         }
     }
