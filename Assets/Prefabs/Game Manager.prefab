@@ -49,6 +49,7 @@ MonoBehaviour:
   enemyWaves:
   - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
   - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
+  - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
 --- !u!114 &406660203
 MonoBehaviour:
   m_ObjectHideFlags: 0
