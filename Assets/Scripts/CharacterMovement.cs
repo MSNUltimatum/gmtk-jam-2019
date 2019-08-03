@@ -35,7 +35,10 @@ public class CharacterMovement : MonoBehaviour
         Vector2 direction = new Vector2();
         direction += new Vector2(Input.GetAxis("Horizontal"), 0);
         direction += new Vector2(0, Input.GetAxis("Vertical"));
-        direction.Normalize();
+        if (direction.magnitude > 1)
+        {
+            direction.Normalize();
+        }
         transform.Translate(direction * speed / SpeedBySecond,Space.World);
     }
 
