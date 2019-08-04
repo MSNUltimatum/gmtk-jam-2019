@@ -7,13 +7,15 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     private int HP = 1;
 
+    private GameObject game;
+    private RoomLighting Room;
+    private RelodScene scenes;
     bool THE_BOY = false;
-
-    private void Start()
-    {
-        fadeInLeft = fadeInTime;
-        sprite = GetComponentInChildren<SpriteRenderer>();
-    }
+    
+    [SerializeField]
+    private GameObject absorbPrefab;
+    [SerializeField]
+    private GameObject enemyExplosionPrefab;
 
     private void Update()
     {
@@ -25,6 +27,20 @@ public class MonsterLife : MonoBehaviour
         sprite.color = newColor;
     }
     
+    private void Start()
+    {
+        fadeInLeft = fadeInTime;
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        game = GameObject.FindGameObjectWithTag("GameController");
+        Room = game.GetComponent<RoomLighting>();
+        scenes = game.GetComponent<RelodScene>();
+
+        if (absorbPrefab == null)
+        {
+            absorbPrefab = Resources.Load<GameObject>("AbsorbBubble.prefab");
+        }
+    }
+
     public void Damage()
     {
         if (THE_BOY)
@@ -32,14 +48,36 @@ public class MonsterLife : MonoBehaviour
             HP--;
             GameObject.Find("Game Manager").GetComponent<ArenaEnemySpawner>().ChangeTheBoy(gameObject);
             // TODO: add EXPLOSION, MOTHERF!$&*ER
-            if(HP == 0)
-            Destroy(gameObject);
+            if (HP == 0)
+            {
+                scenes.CurrentCount(1);
+                Room.Lighten(1);
+                var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
+                Destroy(enemyExplosion, 0.5f);
+                Destroy(gameObject);
+            }
         }
         else
         {
             // TODO: make visual and sound effects of absorb
+            if (absorbPrefab)
+            {
+                var absorb = Instantiate(absorbPrefab, gameObject.transform.position, Quaternion.identity);
+                absorb.transform.SetParent(gameObject.transform);
+                Destroy(absorb, 0.5f);
+            }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Player")
+        {
+            Destroy(coll.gameObject);
+            Time.timeScale = 0;
+        }
+    }
+
 
     public void MakeBoy()
     {

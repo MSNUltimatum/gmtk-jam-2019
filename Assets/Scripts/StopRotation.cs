@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class StopRotation : MonoBehaviour
 {
+    [SerializeField]
+    private Vector3 offset = new Vector3(-0.65f, 1.22f);
     // Update is called once per frame
     void Update()
     {
         transform.rotation = Quaternion.identity;
-        transform.position = transform.parent.position + new Vector3(-0.65f, 1.22f);
+        transform.position = transform.parent.position + offset;
     }
 }
