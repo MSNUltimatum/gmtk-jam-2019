@@ -14,6 +14,8 @@ public class MonsterLife : MonoBehaviour
     
     [SerializeField]
     private GameObject absorbPrefab;
+    [SerializeField]
+    private GameObject enemyExplosionPrefab;
 
     private void Update()
     {
@@ -50,6 +52,8 @@ public class MonsterLife : MonoBehaviour
             {
                 scenes.CurrentCount(1);
                 Room.Lighten(1);
+                var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
+                Destroy(enemyExplosion, 0.5f);
                 Destroy(gameObject);
             }
         }
