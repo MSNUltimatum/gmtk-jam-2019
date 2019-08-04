@@ -11,6 +11,16 @@ public class MonsterLife : MonoBehaviour
     private RoomLighting Room;
     bool THE_BOY = false;
 
+    private void Update()
+    {
+        fadeInLeft -= Time.deltaTime;
+        if (fadeInLeft <= 0) return;
+
+        var newColor = sprite.color;
+        newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
+        sprite.color = newColor;
+    }
+    
     private void Start()
     {
         fadeInLeft = fadeInTime;
