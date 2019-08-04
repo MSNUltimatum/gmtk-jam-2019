@@ -12,6 +12,7 @@ public class RelodScene : MonoBehaviour
     [SerializeField]
     private string NextSceneName = "";
     private GameObject Canvas;
+
     private void Start()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
