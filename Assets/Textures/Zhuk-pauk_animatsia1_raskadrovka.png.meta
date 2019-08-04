@@ -1,0 +1,472 @@
+fileFormatVersion: 2
+guid: 56b18041816ff1648940414289b9a1a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7786596974469789398
+    second: Zhuk-pauk_animatsia1_raskadrovka_0
+  - first:
+      213: -3983661131696024882
+    second: Zhuk-pauk_animatsia1_raskadrovka_1
+  - first:
+      213: -6767754603656798197
+    second: Zhuk-pauk_animatsia1_raskadrovka_2
+  - first:
+      213: -2040818763871877498
+    second: Zhuk-pauk_animatsia1_raskadrovka_3
+  - first:
+      213: -2613725188845511535
+    second: Zhuk-pauk_animatsia1_raskadrovka_4
+  - first:
+      213: 4770404755860158348
+    second: Zhuk-pauk_animatsia1_raskadrovka_5
+  - first:
+      213: 8238169038471945123
+    second: Zhuk-pauk_animatsia1_raskadrovka_6
+  - first:
+      213: -6272341204782923642
+    second: Zhuk-pauk_animatsia1_raskadrovka_7
+  - first:
+      213: -3896350309551792545
+    second: Zhuk-pauk_animatsia1_raskadrovka_8
+  - first:
+      213: -1400624218998785971
+    second: Zhuk-pauk_animatsia1_raskadrovka_9
+  - first:
+      213: 7449407784647125110
+    second: Zhuk-pauk_animatsia1_raskadrovka_10
+  - first:
+      213: -2025170665506974154
+    second: Zhuk-pauk_animatsia1_raskadrovka_11
+  - first:
+      213: -5520619025575491110
+    second: Zhuk-pauk_animatsia1_raskadrovka_12
+  - first:
+      213: -5006939014400362297
+    second: Zhuk-pauk_animatsia1_raskadrovka_13
+  - first:
+      213: -6029365043141477867
+    second: Zhuk-pauk_animatsia1_raskadrovka_14
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 420
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2460
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aede0ed05aa8f34b9ab48d9d3fe5268
+      internalID: 7786596974469789398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_1
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2460
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb9173056ac73f4f826db551cb1cc04
+      internalID: -3983661131696024882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_2
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2460
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a23c01823b11d74f8989288cda45266
+      internalID: -6767754603656798197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_3
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 2460
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52e70047f79dc524e863e80592b4d36d
+      internalID: -2040818763871877498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_4
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 2460
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d167c3588bb9b49a2b5ded432a4f77
+      internalID: -2613725188845511535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1230
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e84cdae477e327488fefdae8ed2e8fd
+      internalID: 4770404755860158348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_6
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1230
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f537bfb1f7858664b916f719d3128095
+      internalID: 8238169038471945123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_7
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1230
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a9909df27521f44b646f448e28f9dc
+      internalID: -6272341204782923642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_8
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 1230
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80638a52c55e0f04388c5b6315441c95
+      internalID: -3896350309551792545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_9
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 1230
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cbe36f6e99dc449a7114f4c671c19d
+      internalID: -1400624218998785971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332587daccf08704faa8527123456f4e
+      internalID: 7449407784647125110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_11
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b22fc9a0abe45409eb7cbcf9a0d4a3
+      internalID: -2025170665506974154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_12
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d697f1817e95546b5a32901e54b497
+      internalID: -5520619025575491110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_13
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 0
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3a3d4b76a3c0c4da0fbae0f31558c2
+      internalID: -5006939014400362297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhuk-pauk_animatsia1_raskadrovka_14
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 0
+        width: 1200
+        height: 1230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e57f5f4f0d57ddf4fa637800beb3fe9d
+      internalID: -6029365043141477867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 59ddef62bfc75434cb8f65b02db934fa
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

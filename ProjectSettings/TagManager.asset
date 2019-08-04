@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: OnEffect
+    uniqueID: 2694765809
+    locked: 0
