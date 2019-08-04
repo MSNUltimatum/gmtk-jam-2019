@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 9139023250819493270}
   m_Layer: 0
   m_Name: GhostMonster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a5e7805414224438c6023db81fe0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 3
+  EnemySpeed: 4
   CoolDown: 5
 --- !u!61 &5610511982554001868
 BoxCollider2D:

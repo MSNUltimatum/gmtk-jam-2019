@@ -14,24 +14,15 @@ public class EnemyBulletLife : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        /*if (coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "Player")
         {
-            var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
-            if (monsterComp)
-            {
-                monsterComp.Damage();
-            }
-            else
-            {
-                Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
-                Destroy(coll.gameObject);
-            }
-            Destroy(gameObject);
+            Destroy(coll.gameObject);
+            Time.timeScale = 0;
         }
 
         if (coll.gameObject.tag == "Environment")
         {
             Destroy(gameObject);
-        }*/
+        }
     }
 }
