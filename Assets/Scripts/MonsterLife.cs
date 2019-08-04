@@ -11,6 +11,9 @@ public class MonsterLife : MonoBehaviour
     private RoomLighting Room;
     private RelodScene scenes;
     bool THE_BOY = false;
+    
+    [SerializeField]
+    private GameObject absorbPrefab;
 
     private void Update()
     {
@@ -29,6 +32,11 @@ public class MonsterLife : MonoBehaviour
         game = GameObject.FindGameObjectWithTag("GameController");
         Room = game.GetComponent<RoomLighting>();
         scenes = game.GetComponent<RelodScene>();
+
+        if (absorbPrefab == null)
+        {
+            absorbPrefab = Resources.Load<GameObject>("AbsorbBubble.prefab");
+        }
     }
 
     public void Damage()
@@ -48,6 +56,12 @@ public class MonsterLife : MonoBehaviour
         else
         {
             // TODO: make visual and sound effects of absorb
+            if (absorbPrefab)
+            {
+                var absorb = Instantiate(absorbPrefab, gameObject.transform.position, Quaternion.identity);
+                absorb.transform.SetParent(gameObject.transform);
+                Destroy(absorb, 0.5f);
+            }
         }
     }
 
