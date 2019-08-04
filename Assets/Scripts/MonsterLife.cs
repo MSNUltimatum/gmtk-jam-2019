@@ -15,6 +15,8 @@ public class MonsterLife : MonoBehaviour
     {
         fadeInLeft = fadeInTime;
         sprite = GetComponentInChildren<SpriteRenderer>();
+        game = GameObject.FindGameObjectWithTag("GameController");
+        Room = game.GetComponent<RoomLighting>();
     }
 
     private void Update()
@@ -25,12 +27,6 @@ public class MonsterLife : MonoBehaviour
         var newColor = sprite.color;
         newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
         sprite.color = newColor;
-    }
-    
-    private void Start()
-    {
-        game = GameObject.FindGameObjectWithTag("GameController");
-        Room = game.GetComponent<RoomLighting>();
     }
 
     public void Damage()
