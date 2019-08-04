@@ -77,6 +77,7 @@ public class MonsterLife : MonoBehaviour
         {
             Destroy(coll.gameObject);
             Time.timeScale = 0;
+            scenes.PressR();
         }
     }
 
