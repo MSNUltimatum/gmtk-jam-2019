@@ -23,7 +23,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
     }
-
+    
     public static List<int> GenerateRandom(int count, int max)
     {
         List<int> result = new List<int>(count);
@@ -118,7 +118,9 @@ public class ArenaEnemySpawner : MonoBehaviour
         {
             EnemiesCount += e.transform.childCount;
         }
-        return EnemiesCount;
+        int res = EnemiesCount;
+        EnemiesCount = 0;
+        return res;
     }
 
     private int EnemiesCount = 0;
