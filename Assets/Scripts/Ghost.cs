@@ -8,13 +8,14 @@ public class Ghost : EnemyMovement
     [SerializeField]
     private float CoolDown = 18f;
     private BoxCollider2D BoxCollider;
-    
+    private SpriteRenderer sprite;
 
 
     protected override void Start()
     {
         BoxCollider = GetComponent<BoxCollider2D>();
         CoolDownBefore = CoolDown;
+        sprite = GetComponentInChildren<SpriteRenderer>();
         base.Start();
     }
 
@@ -41,6 +42,9 @@ public class Ghost : EnemyMovement
         {
             BoxCollider.isTrigger = true;
             EnemySpeed = 3.5f;
+            var s = sprite.color;
+            s.a = 0.5f;
+            sprite.color = s;
         }
 
         if(CoolDownBefore == 0)
@@ -48,6 +52,9 @@ public class Ghost : EnemyMovement
             CoolDownBefore = CoolDown;
             BoxCollider.isTrigger = false;
             EnemySpeed = 2f;
+            var s = sprite.color;
+            s.a = 1f;
+            sprite.color = s;
         }
 
     }

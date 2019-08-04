@@ -9,7 +9,8 @@ public class RelodScene : MonoBehaviour
     private ArenaEnemySpawner arena;
     private float TotalValue = 0;
     private float maxvalue = 0;
-
+    [SerializeField]
+    private string NextSceneName = "";
     private void Start()
     {
         arena = GetComponent<ArenaEnemySpawner>();
@@ -27,7 +28,7 @@ public class RelodScene : MonoBehaviour
     {
         if(TotalValue == maxvalue)
         {
-            SceneManager.LoadScene("NewMsnScene");
+            SceneManager.LoadScene(NextSceneName);
         }
 
         if(Input.GetKeyDown(KeyCode.R))
