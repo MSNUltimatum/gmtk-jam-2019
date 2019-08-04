@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3334064150391581338}
   - component: {fileID: 3334064150391581339}
   - component: {fileID: 406660203}
+  - component: {fileID: 83602702}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,4 +66,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasPrefab: {fileID: 8241068669727806806, guid: 7aff0e9b90dd8e24095b25f8b4861aaf,
+    type: 3}
+--- !u!114 &83602702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c427c1943154646b052b5a8fd8f538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swampMatPrefab: {fileID: 2100000, guid: 996168049758bae4d8e65a05eff3fb12, type: 2}
+  swampPrefab: {fileID: 6481534978391547033, guid: 6c7cec5c104f2f14a99506dc6676f3f9,
     type: 3}
