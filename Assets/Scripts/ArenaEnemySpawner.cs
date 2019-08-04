@@ -63,6 +63,33 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
+    private Vector2 RandomBorderSpawnPos()
+    {
+        var spawnPosition = new Vector2();
+        var dice = Random.Range(0, 4);
+        // North, South, East, West spawn positions
+        switch (dice)
+        {
+            case 0:
+                spawnPosition.y = RoomBounds.y;
+                spawnPosition.x = Random.Range(-RoomBounds.x, RoomBounds.x);
+                break;
+            case 1:
+                spawnPosition.y = -RoomBounds.y;
+                spawnPosition.x = Random.Range(-RoomBounds.x, RoomBounds.x);
+                break;
+            case 2:
+                spawnPosition.x = RoomBounds.x;
+                spawnPosition.y = Random.Range(-RoomBounds.y, RoomBounds.y);
+                break;
+            case 3:
+                spawnPosition.x = RoomBounds.x;
+                spawnPosition.y = Random.Range(-RoomBounds.y, RoomBounds.y);
+                break;
+        }
+        return spawnPosition;
+    }
+
     void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
@@ -92,9 +119,10 @@ public class ArenaEnemySpawner : MonoBehaviour
             enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[i]];
             boysList.Add(enemy);
             // Установить случайную позицию персонажам?
-            enemy.transform.position =
-                new Vector2(Random.Range(-RoomBounds.x, RoomBounds.x),
-                Random.Range(-RoomBounds.y, RoomBounds.y));
+            //enemy.transform.position =
+            //    new Vector2(Random.Range(-RoomBounds.x, RoomBounds.x),
+            //    Random.Range(-RoomBounds.y, RoomBounds.y));
+            enemy.transform.position = RandomBorderSpawnPos();
         }
     }
 
