@@ -41,7 +41,7 @@ public class Ghost : EnemyMovement
         if(CoolDownBefore < 3f)
         {
             BoxCollider.isTrigger = true;
-            EnemySpeed = 3.5f;
+            EnemySpeed = 7f;
             var s = sprite.color;
             s.a = 0.5f;
             sprite.color = s;
@@ -51,7 +51,7 @@ public class Ghost : EnemyMovement
         {
             CoolDownBefore = CoolDown;
             BoxCollider.isTrigger = false;
-            EnemySpeed = 2f;
+            EnemySpeed = 4f;
             var s = sprite.color;
             s.a = 1f;
             sprite.color = s;
