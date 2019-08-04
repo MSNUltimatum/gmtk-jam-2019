@@ -1,0 +1,304 @@
+fileFormatVersion: 2
+guid: 6e6e33e88c635a844a97cde27d7420a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3321299936606357488
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_0
+  - first:
+      213: 1425735801090653420
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_1
+  - first:
+      213: 8560739275869340722
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_2
+  - first:
+      213: -7034754743156378709
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_3
+  - first:
+      213: -3092645189794499991
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_4
+  - first:
+      213: -2660422162725961687
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_5
+  - first:
+      213: 6295328208955245805
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_6
+  - first:
+      213: -6930888357651105859
+    second: Puzyr_1_raskadrovka_1360kh1360_na_kadr_7
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 840
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab47739e67fe0f9469f163118d91b7e6
+      internalID: 3321299936606357488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_1
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebf858ee97df79498b224fd2fd7486d
+      internalID: 1425735801090653420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_2
+      rect:
+        serializedVersion: 2
+        x: 2720
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe6d2624d8d44a546af4cb5d36dd6bc0
+      internalID: 8560739275869340722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_3
+      rect:
+        serializedVersion: 2
+        x: 4080
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfb7c6ac5c6d1641abadbe5278d586a
+      internalID: -7034754743156378709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_4
+      rect:
+        serializedVersion: 2
+        x: 5440
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a63cb672df7f84aa33eaa60257f59e
+      internalID: -3092645189794499991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_5
+      rect:
+        serializedVersion: 2
+        x: 6800
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9a043cf9ebb5145817d0bc0264ab09
+      internalID: -2660422162725961687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_6
+      rect:
+        serializedVersion: 2
+        x: 8160
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1ea59782c4ddf43a44ab2d9b5aee04
+      internalID: 6295328208955245805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzyr_1_raskadrovka_1360kh1360_na_kadr_7
+      rect:
+        serializedVersion: 2
+        x: 9520
+        y: 0
+        width: 1360
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1a4609cf9f2ff42bb8bb1abf978583
+      internalID: -6930888357651105859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3e4b5c06cdf6ff748b46d6a4f7bd42cd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

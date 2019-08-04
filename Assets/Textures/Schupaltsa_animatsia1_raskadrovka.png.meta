@@ -1,0 +1,496 @@
+fileFormatVersion: 2
+guid: c08c719ab8449bf4d916c43302ae354d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6617880080247477084
+    second: Schupaltsa_animatsia1_raskadrovka_0
+  - first:
+      213: 5494696550398652669
+    second: Schupaltsa_animatsia1_raskadrovka_1
+  - first:
+      213: -8358693114829569365
+    second: Schupaltsa_animatsia1_raskadrovka_2
+  - first:
+      213: 7062863323659826411
+    second: Schupaltsa_animatsia1_raskadrovka_3
+  - first:
+      213: -5057425820589651325
+    second: Schupaltsa_animatsia1_raskadrovka_4
+  - first:
+      213: -1481219609337695674
+    second: Schupaltsa_animatsia1_raskadrovka_5
+  - first:
+      213: -7186305521037752318
+    second: Schupaltsa_animatsia1_raskadrovka_6
+  - first:
+      213: -1545276790256666013
+    second: Schupaltsa_animatsia1_raskadrovka_7
+  - first:
+      213: -7119532334501246466
+    second: Schupaltsa_animatsia1_raskadrovka_8
+  - first:
+      213: -7864920143259732020
+    second: Schupaltsa_animatsia1_raskadrovka_9
+  - first:
+      213: 8384287660403916349
+    second: Schupaltsa_animatsia1_raskadrovka_10
+  - first:
+      213: 4983976176065327148
+    second: Schupaltsa_animatsia1_raskadrovka_11
+  - first:
+      213: -6631137542716993159
+    second: Schupaltsa_animatsia1_raskadrovka_12
+  - first:
+      213: 7601174480920800579
+    second: Schupaltsa_animatsia1_raskadrovka_13
+  - first:
+      213: 982367046185537666
+    second: Schupaltsa_animatsia1_raskadrovka_14
+  - first:
+      213: -7029334278629699733
+    second: Schupaltsa_animatsia1_raskadrovka_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 840
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4531ff0a7dec4ba43acccc54a79d6834
+      internalID: -6617880080247477084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_1
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3611767cb11e9344baec2ce616d09ef1
+      internalID: 5494696550398652669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_2
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f42ae2ad4666b4db66db13657d3c8d
+      internalID: -8358693114829569365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_3
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9187eea09c7f74aa9a8208d7166a62
+      internalID: 7062863323659826411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_4
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da44c31c29e981841bdd24b69aed174e
+      internalID: -5057425820589651325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_5
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f44df2ac7a470d48b8add0833254b8c
+      internalID: -1481219609337695674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_6
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc57b8ae98b4944390ff64ca4ea0f58
+      internalID: -7186305521037752318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_7
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 1100
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfbb5a708836f74c8a315e2d69a838b
+      internalID: -1545276790256666013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5693d39da70fe8248aba13875c948c9b
+      internalID: -7119532334501246466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_9
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecae0368b627d484795c063da0c97b59
+      internalID: -7864920143259732020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_10
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88223ecf32d067d46bdd1ca8c234fc29
+      internalID: 8384287660403916349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_11
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbba4db629fdc04d8ae613cc48d907a
+      internalID: 4983976176065327148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_12
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af6d002fd64f524ab32ff1ea099d9a5
+      internalID: -6631137542716993159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_13
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7268a4e6159634b925c1bfa177b370
+      internalID: 7601174480920800579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_14
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416a61618c5bcce48a1992eaea71aba6
+      internalID: 982367046185537666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Schupaltsa_animatsia1_raskadrovka_15
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 0
+        width: 1050
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1559a268201d9f5408b1c62972fef9aa
+      internalID: -7029334278629699733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3cc571386bcc18e40864e126b3d0f270
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

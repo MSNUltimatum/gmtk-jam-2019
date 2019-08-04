@@ -424,16 +424,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: RoomBounds.x
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: RoomBounds.y
-      value: 11
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!1001 &5653132064890529014
