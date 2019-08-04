@@ -120,6 +120,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &83602698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3334064150391581341, guid: 0fca9824f899de543a831d6c0c51144e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3334064151121826350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &83602702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83602698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c427c1943154646b052b5a8fd8f538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +461,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3334064150391581341, guid: 0fca9824f899de543a831d6c0c51144e,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581338, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grid-lv1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653132064561802097, guid: fdffdc4aba68cce4f940fc4644290a08,
+        type: 3}
+      propertyPath: m_TagString
+      value: TailMap
       objectReference: {fileID: 0}
     - target: {fileID: 5653132064561802111, guid: fdffdc4aba68cce4f940fc4644290a08,
         type: 3}

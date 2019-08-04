@@ -7,6 +7,8 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     private int HP = 1;
 
+    private GameObject game;
+    private RoomLighting Room;
     bool THE_BOY = false;
 
     private void Start()
@@ -25,6 +27,12 @@ public class MonsterLife : MonoBehaviour
         sprite.color = newColor;
     }
     
+    private void Start()
+    {
+        game = GameObject.FindGameObjectWithTag("GameController");
+        Room = game.GetComponent<RoomLighting>();
+    }
+
     public void Damage()
     {
         if (THE_BOY)
@@ -32,8 +40,11 @@ public class MonsterLife : MonoBehaviour
             HP--;
             GameObject.Find("Game Manager").GetComponent<ArenaEnemySpawner>().ChangeTheBoy(gameObject);
             // TODO: add EXPLOSION, MOTHERF!$&*ER
-            if(HP == 0)
-            Destroy(gameObject);
+            if (HP == 0)
+            {
+                Room.Lighten(1);
+                Destroy(gameObject);
+            }
         }
         else
         {
