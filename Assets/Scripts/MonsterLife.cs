@@ -8,6 +8,22 @@ public class MonsterLife : MonoBehaviour
     private int HP = 1;
 
     bool THE_BOY = false;
+
+    private void Start()
+    {
+        fadeInLeft = fadeInTime;
+        sprite = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        fadeInLeft -= Time.deltaTime;
+        if (fadeInLeft <= 0) return;
+
+        var newColor = sprite.color;
+        newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
+        sprite.color = newColor;
+    }
     
     public void Damage()
     {
@@ -29,4 +45,8 @@ public class MonsterLife : MonoBehaviour
     {
         THE_BOY = true;
     }
+
+    private float fadeInTime = 0.5f;
+    private float fadeInLeft;
+    private SpriteRenderer sprite;
 }
