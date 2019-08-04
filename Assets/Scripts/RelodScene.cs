@@ -11,8 +11,10 @@ public class RelodScene : MonoBehaviour
     private float maxvalue = 0;
     [SerializeField]
     private string NextSceneName = "";
+    private GameObject Canvas;
     private void Start()
     {
+        Canvas = GameObject.FindGameObjectWithTag("Canvas");
         arena = GetComponent<ArenaEnemySpawner>();
         maxvalue = arena.EnemyCount();
         Debug.Log(maxvalue);
@@ -28,7 +30,7 @@ public class RelodScene : MonoBehaviour
     {
         if(TotalValue == maxvalue)
         {
-            SceneManager.LoadScene(NextSceneName);
+                SceneManager.LoadScene(NextSceneName);        
         }
 
         if(Input.GetKeyDown(KeyCode.R))

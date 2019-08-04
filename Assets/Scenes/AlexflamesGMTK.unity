@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c21b00ba01f4b4f8d759266cb1c236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextSceneName: AlexflamesGMTK
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
