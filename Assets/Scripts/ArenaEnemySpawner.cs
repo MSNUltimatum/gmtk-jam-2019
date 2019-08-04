@@ -17,6 +17,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     private Vector2 RoomBounds = new Vector2(15, 10);
 
+
     void Start()
     {
         // Get reference for UI current enemy name
@@ -68,6 +69,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         currentEvilDictionary = enemyWave.GetComponent<EvilDictionary>();
 
         int enemiesInWave = enemyWave.transform.childCount;
+        EnemiesCount += enemiesInWave;
         // Первый в случайной последовательности будет первым активным врагом в сцене
         List<int> randomSequence = GenerateRandom(enemiesInWave, currentEvilDictionary.EvilNames.Length);
         foreach (var number in randomSequence)
@@ -110,7 +112,16 @@ public class ArenaEnemySpawner : MonoBehaviour
             if (spawnIndex > enemyWaves.GetLength(0)) { }
         }
     }
+    public int EnemyCount()
+    {
+        foreach (var e in enemyWaves)
+        {
+            EnemiesCount += e.transform.childCount;
+        }
+        return EnemiesCount;
+    }
 
+    private int EnemiesCount = 0;
     private bool anyBoy = false;
     private int spawnIndex = 0;
     private EvilDictionary currentEvilDictionary;
