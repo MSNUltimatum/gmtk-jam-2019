@@ -46,11 +46,13 @@ public class MonsterLife : MonoBehaviour
         if (THE_BOY)
         {
             HP--;
-            GameObject.Find("Game Manager").GetComponent<ArenaEnemySpawner>().ChangeTheBoy(gameObject);
-            // TODO: add EXPLOSION, MOTHERF!$&*ER
             if (HP == 0)
             {
-                scenes.CurrentCount(1);
+                GameObject.Find("Game Manager").GetComponent<ArenaEnemySpawner>().ChangeTheBoy(gameObject);
+                if (scenes)
+                {
+                    scenes.CurrentCount(1);
+                }
                 Room.Lighten(1);
                 var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
                 Destroy(enemyExplosion, 0.5f);
