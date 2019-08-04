@@ -51,6 +51,16 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Player")
+        {
+            Destroy(coll.gameObject);
+            Time.timeScale = 0;
+        }
+    }
+
+
     public void MakeBoy()
     {
         THE_BOY = true;
