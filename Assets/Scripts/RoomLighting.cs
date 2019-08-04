@@ -18,6 +18,7 @@ public class RoomLighting : MonoBehaviour
         GameObject TileMap = GameObject.FindGameObjectWithTag("TailMap");
         Tile = TileMap.transform.GetChild(0).gameObject;
         tilemap = Tile.GetComponent<Tilemap>();
+        NewLight();
     }
 
     public void Lighten(float val)
