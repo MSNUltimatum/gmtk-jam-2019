@@ -9,6 +9,7 @@ public class MonsterLife : MonoBehaviour
 
     private GameObject game;
     private RoomLighting Room;
+    private RelodScene scenes;
     bool THE_BOY = false;
 
     private void Update()
@@ -27,6 +28,7 @@ public class MonsterLife : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         game = GameObject.FindGameObjectWithTag("GameController");
         Room = game.GetComponent<RoomLighting>();
+        scenes = game.GetComponent<RelodScene>();
     }
 
     public void Damage()
@@ -38,6 +40,7 @@ public class MonsterLife : MonoBehaviour
             // TODO: add EXPLOSION, MOTHERF!$&*ER
             if (HP == 0)
             {
+                scenes.CurrentCount(1);
                 Room.Lighten(1);
                 Destroy(gameObject);
             }
