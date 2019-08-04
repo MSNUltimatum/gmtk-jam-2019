@@ -33,7 +33,8 @@ public class RelodScene : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             TotalValue = 0;
-           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             
         }
     }

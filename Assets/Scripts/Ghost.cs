@@ -8,6 +8,8 @@ public class Ghost : EnemyMovement
     [SerializeField]
     private float CoolDown = 18f;
     private BoxCollider2D BoxCollider;
+    
+
 
     protected override void Start()
     {
