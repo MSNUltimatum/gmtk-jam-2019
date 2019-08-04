@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3334064150391581339}
   - component: {fileID: 406660203}
   - component: {fileID: 83602702}
+  - component: {fileID: 1705778125510524197}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -52,7 +53,8 @@ MonoBehaviour:
   - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
   - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
   - {fileID: 8109258291629398269, guid: 56eaf28768d474e488b6165f98220ab7, type: 3}
-  RoomBounds: {x: 15, y: 10}
+  RoomBounds: {x: 21, y: 21}
+  evilDictionary: {fileID: 1705778125510524197}
 --- !u!114 &406660203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,3 +84,15 @@ MonoBehaviour:
   swampMatPrefab: {fileID: 2100000, guid: 996168049758bae4d8e65a05eff3fb12, type: 2}
   swampPrefab: {fileID: 6481534978391547033, guid: 6c7cec5c104f2f14a99506dc6676f3f9,
     type: 3}
+--- !u!114 &1705778125510524197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05ff95a30fbdc3448bd28384ed1dd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
