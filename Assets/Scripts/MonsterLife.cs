@@ -12,6 +12,7 @@ public class MonsterLife : MonoBehaviour
     private void Start()
     {
         fadeInLeft = fadeInTime;
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -19,7 +20,6 @@ public class MonsterLife : MonoBehaviour
         fadeInLeft -= Time.deltaTime;
         if (fadeInLeft <= 0) return;
 
-        var sprite = GetComponentInChildren<SpriteRenderer>();
         var newColor = sprite.color;
         newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
         sprite.color = newColor;
@@ -48,4 +48,5 @@ public class MonsterLife : MonoBehaviour
 
     private float fadeInTime = 0.5f;
     private float fadeInLeft;
+    private SpriteRenderer sprite;
 }
