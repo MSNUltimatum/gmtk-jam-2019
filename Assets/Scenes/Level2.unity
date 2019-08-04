@@ -711,11 +711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1088152876664025380, guid: 34cadd369184f1f48b3f2185d91fd205,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Manager (lv2)
-      objectReference: {fileID: 0}
     - target: {fileID: 1088152876664025379, guid: 34cadd369184f1f48b3f2185d91fd205,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -770,6 +765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088152876664025380, guid: 34cadd369184f1f48b3f2185d91fd205,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34cadd369184f1f48b3f2185d91fd205, type: 3}

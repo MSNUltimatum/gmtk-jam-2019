@@ -1204,7 +1204,8 @@ PrefabInstance:
       propertyPath: timeToNextSpawn
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 92031012, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!1 &1547487589 stripped
 GameObject:
@@ -1224,7 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c21b00ba01f4b4f8d759266cb1c236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: AlexflamesGMTK
+  NextSceneName: Level1
 --- !u!114 &1547487596
 MonoBehaviour:
   m_ObjectHideFlags: 0
