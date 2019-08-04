@@ -199,4 +199,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4, type: 3}
   reloadTimeSec: 1
-  randomShootingAngle: 10
+  randomShootingAngle: 0

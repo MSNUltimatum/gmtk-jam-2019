@@ -17,7 +17,10 @@ public class CharacterShooting : MonoBehaviour
     {
         var bullet = Instantiate(Bullet, transform.position, new Quaternion());
         var audio = GetComponent<AudioSource>();
-        audio.Play();
+        if (audio)
+        {
+            audio.Play();
+        }
 
         var offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
