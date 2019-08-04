@@ -14,11 +14,13 @@ public class RelodScene : MonoBehaviour
     {
         arena = GetComponent<ArenaEnemySpawner>();
         maxvalue = arena.EnemyCount();
+        Debug.Log(maxvalue);
     }
 
     public void CurrentCount(int val)
     {
         TotalValue = TotalValue + val;
+        Debug.Log(TotalValue);
     }
 
     private void Update()
@@ -27,9 +29,12 @@ public class RelodScene : MonoBehaviour
         {
             SceneManager.LoadScene("NewMsnScene");
         }
+
         if(Input.GetKeyDown(KeyCode.R))
         {
+            TotalValue = 0;
            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
         }
     }
 }
