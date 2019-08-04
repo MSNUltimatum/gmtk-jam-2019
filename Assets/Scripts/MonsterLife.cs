@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class MonsterLife : MonoBehaviour
 {
-    bool THE_BOY = false;
+    [SerializeField]
+    private int HP = 1;
 
+    bool THE_BOY = false;
+    
     public void Damage()
     {
         if (THE_BOY)
         {
+            HP--;
             GameObject.Find("Game Manager").GetComponent<ArenaEnemySpawner>().ChangeTheBoy(gameObject);
             // TODO: add EXPLOSION, MOTHERF!$&*ER
+            if(HP == 0)
             Destroy(gameObject);
         }
         else
