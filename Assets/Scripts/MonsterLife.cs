@@ -11,12 +11,6 @@ public class MonsterLife : MonoBehaviour
     private RoomLighting Room;
     bool THE_BOY = false;
 
-    private void Start()
-    {
-        fadeInLeft = fadeInTime;
-        sprite = GetComponentInChildren<SpriteRenderer>();
-    }
-
     private void Update()
     {
         fadeInLeft -= Time.deltaTime;
@@ -29,6 +23,8 @@ public class MonsterLife : MonoBehaviour
     
     private void Start()
     {
+        fadeInLeft = fadeInTime;
+        sprite = GetComponentInChildren<SpriteRenderer>();
         game = GameObject.FindGameObjectWithTag("GameController");
         Room = game.GetComponent<RoomLighting>();
     }
