@@ -10,12 +10,14 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector2 movement;
     private SpriteRenderer CharacterSprite;
+    private Animator anim;
 
     private bool isHorisontal = false;
 
     private void Start()
     {
         CharacterSprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -38,6 +40,17 @@ public class CharacterMovement : MonoBehaviour
         if (direction.magnitude > 1)
         {
             direction.Normalize();
+        }
+        if (anim != null)
+        {
+            if (direction.magnitude == 0)
+            {
+                anim.Play("HeroIdle");
+            }
+            else
+            {
+                anim.Play("HeroWalking");
+            }
         }
         transform.Translate(direction * speed / SpeedBySecond,Space.World);
     }
