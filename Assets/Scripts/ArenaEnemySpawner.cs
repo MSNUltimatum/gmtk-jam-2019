@@ -30,7 +30,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         currentEvilDictionary = evilDictionary;
         randomSequence = GenerateRandom(EnemyCount(), currentEvilDictionary.EvilNames.Length - 1);
     }
-
+    
     public static List<int> GenerateRandom(int count, int max)
     {
         List<int> result = new List<int>(count);
@@ -148,7 +148,9 @@ public class ArenaEnemySpawner : MonoBehaviour
         {
             EnemiesCount += e.transform.childCount;
         }
-        return EnemiesCount;
+        int res = EnemiesCount;
+        EnemiesCount = 0;
+        return res;
     }
 
     private int EnemiesCount = 0;
