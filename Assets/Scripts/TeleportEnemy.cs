@@ -30,15 +30,22 @@ public class TeleportEnemy : EnemyMovement
 
     private void Teleport()
     {
-        if(CoolDownBefore == 0)
+        if (CoolDownBefore == 0)
         {
+            var audio = GetComponent<AudioSource>();
+
+            if (audio)
+            {
+                audio.Play();
+            }
+
             CoolDownBefore = Rand();
             float Xpos = Random.Range(-100, 100);
             float YPos = Random.Range(-100, 100);
             var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
             vect.Normalize();
             vect *= 8f;
-            transform.position =  Player.transform.position + new Vector3(vect.x, vect.y);
+            transform.position = Player.transform.position + new Vector3(vect.x, vect.y);
         }
     }
 
