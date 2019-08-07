@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEachSpawn: 5
+  timeToEachSpawn: 7
   timeToNextSpawn: 0
   enemyWaves:
   - {fileID: 3598458013119388966, guid: e25953a613f9d644f8846569ecf2bd0e, type: 3}
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c21b00ba01f4b4f8d759266cb1c236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: Level2
+  NextSceneName: Level3

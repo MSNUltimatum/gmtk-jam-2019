@@ -38,13 +38,13 @@ public class LizardMovement : EnemyMovement
                 audio.Play();
                 soundLock = true;
             }
-            EnemySpeed = 3.5f;
+            EnemySpeed = 4.5f;
         }
 
         if (CoolDownBefore == 0)
         {
             CoolDownBefore = Rand();
-            EnemySpeed = 2f;
+            EnemySpeed = 3f;
             soundLock = false;
         }
     }
