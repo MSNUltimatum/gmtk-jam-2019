@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996de016c8404e24ea18ea23e4bb6119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 12
 --- !u!58 &4305704709854959872
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4, type: 3}
-  reloadTimeSec: 1
+  reloadTimeSec: 0.85
   randomShootingAngle: 0
 --- !u!82 &-4575779773267849266
 AudioSource:

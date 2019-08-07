@@ -52,7 +52,7 @@ public class CharacterMovement : MonoBehaviour
                 anim.Play("HeroWalking");
             }
         }
-        transform.Translate(direction * speed / SpeedBySecond,Space.World);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TeleportEnemy : EnemyMovement
 {
+    [SerializeField]
+    private Vector2 TpCooldownRange = new Vector2(5, 7);
     private float CoolDownBefore;
     protected override void Start()
     {
@@ -38,12 +40,13 @@ public class TeleportEnemy : EnemyMovement
             var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
             vect.Normalize();
             vect *= 8f;
-            transform.position =  Player.transform.position + new Vector3(vect.x, vect.y);
+            transform.position = Player.transform.position + new Vector3(vect.x, vect.y);
+            print(Vector2.Distance(Player.transform.position, transform.position));
         }
     }
 
     private float Rand()
     {
-        return Random.Range(7.5f, 9f);
+        return Random.Range(TpCooldownRange.x, TpCooldownRange.y);
     }
 }
