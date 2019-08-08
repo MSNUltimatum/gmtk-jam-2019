@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemySpeed: 2
-  Bullet: {fileID: 2687670097024200911, guid: a4f43bc1130580e49bae35c9e0453d68, type: 3}
+  Bullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca, type: 3}
 --- !u!114 &7735108373905851320
 MonoBehaviour:
   m_ObjectHideFlags: 0
