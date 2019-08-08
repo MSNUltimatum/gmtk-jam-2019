@@ -5,6 +5,14 @@ using UnityEngine;
 public class EnemyBulletLife : MonoBehaviour
 {
     public float Speed = 0.5f;
+    private GameObject game;
+    private RelodScene scenes;
+
+    private void Start()
+    {
+        game = GameObject.FindGameObjectWithTag("GameController");
+        scenes = game.GetComponent<RelodScene>();
+    }
 
     void FixedUpdate()
     {
@@ -18,6 +26,7 @@ public class EnemyBulletLife : MonoBehaviour
         {
             Destroy(coll.gameObject);
             Time.timeScale = 0;
+            scenes.PressR();
         }
 
         if (coll.gameObject.tag == "Environment")
