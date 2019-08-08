@@ -36,7 +36,7 @@ public class CharacterShooting : MonoBehaviour
             reloadTimeLeft -= Time.deltaTime;
         }
 
-        if(Input.GetButtonDown("Fire1") && reloadTimeLeft <= 0)
+        if(Input.GetButton("Fire1") && reloadTimeLeft <= 0)
         {
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);

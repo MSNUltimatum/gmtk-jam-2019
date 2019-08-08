@@ -9,6 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 1a66e6a22d4644b44b4926b9f3c70b5a
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 8384673f6a713694891722ce26463aab
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 15df1624642becd42b50703f7b318b8d
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: f0073078cf95cb54593feec1efa1c00a
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 6cd1aadd4fb44404e91241431b17e8e5
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 7203227ef8b79e04dacb744f7c264a72
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: 2f2027d789d5d824397f41adb893ebb0
+  - enabled: 0
     path: Assets/Scenes/AlexflamesGMTK.unity
     guid: bc42c3bfe1de5fc4087211984e5f0aa8
   m_configObjects: {}

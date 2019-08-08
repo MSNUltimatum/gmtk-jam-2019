@@ -209,6 +209,8 @@ MonoBehaviour:
   HP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
+  enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
+    type: 3}
 --- !u!114 &6294010904206003513
 MonoBehaviour:
   m_ObjectHideFlags: 0
