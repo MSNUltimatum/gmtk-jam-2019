@@ -12,9 +12,9 @@ public class CharacterMovement : MonoBehaviour
     private SpriteRenderer CharacterSprite;
     private Animator anim;
 
-    public AudioSource[] sounds;
-    public AudioSource noise1;
-    public AudioSource noise2;
+    private AudioSource[] sounds;
+    private AudioSource noise1;
+    private AudioSource noise2;
 
     private bool isHorisontal = false;
 

@@ -9,8 +9,16 @@ public class EnemyMovement : MonoBehaviour
     protected GameObject Player;
     private SpriteRenderer sprite;
 
+    private AudioSource[] sounds;
+    private AudioSource noise1;
+    private AudioSource noise2;
+
     protected virtual void Start()
     {
+        sounds = GetComponents<AudioSource>();
+        noise1 = sounds[0];
+        noise2 = sounds[1];
+        noise1.Play();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -18,11 +26,11 @@ public class EnemyMovement : MonoBehaviour
     {
         MoveToward();
         Rotation();
-
+        noise2.Play();
     }
 
     protected virtual void MoveToward()
-    {
+    {      
         transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, EnemySpeed * Time.deltaTime);
     }
 
