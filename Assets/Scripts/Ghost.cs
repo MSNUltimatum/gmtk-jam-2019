@@ -38,8 +38,13 @@ public class Ghost : EnemyMovement
 
     private void GhostMode()
     {
-        if(CoolDownBefore < 3f)
+        if (CoolDownBefore < 3f)
         {
+            var audio = GetComponent<AudioSource>();
+            if (audio)
+            {
+                audio.Play();
+            }
             BoxCollider.isTrigger = true;
             EnemySpeed = 7f;
             var s = sprite.color;
@@ -47,7 +52,7 @@ public class Ghost : EnemyMovement
             sprite.color = s;
         }
 
-        if(CoolDownBefore == 0)
+        if (CoolDownBefore == 0)
         {
             CoolDownBefore = CoolDown;
             BoxCollider.isTrigger = false;
@@ -56,7 +61,5 @@ public class Ghost : EnemyMovement
             s.a = 1f;
             sprite.color = s;
         }
-
     }
-
 }

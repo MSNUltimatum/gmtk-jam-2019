@@ -227,12 +227,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3258448360597376789}
-  - component: {fileID: 6006257385020781131}
+  - component: {fileID: -3709421567010912052}
   - component: {fileID: 7182972875888833430}
   - component: {fileID: 5610511982554001868}
   - component: {fileID: 9139023250819493270}
   - component: {fileID: 5493924169287857056}
-  - component: {fileID: -3709421567010912052}
   m_Layer: 0
   m_Name: GhostMonster
   m_TagString: Enemy
@@ -256,7 +255,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6006257385020781131
+--- !u!114 &-3709421567010912052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,11 +264,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2611012751803154452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4046c58c508638a449d7bb2429cecf95, type: 3}
+  m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
+    type: 3}
+  enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
 --- !u!114 &7182972875888833430
 MonoBehaviour:
@@ -341,11 +342,11 @@ AudioSource:
   m_GameObject: {fileID: 2611012751803154452}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f25483a2868072f4faa9dc7f215288c6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.493
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -429,23 +430,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-3709421567010912052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2611012751803154452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 1
-  absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
-    type: 3}
-  enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
-    type: 3}
 --- !u!1 &7182972875831480364
 GameObject:
   m_ObjectHideFlags: 0

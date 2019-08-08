@@ -306,13 +306,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3221884748222038176}
-  - component: {fileID: -4806557844868152093}
   - component: {fileID: 35442255869831044}
   - component: {fileID: 7978445005060429644}
   - component: {fileID: 5157507254286848554}
   - component: {fileID: 5157507254286848553}
   - component: {fileID: -1450037775284167803}
-  - component: {fileID: 5066430791125498902}
+  - component: {fileID: -1099794811109090919}
   m_Layer: 0
   m_Name: BigMonster
   m_TagString: Enemy
@@ -428,7 +427,7 @@ AudioSource:
   m_GameObject: {fileID: 3221884748222038181}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 0fa8bbe6191731c4dabf35cd41c771c6, type: 3}
   m_PlayOnAwake: 1
@@ -516,7 +515,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &5066430791125498902
+--- !u!82 &-1099794811109090919
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,9 +524,9 @@ AudioSource:
   m_GameObject: {fileID: 3221884748222038181}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d59e15c22664f57459ff313dd5df2555, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
