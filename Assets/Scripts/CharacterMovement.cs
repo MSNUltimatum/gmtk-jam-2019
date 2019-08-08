@@ -12,10 +12,17 @@ public class CharacterMovement : MonoBehaviour
     private SpriteRenderer CharacterSprite;
     private Animator anim;
 
+    public AudioSource[] sounds;
+    public AudioSource noise1;
+    public AudioSource noise2;
+
     private bool isHorisontal = false;
 
     private void Start()
     {
+        sounds = GetComponents<AudioSource>();
+        noise1 = sounds[0];
+        noise2 = sounds[1];
         CharacterSprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -49,6 +56,7 @@ public class CharacterMovement : MonoBehaviour
             }
             else
             {
+                noise2.Play();
                 anim.Play("HeroWalking");
             }
         }

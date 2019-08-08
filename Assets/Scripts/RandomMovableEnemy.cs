@@ -45,6 +45,14 @@ public class RandomMovableEnemy : MonoBehaviour
     private void NewDirect()
     {
         if (CoolDownBefore == 0) {
+
+            if (!soundLock)
+            {
+                var audio = GetComponent<AudioSource>();
+                audio.Play();
+                soundLock = true;
+            }
+
             if (Random.Range(0, 5) == 0)
             {
                 direct = transform.position;
@@ -62,4 +70,5 @@ public class RandomMovableEnemy : MonoBehaviour
         }
         
     }
+    private bool soundLock = false;
 }

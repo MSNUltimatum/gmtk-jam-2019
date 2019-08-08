@@ -32,8 +32,15 @@ public class TeleportEnemy : EnemyMovement
 
     private void Teleport()
     {
-        if(CoolDownBefore == 0)
+        if (CoolDownBefore == 0)
         {
+            var audio = GetComponent<AudioSource>();
+
+            if (audio)
+            {
+                audio.Play();
+            }
+
             CoolDownBefore = Rand();
             float Xpos = Random.Range(-100, 100);
             float YPos = Random.Range(-100, 100);
@@ -41,7 +48,6 @@ public class TeleportEnemy : EnemyMovement
             vect.Normalize();
             vect *= 8f;
             transform.position = Player.transform.position + new Vector3(vect.x, vect.y);
-            print(Vector2.Distance(Player.transform.position, transform.position));
         }
     }
 
