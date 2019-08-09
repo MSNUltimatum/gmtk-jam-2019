@@ -286,6 +286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemySpeed: 4
   CoolDown: 5
+  GhostBoostSpeed: 7
+  ImmortalityInBoost: 1
 --- !u!61 &5610511982554001868
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,7 +7,6 @@ public class ShootableMonster : EnemyMovement
     [SerializeField]
     private GameObject Bullet;
     private float CoolDownBefore;
-
     private float CoolDown = 1f;
     protected override void Start()
     {
