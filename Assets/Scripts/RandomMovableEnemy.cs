@@ -13,7 +13,7 @@ public class RandomMovableEnemy : MonoBehaviour
     protected GameObject Player;
 
     [SerializeField]
-    private float RandomImpact = 1.5f;
+    private float RandomImpact = 5f;
 
     protected void Start()
     {
@@ -52,20 +52,12 @@ public class RandomMovableEnemy : MonoBehaviour
                 audio.Play();
                 soundLock = true;
             }
-
-            if (Random.Range(0, 5) == 0)
-            {
-                direct = transform.position;
-            }
-            else
-            {
-                var vect = Player.transform.position + direct / 2;
-                vect.Normalize();
-                var distanceBasedValue = RandomImpact * Vector2.Distance(Player.transform.position, transform.position) / 3; 
-                vect.x += Random.Range(-distanceBasedValue, distanceBasedValue);
-                vect.y += Random.Range(-distanceBasedValue, distanceBasedValue);
-                direct = vect + Player.transform.position;
-            }
+            var vect = Player.transform.position + direct / 2;
+            vect.Normalize();
+            var distanceBasedValue = RandomImpact * Vector2.Distance(Player.transform.position, transform.position); 
+            vect.x += Random.Range(-distanceBasedValue, distanceBasedValue);
+            vect.y += Random.Range(-distanceBasedValue, distanceBasedValue);
+            direct = vect + Player.transform.position;
             CoolDownBefore = Random.Range(CoolDown / 3, CoolDown);
         }
         

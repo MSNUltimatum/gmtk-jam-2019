@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemySpeed: 4
-  RandomImpact: 1.5
+  RandomImpact: 1.3
 --- !u!82 &1707393327039797635
 AudioSource:
   m_ObjectHideFlags: 0
