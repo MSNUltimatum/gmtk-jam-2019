@@ -284,9 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a5e7805414224438c6023db81fe0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 4
+  EnemySpeed: 3.5
   CoolDown: 5
-  GhostBoostSpeed: 7
+  GhostBoostSpeed: 6.5
   ImmortalityInBoost: 1
 --- !u!61 &5610511982554001868
 BoxCollider2D:
@@ -344,7 +344,7 @@ AudioSource:
   m_GameObject: {fileID: 2611012751803154452}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: 8253664167283335184, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f25483a2868072f4faa9dc7f215288c6, type: 3}
   m_PlayOnAwake: 1

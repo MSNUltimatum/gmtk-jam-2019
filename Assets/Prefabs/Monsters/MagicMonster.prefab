@@ -282,7 +282,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemySpeed: 2
   Bullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca, type: 3}
-  BulletSpeed: 5
 --- !u!114 &7735108373905851320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +355,7 @@ AudioSource:
   m_GameObject: {fileID: 5157507255320454297}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: -3100938328506450505, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
   m_PlayOnAwake: 1

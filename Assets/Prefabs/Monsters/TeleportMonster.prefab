@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemySpeed: 3
   TpCooldownRange: {x: 5, y: 7}
+  Scatter: 7
 --- !u!82 &-919052667301590798
 AudioSource:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ AudioSource:
   m_GameObject: {fileID: 8122783078331616378}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: 8253664167283335184, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
   m_PlayOnAwake: 1
