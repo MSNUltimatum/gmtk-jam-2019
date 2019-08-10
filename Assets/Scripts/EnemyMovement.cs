@@ -10,19 +10,18 @@ public class EnemyMovement : MonoBehaviour
     private SpriteRenderer sprite;
 
     protected virtual void Start()
-    {
+    {      
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     protected virtual void Update()
     {
         MoveToward();
-        Rotation();
-
+        Rotation();      
     }
 
     protected virtual void MoveToward()
-    {
+    {      
         transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, EnemySpeed * Time.deltaTime);
     }
 

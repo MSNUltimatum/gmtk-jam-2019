@@ -251,9 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  sounds: []
-  noise1: {fileID: 0}
-  noise2: {fileID: 0}
 --- !u!58 &4305704709854959872
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -395,8 +392,8 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 628e8cf5677e0c2498e0b146302bcbc6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.625
+  m_Pitch: 0.78
   Loop: 0
   Mute: 0
   Spatialize: 0

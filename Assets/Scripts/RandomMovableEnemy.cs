@@ -8,7 +8,10 @@ public class RandomMovableEnemy : MonoBehaviour
     protected float EnemySpeed = 2f;
     Vector3 direct;
     private float CoolDownBefore;
+    [SerializeField]
     private float CoolDown = 1f;
+    [SerializeField]
+    private Vector2 RangeOfMotion = new Vector2(0, 5);
     private SpriteRenderer sprite;
     protected GameObject Player;
 
@@ -58,9 +61,10 @@ public class RandomMovableEnemy : MonoBehaviour
             vect.x += Random.Range(-distanceBasedValue, distanceBasedValue);
             vect.y += Random.Range(-distanceBasedValue, distanceBasedValue);
             direct = vect + Player.transform.position;
+
             CoolDownBefore = Random.Range(CoolDown / 3, CoolDown);
+
         }
-        
     }
     private bool soundLock = false;
 }

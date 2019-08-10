@@ -12,9 +12,9 @@ public class CharacterMovement : MonoBehaviour
     private SpriteRenderer CharacterSprite;
     private Animator anim;
 
-    public AudioSource[] sounds;
-    public AudioSource noise1;
-    public AudioSource noise2;
+    private AudioSource[] sounds;
+    private AudioSource noise1;
+    private AudioSource noise2;
 
     private bool isHorisontal = false;
 
@@ -39,6 +39,7 @@ public class CharacterMovement : MonoBehaviour
         transform.rotation = rot;
         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
     }
+    
     private void Movement()
     {
         Vector2 direction = new Vector2();
@@ -50,17 +51,19 @@ public class CharacterMovement : MonoBehaviour
         }
         if (anim != null)
         {
-            if (direction.magnitude == 0)
+            if (direction.magnitude == 0) 
             {
+                noise2.Pause();
                 anim.Play("HeroIdle");
             }
-            else
+            else if (noise2.isPlaying == false)
             {
-                noise2.Play();
+                noise2.volume = Random.Range(0.4f, 0.6f);
+                noise2.pitch = Random.Range(0.8f, 1f);
+                noise2.Play();            
                 anim.Play("HeroWalking");
             }
         }
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
-    }
-
+    }   
 }
