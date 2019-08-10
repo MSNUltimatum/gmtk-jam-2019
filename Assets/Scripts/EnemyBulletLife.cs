@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBulletLife : MonoBehaviour
 {
     [SerializeField]
-    public float BulletSpeed = 0.5f;
+    public float BulletSpeed = 12f;
     private GameObject game;
     private RelodScene scenes;
 
@@ -15,9 +15,9 @@ public class EnemyBulletLife : MonoBehaviour
         scenes = game.GetComponent<RelodScene>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        transform.Translate(Vector2.right * BulletSpeed);
+        transform.Translate(Vector2.right * BulletSpeed * Time.deltaTime);
         Destroy(gameObject, 3f);
     }
 
