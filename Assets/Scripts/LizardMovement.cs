@@ -5,7 +5,8 @@ using UnityEngine;
 public class LizardMovement : EnemyMovement
 {
     private float CoolDownBefore;
-
+    [SerializeField]
+    private float LizardBoostSpeed = 4.5f;
     protected override void Start()
     {
         CoolDownBefore = Rand();
@@ -38,7 +39,7 @@ public class LizardMovement : EnemyMovement
                 audio.Play();
                 soundLock = true;
             }
-            EnemySpeed = 4.5f;
+            EnemySpeed = LizardBoostSpeed;
         }
 
         if (CoolDownBefore == 0)

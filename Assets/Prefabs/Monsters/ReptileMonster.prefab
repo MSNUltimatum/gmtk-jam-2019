@@ -541,7 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c1cd3be3cf7fa4cab46b182eed567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 4
+  EnemySpeed: 3
+  BoostSpeed: 4.5
 --- !u!82 &1890645988052125195
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,6 +7,10 @@ public class Ghost : EnemyMovement
     private float CoolDownBefore;
     [SerializeField]
     private float CoolDown = 18f;
+    [SerializeField]
+    private float GhostBoostSpeed = 7f;
+    [SerializeField]
+    private bool ImmortalityInBoost = true;
     private BoxCollider2D BoxCollider;
     private SpriteRenderer sprite;
 
@@ -45,8 +49,8 @@ public class Ghost : EnemyMovement
             {
                 audio.Play();
             }
-            BoxCollider.isTrigger = true;
-            EnemySpeed = 7f;
+            BoxCollider.isTrigger = ImmortalityInBoost;
+            EnemySpeed = GhostBoostSpeed;
             var s = sprite.color;
             s.a = 0.5f;
             sprite.color = s;

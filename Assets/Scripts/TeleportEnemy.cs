@@ -7,6 +7,8 @@ public class TeleportEnemy : EnemyMovement
     [SerializeField]
     private Vector2 TpCooldownRange = new Vector2(5, 7);
     private float CoolDownBefore;
+    [SerializeField]
+    private float Scatter = 8f;
     protected override void Start()
     {
         CoolDownBefore = Rand();
@@ -46,7 +48,7 @@ public class TeleportEnemy : EnemyMovement
             float YPos = Random.Range(-100, 100);
             var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
             vect.Normalize();
-            vect *= 8f;
+            vect *= Scatter;
             transform.position = Player.transform.position + new Vector3(vect.x, vect.y);
         }
     }
