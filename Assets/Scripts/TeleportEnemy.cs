@@ -9,9 +9,15 @@ public class TeleportEnemy : EnemyMovement
     private float CoolDownBefore;
     [SerializeField]
     private float Scatter = 8f;
+
+    private GameObject GameManager;
+    private ArenaEnemySpawner arena;
+
     protected override void Start()
     {
         CoolDownBefore = Rand();
+        GameManager = GameObject.FindGameObjectWithTag("GameController");
+        arena = GameManager.GetComponent<ArenaEnemySpawner>();
         base.Start();
     }
 
@@ -36,20 +42,31 @@ public class TeleportEnemy : EnemyMovement
     {
         if (CoolDownBefore == 0)
         {
-            var audio = GetComponent<AudioSource>();
-
-            if (audio)
+            int i = 0;
+            while (i < 10)
             {
-                audio.Play();
+                i++;
+                float Xpos = Random.Range(-100, 100);
+                float YPos = Random.Range(-100, 100);
+                var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
+                vect.Normalize();
+                vect *= Scatter;
+                Vector3 NVector = new Vector3(vect.x, vect.y);
+                if (arena.RoomBounds.x > Mathf.Abs(Player.transform.position.x + NVector.x) && arena.RoomBounds.y > Mathf.Abs(Player.transform.position.y + NVector.y))
+                {
+                    var audio = GetComponent<AudioSource>();
+
+                    if (audio)
+                    {
+                        audio.Play();
+                    }
+                    CoolDownBefore = Rand();
+                    transform.position = Player.transform.position +NVector;
+                    return;
+                }
+                
             }
 
-            CoolDownBefore = Rand();
-            float Xpos = Random.Range(-100, 100);
-            float YPos = Random.Range(-100, 100);
-            var vect = new Vector2(Player.transform.position.x - Xpos, Player.transform.position.y - YPos);
-            vect.Normalize();
-            vect *= Scatter;
-            transform.position = Player.transform.position + new Vector3(vect.x, vect.y);
         }
     }
 
