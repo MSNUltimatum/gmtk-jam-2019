@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportEnemy : EnemyMovement
 {
     [SerializeField]
-    private Vector2 TpCooldownRange = new Vector2(5, 7);
+    private Vector2 TpCooldownRange = new Vector2(3, 10);
     private float CoolDownBefore;
     [SerializeField]
     private float Scatter = 8f;

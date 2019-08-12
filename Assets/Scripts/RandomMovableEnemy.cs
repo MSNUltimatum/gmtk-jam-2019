@@ -52,6 +52,7 @@ public class RandomMovableEnemy : MonoBehaviour
             if (!soundLock)
             {
                 var audio = GetComponent<AudioSource>();
+                audio.volume = Random.Range(0.1f, 0.3f);
                 audio.Play();
                 soundLock = true;
             }

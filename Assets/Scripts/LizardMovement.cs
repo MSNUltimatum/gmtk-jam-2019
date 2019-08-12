@@ -51,7 +51,7 @@ public class LizardMovement : EnemyMovement
     }
     private float Rand()
     {
-        return Random.Range(6f, 9f);
+        return Random.Range(4f, 12f);
     }
 
     private bool soundLock = false;
