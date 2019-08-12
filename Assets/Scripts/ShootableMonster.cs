@@ -39,7 +39,9 @@ public class ShootableMonster : EnemyMovement
     {
         var bullet = Instantiate(Bullet, transform.position, new Quaternion());
 
-        FindObjectOfType<AudioManager>().Play("MonsterShot");
+        var audio = FindObjectOfType<AudioManager>();
+        
+        audio.Play("MonsterShot");
 
         var offset = new Vector2(PlayerPos.x - transform.position.x, PlayerPos.y - transform.position.y);
         

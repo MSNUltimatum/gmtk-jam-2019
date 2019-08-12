@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Example1
-    clip: {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
-    volume: 0.5
+  - name: MonsterShot
+    clip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
