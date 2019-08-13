@@ -58,7 +58,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Blink
     clip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
-    volume: 0.203
+    volume: 0.306
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Cockroach
     clip: {fileID: 8300000, guid: f216b8cdd31bbd34e8ec8b2c53baad2f, type: 3}
-    volume: 0.236
+    volume: 0.639
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -88,13 +88,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ghost
     clip: {fileID: 8300000, guid: f25483a2868072f4faa9dc7f215288c6, type: 3}
-    volume: 0.491
+    volume: 0.699
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: LizardRun
     clip: {fileID: 8300000, guid: a76e5898a1a8abb43bad640dd4a2b16f, type: 3}
-    volume: 0.306
+    volume: 0.616
     pitch: 1
     loop: 0
     source: {fileID: 0}
