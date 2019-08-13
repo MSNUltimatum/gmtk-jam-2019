@@ -282,6 +282,9 @@ MonoBehaviour:
   Bullet: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4, type: 3}
   reloadTimeSec: 0.85
   randomShootingAngle: 0
+  mouseCursor: {fileID: 2800000, guid: 0de5a3aefd68700499320393103aab0d, type: 3}
+  mouseCursorObj: {fileID: 8267320113450945890, guid: 011dba4647a268540bdff308c46fe50b,
+    type: 3}
 --- !u!82 &-4575779773267849266
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,6 +13,19 @@ public class CharacterShooting : MonoBehaviour
     [SerializeField]
     private float randomShootingAngle = 10f;
 
+    [SerializeField]
+    private Texture2D mouseCursor;
+
+    [SerializeField]
+    private GameObject mouseCursorObj;
+    private GameObject mouseCursorInst;
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        GameObject.Instantiate(mouseCursorObj);
+    }
+
     private void CmdShoot(Vector3 mousePos, Vector3 screenPoint)
     {
         var bullet = Instantiate(Bullet, transform.position, new Quaternion());
