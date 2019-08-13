@@ -14,7 +14,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     static Random random = new Random();
 
-    [SerializeField]
     public Vector2 RoomBounds = new Vector2(15, 10);
 
     private List<int> randomSequence;

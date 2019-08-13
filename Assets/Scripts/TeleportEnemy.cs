@@ -10,14 +10,13 @@ public class TeleportEnemy : EnemyMovement
     [SerializeField]
     private float Scatter = 8f;
 
-    private GameObject GameManager;
     private ArenaEnemySpawner arena;
 
     protected override void Start()
     {
         CoolDownBefore = Rand();
-        GameManager = GameObject.FindGameObjectWithTag("GameController");
-        arena = GameManager.GetComponent<ArenaEnemySpawner>();
+        arena = GameObject.FindGameObjectWithTag("GameController")
+            .GetComponent<ArenaEnemySpawner>();
         base.Start();
     }
 
