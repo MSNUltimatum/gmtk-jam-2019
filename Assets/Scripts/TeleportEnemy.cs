@@ -53,12 +53,8 @@ public class TeleportEnemy : EnemyMovement
                 Vector3 NVector = new Vector3(vect.x, vect.y);
                 if (arena.RoomBounds.x > Mathf.Abs(Player.transform.position.x + NVector.x) && arena.RoomBounds.y > Mathf.Abs(Player.transform.position.y + NVector.y))
                 {
-                    var audio = GetComponent<AudioSource>();
-
-                    if (audio)
-                    {
-                        audio.Play();
-                    }
+                    var audio = FindObjectOfType<AudioManager>();
+                    audio.Play("Blink");
                     CoolDownBefore = Rand();
                     transform.position = Player.transform.position +NVector;
                     return;

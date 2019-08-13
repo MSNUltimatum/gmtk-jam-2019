@@ -51,9 +51,8 @@ public class RandomMovableEnemy : MonoBehaviour
 
             if (!soundLock)
             {
-                var audio = GetComponent<AudioSource>();
-                audio.volume = Random.Range(0.1f, 0.3f);
-                audio.Play();
+                var audio = FindObjectOfType<AudioManager>();
+                audio.Play("Cockroach");
                 soundLock = true;
             }
             var vect = Player.transform.position + direct / 2;
