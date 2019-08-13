@@ -58,7 +58,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Blink
     clip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
-    volume: 0.306
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Cockroach
     clip: {fileID: 8300000, guid: f216b8cdd31bbd34e8ec8b2c53baad2f, type: 3}
-    volume: 0.639
+    volume: 0.343
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MainTheme
     clip: {fileID: 8300000, guid: 0e051a5a0f49ac746b7a770243511e3e, type: 3}
-    volume: 1
+    volume: 0.607
     pitch: 1
     loop: 1
     source: {fileID: 0}
