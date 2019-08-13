@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06257caebfc23849a199b8e58a60e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  thrust: 10
   knockTime: 0.1
 --- !u!50 &1804933526
 Rigidbody2D:
