@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4, type: 3}
-  reloadTimeSec: 0.85
+  reloadTimeSec: 0.6
   randomShootingAngle: 0
 --- !u!82 &-4575779773267849266
 AudioSource:
@@ -291,11 +291,11 @@ AudioSource:
   m_GameObject: {fileID: 4305704709854959933}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5813178484243039415, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: 5371238098017226180, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -388,11 +388,11 @@ AudioSource:
   m_GameObject: {fileID: 4305704709854959933}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 17f949ea84c9c534da4fca4d9a11d60f,
+  OutputAudioMixerGroup: {fileID: 5371238098017226180, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 628e8cf5677e0c2498e0b146302bcbc6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.625
+  m_Volume: 0.55
   m_Pitch: 0.78
   Loop: 0
   Mute: 0

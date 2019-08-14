@@ -35,8 +35,8 @@ public class LizardMovement : EnemyMovement
         if (CoolDownBefore < 2f)
         {
             if (!soundLock) {
-                var audio = GetComponent<AudioSource>();
-                audio.Play();
+                var audio = FindObjectOfType<AudioManager>();
+                audio.Play("LizardRun");
                 soundLock = true;
             }
             EnemySpeed = LizardBoostSpeed;
@@ -51,7 +51,7 @@ public class LizardMovement : EnemyMovement
     }
     private float Rand()
     {
-        return Random.Range(6f, 9f);
+        return Random.Range(4f, 12f);
     }
 
     private bool soundLock = false;
