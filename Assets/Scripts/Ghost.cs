@@ -44,11 +44,8 @@ public class Ghost : EnemyMovement
     {
         if (CoolDownBefore < 3f)
         {
-            var audio = GetComponent<AudioSource>();
-            if (audio)
-            {
-                audio.Play();
-            }
+            var audio = FindObjectOfType<AudioManager>();
+            audio.Play("Ghost");
             BoxCollider.isTrigger = ImmortalityInBoost;
             EnemySpeed = GhostBoostSpeed;
             var s = sprite.color;

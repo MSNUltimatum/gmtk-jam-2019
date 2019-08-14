@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class RelodScene : MonoBehaviour
 {
     private ArenaEnemySpawner arena;
+    private bool isVictory = false;
     private float TotalValue = 0;
     private float maxvalue = 0;
     [SerializeField]
@@ -31,6 +32,7 @@ public class RelodScene : MonoBehaviour
     {
         if(TotalValue == maxvalue)
         {
+            isVictory = true;
             Canvas.transform.GetChild(0).gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -39,7 +41,7 @@ public class RelodScene : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && !isVictory)
         {
 
             TotalValue = 0;
@@ -51,6 +53,7 @@ public class RelodScene : MonoBehaviour
     }
     public void PressR()
     {
+        if(!isVictory)
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
