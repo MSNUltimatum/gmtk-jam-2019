@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportEnemy : EnemyMovement
 {
     [SerializeField]
-    private Vector2 TpCooldownRange = new Vector2(5, 7);
+    private Vector2 TpCooldownRange = new Vector2(3, 10);
     private float CoolDownBefore;
     [SerializeField]
     private float Scatter = 8f;
@@ -53,12 +53,8 @@ public class TeleportEnemy : EnemyMovement
                 Vector3 NVector = new Vector3(vect.x, vect.y);
                 if (arena.RoomBounds.x > Mathf.Abs(Player.transform.position.x + NVector.x) && arena.RoomBounds.y > Mathf.Abs(Player.transform.position.y + NVector.y))
                 {
-                    var audio = GetComponent<AudioSource>();
-
-                    if (audio)
-                    {
-                        audio.Play();
-                    }
+                    var audio = FindObjectOfType<AudioManager>();
+                    audio.Play("Blink");
                     CoolDownBefore = Rand();
                     transform.position = Player.transform.position +NVector;
                     return;
