@@ -10,7 +10,7 @@ public class SpinEnemy : EnemyMovement
     private float NotSpinSpeed;
 
     [SerializeField]
-    private float radius = 2f;
+    private float radius = 1.9f;
     protected override void Start()
     {
         base.Start();
@@ -30,7 +30,7 @@ public class SpinEnemy : EnemyMovement
         {
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, EnemySpeed * Time.deltaTime);
             isCircle = false;
-            //angle = 0f; При этом условии он стоит  
+            angle = 0f;
             EnemySpeed = NotSpinSpeed;
         }
         else
@@ -43,11 +43,11 @@ public class SpinEnemy : EnemyMovement
     {
         if (isCircle)
         {
-            EnemySpeed = NotSpinSpeed + 2f ;
+            EnemySpeed = NotSpinSpeed + 1f ;
             angle += Time.deltaTime;
-            var x = Mathf.Cos(angle * EnemySpeed) * radius;
-            var y = Mathf.Sin(angle * EnemySpeed) * radius;
-            transform.position = new Vector3(x, y, transform.position.z) + Player.transform.position;
+            var x = Mathf.Cos(angle * EnemySpeed) * (radius-0.1f);
+            var y = Mathf.Sin(angle * EnemySpeed) * (radius-0.1f);
+            transform.position = new Vector3(x, y, 0) + Player.transform.position;
         }
     }
 
