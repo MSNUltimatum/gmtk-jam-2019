@@ -30,7 +30,7 @@ public class SpinEnemy : EnemyMovement
         {
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, EnemySpeed * Time.deltaTime);
             isCircle = false;
-            //angle = 0f; При этом условии он стоит
+            //angle = 0f; При этом условии он стоит  
             EnemySpeed = NotSpinSpeed;
         }
         else
