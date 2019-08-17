@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 8121964626251394160}
   - component: {fileID: 2292472710950963263}
   - component: {fileID: 1289051625820777727}
+  - component: {fileID: 5526979879910139919}
   m_Layer: 5
   m_Name: Version
   m_TagString: Untagged
@@ -340,3 +341,17 @@ MonoBehaviour:
   m_Text: 'Work in progress
 
     0.1 (182)'
+--- !u!114 &5526979879910139919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674389687504062637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc679e4acfa63eb409ce4357885e3562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeDuration: 5
+  text: {fileID: 1289051625820777727}
