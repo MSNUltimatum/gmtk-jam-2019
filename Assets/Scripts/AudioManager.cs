@@ -1,12 +1,14 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 using System;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
-    // Start is called before the first frame update
+    public static Dictionary<string, Vector2> Clips;
     void Awake()
     {
         if (instance == null)
@@ -17,14 +19,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-        }
     }
 
     private void Start()
@@ -32,9 +26,26 @@ public class AudioManager : MonoBehaviour
         Play("MainTheme");
     }
 
+    public float GetVolume(string name, float volume)
+    {
+        float timestamp = Time.time;
+        Clips = new Dictionary<string, Vector2>();       
+        //Clips.Add("MainTheme", new Vector2(0.8f, 0.9f));
+        if (!Clips.ContainsKey(name))
+        {
+            Clips.Add(name, new Vector2(timestamp,volume));
+        }
+        volume -= timestamp - Time.time;
+        return volume;
+    }
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source = gameObject.AddComponent<AudioSource>();
+        s.source.clip = s.clip;
+        s.source.volume = GetVolume(name,s.volume);
+        s.source.pitch = s.pitch;
+        s.source.loop = s.loop;
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
