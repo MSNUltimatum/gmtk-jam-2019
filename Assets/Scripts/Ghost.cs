@@ -12,7 +12,6 @@ public class Ghost : EnemyMovement
     [SerializeField]
     private bool ImmortalityInBoost = true;
     private BoxCollider2D BoxCollider;
-    private SpriteRenderer sprite;
 
 
     protected override void Start()
