@@ -850,6 +850,16 @@ PrefabInstance:
       propertyPath: timeToEachSpawn
       value: 6.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2404109561828529053, guid: 34cadd369184f1f48b3f2185d91fd205,
+        type: 3}
+      propertyPath: SceneBumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404109561828529053, guid: 34cadd369184f1f48b3f2185d91fd205,
+        type: 3}
+      propertyPath: SceneNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34cadd369184f1f48b3f2185d91fd205, type: 3}
 --- !u!1001 &2892025729610787280

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class RelodScene : MonoBehaviour
 {
+    [SerializeField]
+    private int SceneNumber = 0;
     private ArenaEnemySpawner arena;
     private bool isVictory = false;
     private float TotalValue = 0;
@@ -36,6 +38,8 @@ public class RelodScene : MonoBehaviour
             Canvas.transform.GetChild(0).gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
+                if(PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
+                    PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
                 Canvas.transform.GetChild(0).gameObject.SetActive(false);
                 SceneManager.LoadScene(NextSceneName);
             }

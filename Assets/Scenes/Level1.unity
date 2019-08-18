@@ -1246,5 +1246,15 @@ PrefabInstance:
       propertyPath: RoomBounds.x
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 7058355956801281510, guid: acc809f1467ba824ea648372c89afe35,
+        type: 3}
+      propertyPath: SceneBumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058355956801281510, guid: acc809f1467ba824ea648372c89afe35,
+        type: 3}
+      propertyPath: SceneNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acc809f1467ba824ea648372c89afe35, type: 3}
