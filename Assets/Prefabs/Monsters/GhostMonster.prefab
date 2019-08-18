@@ -283,9 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a5e7805414224438c6023db81fe0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 3.5
+  EnemySpeed: 3
   CoolDown: 5
-  GhostBoostSpeed: 6.5
+  GhostBoostSpeed: 7
   ImmortalityInBoost: 1
 --- !u!61 &5610511982554001868
 BoxCollider2D:

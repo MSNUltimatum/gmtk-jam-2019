@@ -683,12 +683,12 @@ PrefabInstance:
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: timeToEachSpawn
-      value: 6.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
@@ -699,31 +699,31 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 577698623556847370, guid: e355ea5bacc563d408ce5ab101525157,
+      objectReference: {fileID: 3332098615629668360, guid: e63be7c6321389f4f9fcd1148eb8786f,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
-      objectReference: {fileID: 608784997738848855, guid: 618eb7193a1b8074b9c402b7f950a4ad,
+      objectReference: {fileID: 3598458013119388966, guid: e25953a613f9d644f8846569ecf2bd0e,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[2]
       value: 
-      objectReference: {fileID: 3598458013119388966, guid: e25953a613f9d644f8846569ecf2bd0e,
+      objectReference: {fileID: 7454844888150953417, guid: 75931e877b166504e96a5749bd617d4b,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[3]
       value: 
-      objectReference: {fileID: 3335050255548650855, guid: 99165c989dbcaf84b950db9821565ef8,
+      objectReference: {fileID: 3598458013119388966, guid: e25953a613f9d644f8846569ecf2bd0e,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[4]
       value: 
-      objectReference: {fileID: 3332098615629668360, guid: e63be7c6321389f4f9fcd1148eb8786f,
+      objectReference: {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
@@ -1098,6 +1098,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121964626251394160, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.100006
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121964626251394160, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6000061
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f2dbaa7a366d38488b6607fb29ce7ce, type: 3}
