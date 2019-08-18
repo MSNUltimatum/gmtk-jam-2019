@@ -20,7 +20,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     private int sequenceIndex = 0;
 
     [SerializeField]
-    private EvilDictionary evilDictionary;
+    private EvilDictionary evilDictionary = null;
 
     void Start()
     {

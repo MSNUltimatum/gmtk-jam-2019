@@ -6,7 +6,6 @@ public class CharacterMovement : MonoBehaviour
 {
     [SerializeField]
     private float speed = 10f;
-    private readonly float SpeedBySecond = 250;
 
     private Vector2 movement;
     private SpriteRenderer CharacterSprite;
@@ -15,8 +14,6 @@ public class CharacterMovement : MonoBehaviour
     private AudioSource[] sounds;
     private AudioSource noise1;
     private AudioSource noise2;
-
-    private bool isHorisontal = false;
 
     private void Start()
     {

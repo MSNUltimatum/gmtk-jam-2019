@@ -5,7 +5,7 @@ using UnityEngine;
 public class CurrentEnemy : MonoBehaviour
 {
     [SerializeField]
-    GameObject CanvasPrefab;
+    GameObject CanvasPrefab = null;
 
     // Start is called before the first frame update
     void Start()

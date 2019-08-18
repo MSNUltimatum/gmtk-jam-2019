@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootableMonster : EnemyMovement
 {
     [SerializeField]
-    private GameObject Bullet;
+    private GameObject Bullet = null;
     private float CoolDownBefore;
     private float CoolDown = 1f;
     protected override void Start()

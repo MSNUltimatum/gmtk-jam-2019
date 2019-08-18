@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterShooting : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Bullet;
+    private GameObject Bullet = null;
 
     [SerializeField]
     private float reloadTimeSec = 1.5f;
@@ -14,10 +14,7 @@ public class CharacterShooting : MonoBehaviour
     private float randomShootingAngle = 10f;
 
     [SerializeField]
-    private Texture2D mouseCursor;
-
-    [SerializeField]
-    private GameObject mouseCursorObj;
+    private GameObject mouseCursorObj = null;
     private GameObject mouseCursorInst;
 
     private void Start()

@@ -17,9 +17,9 @@ public class RoomLighting : MonoBehaviour
 
     // Swamp - enemy spawner
     [SerializeField]
-    private Material swampMatPrefab;
+    private Material swampMatPrefab = null;
     [SerializeField]
-    private GameObject swampPrefab;
+    private GameObject swampPrefab = null;
 
     private void Start()
     {

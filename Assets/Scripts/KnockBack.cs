@@ -6,6 +6,7 @@ public class KnockBack : MonoBehaviour
 {
     public float thrust;
     public float knockTime;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -16,8 +17,21 @@ public class KnockBack : MonoBehaviour
                 Enemy.drag = 1;
                 Vector2 difference = Enemy.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                Enemy.AddForce(difference, ForceMode2D.Impulse); 
+                Enemy.AddForce(difference, ForceMode2D.Impulse);
+
+                var moveComp = Enemy.GetComponent<EnemyMovement>();
+                if (moveComp)
+                {
+                    moveComp.StopUpdate(0.5f);
+                }
+                else
+                {
+                    Debug.LogWarning("No Move Component on enemy? Is it ok?");
+                }
             }
         }
     }
+
+    
+    
 }

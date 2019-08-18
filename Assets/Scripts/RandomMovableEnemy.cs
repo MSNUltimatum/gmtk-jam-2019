@@ -2,47 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomMovableEnemy : MonoBehaviour
+public class RandomMovableEnemy : EnemyMovement
 {
-    [SerializeField]
-    protected float EnemySpeed = 2f;
     Vector3 direct;
     private float CoolDownBefore;
     [SerializeField]
     private float CoolDown = 1f;
     [SerializeField]
     private Vector2 RangeOfMotion = new Vector2(0, 5);
-    private SpriteRenderer sprite;
-    protected GameObject Player;
 
     [SerializeField]
     private float RandomImpact = 5f;
 
-    protected void Start()
+    protected override void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        base.Start();
         CoolDownBefore = CoolDown;
         direct = Player.transform.position;
-        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
-    protected  void Update()
+    protected override void Update()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         NewDirect();
-        MoveToward();
-        Rotation();
-    }
-
-    protected  void MoveToward()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, direct, EnemySpeed * Time.deltaTime);
-    }
-
-    protected  void Rotation()
-    {
-       float z = Mathf.Atan2((Player.transform.position.y - transform.position.y), (Player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
-       transform.eulerAngles = new Vector3(0, 0, z);
+        MoveAndRotate();
     }
 
     private void NewDirect()

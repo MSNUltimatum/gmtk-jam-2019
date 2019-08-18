@@ -13,9 +13,9 @@ public class MonsterLife : MonoBehaviour
     bool THE_BOY = false;
     
     [SerializeField]
-    private GameObject absorbPrefab;
+    private GameObject absorbPrefab = null;
     [SerializeField]
-    private GameObject enemyExplosionPrefab;
+    private GameObject enemyExplosionPrefab = null;
 
     private void Update()
     {
