@@ -46,8 +46,8 @@ public class Ghost : EnemyMovement
         {        
             if (!soundLock)
             {
-                var audio = FindObjectOfType<AudioManager>();
-                audio.Play("Ghost");
+                var audio = GetComponent<AudioSource>();
+                AudioManager.Play("Ghost", audio);
                 soundLock = true;
             }
             BoxCollider.isTrigger = ImmortalityInBoost;

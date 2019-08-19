@@ -6,11 +6,13 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
+    public static Sound[] sounds;
+    public Sound[] soundsToRegister;
     public static AudioManager instance;
-    public static Dictionary<string, Vector2> Clips;
+    public static Dictionary<string, Vector2> Clips = new Dictionary<string, Vector2>();
     void Awake()
     {
+        sounds = soundsToRegister;
         if (instance == null)
             instance = this;
         else
@@ -23,25 +25,29 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("MainTheme");
+        //Play("MainTheme");
     }
 
-    public float GetVolume(string name, float volume)
+    public static float GetVolume(string name, float volume)
     {
-        float timestamp = Time.time;
-        Clips = new Dictionary<string, Vector2>();       
-        //Clips.Add("MainTheme", new Vector2(0.8f, 0.9f));
-        if (!Clips.ContainsKey(name))
+        if (Clips.ContainsKey(name))
         {
-            Clips.Add(name, new Vector2(timestamp,volume));
+            float ltp = Clips[name].x;
+            volume -= 0.1f*(Clips[name].y + Time.time - ltp);   
+            //volume -= Time.time - ltp;
+            volume = Mathf.Clamp(volume, Clips[name].y/3, Clips[name].y);
+            Clips[name] = new Vector2(Time.time,Clips[name].y);
         }
-        volume -= timestamp - Time.time;
+        else
+        {
+            Clips.Add(name, new Vector2(Time.time, volume));
+        } 
         return volume;
     }
-    public void Play(string name)
+    public static void Play(string name, AudioSource source)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source = gameObject.AddComponent<AudioSource>();
+        s.source = source;
         s.source.clip = s.clip;
         s.source.volume = GetVolume(name,s.volume);
         s.source.pitch = s.pitch;

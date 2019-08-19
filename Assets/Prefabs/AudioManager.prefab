@@ -43,8 +43,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2b38dc963948d4abbc422d0d58af32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Shoot
+  soundsToRegister:
+  - name: Blink
+    clip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Cockroach
+    clip: {fileID: 8300000, guid: f216b8cdd31bbd34e8ec8b2c53baad2f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ghost
+    clip: {fileID: 8300000, guid: f25483a2868072f4faa9dc7f215288c6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LizardRun
+    clip: {fileID: 8300000, guid: a76e5898a1a8abb43bad640dd4a2b16f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 0e051a5a0f49ac746b7a770243511e3e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: MonsterShot
     clip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
     volume: 1
     pitch: 1
@@ -56,21 +86,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Blink
-    clip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
-    volume: 0.25
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
   - name: Block
     clip: {fileID: 8300000, guid: 2f3c128b4bff49143aa777ecaf0c5eae, type: 3}
     volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Cockroach
-    clip: {fileID: 8300000, guid: f216b8cdd31bbd34e8ec8b2c53baad2f, type: 3}
-    volume: 0.343
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -82,30 +100,6 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Explosion
     clip: {fileID: 8300000, guid: 80d767c4194e727458472a10aa464bfd, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Ghost
-    clip: {fileID: 8300000, guid: f25483a2868072f4faa9dc7f215288c6, type: 3}
-    volume: 0.699
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: LizardRun
-    clip: {fileID: 8300000, guid: a76e5898a1a8abb43bad640dd4a2b16f, type: 3}
-    volume: 0.616
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: MainTheme
-    clip: {fileID: 8300000, guid: 0e051a5a0f49ac746b7a770243511e3e, type: 3}
-    volume: 0.532
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: MonsterShot
-    clip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
     volume: 1
     pitch: 1
     loop: 0
