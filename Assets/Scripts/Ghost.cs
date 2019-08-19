@@ -12,7 +12,6 @@ public class Ghost : EnemyMovement
     [SerializeField]
     private bool ImmortalityInBoost = true;
     private BoxCollider2D BoxCollider;
-    private SpriteRenderer sprite;
 
     private bool soundLock = false;
     protected override void Start()
@@ -43,15 +42,17 @@ public class Ghost : EnemyMovement
     private void GhostMode()
     {
         if (CoolDownBefore < 3f)
-        {        
+        {
+
             if (!soundLock)
             {
                 var audio = GetComponent<AudioSource>();
                 AudioManager.Play("Ghost", audio);
                 soundLock = true;
             }
+
             BoxCollider.isTrigger = ImmortalityInBoost;
-            EnemySpeed = GhostBoostSpeed;        
+            EnemySpeed = GhostBoostSpeed;
             var s = sprite.color;
             s.a = 0.5f;
             sprite.color = s;
@@ -68,5 +69,4 @@ public class Ghost : EnemyMovement
             soundLock = false;
         }
     }
-    
 }

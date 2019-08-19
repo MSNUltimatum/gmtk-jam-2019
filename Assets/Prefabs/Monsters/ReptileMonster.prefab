@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c1cd3be3cf7fa4cab46b182eed567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   EnemySpeed: 3
   LizardBoostSpeed: 4.5
 --- !u!82 &-5064758705044448074
@@ -639,3 +640,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  EnemySpeed: 3.5
+  LizardBoostSpeed: 5
+>>>>>>> b76df1af474cf511af886f3e25d08b03aade7367

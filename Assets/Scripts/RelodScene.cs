@@ -25,7 +25,6 @@ public class RelodScene : MonoBehaviour
     public void CurrentCount(int val)
     {
         TotalValue = TotalValue + val;
-        Debug.Log(TotalValue);
     }
 
     private void Update()

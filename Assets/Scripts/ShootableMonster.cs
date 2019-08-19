@@ -5,9 +5,10 @@ using UnityEngine;
 public class ShootableMonster : EnemyMovement
 {
     [SerializeField]
-    private GameObject Bullet;
+    private GameObject Bullet = null;
     private float CoolDownBefore;
     private float CoolDown = 1f;
+
     protected override void Start()
     {
         CoolDownBefore = CoolDown;
@@ -17,7 +18,7 @@ public class ShootableMonster : EnemyMovement
     protected override void Update()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
-        if(CoolDownBefore == 0)
+        if (CoolDownBefore == 0)
         {
             CmdShoot(Player.transform.position);
             CoolDownBefore = CoolDown;
@@ -26,7 +27,7 @@ public class ShootableMonster : EnemyMovement
     }
 
     protected override void MoveToward()
-    {        
+    {
         base.MoveToward();
     }
 
@@ -38,19 +39,11 @@ public class ShootableMonster : EnemyMovement
     private void CmdShoot(Vector3 PlayerPos)
     {
         var bullet = Instantiate(Bullet, transform.position, new Quaternion());
-        //var audio = FindObjectOfType<AudioManager>();
-        //audio.Play("Shoot", GetComponent<AudioSource>());
+
         var audio = GetComponent<AudioSource>();
-        AudioManager.Play("MonsterShot", audio);      
-        //audio.Play("Shoot", GetComponent<AudioSource>());
-        // var audio = GetComponent<AudioSource>();
-        //if (audio)
-        //{
-        //  audio.Play();
-        //}
+        AudioManager.Play("MonsterShot", audio);
 
         var offset = new Vector2(PlayerPos.x - transform.position.x, PlayerPos.y - transform.position.y);
-        
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         angle += Random.Range(-15, 15);
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
