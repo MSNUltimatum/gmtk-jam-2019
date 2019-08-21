@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: NextSceneName
       value: Final
       objectReference: {fileID: 0}
+    - target: {fileID: 92031012, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
+      propertyPath: SceneNumber
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!114 &727571689 stripped
@@ -1064,7 +1068,11 @@ PrefabInstance:
     - target: {fileID: 8121964626251394160, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
+<<<<<<< HEAD
       value: 3.100006
+=======
+      value: 3.0999756
+>>>>>>> 54b739c87e5c9655b53f89226f4d62b43afdd31c
       objectReference: {fileID: 0}
     - target: {fileID: 8121964626251394160, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
         type: 3}
