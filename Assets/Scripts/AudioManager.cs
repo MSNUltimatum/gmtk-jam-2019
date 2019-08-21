@@ -54,7 +54,18 @@ public class AudioManager : MonoBehaviour
         s.source.clip = s.clip;
         s.source.volume = GetVolume(name, s.volume);
         s.source.pitch = s.pitch;
+        s.source.panStereo = s.stereoPan;
+        s.source.spatialBlend = s.spatialBlend;
+        s.source.reverbZoneMix = s.reverbZoneMix;
         s.source.loop = s.loop;
+        s.source.mute = s.mute;
+        s.source.bypassEffects = s.bypassEffects;
+        s.source.bypassReverbZones = s.bypassReverbZones;
+        s.source.playOnAwake = s.playOnAwake;
+        s.source.dopplerLevel = s.dopplerLevel;
+        s.source.spread = s.spread;
+        s.source.minDistance = s.minDistance;
+        s.source.maxDistance = s.maxDistance;
 
         if (s == null)
         {
