@@ -23,6 +23,7 @@ public class Sound
     public bool mute;
     public bool bypassEffects;
     public bool bypassReverbZones;
+    //3d sound
     public bool playOnAwake;
     [Range(0f, 5f)]
     public float dopplerLevel;
