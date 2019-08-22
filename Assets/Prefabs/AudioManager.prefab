@@ -43,82 +43,208 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2b38dc963948d4abbc422d0d58af32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Shoot
-    clip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: BigMonsterMove
-    clip: {fileID: 8300000, guid: 0fa8bbe6191731c4dabf35cd41c771c6, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
+  soundsToRegister:
   - name: Blink
     clip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
-    volume: 0.25
+    volume: 0.409
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
-    source: {fileID: 0}
-  - name: Block
-    clip: {fileID: 8300000, guid: 2f3c128b4bff49143aa777ecaf0c5eae, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}
   - name: Cockroach
     clip: {fileID: 8300000, guid: f216b8cdd31bbd34e8ec8b2c53baad2f, type: 3}
-    volume: 0.343
+    volume: 0.317
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
-    source: {fileID: 0}
-  - name: Eating
-    clip: {fileID: 8300000, guid: d59e15c22664f57459ff313dd5df2555, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Explosion
-    clip: {fileID: 8300000, guid: 80d767c4194e727458472a10aa464bfd, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}
   - name: Ghost
     clip: {fileID: 8300000, guid: f25483a2868072f4faa9dc7f215288c6, type: 3}
-    volume: 0.699
+    volume: 0.597
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}
   - name: LizardRun
     clip: {fileID: 8300000, guid: a76e5898a1a8abb43bad640dd4a2b16f, type: 3}
-    volume: 0.616
+    volume: 0.404
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}
   - name: MainTheme
     clip: {fileID: 8300000, guid: 0e051a5a0f49ac746b7a770243511e3e, type: 3}
-    volume: 0.532
+    volume: 1
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
     loop: 1
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
     source: {fileID: 0}
   - name: MonsterShot
     clip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
     volume: 1
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
+    source: {fileID: 0}
+  - name: BigMonsterMove
+    clip: {fileID: 8300000, guid: 0fa8bbe6191731c4dabf35cd41c771c6, type: 3}
+    volume: 0.7
+    pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
+    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
+    source: {fileID: 0}
+  - name: Block
+    clip: {fileID: 8300000, guid: 2f3c128b4bff49143aa777ecaf0c5eae, type: 3}
+    volume: 0.61
+    pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
+    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
+    source: {fileID: 0}
+  - name: Eating
+    clip: {fileID: 8300000, guid: d59e15c22664f57459ff313dd5df2555, type: 3}
+    volume: 0.656
+    pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
+    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 80d767c4194e727458472a10aa464bfd, type: 3}
+    volume: 0.707
+    pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
+    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}
   - name: Walk
     clip: {fileID: 8300000, guid: 628e8cf5677e0c2498e0b146302bcbc6, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}
   - name: WeaponShot
     clip: {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
+    stereoPan: 0
+    spatialBlend: 0.8
+    reverbZoneMix: 1
     loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 8
     source: {fileID: 0}

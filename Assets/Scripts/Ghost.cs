@@ -13,11 +13,9 @@ public class Ghost : EnemyMovement
     private bool ImmortalityInBoost = true;
     private BoxCollider2D BoxCollider;
 
-
+    private bool soundLock = false;
     protected override void Start()
     {
-        var audio = FindObjectOfType<AudioManager>();
-        audio.Play("Ghost");
         BoxCollider = GetComponent<BoxCollider2D>();
         CoolDownBefore = CoolDown;
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -45,6 +43,14 @@ public class Ghost : EnemyMovement
     {
         if (CoolDownBefore < 3f)
         {
+
+            if (!soundLock)
+            {
+                var audio = GetComponent<AudioSource>();
+                AudioManager.Play("Ghost", audio);
+                soundLock = true;
+            }
+
             BoxCollider.isTrigger = ImmortalityInBoost;
             EnemySpeed = GhostBoostSpeed;
             var s = sprite.color;
@@ -54,14 +60,13 @@ public class Ghost : EnemyMovement
 
         if (CoolDownBefore == 0)
         {
-            var audio = FindObjectOfType<AudioManager>();
-            audio.Play("Ghost");
             CoolDownBefore = CoolDown;
             BoxCollider.isTrigger = false;
             EnemySpeed = 4f;
             var s = sprite.color;
             s.a = 1f;
             sprite.color = s;
+            soundLock = false;
         }
     }
 }

@@ -33,9 +33,9 @@ public class RandomMovableEnemy : EnemyMovement
         if (CoolDownBefore == 0) {
 
             if (!soundLock)
-            {
-                var audio = FindObjectOfType<AudioManager>();
-                audio.Play("Cockroach");
+            {               
+                var audio = GetComponent<AudioSource>();
+                AudioManager.Play("Cockroach", audio);
                 soundLock = true;
             }
             var vect = Player.transform.position + direct / 2;
