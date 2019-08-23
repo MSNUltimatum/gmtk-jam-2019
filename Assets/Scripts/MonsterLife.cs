@@ -5,19 +5,19 @@ using UnityEngine;
 public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
-    private int HP = 1;
+    protected int HP = 1;
 
-    private GameObject game;
-    private RoomLighting Room;
-    private RelodScene scenes;
+    protected GameObject game;
+    protected RoomLighting Room;
+    protected RelodScene scenes;
     bool THE_BOY = false;
     
     [SerializeField]
-    private GameObject absorbPrefab = null;
+    protected GameObject absorbPrefab = null;
     [SerializeField]
-    private GameObject enemyExplosionPrefab = null;
+    protected GameObject enemyExplosionPrefab = null;
 
-    private void Update()
+    protected void Update()
     {
         fadeInLeft -= Time.deltaTime;
         if (fadeInLeft <= 0) return;
@@ -27,7 +27,7 @@ public class MonsterLife : MonoBehaviour
         sprite.color = newColor;
     }
     
-    private void Start()
+    protected void Start()
     {
         fadeInLeft = fadeInTime;
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -41,9 +41,14 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
+    protected virtual bool Vulnurable()
+    {
+        return true;
+    }
+
     public void Damage()
     {
-        if (THE_BOY)
+        if (THE_BOY & Vulnurable())
         {
             HP--;
             if (HP == 0)
@@ -71,7 +76,7 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D coll)
+    protected void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
         {
@@ -87,7 +92,7 @@ public class MonsterLife : MonoBehaviour
         THE_BOY = true;
     }
 
-    private float fadeInTime = 0.5f;
-    private float fadeInLeft;
-    private SpriteRenderer sprite;
+    protected float fadeInTime = 0.5f;
+    protected float fadeInLeft;
+    protected SpriteRenderer sprite;
 }
