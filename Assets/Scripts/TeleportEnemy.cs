@@ -55,7 +55,7 @@ public class TeleportEnemy : EnemyMovement
                 {
                     var audio = GetComponent<AudioSource>();
                     AudioManager.Play("Blink", audio);
-                    CoolDownBefore = Rand();
+                    CoolDownBefore = Random.Range(TpCooldownRange.x, TpCooldownRange.y);
                     transform.position = Player.transform.position + NVector;
                     return;
                 }
