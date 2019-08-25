@@ -6,10 +6,7 @@ public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
     private int HP = 1;
-
-    private GameObject game;
-    private RoomLighting Room;
-    private RelodScene scenes;
+    
     bool THE_BOY = false;
     
     [SerializeField]
@@ -31,9 +28,6 @@ public class MonsterLife : MonoBehaviour
     {
         fadeInLeft = fadeInTime;
         sprite = GetComponentInChildren<SpriteRenderer>();
-        game = GameObject.FindGameObjectWithTag("GameController");
-        Room = game.GetComponent<RoomLighting>();
-        scenes = game.GetComponent<RelodScene>();
 
         if (absorbPrefab == null)
         {
@@ -48,12 +42,8 @@ public class MonsterLife : MonoBehaviour
             HP--;
             if (HP == 0)
             {
-                GameObject.Find("Game Manager").GetComponent<ArenaEnemySpawner>().ChangeTheBoy(gameObject);
-                if (scenes)
-                {
-                    scenes.CurrentCount(1);
-                }
-                Room.Lighten(1);
+                ArenaEnemySpawner.ChangeTheBoy(gameObject);
+                
                 var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
                 Destroy(enemyExplosion, 0.5f);
                 Destroy(gameObject);
@@ -77,7 +67,7 @@ public class MonsterLife : MonoBehaviour
         {
             Destroy(coll.gameObject);
             Time.timeScale = 0;
-            scenes.PressR();
+            RelodScene.PressR();
         }
     }
 

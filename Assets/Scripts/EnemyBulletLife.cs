@@ -27,7 +27,7 @@ public class EnemyBulletLife : MonoBehaviour
         {
             Destroy(coll.gameObject);
             Time.timeScale = 0;
-            scenes.PressR();
+            RelodScene.PressR();
         }
 
         if (coll.gameObject.tag == "Environment")

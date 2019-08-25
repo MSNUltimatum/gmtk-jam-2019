@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject MainMenu;
+    private GameObject MainMenu = null;
 
     [SerializeField]
-    private GameObject Levels;
+    private GameObject Levels = null;
 
     [SerializeField]
-    private GameObject BackBtn;
+    private GameObject BackBtn = null;
 
     [SerializeField]
-    private GameObject lvlButton;
+    private GameObject lvlButton = null;
 
     public List<string> Scenes = new List<string>();
 

@@ -9,12 +9,12 @@ public class RelodScene : MonoBehaviour
     [SerializeField]
     private int SceneNumber = 0;
     private ArenaEnemySpawner arena;
-    private bool isVictory = false;
+    private static bool isVictory = false;
     private float TotalValue = 0;
     private float maxvalue = 0;
     [SerializeField]
     private string NextSceneName = "";
-    private GameObject Canvas;
+    private static GameObject Canvas;
 
     private void Start()
     {
@@ -54,7 +54,7 @@ public class RelodScene : MonoBehaviour
             
         }
     }
-    public void PressR()
+    public static void PressR()
     {
         if(!isVictory)
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
