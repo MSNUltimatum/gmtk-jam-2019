@@ -28,7 +28,7 @@ public class RandomMovableEnemy : EnemyMovement
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         NewDirect();
-        MoveAndRotate();
+        base.Update();
     }
 
     private void NewDirect()
