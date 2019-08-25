@@ -14,16 +14,6 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     private GameObject enemyExplosionPrefab = null;
 
-    private void Update()
-    {
-        fadeInLeft -= Time.deltaTime;
-        if (fadeInLeft <= 0) return;
-
-        var newColor = sprite.color;
-        newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
-        sprite.color = newColor;
-    }
-    
     private void Start()
     {
         fadeInLeft = fadeInTime;
@@ -35,12 +25,22 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
-    public void Damage()
+    private void Update()
+    {
+        fadeInLeft -= Time.deltaTime;
+        if (fadeInLeft <= 0) return;
+
+        var newColor = sprite.color;
+        newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
+        sprite.color = newColor;
+    }
+
+    public void Damage(int damage = 1)
     {
         if (THE_BOY)
         {
-            HP--;
-            if (HP == 0)
+            HP -= damage;
+            if (HP <= 0)
             {
                 ArenaEnemySpawner.ChangeTheBoy(gameObject);
                 
@@ -51,7 +51,6 @@ public class MonsterLife : MonoBehaviour
         }
         else
         {
-            // TODO: make visual and sound effects of absorb
             if (absorbPrefab)
             {
                 var absorb = Instantiate(absorbPrefab, gameObject.transform.position, Quaternion.identity);

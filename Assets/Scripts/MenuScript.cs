@@ -64,11 +64,6 @@ public class MenuScript : MonoBehaviour
         BackBtn.SetActive(false);
     }
 
-    public void ChooseLevel()
-    {
-        
-    }
-
     private void InstLevels()
     {
         for (int i = 0; i < Scenes.Count; i++)
@@ -92,7 +87,6 @@ public class MenuScript : MonoBehaviour
             Image img = Btn.GetComponent<Image>();
             if (i <= PlayerPrefs.GetInt("CurrentScene"))
             {
-                
                 img.color = new Color(0f, 255f, 0f, 255f);
                 Levels.transform.GetChild(i).gameObject.GetComponent<Button>().interactable = true;
             }
