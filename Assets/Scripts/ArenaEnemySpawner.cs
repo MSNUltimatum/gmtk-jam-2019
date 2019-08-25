@@ -22,6 +22,9 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Start()
     {
+        roomLighting = GetComponent<RoomLighting>();
+        scenesController = GetComponent<RelodScene>();
+
         // Get reference for UI current enemy name
         currentEvilDictionary = evilDictionary;
         randomSequence = GenerateRandom(EnemyCount(), currentEvilDictionary.EvilNames.Length - 1);
@@ -53,6 +56,12 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     public static void ChangeTheBoy(GameObject oldBoy)
     {
+        if (scenesController)
+        {
+            scenesController.CurrentCount(1);
+        }
+        roomLighting.Lighten(1);
+
         boysList.Remove(oldBoy);
         if (boysList.Count != 0)
         {
@@ -113,7 +122,7 @@ public class ArenaEnemySpawner : MonoBehaviour
                 if (!anyBoy)
                 {
                     anyBoy = true;
-                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy, false);
+                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
                 }
             }
@@ -159,4 +168,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
     private static List<GameObject> boysList = new List<GameObject>();
+
+    private static RoomLighting roomLighting;
+    private static RelodScene scenesController;
 }

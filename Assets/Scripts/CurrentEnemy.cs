@@ -12,29 +12,13 @@ public class CurrentEnemy : MonoBehaviour
     {
         var canvasEnemyName = Instantiate(CanvasPrefab);
         EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-        gameController = GameObject.FindGameObjectWithTag("GameController");
-        roomLighting = gameController.GetComponent<RoomLighting>();
-        scenesController = gameController.GetComponent<RelodScene>();
     }
 
-    public static void SetCurrentEnemy(string enemyName, GameObject enemy, bool killed = true)
+    public static void SetCurrentEnemy(string enemyName, GameObject enemy)
     {
         EnemyName.text = enemyName;
-
-        if (killed)
-        {
-            if (scenesController)
-            {
-                scenesController.CurrentCount(1);
-            }
-            roomLighting.Lighten(1);
-        }
-        
     }
 
-    private static RoomLighting roomLighting;
-    private static RelodScene scenesController;
     private GameObject gameController;
     private static TMPro.TextMeshProUGUI EnemyName;
 }
