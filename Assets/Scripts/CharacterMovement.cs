@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 12f;
+    public float speed = 12f;
     
     private Animator anim;
     private AudioSource walkingSound;
