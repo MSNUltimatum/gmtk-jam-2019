@@ -12,6 +12,9 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] enemyWaves = null;
 
+    [SerializeField]
+    private bool SpawnZone = false;
+
     static Random random = new Random();
 
     public Vector2 RoomBounds = new Vector2(15, 10);
@@ -26,6 +29,8 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
+        GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
+        SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
         currentEvilDictionary = evilDictionary;
         randomSequence = GenerateRandom(EnemyCount(), currentEvilDictionary.EvilNames.Length - 1);
     }
@@ -121,7 +126,15 @@ public class ArenaEnemySpawner : MonoBehaviour
             //enemy.transform.position =
             //    new Vector2(Random.Range(-RoomBounds.x, RoomBounds.x),
             //    Random.Range(-RoomBounds.y, RoomBounds.y));
-            enemy.transform.position = RandomBorderSpawnPos();
+            if (!SpawnZone)
+            {
+                enemy.transform.position = RandomBorderSpawnPos();
+            }
+            else
+            {
+                enemy.transform.position = SpawnScript.SpawnPosition();
+                //Debug.Log(enemy.transform.position);
+            }
             sequenceIndex++;
         }
     }
@@ -159,4 +172,5 @@ public class ArenaEnemySpawner : MonoBehaviour
     private Queue<string> enemyOrder;
     private CurrentEnemy currentEnemy;
     private List<GameObject> boysList = new List<GameObject>();
+    private SpawnZoneScript SpawnScript;
 }
