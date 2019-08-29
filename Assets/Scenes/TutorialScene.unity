@@ -804,11 +804,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7754121985794244073, guid: d6217b721ec48db48aa2c3ec486bb1fb,
-        type: 3}
-      propertyPath: Mute
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6217b721ec48db48aa2c3ec486bb1fb, type: 3}
 --- !u!1 &1172114481
@@ -821,7 +816,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1172114484}
   - component: {fileID: 1172114483}
-  - component: {fileID: 1172114482}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -829,14 +823,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1172114482
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172114481}
-  m_Enabled: 1
 --- !u!20 &1172114483
 Camera:
   m_ObjectHideFlags: 0

@@ -1,45 +1,79 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
+    public static Sound[] sounds;
+    public Sound[] soundsToRegister;
     public static AudioManager instance;
-    // Start is called before the first frame update
+
+    // Name -> (maximum value, time since last sound)
+    public static Dictionary<string, Vector2> Clips = new Dictionary<string, Vector2>();
+
+    private const float lowestSoundValue = 0.3f;
+
     void Awake()
     {
+        sounds = soundsToRegister;
+
         if (instance == null)
+        {
             instance = this;
+        }
         else
         {
             Destroy(gameObject);
             return;
         }
+
         DontDestroyOnLoad(gameObject);
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-        }
     }
 
-    private void Start()
+    public static float GetVolume(string name, float volume)
     {
-        Play("MainTheme");
+        if (Clips.ContainsKey(name))
+        {
+            float ltp = Clips[name].x;
+            volume = Mathf.Lerp(Clips[name].y / lowestSoundValue, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
+
+            Clips[name] = new Vector2(Time.time, Clips[name].y);
+        }
+        else
+        {
+            Clips.Add(name, new Vector2(Time.time, volume));
+        }
+        return volume;
     }
 
-    public void Play(string name)
+    public static void Play(string name, AudioSource source)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source = source;
+        s.source.clip = s.clip;
+        s.source.volume = GetVolume(name, s.volume);
+        s.source.pitch = s.pitch;
+        s.source.panStereo = s.stereoPan;
+        s.source.spatialBlend = s.spatialBlend;
+        s.source.reverbZoneMix = s.reverbZoneMix;
+        s.source.loop = s.loop;
+        s.source.mute = s.mute;
+        s.source.bypassEffects = s.bypassEffects;
+        s.source.bypassReverbZones = s.bypassReverbZones;
+        s.source.playOnAwake = s.playOnAwake;
+        s.source.dopplerLevel = s.dopplerLevel;
+        s.source.spread = s.spread;
+        s.source.minDistance = s.minDistance;
+        s.source.maxDistance = s.maxDistance;
+
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
         s.source.Play();
     }
 }
