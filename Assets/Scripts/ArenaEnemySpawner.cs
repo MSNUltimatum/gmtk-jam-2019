@@ -24,16 +24,27 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Start()
     {
+        InitializeFields();
+
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
         GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
-        SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
+        if (SpawnSquare)
+        {
+            SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
+        }
 
         currentEvilDictionary = evilDictionary;
         randomSequence = GenerateRandom(EnemyCount(), currentEvilDictionary.EvilNames.Length - 1);
+    }
+
+    private void InitializeFields()
+    {
+        anyBoy = false;
+        boysList = new List<GameObject>();
     }
     
     public static List<int> GenerateRandom(int count, int max)
