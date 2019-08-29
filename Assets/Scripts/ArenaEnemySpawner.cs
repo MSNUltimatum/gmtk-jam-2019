@@ -154,12 +154,11 @@ public class ArenaEnemySpawner : MonoBehaviour
 
             if (!SpawnZone)
             {
-                enemy.transform.position = RandomBorderSpawnPos();
+                SetMonsterPosition(enemy);
             }
             else
             {
                 enemy.transform.position = SpawnScript.SpawnPosition();
-                //Debug.Log(enemy.transform.position);
             }
 
             sequenceIndex++;
