@@ -27,10 +27,8 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Start()
     {
-        // Get reference for UI current enemy name
-        currentEnemy = GetComponent<CurrentEnemy>();
-        GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
-        SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
+        roomLighting = GetComponent<RoomLighting>();
+        scenesController = GetComponent<RelodScene>();
         currentEvilDictionary = evilDictionary;
         randomSequence = GenerateRandom(EnemyCount(), currentEvilDictionary.EvilNames.Length - 1);
     }
@@ -59,13 +57,19 @@ public class ArenaEnemySpawner : MonoBehaviour
         return result;
     }
 
-    public void ChangeTheBoy(GameObject oldBoy)
+    public static void ChangeTheBoy(GameObject oldBoy)
     {
+        if (scenesController)
+        {
+            scenesController.CurrentCount(1);
+        }
+        roomLighting.Lighten(1);
+
         boysList.Remove(oldBoy);
         if (boysList.Count != 0)
         {
             var nextBoy = boysList[Random.Range(0, boysList.Count)];
-            currentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
+            CurrentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
             nextBoy.GetComponent<MonsterLife>().MakeBoy();
         }
         else
@@ -94,11 +98,16 @@ public class ArenaEnemySpawner : MonoBehaviour
                 spawnPosition.y = Random.Range(-RoomBounds.y, RoomBounds.y);
                 break;
             case 3:
-                spawnPosition.x = RoomBounds.x;
+                spawnPosition.x = -RoomBounds.x;
                 spawnPosition.y = Random.Range(-RoomBounds.y, RoomBounds.y);
                 break;
         }
         return spawnPosition;
+    }
+
+    void SetMonsterPosition(GameObject enemy)
+    {
+        enemy.transform.position = RandomBorderSpawnPos();
     }
 
     void SpawnMonsters(int waveNum)
@@ -106,20 +115,21 @@ public class ArenaEnemySpawner : MonoBehaviour
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
         int enemiesInWave = enemyWave.transform.childCount;
-        EnemiesCount += enemiesInWave;
-        // Первый в случайной последовательности будет первым активным врагом в сцене
+        
         for (int i = 0; i < enemiesInWave; i++)
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
             if (i == 0)
             {
+                // If there is no active enemy name
                 if (!anyBoy)
                 {
                     anyBoy = true;
-                    currentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
+                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
                 }
             }
+            // Set random enemy name from the dictionary
             enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
             boysList.Add(enemy);
             // Установить случайную позицию персонажам?
@@ -166,11 +176,13 @@ public class ArenaEnemySpawner : MonoBehaviour
     }
 
     private int EnemiesCount = 0;
-    private bool anyBoy = false;
+    private static bool anyBoy = false;
     private int spawnIndex = 0;
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
-    private CurrentEnemy currentEnemy;
-    private List<GameObject> boysList = new List<GameObject>();
-    private SpawnZoneScript SpawnScript;
+
+    private static List<GameObject> boysList = new List<GameObject>();
+
+    private static RoomLighting roomLighting;
+    private static RelodScene scenesController;
 }
