@@ -12,6 +12,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] enemyWaves = null;
 
+    [SerializeField]
     private bool SpawnZone = false;
 
     public Vector2 RoomBounds = new Vector2(15, 10);
