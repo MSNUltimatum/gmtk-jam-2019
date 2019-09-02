@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class IQ7000DictionarySkills : MonoBehaviour
 {
@@ -9,15 +10,20 @@ public class IQ7000DictionarySkills : MonoBehaviour
     {
         WeirdPill Pill = new WeirdPill();
         skills.Add("SpeedAura", Pill);
+        GhostMode ghost = new GhostMode();
+        skills.Add("GhostMode", ghost);
     }
 
     public static SkillBase GetValue(string Name)
     {
-        foreach(KeyValuePair<string, SkillBase> keyValue in skills)
+        try
         {
-            if (keyValue.Key == Name)
-                return keyValue.Value;
+            var Val = skills[Name];
+            return Val;
         }
-        return null;
+        catch
+        {
+            return null;
+        }
     }
 }

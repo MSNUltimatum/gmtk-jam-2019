@@ -14,7 +14,6 @@ public class WeirdPill : PassiveSkill
 
     public override void PassiveAura()
     {
-        Debug.Log("SSS");
         Player = GameObject.FindGameObjectWithTag("Player");
         CharacterMovement character = Player.GetComponent<CharacterMovement>();
         character.speed *= 2;

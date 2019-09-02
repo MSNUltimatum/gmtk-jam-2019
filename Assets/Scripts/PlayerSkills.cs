@@ -5,10 +5,16 @@ using System;
 
 public class PlayerSkills : MonoBehaviour
 {
+    public ActiveSkillsManager ForActiveSkills;
+
     public List<SkillBase> skills = new List<SkillBase>();
+
     private void Start()
     {
-        PlayerPrefs.SetString("SkillString", "SpeedAura ");
+        GameObject tmp = GameObject.FindGameObjectWithTag("SkillsManager");
+        ForActiveSkills = tmp.GetComponent<ActiveSkillsManager>();
+
+        PlayerPrefs.SetString("SkillString", "SpeedAura GhostMode ");
         if(PlayerPrefs.HasKey("SkillString"))
         {
             string AllSkills = PlayerPrefs.GetString("SkillString");
@@ -21,7 +27,11 @@ public class PlayerSkills : MonoBehaviour
             foreach (var i in skills)
             {
                 if(i is PassiveSkill)
-                    i.ActiAcquireSkill();  
+                    i.ActiAcquireSkill(); 
+                if(i is ActiveSkill)
+                {
+                    ForActiveSkills.AddSkills(i as ActiveSkill);
+                }
             }
         }
 
