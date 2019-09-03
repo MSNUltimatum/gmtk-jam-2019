@@ -11,10 +11,9 @@ public class PlayerSkills : MonoBehaviour
 
     private void Start()
     {
-        GameObject tmp = GameObject.FindGameObjectWithTag("SkillsManager");
-        ForActiveSkills = tmp.GetComponent<ActiveSkillsManager>();
+        ForActiveSkills = GetComponent<ActiveSkillsManager>();
 
-        PlayerPrefs.SetString("SkillString", "SpeedAura GhostMode ");
+        PlayerPrefs.SetString("SkillString", "GhostMode ");
         if(PlayerPrefs.HasKey("SkillString"))
         {
             string AllSkills = PlayerPrefs.GetString("SkillString");

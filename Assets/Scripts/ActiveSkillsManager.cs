@@ -6,6 +6,7 @@ public class ActiveSkillsManager : MonoBehaviour
 {
     public List<ActiveSkill> activeSkills = new List<ActiveSkill>();
     private List<float> CoolDown = new List<float>();
+    private List<float> ActionSkills = new List<float>();
     private List<KeyCode> keys = new List<KeyCode>()
    {
        KeyCode.Alpha1,
@@ -24,6 +25,7 @@ public class ActiveSkillsManager : MonoBehaviour
     {
         activeSkills.Add(NewSkill);
         CoolDown.Add(0f);
+        ActionSkills.Add(0f);
     }
 
     private void Update()
@@ -37,22 +39,38 @@ public class ActiveSkillsManager : MonoBehaviour
                     if (CoolDown[i] == 0f)
                     {
                         activeSkills[i].ActiveResult();
-                        CoolDown[i] = activeSkills[i].CoolDown;
+                        if (activeSkills[i].isInstantSkill)
+                        {
+                            CoolDown[i] = activeSkills[i].CoolDown + activeSkills[i].ActionTime;
+                            activeSkills[i].isActive = true;
+                        }
+                        else
+                        {
+                            CoolDown[i] = activeSkills[i].CoolDown;
+                        }
                     }
                 }
             }
 
             for (int i = 0; i < CoolDown.Count; i++)
             {
+                
                 if (CoolDown[i] > 0f)
                 {
+                    if (activeSkills[i].isInstantSkill)
+                    {
+                        if (CoolDown[i] < activeSkills[i].CoolDown && activeSkills[i].isActive)
+                        {
+                            activeSkills[i].EndOfSkill();
+                            activeSkills[i].isActive = false;
+                        }
+                    }
                     CoolDown[i] -= Time.deltaTime;
                 }
                 else
                 {
                     CoolDown[i] = 0f;
                 }
-
             }
         }
     }
