@@ -13,7 +13,7 @@ public class PlayerSkills : MonoBehaviour
     {
         ForActiveSkills = GetComponent<ActiveSkillsManager>();
 
-        PlayerPrefs.SetString("SkillString", "GhostMode ");
+        PlayerPrefs.SetString("SkillString", "GhostMode ActiveSpeedSkill ");
         if(PlayerPrefs.HasKey("SkillString"))
         {
             string AllSkills = PlayerPrefs.GetString("SkillString");

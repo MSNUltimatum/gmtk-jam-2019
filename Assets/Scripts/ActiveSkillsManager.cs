@@ -30,48 +30,42 @@ public class ActiveSkillsManager : MonoBehaviour
 
     private void Update()
     {
-        if (activeSkills.Count != 0)
-        {
-            for (int i = 0; i < activeSkills.Count; i++)
-            {
-                if (Input.GetKeyDown(keys[i]))
-                {
-                    if (CoolDown[i] == 0f)
-                    {
-                        activeSkills[i].ActiveResult();
-                        if (activeSkills[i].isInstantSkill)
-                        {
-                            CoolDown[i] = activeSkills[i].CoolDown + activeSkills[i].ActionTime;
-                            activeSkills[i].isActive = true;
-                        }
-                        else
-                        {
-                            CoolDown[i] = activeSkills[i].CoolDown;
-                        }
-                    }
-                }
-            }
-
-            for (int i = 0; i < CoolDown.Count; i++)
+        
+       for (int i = 0; i < activeSkills.Count; i++)
+       {
+            if (Input.GetKeyDown(keys[i]) && CoolDown[i] == 0f)
             {
                 
-                if (CoolDown[i] > 0f)
-                {
-                    if (activeSkills[i].isInstantSkill)
+                    activeSkills[i].ActiveResult();
+                    if (!activeSkills[i].isInstantSkill)
                     {
-                        if (CoolDown[i] < activeSkills[i].CoolDown && activeSkills[i].isActive)
-                        {
-                            activeSkills[i].EndOfSkill();
-                            activeSkills[i].isActive = false;
-                        }
+                        CoolDown[i] = activeSkills[i].CoolDown + activeSkills[i].ActionTime;
+                        activeSkills[i].isActive = true;
                     }
-                    CoolDown[i] -= Time.deltaTime;
-                }
-                else
-                {
-                    CoolDown[i] = 0f;
-                }
+                    else
+                    {
+                        CoolDown[i] = activeSkills[i].CoolDown;
+                    }
+                
             }
         }
+
+        for (int i = 0; i < CoolDown.Count; i++)
+        {
+
+            if (CoolDown[i] > 0f)
+            {
+                if (!activeSkills[i].isInstantSkill)
+                {
+                    if (CoolDown[i] < activeSkills[i].CoolDown && activeSkills[i].isActive)
+                    {
+                        activeSkills[i].EndOfSkill();
+                        activeSkills[i].isActive = false;
+                    }
+                }
+                CoolDown[i] = Mathf.Max(0, CoolDown[i] - Time.deltaTime);
+            }
+        }
+
     }
 }

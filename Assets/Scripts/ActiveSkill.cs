@@ -5,7 +5,7 @@ using UnityEngine;
 public class ActiveSkill : SkillBase
 {
     public float CoolDown;
-    public bool isInstantSkill;
+    public bool isInstantSkill = true;
     public float ActionTime;
     public bool isActive;
 
