@@ -10,8 +10,8 @@ public class AOEPuddle : MonoBehaviour
 
     protected virtual void Start()
     {
-        Destroy(gameObject, lifeSpan);
         enteredList = new List<GameObject>();
+        Destroy(gameObject, lifeSpan);
     }
 
     protected virtual void ApplyEffect(GameObject objectEntered) { }
