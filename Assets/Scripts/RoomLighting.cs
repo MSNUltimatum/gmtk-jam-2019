@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class RoomLighting : MonoBehaviour
 {
     // Tilemap
     private Tilemap tilemap;
+    private Light2D sceneLight;
+
     private float TotalValue = 0;
     private float maxvalue = 0;
     private float CurrentVal;
@@ -19,15 +22,17 @@ public class RoomLighting : MonoBehaviour
     [SerializeField]
     private GameObject swampPrefab = null;
 
+
     private void Start()
     {
         GameObject TileMap = GameObject.FindGameObjectWithTag("TailMap");
         var Tile = TileMap.transform.GetChild(0).gameObject;
         tilemap = Tile.GetComponent<Tilemap>();
+        sceneLight = GetComponentInChildren<Light2D>();
 
         var arena = GetComponent<ArenaEnemySpawner>();
         maxvalue = arena.EnemyCount();
-        Light = 0.2f + (TotalValue / maxvalue) * 0.8f;
+        Light = 0.1f + (TotalValue / maxvalue) * 0.8f;
         NewLight(Light);
 
         SetSwampMaterial();
@@ -36,7 +41,7 @@ public class RoomLighting : MonoBehaviour
     public void Lighten(float val)
     {
         TotalValue = TotalValue + val;
-        Light = 0.2f + (TotalValue / maxvalue) * 0.8f;
+        Light = 0.1f + (TotalValue / maxvalue) * 0.8f;
         t = 0.0f;
     }
 
@@ -44,16 +49,34 @@ public class RoomLighting : MonoBehaviour
     {
         if (t < 0.7f)
         {
-            CurrentVal = Mathf.Lerp(tilemap.color.g, Light, t);
+            if (EXPERIMENTAL)
+            {
+                CurrentVal = Mathf.Lerp(sceneLight.color.g, Light, t);
+
+            }
+            else
+            {
+                CurrentVal = Mathf.Lerp(tilemap.color.g, Light, t);
+            }
             NewLight(CurrentVal);
             NewSwampLight(CurrentVal);
         }
         
         t += Time.deltaTime;
     }
+
+    bool EXPERIMENTAL = true;
+
     private void NewLight(float Light)
     {
-        tilemap.color = new Color(Light, Light, Light);
+        if (EXPERIMENTAL)
+        {
+            sceneLight.color = new Color(Light, Light, Light);
+        }
+        else
+        {
+            tilemap.color = new Color(Light, Light, Light);
+        }
     }
 
     // Swamp

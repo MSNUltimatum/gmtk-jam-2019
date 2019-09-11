@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.32929868
       objectReference: {fileID: 0}
+    - target: {fileID: 2655085817267442589, guid: 006d8660ada402c4081dbf86d60f7b26,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006d8660ada402c4081dbf86d60f7b26, type: 3}
 --- !u!1 &519420028
@@ -428,26 +433,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2655085817267442579, guid: 006d8660ada402c4081dbf86d60f7b26,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 41.474068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2655085817267442589, guid: 006d8660ada402c4081dbf86d60f7b26,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.41960785
-      objectReference: {fileID: 0}
-    - target: {fileID: 2655085817267442589, guid: 006d8660ada402c4081dbf86d60f7b26,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.32929868
-      objectReference: {fileID: 0}
-    - target: {fileID: 2655085817267442589, guid: 006d8660ada402c4081dbf86d60f7b26,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.32929868
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006d8660ada402c4081dbf86d60f7b26, type: 3}
 --- !u!1001 &967714092
@@ -611,6 +596,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.32929868
       objectReference: {fileID: 0}
+    - target: {fileID: 2655085817267442589, guid: 006d8660ada402c4081dbf86d60f7b26,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006d8660ada402c4081dbf86d60f7b26, type: 3}
 --- !u!1 &1319755536
@@ -840,6 +830,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.32929868
       objectReference: {fileID: 0}
+    - target: {fileID: 2655085817267442589, guid: 006d8660ada402c4081dbf86d60f7b26,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006d8660ada402c4081dbf86d60f7b26, type: 3}
 --- !u!1001 &1949730424
