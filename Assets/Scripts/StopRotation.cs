@@ -5,7 +5,7 @@ using UnityEngine;
 public class StopRotation : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 offset = new Vector3(-0.65f, 1.22f);
+    private Vector3 offset = new Vector3(0, 0);
 
     private static Vector3 zeroVector = new Vector3(0, 0, 0);
 

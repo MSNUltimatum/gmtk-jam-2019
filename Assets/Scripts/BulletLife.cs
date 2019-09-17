@@ -65,6 +65,7 @@ public class BulletLife : MonoBehaviour
     {
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<DynamicLightInOut>().FadeOut();
         Destroy(gameObject, 1);
         Destroy(particlesEmitter.gameObject, 2);
         StopEmitter();
