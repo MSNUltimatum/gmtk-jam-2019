@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostMode : ActiveSkill
 {
-    private CharacterMovement character;
+    private CharacterMovement character = null;
 
         public GhostMode()
         {

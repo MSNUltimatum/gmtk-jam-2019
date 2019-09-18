@@ -68,10 +68,6 @@ public class RoomLighting : MonoBehaviour
         {
             sceneLight.color = new Color(Light, Light, Light);
         }
-        else
-        {
-            tilemap.color = new Color(Light, Light, Light);
-        }
     }
 
     /// <summary>
@@ -98,9 +94,7 @@ public class RoomLighting : MonoBehaviour
 
     private GameObject swampInstance;
     private Material swampMat;
-
-    // Tilemap
-    private Tilemap tilemap;
+    
     private Light2D sceneLight;
 
     private float TotalValue = 0;
