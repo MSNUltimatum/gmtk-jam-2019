@@ -11,9 +11,12 @@ public class CharacterLife : MonoBehaviour
         CircleCollider2D collider2D = GetComponent<CircleCollider2D>();
         CharacterShooting shooting = GetComponent<CharacterShooting>();
         CharacterMovement movement = GetComponent<CharacterMovement>();
-        movement.enabled = false;
-        collider2D.isTrigger = true;
-        shooting.enabled = false;
+        if (movement)
+            movement.enabled = false;
+        if (collider2D)
+            collider2D.isTrigger = true;
+        if (shooting)
+            shooting.enabled = false;
         isDeath = true;
     }
 
@@ -22,9 +25,12 @@ public class CharacterLife : MonoBehaviour
         CircleCollider2D collider2D = GetComponent<CircleCollider2D>();
         CharacterShooting shooting = GetComponent<CharacterShooting>();
         CharacterMovement movement = GetComponent<CharacterMovement>();
-        movement.enabled = true;
-        collider2D.isTrigger = false;
-        shooting.enabled = true;
+        if (movement)
+            movement.enabled = false;
+        if (collider2D)
+            collider2D.isTrigger = true;
+        if (shooting)
+            shooting.enabled = false;
         isDeath = false;
     }
 
