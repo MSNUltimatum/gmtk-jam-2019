@@ -17,6 +17,7 @@ public class RelodScene : MonoBehaviour
 
     private void Start()
     {
+        CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
         Canvas.transform.GetChild(0).gameObject.SetActive(false);
@@ -35,7 +36,7 @@ public class RelodScene : MonoBehaviour
         {
             isVictory = true;
             Canvas.transform.GetChild(0).gameObject.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
             {
                 if(PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
                     PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
@@ -43,7 +44,8 @@ public class RelodScene : MonoBehaviour
                 SceneManager.LoadScene(NextSceneName);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.R) && !isVictory)
+
+        if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
         {
             TotalValue = 0;
             Time.timeScale = 1;
@@ -54,7 +56,7 @@ public class RelodScene : MonoBehaviour
 
     public static void PressR()
     {
-        if (isVictory) return;
+        if (isVictory && !CharacterLife.isDeath) return;
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
