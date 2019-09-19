@@ -20,7 +20,7 @@ public class RoomLighting : MonoBehaviour
         var arena = GetComponent<ArenaEnemySpawner>();
         maxvalue = arena.EnemyCount();
         RecalculateLight();
-        NewLight();
+        NewLight(Light);
 
         SetSwampMaterial();
     }
@@ -40,7 +40,7 @@ public class RoomLighting : MonoBehaviour
 
     private void RecalculateLight()
     {
-        Light = 0.1f + Mathf.Pow((TotalValue / maxvalue) * 0.9f, 1.3f);
+        Light = 0.1f + Mathf.Pow(TotalValue / maxvalue, 1.7f) * 0.9f;
     }
 
     private void Update()
@@ -53,7 +53,7 @@ public class RoomLighting : MonoBehaviour
 
             }
 
-            NewLight();
+            NewLight(CurrentVal);
             NewSwampLight();
         }
         
@@ -62,11 +62,11 @@ public class RoomLighting : MonoBehaviour
 
     bool EXPERIMENTAL = true;
 
-    private void NewLight()
+    private void NewLight(float light)
     {
         if (EXPERIMENTAL)
         {
-            sceneLight.color = new Color(Light, Light, Light);
+            sceneLight.color = new Color(light, light, light);
         }
     }
 
@@ -100,6 +100,6 @@ public class RoomLighting : MonoBehaviour
     private float TotalValue = 0;
     private float maxvalue = 0;
     private float CurrentVal;
-    static float t = 0.0f;
+    float t = 0.0f;
     static float Light;
 }
