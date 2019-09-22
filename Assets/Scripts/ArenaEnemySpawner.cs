@@ -5,12 +5,15 @@ using UnityEngine;
 public class ArenaEnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private float timeToEachSpawn = 5;
-    [SerializeField]
-    private float timeToNextSpawn = 0;
+    private bool isPoint = false;
 
     [SerializeField]
-    private GameObject[] enemyWaves = null;
+    protected float timeToEachSpawn = 5;
+    [SerializeField]
+    protected float timeToNextSpawn = 0;
+
+    [SerializeField]
+    protected GameObject[] enemyWaves = null;
 
     [SerializeField]
     private bool SpawnZone = false;
@@ -43,7 +46,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
 
         currentEvilDictionary = evilDictionary;
-        randomSequence = GenerateRandom(EnemyCount(), currentEvilDictionary.EvilNames.Length - 1);
+        randomSequence = GenerateRandom(currentEvilDictionary.EvilNames.Length / 2, currentEvilDictionary.EvilNames.Length - 1);
     }
 
     private void InitializeFields()
@@ -124,12 +127,12 @@ public class ArenaEnemySpawner : MonoBehaviour
         return spawnPosition;
     }
 
-    void SetMonsterPosition(GameObject enemy)
+    protected void SetMonsterPosition(GameObject enemy)
     {
         enemy.transform.position = RandomBorderSpawnPos();
     }
 
-    void SpawnMonsters(int waveNum)
+    protected void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
@@ -167,18 +170,54 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    { 
+            Uspawn();
+    }
+
+    protected void KillThemAll()
     {
-        timeToNextSpawn -= Time.deltaTime;
-
-        if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0))
+        for(int i = 0;i < boysList.Count; i++)
         {
-            timeToNextSpawn = timeToEachSpawn;
-            SpawnMonsters(spawnIndex);
-            spawnIndex++;
-
-            if (spawnIndex > enemyWaves.GetLength(0)) { }
+            Destroy(boysList[i].gameObject);
         }
     }
+
+    protected void Uspawn()
+    {
+        if (!isPoint)
+        {
+            timeToNextSpawn -= Time.deltaTime;
+            if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0))
+            {
+                timeToNextSpawn = timeToEachSpawn;
+                SpawnMonsters(spawnIndex);
+                spawnIndex++;
+
+                if (spawnIndex > enemyWaves.GetLength(0)) { }
+            }
+        }
+        else
+        {
+            timeToNextSpawn -= Time.deltaTime;
+            if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory)
+            {
+                timeToNextSpawn = timeToEachSpawn;
+                SpawnMonsters(spawnIndex);
+                spawnIndex++;
+
+                if (spawnIndex == enemyWaves.GetLength(0))
+                {
+                    spawnIndex = 0;
+                }
+            }
+
+            if (RelodScene.isVictory)
+            {
+                KillThemAll();
+            }
+        }
+    }
+
     public int EnemyCount()
     {
         EnemiesCount = 0;
@@ -193,7 +232,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     private int EnemiesCount = 0;
     private static bool anyBoy = false;
-    private int spawnIndex = 0;
+    protected int spawnIndex = 0;
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
 
