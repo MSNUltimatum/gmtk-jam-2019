@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: -6736182566132170281, guid: bcdc03ba4d2f7bd4cad1c9cfeab537f5,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: -4575779773267849266}
   - component: {fileID: 8124210527876159285}
   - component: {fileID: 4620249736018191623}
-  - component: {fileID: 2967022025490230236}
   - component: {fileID: 578118691}
   - component: {fileID: 578118692}
   - component: {fileID: 578118701}
@@ -392,8 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addd6874bff8c8a4987b438ff1450782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4, type: 3}
-  randomShootingAngle: 0
   mouseCursorObj: {fileID: 8267320113450945890, guid: 011dba4647a268540bdff308c46fe50b,
     type: 3}
 --- !u!82 &-4575779773267849266
@@ -635,3 +632,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf59b4e48c6296043b61f51047004b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShadowObject: {fileID: 51824688}

@@ -69,6 +69,7 @@ public class MonsterLife : MonoBehaviour
 
     public void FadeIn(float _fadeInTime)
     {
+        fadeInTime = _fadeInTime;
         fadeInLeft = _fadeInTime;
     }
 
