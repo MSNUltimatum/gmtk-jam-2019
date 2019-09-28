@@ -7,16 +7,25 @@ using UnityEngine.SceneManagement;
 public class RelodScene : MonoBehaviour
 {
     [SerializeField]
+    public int pointsToVictory;
+    [SerializeField]
     protected int SceneNumber = 0;
     public static bool isVictory = false;
-    protected float TotalValue = 0;
+    public int TotalValue = 0;
     protected float maxvalue = 0;
     [SerializeField]
     protected string NextSceneName = "";
     protected static GameObject Canvas;
+    [SerializeField]
+    public bool isPoint = false;
 
     private void Start()
     {
+        if (isPoint) 
+        {
+            ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
+            spawn.isPoint = true;
+        }
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
@@ -37,16 +46,34 @@ public class RelodScene : MonoBehaviour
 
     protected virtual void Victory()
     {
-        if (TotalValue == maxvalue)
+        if (!isPoint)
         {
-            isVictory = true;
-            Canvas.transform.GetChild(0).gameObject.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
+            if (TotalValue == maxvalue)
             {
-                if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
-                    PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                Canvas.transform.GetChild(0).gameObject.SetActive(false);
-                SceneManager.LoadScene(NextSceneName);
+                isVictory = true;
+                Canvas.transform.GetChild(0).gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
+                {
+                    if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
+                        PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
+                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                    SceneManager.LoadScene(NextSceneName);
+                }
+            }
+        }
+        else
+        {
+            if (TotalValue == pointsToVictory)
+            {
+                isVictory = true;
+                Canvas.transform.GetChild(0).gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
+                {
+                    if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
+                        PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
+                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                    SceneManager.LoadScene(NextSceneName);
+                }
             }
         }
     }

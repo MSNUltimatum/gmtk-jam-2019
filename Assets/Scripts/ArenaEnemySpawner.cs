@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArenaEnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private bool isPoint = false;
+    public bool isPoint = false;
 
     [SerializeField]
     protected float timeToEachSpawn = 5;
@@ -31,6 +31,11 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Start()
     {
+        if(isPoint)
+        {
+            RelodScene reload = GetComponent<RelodScene>();
+            reload.isPoint = true;
+        }
         InitializeFields();
 
         roomLighting = GetComponent<RoomLighting>();
@@ -220,14 +225,21 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     public int EnemyCount()
     {
-        EnemiesCount = 0;
-        foreach (var e in enemyWaves)
+        if (!isPoint)
         {
-            EnemiesCount += e.transform.childCount;
+            EnemiesCount = 0;
+            foreach (var e in enemyWaves)
+            {
+                EnemiesCount += e.transform.childCount;
+            }
+            int res = EnemiesCount;
+            EnemiesCount = 0;
+            return res;
         }
-        int res = EnemiesCount;
-        EnemiesCount = 0;
-        return res;
+        else
+        {
+            return scenesController.pointsToVictory - scenesController.TotalValue;
+        }
     }
 
     private int EnemiesCount = 0;
