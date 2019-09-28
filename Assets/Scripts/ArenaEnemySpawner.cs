@@ -29,7 +29,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     private EvilDictionary evilDictionary = null;
 
-    void Start()
+    void Awake()
     {
         if(isPoint)
         {
@@ -238,7 +238,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            return scenesController.pointsToVictory - scenesController.TotalValue;
+            return scenesController.pointsToVictory;
         }
     }
 
