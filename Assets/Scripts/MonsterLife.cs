@@ -16,8 +16,8 @@ public class MonsterLife : MonoBehaviour
 
     private void Start()
     {
-        fadeInLeft = fadeInTime;
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        FadeIn(fadeInTime);
+        sprites = GetComponentsInChildren<SpriteRenderer>();
 
         if (absorbPrefab == null)
         {
@@ -27,12 +27,19 @@ public class MonsterLife : MonoBehaviour
 
     private void Update()
     {
-        fadeInLeft -= Time.deltaTime;
-        if (fadeInLeft <= 0) return;
+        if (fadeInLeft != 0) FadeInLogic();
+    }
 
-        var newColor = sprite.color;
-        newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
-        sprite.color = newColor;
+    private void FadeInLogic()
+    {
+        fadeInLeft = Mathf.Max(fadeInLeft - Time.deltaTime, 0);
+
+        foreach (var sprite in sprites)
+        {
+            var newColor = sprite.color;
+            newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
+            sprite.color = newColor;
+        }
     }
 
     public void Damage(int damage = 1)
@@ -60,9 +67,20 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
+    public void FadeIn(float _fadeInTime)
+    {
+        fadeInTime = _fadeInTime;
+        fadeInLeft = _fadeInTime;
+    }
+
+    public float FadeInLeft
+    {
+        get => fadeInLeft;
+    }
+
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (fadeInLeft == 0 && coll.gameObject.tag == "Player")
         {
             CharacterLife life = coll.gameObject.GetComponent<CharacterLife>();
             life.Death();
@@ -76,7 +94,7 @@ public class MonsterLife : MonoBehaviour
         THE_BOY = true;
     }
 
-    private float fadeInTime = 0.5f;
+    private float fadeInTime = 1f;
     private float fadeInLeft;
-    private SpriteRenderer sprite;
+    private SpriteRenderer[] sprites;
 }

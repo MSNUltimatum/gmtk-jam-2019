@@ -5,12 +5,6 @@ using UnityEngine;
 public class CharacterShooting : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Bullet = null;
-
-    [SerializeField]
-    private float randomShootingAngle = 0;
-
-    [SerializeField]
     private GameObject mouseCursorObj = null;
 
     private void Start()
