@@ -7,25 +7,26 @@ using UnityEngine.SceneManagement;
 public class RelodScene : MonoBehaviour
 {
     [SerializeField]
-    public int pointsToVictory;
+    private string NextSceneName = "";
     [SerializeField]
-    protected int SceneNumber = 0;
+    private int SceneNumber = 0;
+
+    [SerializeField]
+    public bool isPointVictory = false;
+    public int pointsToVictory;
     public static bool isVictory = false;
     public int TotalValue = 0;
-    protected float maxvalue = 0;
-    [SerializeField]
-    protected string NextSceneName = "";
-    protected static GameObject Canvas;
-    [SerializeField]
-    public bool isPoint = false;
+    private float maxvalue = 0;
+
+    private static GameObject Canvas;
 
     private void Start()
     {
-        if (isPoint) 
-        {
-            ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
-            spawn.isPoint = true;
-        }
+        ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
+        if (spawn.isPointVictory)
+            isPointVictory = true;
+        else
+            isPointVictory = false;
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
@@ -47,9 +48,10 @@ public class RelodScene : MonoBehaviour
 
     protected virtual void Victory()
     {
-        if (!isPoint)
+        if (isPointVictory)
         {
-            if (TotalValue == maxvalue)
+
+            if (TotalValue == pointsToVictory)
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
@@ -64,7 +66,7 @@ public class RelodScene : MonoBehaviour
         }
         else
         {
-            if (TotalValue == pointsToVictory)
+            if (TotalValue == maxvalue)
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
@@ -90,7 +92,7 @@ public class RelodScene : MonoBehaviour
         }
     }
 
-public static void PressR()
+    public static void PressR()
     {
         if (isVictory && !CharacterLife.isDeath) return;
         Canvas.transform.GetChild(1).gameObject.SetActive(true);

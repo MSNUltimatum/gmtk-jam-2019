@@ -5,15 +5,12 @@ using UnityEngine;
 public class ArenaEnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    public bool isPoint = false;
+    private float timeToEachSpawn = 5;
+    [SerializeField]
+    private float timeToNextSpawn = 0;
 
     [SerializeField]
-    protected float timeToEachSpawn = 5;
-    [SerializeField]
-    protected float timeToNextSpawn = 0;
-
-    [SerializeField]
-    protected GameObject[] enemyWaves = null;
+    private GameObject[] enemyWaves = null;
 
     [SerializeField]
     private bool SpawnZone = false;
@@ -31,10 +28,10 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Awake()
     {
-        if(isPoint)
+        if(isPointVictory)
         {
             RelodScene reload = GetComponent<RelodScene>();
-            reload.isPoint = true;
+            reload.isPointVictory = true;
         }
         InitializeFields();
 
@@ -175,8 +172,8 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-            Uspawn();
+    {
+        EnemySpawnUpdate();
     }
 
     protected void KillThemAll()
@@ -187,21 +184,9 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
-    protected void Uspawn()
+    protected void EnemySpawnUpdate()
     {
-        if (!isPoint)
-        {
-            timeToNextSpawn -= Time.deltaTime;
-            if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0))
-            {
-                timeToNextSpawn = timeToEachSpawn;
-                SpawnMonsters(spawnIndex);
-                spawnIndex++;
-
-                if (spawnIndex > enemyWaves.GetLength(0)) { }
-            }
-        }
-        else
+        if (isPointVictory)
         {
             timeToNextSpawn -= Time.deltaTime;
             if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory)
@@ -221,11 +206,27 @@ public class ArenaEnemySpawner : MonoBehaviour
                 KillThemAll();
             }
         }
+        else
+        {
+            timeToNextSpawn -= Time.deltaTime;
+            if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0))
+            {
+                timeToNextSpawn = timeToEachSpawn;
+                SpawnMonsters(spawnIndex);
+                spawnIndex++;
+
+                if (spawnIndex > enemyWaves.GetLength(0)) { }
+            }
+        }
     }
 
     public int EnemyCount()
     {
-        if (!isPoint)
+        if (isPointVictory)
+        {
+            return scenesController.pointsToVictory;
+        }
+        else
         {
             EnemiesCount = 0;
             foreach (var e in enemyWaves)
@@ -235,10 +236,6 @@ public class ArenaEnemySpawner : MonoBehaviour
             int res = EnemiesCount;
             EnemiesCount = 0;
             return res;
-        }
-        else
-        {
-            return scenesController.pointsToVictory;
         }
     }
 
@@ -255,4 +252,5 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
+    public bool isPointVictory = false;
 }

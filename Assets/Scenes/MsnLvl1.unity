@@ -301,11 +301,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c21b00ba01f4b4f8d759266cb1c236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsToVictory: 5
-  SceneNumber: 1
-  TotalValue: 0
   NextSceneName: Level2
-  isPoint: 0
+  SceneNumber: 1
+  isPointVictory: 0
+  pointsToVictory: 5
+  TotalValue: 0
 --- !u!114 &577427625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1705778125510524197, guid: 0fca9824f899de543a831d6c0c51144e,
@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPoint: 1
   timeToEachSpawn: 5
   timeToNextSpawn: 0
   enemyWaves:
@@ -340,6 +339,7 @@ MonoBehaviour:
   SpawnZone: 0
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 577427625}
+  isPointVictory: 0
 --- !u!1001 &733173626
 PrefabInstance:
   m_ObjectHideFlags: 0
