@@ -11,7 +11,6 @@ public class PlayerSkills : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("AAAAAAAAAAAAAAA");
         ForActiveSkills = GetComponent<ActiveSkillsManager>();
 
         PlayerPrefs.SetString("SkillString", "GhostMode ActiveSpeedSkill ");

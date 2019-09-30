@@ -175,7 +175,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         for(int i = 0;i < boysList.Count; i++)
         {
-            Destroy(boysList[i].gameObject);
+            boysList[i].GetComponent<MonsterLife>().Damage(5);
         }
     }
 

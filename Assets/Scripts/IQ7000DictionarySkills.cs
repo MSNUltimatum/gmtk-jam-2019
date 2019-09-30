@@ -8,7 +8,6 @@ public class IQ7000DictionarySkills : MonoBehaviour
     public static Dictionary<string, SkillBase> skills ;
     private void Awake()
     {
-        Debug.Log("BBBBBBBBBBBBBB");
         skills = new Dictionary<string, SkillBase>();
 
         WeirdPill Pill = new WeirdPill();
