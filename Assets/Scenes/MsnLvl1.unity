@@ -303,7 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextSceneName: Level2
   SceneNumber: 1
-  isPointVictory: 0
   pointsToVictory: 5
   TotalValue: 0
 --- !u!114 &577427625 stripped

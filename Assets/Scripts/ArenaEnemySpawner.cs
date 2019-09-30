@@ -28,11 +28,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Awake()
     {
-        if(isPointVictory)
-        {
-            RelodScene reload = GetComponent<RelodScene>();
-            reload.isPointVictory = true;
-        }
         InitializeFields();
 
         roomLighting = GetComponent<RoomLighting>();
