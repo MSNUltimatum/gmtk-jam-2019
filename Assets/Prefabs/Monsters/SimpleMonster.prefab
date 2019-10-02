@@ -332,8 +332,9 @@ GameObject:
   - component: {fileID: 2873645921850147138}
   - component: {fileID: 2873645921850147137}
   - component: {fileID: 1986228130421800251}
-  - component: {fileID: -4244844303079205824}
   - component: {fileID: -8664493499008248624}
+  - component: {fileID: 4170874774547565885}
+  - component: {fileID: 1262647091002150027}
   m_Layer: 0
   m_Name: SimpleMonster
   m_TagString: Enemy
@@ -424,21 +425,6 @@ MonoBehaviour:
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
---- !u!114 &-4244844303079205824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2873645921850147136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb88fe879c2765e48858ed716d07844f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySpeed: 4
-  CoolDown: 1.5
-  RandomImpact: 0.9
 --- !u!82 &-8664493499008248624
 AudioSource:
   m_ObjectHideFlags: 0
@@ -535,6 +521,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4170874774547565885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873645921850147136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851423767a200cf4eaf5bea045e99598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+  maxAccel: 100
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0}
+--- !u!114 &1262647091002150027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873645921850147136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c983f7a3bdf77a04686eb8be607bec57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4305704709854959933, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}
 --- !u!1 &4183647638066128296
 GameObject:
   m_ObjectHideFlags: 0
