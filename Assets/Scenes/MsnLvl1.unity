@@ -303,7 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextSceneName: Level2
   SceneNumber: 1
-  pointsToVictory: 5
+  isPointVictory: 1
+  pointsToVictory: 3
   TotalValue: 0
 --- !u!114 &577427625 stripped
 MonoBehaviour:
@@ -338,7 +339,6 @@ MonoBehaviour:
   SpawnZone: 0
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 577427625}
-  isPointVictory: 0
 --- !u!1001 &733173626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1045,7 +1045,7 @@ PrefabInstance:
     - target: {fileID: 3243832361008120805, guid: 337e613600ce7fd478ea218f300b2939,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.588
+      value: 5.112
       objectReference: {fileID: 0}
     - target: {fileID: 3243832361008120805, guid: 337e613600ce7fd478ea218f300b2939,
         type: 3}
@@ -1100,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 3243832361008120805, guid: 337e613600ce7fd478ea218f300b2939,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 7.5887117
+      value: 8.5414295
       objectReference: {fileID: 0}
     - target: {fileID: 3243832361008120804, guid: 337e613600ce7fd478ea218f300b2939,
         type: 3}

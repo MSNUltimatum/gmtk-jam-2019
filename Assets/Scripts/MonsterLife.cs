@@ -94,6 +94,11 @@ public class MonsterLife : MonoBehaviour
         THE_BOY = true;
     }
 
+    public void MakeNoBoy()
+    {
+        THE_BOY = false;
+    }
+
     private float fadeInTime = 1f;
     private float fadeInLeft;
     private SpriteRenderer[] sprites;
