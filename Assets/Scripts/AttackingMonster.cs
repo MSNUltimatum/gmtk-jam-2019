@@ -14,7 +14,7 @@ public class AttackingMonster : EnemyMovement
         base.Start();
     }
 
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         if (CoolDownBefore == 0)
@@ -22,7 +22,7 @@ public class AttackingMonster : EnemyMovement
             Attack();
             CoolDownBefore = CoolDown;
         }
-        base.Update();
+        base.UpdateEnemy();
     }
 
     protected virtual void Attack() {    }

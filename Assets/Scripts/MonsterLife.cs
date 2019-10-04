@@ -27,6 +27,7 @@ public class MonsterLife : MonoBehaviour
 
     private void Update()
     {
+        if (Pause.Paused) return;
         if (fadeInLeft != 0) FadeInLogic();
     }
 

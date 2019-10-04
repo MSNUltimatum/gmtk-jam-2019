@@ -16,7 +16,9 @@ public class BulletLife : MonoBehaviour
     }
 
     void FixedUpdate()
-    { 
+    {
+        if (Pause.Paused) return;
+
         transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
         TTDLeft -= Time.fixedDeltaTime;
     }

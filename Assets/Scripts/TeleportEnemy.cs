@@ -20,11 +20,11 @@ public class TeleportEnemy : EnemyMovement
         base.Start();
     }
 
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         Teleport();
-        base.Update();
+        base.UpdateEnemy();
     }
 
     protected override void MoveToward()

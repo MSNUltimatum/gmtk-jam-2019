@@ -21,6 +21,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        if (Pause.Paused) return;
+
         Movement();
         Rotation();
     }

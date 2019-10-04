@@ -18,6 +18,8 @@ public class CharacterShooting : MonoBehaviour
 
     private void Update()
     {
+        if (Pause.Paused) return;
+
         if (reloadTimeLeft > 0)
         {
             reloadTimeLeft -= Time.deltaTime;
