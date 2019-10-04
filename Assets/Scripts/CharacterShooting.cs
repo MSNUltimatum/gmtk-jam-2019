@@ -18,7 +18,11 @@ public class CharacterShooting : MonoBehaviour
 
     private void Update()
     {
-        if (Pause.Paused) return;
+        if (Pause.Paused)
+        {
+            Cursor.visible = true;
+            return;
+        }
 
         if (reloadTimeLeft > 0)
         {

@@ -17,16 +17,23 @@ public class MouseCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var mousePos = Input.mousePosition;
-        var screenPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        screenPoint.z = 0;
-        //Vector3 mousePos = Input.mousePosition;
-        transform.position = screenPoint;
+        if (Pause.Paused)
+        {
+            transform.position = new Vector3(-1000, -1000);
+        }
+        else
+        {
+            var mousePos = Input.mousePosition;
+            var screenPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            screenPoint.z = 0;
+            //Vector3 mousePos = Input.mousePosition;
+            transform.position = screenPoint;
 
-        // Rotate cursor towards main character
-        var characterPos = mainCam.WorldToScreenPoint(player.transform.localPosition);
-        var offset = new Vector2(mousePos.x - characterPos.x, mousePos.y - characterPos.y);
-        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+            // Rotate cursor towards main character
+            var characterPos = mainCam.WorldToScreenPoint(player.transform.localPosition);
+            var offset = new Vector2(mousePos.x - characterPos.x, mousePos.y - characterPos.y);
+            var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        }
     }
 }

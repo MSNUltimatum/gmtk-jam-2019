@@ -31,6 +31,11 @@ public class Pause : MonoBehaviour
         if (openMenu) ChangeMenuVisibility();
     }
 
+    public void ResumeGame()
+    {
+        SetPause(false);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
