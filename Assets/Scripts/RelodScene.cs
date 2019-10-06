@@ -17,14 +17,23 @@ public class RelodScene : MonoBehaviour
 
     private static GameObject Canvas;
 
-    private void Start()
+    private void Awake()
     {
         ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
-        Canvas.transform.GetChild(0).gameObject.SetActive(false);
         maxvalue = arena.EnemyCount();
+        if (isPointVictory)
+        {
+            Canvas.transform.GetChild(3).gameObject.SetActive(true);
+            Canvas.transform.GetChild(0).gameObject.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            Canvas.transform.GetChild(0).gameObject.SetActive(false);
+        }
         isVictory = false;
     }
 
@@ -43,7 +52,12 @@ public class RelodScene : MonoBehaviour
     {
         if (isPointVictory)
         {
-
+            if(Input.GetKeyDown(KeyCode.F) && Canvas.transform.GetChild(3).gameObject.activeSelf)
+            {
+                Canvas.transform.GetChild(3).gameObject.SetActive(false);
+                Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                Time.timeScale = 1.0f;
+            }
             if (TotalValue >= pointsToVictory)
             {
                 isVictory = true;
@@ -96,7 +110,8 @@ public class RelodScene : MonoBehaviour
     }
 }
 
-[CustomEditor(typeof(RelodScene))]
+
+/*[CustomEditor(typeof(RelodScene))]
 public class MyEditorClass : Editor
 {
     public override void OnInspectorGUI()
@@ -118,3 +133,4 @@ public class MyEditorClass : Editor
         }
     }
 }
+}*/

@@ -35,12 +35,8 @@ public class ArenaEnemySpawner : MonoBehaviour
 
 
         roomLighting = GetComponent<RoomLighting>();
-        scenesController = GetComponent<RelodScene>();
-
-        if (scenesController.isPointVictory)
-            isPointVictory = true;
-        else
-            isPointVictory = false;
+        scenesController = GetComponent<RelodScene>();    
+        isPointVictory = scenesController.isPointVictory;
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
