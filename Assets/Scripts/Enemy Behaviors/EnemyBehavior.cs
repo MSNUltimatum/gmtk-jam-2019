@@ -2,6 +2,7 @@
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public float weight = 1.0f;
     public GameObject target;
     protected Agent agent;
 
@@ -13,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual void Update()
     {
-        agent.SetSteering(GetSteering());
+        agent.SetSteering(GetSteering(), weight);
     }
 
     public virtual EnemySteering GetSteering()

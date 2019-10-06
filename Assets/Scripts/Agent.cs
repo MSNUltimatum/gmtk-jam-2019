@@ -17,9 +17,10 @@ public class Agent : MonoBehaviour
         steering = new EnemySteering();
     }
 
-    public void SetSteering(EnemySteering steering)
+    public void SetSteering(EnemySteering steering, float weight)
     {
-        this.steering = steering;
+        this.steering.linear += steering.linear * weight;
+        this.steering.angular += steering.angular * weight;
     }
 
     public virtual void Update()

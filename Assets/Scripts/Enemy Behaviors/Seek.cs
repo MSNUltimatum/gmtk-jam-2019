@@ -11,11 +11,6 @@ public class Seek : EnemyBehavior
         steering.linear.Normalize();
         steering.linear = steering.linear * agent.maxAccel;
 
-        Vector2 direction = target.transform.position - transform.position;
-        float targetOrientation = Mathf.Atan2(direction.x, direction.y);
-        targetOrientation *= Mathf.Rad2Deg;
-        agent.orientation = targetOrientation;
-
         return steering;
     }
 }
