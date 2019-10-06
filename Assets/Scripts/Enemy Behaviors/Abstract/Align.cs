@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Align : EnemyBehavior
+public abstract class Align : EnemyBehavior
 {
     public float targetRadius;
     public float slowRadius;
@@ -12,7 +12,6 @@ public class Align : EnemyBehavior
     {
         EnemySteering steering = new EnemySteering();
 
-        float targetOrientation = target.GetComponent<Agent>().orientation;
         float rotation = targetOrientation - agent.orientation;
         rotation = MapToRange(rotation);
         float rotationSize = Mathf.Abs(rotation);
@@ -33,4 +32,6 @@ public class Align : EnemyBehavior
 
         return steering;
     }
+
+    protected float targetOrientation;
 }

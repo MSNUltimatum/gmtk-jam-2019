@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public abstract class EnemyBehavior : MonoBehaviour
 {
     public float weight = 1.0f;
     public GameObject target;
@@ -17,10 +17,7 @@ public class EnemyBehavior : MonoBehaviour
         agent.SetSteering(GetSteering(), weight);
     }
 
-    public virtual EnemySteering GetSteering()
-    {
-        return new EnemySteering();
-    }
+    public abstract EnemySteering GetSteering();
 
     public float MapToRange(float rotation)
     {
