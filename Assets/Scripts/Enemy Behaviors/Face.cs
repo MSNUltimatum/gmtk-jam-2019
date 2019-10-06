@@ -2,17 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Face : EnemyBehavior
+public class Face : Align
 {
+    public override void Awake()
+    {
+        base.Awake();
+        targetAux = target;
+        target = new GameObject();
+        target.AddComponent<Agent>();
+    }
+
     public override EnemySteering GetSteering()
     {
-        EnemySteering steering = new EnemySteering();
-
-        Vector2 direction = target.transform.position - transform.position;
-        float targetOrientation = Mathf.Atan2(direction.x, direction.y);
-        targetOrientation *= Mathf.Rad2Deg;
-        agent.orientation = targetOrientation;
+        Vector2 direction = targetAux.transform.position - transform.position;
+        if (direction.magnitude > 0.0f)
+        {
+            float targetOrientation = Mathf.Atan2(direction.x, direction.y);
+            targetOrientation *= Mathf.Rad2Deg;
+            target.GetComponent<Agent>().orientation = targetOrientation;
+        }
         
-        return steering;
+        return base.GetSteering();
     }
+
+    private void OnDestroy()
+    {
+        Destroy(target);
+    }
+
+    protected GameObject targetAux;
 }
