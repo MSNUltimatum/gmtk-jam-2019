@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 1986228130421800251}
   - component: {fileID: -8664493499008248624}
   - component: {fileID: 4170874774547565885}
-  - component: {fileID: 1262647091002150027}
+  - component: {fileID: 8600022585700682124}
   - component: {fileID: 8877848422801390066}
   m_Layer: 0
   m_Name: SimpleMonster
@@ -541,7 +541,7 @@ MonoBehaviour:
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
---- !u!114 &1262647091002150027
+--- !u!114 &8600022585700682124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2873645921850147136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c983f7a3bdf77a04686eb8be607bec57, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e615e1792b7db543acd81ecc966cb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
