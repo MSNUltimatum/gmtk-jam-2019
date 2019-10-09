@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Seek : EnemyBehavior
+﻿public class Seek : EnemyBehavior
 {
     public override EnemySteering GetSteering()
     {
