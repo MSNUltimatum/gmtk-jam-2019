@@ -1112,6 +1112,7 @@ MonoBehaviour:
   - {fileID: 3774990984672234495, guid: c56d316e1e894364e854adc6864ac73e, type: 3}
   - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
   SpawnZone: 0
+  isInfSpawn: 1
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 2090135500}
 --- !u!114 &2090135498

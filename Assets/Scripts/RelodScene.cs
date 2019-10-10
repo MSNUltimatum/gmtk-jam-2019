@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 
 public class RelodScene : MonoBehaviour
-{   
+{
     public string NextSceneName = "";
     public int SceneNumber = 0;
 
-    public bool isPointVictory = false;
+    [SerializeField]
+    private bool isPointVictory = false;
+
+    public bool IsPointVictory {get {return isPointVictory;}}
     public int pointsToVictory;
     public static bool isVictory = false;
     public int TotalValue = 0;
@@ -26,6 +29,11 @@ public class RelodScene : MonoBehaviour
         maxvalue = arena.EnemyCount();
         if (isPointVictory)
         {
+            if (!spawn.IsInfSpawn && pointsToVictory > spawn.baseEnemyCount())
+            {
+                pointsToVictory = spawn.baseEnemyCount();
+            }
+
             Canvas.transform.GetChild(3).gameObject.SetActive(true);
             Canvas.transform.GetChild(0).gameObject.SetActive(true);
             Time.timeScale = 0.0f;
@@ -35,6 +43,7 @@ public class RelodScene : MonoBehaviour
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
         }
         isVictory = false;
+        Debug.Log(isPointVictory);
     }
 
     public void CurrentCount(int val)
@@ -62,11 +71,9 @@ public class RelodScene : MonoBehaviour
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
-                Debug.Log("AAAAAA");
                 Debug.Log(NextSceneName);
                 if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
                 {
-                    Debug.Log("AA");
                     if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
                         PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
                     Canvas.transform.GetChild(0).gameObject.SetActive(false);
@@ -78,14 +85,13 @@ public class RelodScene : MonoBehaviour
         {
             if (TotalValue >= maxvalue)
             {
-                
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
                 {
                     if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
                         PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                    Canvas.transform.GetChild(0).gameObject.SetActive (false);
                     SceneManager.LoadScene(NextSceneName);
                 }
             }

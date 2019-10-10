@@ -42,6 +42,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level7.unity
     guid: 1ffca623c3137d246864b848c84bfdf2
   - enabled: 1
+    path: Assets/Scenes/InfinityLevel2.unity
+    guid: 09c1bcc9bf9ae234d90492e6902443dc
+  - enabled: 1
     path: Assets/Scenes/Level8.unity
     guid: 62e9bfac57bf1554aa3071fd4f9b8b5e
   - enabled: 1

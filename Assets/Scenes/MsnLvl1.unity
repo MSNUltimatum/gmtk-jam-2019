@@ -339,10 +339,9 @@ MonoBehaviour:
   timeToEachSpawn: 5
   timeToNextSpawn: 0
   enemyWaves:
-  - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
-  - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
-  - {fileID: 8670341746661068075, guid: 8058cb5b8a6dcd74faae0ec160408fe2, type: 3}
+  - {fileID: 2656027671443589482, guid: c0788a57d047ecb43aebd14be3a84563, type: 3}
   SpawnZone: 0
+  isInfSpawn: 0
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 577427625}
 --- !u!1001 &733173626
@@ -415,6 +414,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 92031012, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
     - {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
+    - {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!1001 &745672070
 PrefabInstance:

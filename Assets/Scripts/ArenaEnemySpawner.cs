@@ -17,6 +17,8 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     private bool SpawnZone = false;
 
+    [SerializeField]
+    private bool isInfSpawn;
     static Random random = new Random();
 
 
@@ -36,7 +38,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();    
-        isPointVictory = scenesController.isPointVictory;
+        isPointVictory = scenesController.IsPointVictory;
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
@@ -187,7 +189,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected void EnemySpawnUpdate()
     {
-        if (isPointVictory)
+        if (isInfSpawn)
         {
             timeToNextSpawn -= Time.deltaTime;
             if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory)
@@ -229,15 +231,20 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            EnemiesCount = 0;
-            foreach (var e in enemyWaves)
-            {
-                EnemiesCount += e.transform.childCount;
-            }
-            int res = EnemiesCount;
-            EnemiesCount = 0;
-            return res;
+          return baseEnemyCount ();
         }
+    }
+
+    public int baseEnemyCount ()
+    {
+        EnemiesCount = 0;
+        foreach (var e in enemyWaves)
+        {
+            EnemiesCount += e.transform.childCount;
+        }
+        int res = EnemiesCount;
+        EnemiesCount = 0;
+        return res;
     }
 
     public void SpawnСertainMonsterWithName(GameObject monster, string name)
@@ -316,4 +323,5 @@ public class ArenaEnemySpawner : MonoBehaviour
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
     private bool isPointVictory = false;
+    public bool IsInfSpawn { get { return isInfSpawn; } }
 }
