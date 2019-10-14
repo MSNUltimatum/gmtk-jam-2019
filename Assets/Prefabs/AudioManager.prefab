@@ -199,7 +199,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Explosion
     clip: {fileID: 8300000, guid: 80d767c4194e727458472a10aa464bfd, type: 3}
-    volume: 0.707
+    volume: 0.61
     pitch: 1
     stereoPan: 0
     spatialBlend: 0.8

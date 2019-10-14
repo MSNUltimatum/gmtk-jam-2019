@@ -44,14 +44,15 @@ public class MonsterLife : MonoBehaviour
 
     public void Damage(int damage = 1)
     {
+        
         if (THE_BOY)
         {
             HP -= damage;
             if (HP <= 0)
             {
-                ArenaEnemySpawner.ChangeTheBoy(gameObject);
                 
-                var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
+                ArenaEnemySpawner.ChangeTheBoy(gameObject);              
+                var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);             
                 Destroy(enemyExplosion, 0.5f);
                 Destroy(gameObject);
             }
