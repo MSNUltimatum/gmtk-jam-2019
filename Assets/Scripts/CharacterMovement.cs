@@ -5,23 +5,18 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 10f;
-
-    private Vector2 movement;
-    private SpriteRenderer CharacterSprite;
+    public float speed = 12f;
+    
     private Animator anim;
-
-    private AudioSource[] sounds;
-    private AudioSource noise1;
-    private AudioSource noise2;
+    private AudioSource walkingSound;
 
     private void Start()
     {
-        sounds = GetComponents<AudioSource>();
-        noise1 = sounds[0];
-        noise2 = sounds[1];
-        CharacterSprite = GetComponentInChildren<SpriteRenderer>();
+        var sounds = GetComponents<AudioSource>();
+        walkingSound = sounds[1];
         anim = GetComponentInChildren<Animator>();
+
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -31,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
     }
     private void Rotation()
     {
-        var mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var mousepos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Quaternion rot = Quaternion.LookRotation(transform.position - mousepos, Vector3.forward);
         transform.rotation = rot;
         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
@@ -40,8 +35,7 @@ public class CharacterMovement : MonoBehaviour
     private void Movement()
     {
         Vector2 direction = new Vector2();
-        direction += new Vector2(Input.GetAxis("Horizontal"), 0);
-        direction += new Vector2(0, Input.GetAxis("Vertical"));
+        direction += new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (direction.magnitude > 1)
         {
             direction.Normalize();
@@ -50,17 +44,19 @@ public class CharacterMovement : MonoBehaviour
         {
             if (direction.magnitude == 0) 
             {
-                noise2.Pause();
+                walkingSound.Pause();
                 anim.Play("HeroIdle");
             }
-            else if (noise2.isPlaying == false)
+            else if (walkingSound.isPlaying == false)
             {
-                noise2.volume = Random.Range(0.4f, 0.6f);
-                noise2.pitch = Random.Range(0.8f, 1f);
-                noise2.Play();            
+                walkingSound.volume = Random.Range(0.4f, 0.6f);
+                walkingSound.pitch = Random.Range(0.8f, 1f);
+                walkingSound.Play();            
                 anim.Play("HeroWalking");
             }
         }
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
-    }   
+    }
+
+    private Camera mainCamera = null;
 }

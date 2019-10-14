@@ -8,16 +8,23 @@ public class EnemyMovement : MonoBehaviour
     protected float EnemySpeed = 2f;
     protected GameObject Player;
     protected SpriteRenderer sprite;
+    protected MonsterLife lifeComp;
 
     protected virtual void Start()
-    {      
+    {
+        lifeComp = GetComponent<MonsterLife>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     protected void MoveAndRotate()
     {
-        MoveToward();
-        Rotation();
+        if (allowMovement)
+        {
+            if (lifeComp.FadeInLeft == 0) {
+                MoveToward();
+            }
+            Rotation();
+        }
     }
 
     protected virtual void Update()
@@ -36,16 +43,18 @@ public class EnemyMovement : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, z);
     }
 
-    public void StopUpdate(float time)
+    public void StopMovement(float time)
     {
-        enabled = false;
-        StartCoroutine(EnableUpdate(0.7f));
+        allowMovement = false;
+        StartCoroutine(EnableMovement(time));
     }
 
-    private IEnumerator EnableUpdate(float wait)
+    private IEnumerator EnableMovement(float wait)
     {
         yield return new WaitForSeconds(wait);
         
-        enabled = true;
+        allowMovement = true;
     }
+
+    private bool allowMovement = true;
 }
