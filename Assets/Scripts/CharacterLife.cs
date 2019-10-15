@@ -8,7 +8,7 @@ public class CharacterLife : MonoBehaviour
     public static bool isDeath = false;
     [SerializeField]
     private GameObject ShadowObject;
-    private AudioSource walkingSound;
+    private AudioSource audio;
     public void Death()
     {
         if (isDeath) return; // Already died
@@ -29,9 +29,8 @@ public class CharacterLife : MonoBehaviour
         if (shooting)
             shooting.enabled = false;
         isDeath = true;
-        var sounds = GetComponents<AudioSource>();
-        walkingSound = sounds[1];
-        walkingSound.Pause();
+        audio = GetComponent<AudioSource>();
+        AudioManager.Pause("Walk", audio);
     }
 
     private void VisualDeathBlock()

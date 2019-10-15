@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public static Sound[] sounds;
     public Sound[] soundsToRegister;
     public static AudioManager instance;
-    
+
     // Name -> (maximum value, time since last sound)
     public static Dictionary<string, Vector2> Clips = new Dictionary<string, Vector2>();
 
@@ -76,8 +76,23 @@ public class AudioManager : MonoBehaviour
         }
         if (CharacterLife.isDeath == true)
         {
-            s.source.volume=s.volume / 2;
+            s.source.volume = s.volume / 2;
         }
         s.source.Play();
+    }
+    public static void Pause(string name, AudioSource source)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source = source;
+        s.source.Pause();
+    }
+    public static bool isPlaying(string name, AudioSource source)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source = source;
+        if (s.source.isPlaying)
+            return true;
+        else
+            return false;
     }
 }
