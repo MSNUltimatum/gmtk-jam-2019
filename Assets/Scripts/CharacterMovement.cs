@@ -34,6 +34,10 @@ public class CharacterMovement : MonoBehaviour
     
     private void Movement()
     {
+        //if (CharacterLife.isDeath == true)
+        //{
+        //    walkingSound.Pause();
+        //}
         Vector2 direction = new Vector2();
         direction += new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (direction.magnitude > 1)
@@ -54,8 +58,10 @@ public class CharacterMovement : MonoBehaviour
                 walkingSound.Play();            
                 anim.Play("HeroWalking");
             }
+            
         }
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        
     }
 
     private Camera mainCamera = null;
