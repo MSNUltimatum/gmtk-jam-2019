@@ -10,10 +10,10 @@ public class ArenaEnemySpawner : MonoBehaviour
     private float timeToNextSpawn = 0;
 
     [SerializeField]
-    private GameObject[] enemyWaves = null;
+    protected GameObject[] enemyWaves = null;
 
     [SerializeField]
-    private bool SpawnZone = false;
+    protected bool SpawnZone = false;
 
     static Random random = new Random();
 
@@ -129,7 +129,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         enemy.transform.position = RandomBorderSpawnPos();
     }
 
-    protected void SpawnMonsters(int waveNum)
+    private void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
@@ -166,7 +166,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         EnemySpawnUpdate();
     }
@@ -175,7 +175,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         for(int i = 0;i < boysList.Count; i++)
         {
-            boysList[i].GetComponent<MonsterLife>().Damage(5);
+           boysList[i].GetComponent<MonsterLife>().Damage(999);
         }
     }
 
@@ -223,14 +223,84 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            EnemiesCount = 0;
-            foreach (var e in enemyWaves)
-            {
-                EnemiesCount += e.transform.childCount;
-            }
-            int res = EnemiesCount;
-            EnemiesCount = 0;
-            return res;
+          return baseEnemyCount ();
+        }
+    }
+
+    public int baseEnemyCount ()
+    {
+        EnemiesCount = 0;
+        foreach (var e in enemyWaves)
+        {
+            EnemiesCount += e.transform.childCount;
+        }
+        int res = EnemiesCount;
+        EnemiesCount = 0;
+        return res;
+    }
+
+    public void SpawnСertainMonsterWithName(GameObject monster, string name)
+    {
+        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
+        if (!anyBoy)
+        {
+            anyBoy = true;
+            CurrentEnemy.SetCurrentEnemy(name, enemy);
+            enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
+        }
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
+        boysList.Add(enemy);
+        //roomLighting.AddToLight(1);
+        if (!SpawnZone)
+        {
+            SetMonsterPosition(enemy);
+        }
+        else
+        {
+            enemy.transform.position = SpawnScript.SpawnPosition();
+        }
+    }
+
+    public void SpawnCertainMonsterWithoutName(GameObject monster)
+    {
+
+        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
+        if (!anyBoy)
+        {
+            anyBoy = true;
+            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
+            enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
+        }
+
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
+        boysList.Add(enemy);
+        //roomLighting.AddToLight(1);
+
+        if (!SpawnZone)
+        {
+            SetMonsterPosition(enemy);
+        }
+        else
+        {
+            enemy.transform.position = SpawnScript.SpawnPosition();
+        }
+
+        sequenceIndex++;
+    }
+
+    public void MakeMonsterActive(string name1)
+    {
+        GameObject currentEnemy1 = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == name1);
+        if (currentEnemy)
+        {
+            currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
+            currentEnemy1.GetComponent<MonsterLife>().MakeBoy();
+            CurrentEnemy.SetCurrentEnemy(name1, currentEnemy1);
+            boysList.Remove(currentEnemy1);
+            boysList.Insert(0, currentEnemy1);
+            currentBoy = currentEnemy1;
         }
     }
 
@@ -240,10 +310,11 @@ public class ArenaEnemySpawner : MonoBehaviour
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
 
-    
-    private CurrentEnemy currentEnemy;
+    protected static GameObject currentBoy;
+
+    protected CurrentEnemy currentEnemy;
     private SpawnZoneScript SpawnScript;
-    private static List<GameObject> boysList = new List<GameObject>();
+    protected static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;

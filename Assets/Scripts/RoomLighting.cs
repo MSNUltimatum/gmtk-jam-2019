@@ -16,10 +16,13 @@ public class RoomLighting : MonoBehaviour
     private void Start()
     {
         sceneLight = GetComponentInChildren<Light2D>();
-
+        Light = DefaultLight;
         var arena = GetComponent<ArenaEnemySpawner>();
-        maxvalue = arena.EnemyCount();
-        RecalculateLight();
+        if (arena)
+        {
+            maxvalue = arena.EnemyCount();
+            RecalculateLight();
+        }
         NewLight(Light);
 
         SetSwampMaterial();
@@ -102,4 +105,5 @@ public class RoomLighting : MonoBehaviour
     private float CurrentVal;
     float t = 0.0f;
     static float Light;
+    public float DefaultLight = 0.5f;
 }

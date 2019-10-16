@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class RelodScene : MonoBehaviour
 {
     [SerializeField]
-    private string NextSceneName = "";
+    protected string NextSceneName = "";
     [SerializeField]
-    private int SceneNumber = 0;
+    protected int SceneNumber = 0;
 
     public bool isPointVictory = false;
     public int pointsToVictory;
@@ -17,7 +17,7 @@ public class RelodScene : MonoBehaviour
     public int TotalValue = 0;
     private float maxvalue = 0;
 
-    private static GameObject Canvas;
+    protected static GameObject Canvas;
 
     private void Awake()
     {
