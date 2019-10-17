@@ -255,6 +255,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             anyBoy = true;
             CurrentEnemy.SetCurrentEnemy(name, enemy);
             enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
         }
         enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
         boysList.Add(enemy);
@@ -278,6 +279,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             anyBoy = true;
             CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
             enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
         }
 
         enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
@@ -298,14 +300,15 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     public void MakeMonsterActive(string name1)
     {
-        GameObject currentEnemy = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == name1);
+        GameObject currentEnemy1 = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == name1);
         if (currentEnemy)
         {
             currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
             currentEnemy.GetComponent<MonsterLife>().MakeBoy();
-            CurrentEnemy.SetCurrentEnemy(name1, currentEnemy);
-            boysList.Remove(currentEnemy);
-            currentBoy = currentEnemy;
+            CurrentEnemy.SetCurrentEnemy(name1, currentEnemy1);
+            boysList.Remove(currentEnemy1);
+            boysList.Insert(0, currentEnemy1);
+            currentBoy = currentEnemy1;
         }
     }
 
