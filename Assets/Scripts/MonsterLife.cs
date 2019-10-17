@@ -6,9 +6,9 @@ public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
     private int HP = 1;
-    
+
     bool THE_BOY = false;
-    
+
     [SerializeField]
     private GameObject absorbPrefab = null;
     [SerializeField]
@@ -50,7 +50,7 @@ public class MonsterLife : MonoBehaviour
             if (HP <= 0)
             {
                 ArenaEnemySpawner.ChangeTheBoy(gameObject);
-                
+
                 var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
                 Destroy(enemyExplosion, 0.5f);
                 Destroy(gameObject);
@@ -92,6 +92,16 @@ public class MonsterLife : MonoBehaviour
     public void MakeBoy()
     {
         THE_BOY = true;
+    }
+
+    public void MakeNoBoy()
+    {
+        THE_BOY = false;
+    }
+
+    public bool isBoy()
+    {
+        return THE_BOY;
     }
 
     private float fadeInTime = 1f;
