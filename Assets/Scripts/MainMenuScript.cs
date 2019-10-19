@@ -11,22 +11,33 @@ public class MainMenuScript : MonoBehaviour
     private GameObject TitleScreen = null;
     private TitleScreenContainer titleScreenContainer;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject SettingsScreen = null;
+
+    [SerializeField]
+    private GameObject StageSelectionScreen = null;
+    
+
+    #region Monobehaviour functions
+
     void Start()
     {
-        // УБЕРИ ПОЖАЛУЙСТА НУ ПРОШУ ТЕБЯ НУ ТЫ ЧО
-        PlayerPrefs.SetInt("CurrentScene", -1);
-        ActivateTitleScreen();
+        SetActiveTitle(true);
         GetScenesInBuild();
     }
 
-    void ActivateTitleScreen()
+    private void Update()
     {
-        TitleScreen.SetActive(true);
-        titleScreenContainer = TitleScreen.GetComponent<TitleScreenContainer>();
-        GrayLoadNotPlayedYet();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DeactivateEverything();
+            SetActiveTitle(true);
+        }
     }
 
+    #endregion
+
+    #region Technical Functions
     void GetScenesInBuild()
     {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
@@ -42,13 +53,83 @@ public class MainMenuScript : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("CurrentScene") || PlayerPrefs.GetInt("CurrentScene") == -1)
         {
-            PlayerPrefs.SetInt("CurrentScene", 0);
+            PlayerPrefs.SetInt("CurrentScene", -1);
             var btn = titleScreenContainer.GetButtonContinue();
             var btnImage = btn.GetComponent<Image>();
             btnImage.color = new Color(0.37f, 0.37f, 0.37f); // gray
             btn.GetComponent<Button>().enabled = false;
         }
     }
+
+    private void DeactivateEverything()
+    {
+        SetActiveTitle(false);
+        SetActiveSettings(false);
+        SetActiveStageSelection(false);
+    }
+
+    #endregion
+
+    #region Public Functions
+
+    // old and simple
+    public void NewGame()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
+
+    public void ClickButtonSettings()
+    {
+        DeactivateEverything();
+        SetActiveSettings(true);
+    }
+
+    // moves to the stage selection screen
+    public void ClickButtonNewGame()
+    {
+        DeactivateEverything();
+        SetActiveStageSelection(true);
+    }
+
+    public void ResetProgress()
+    {
+        PlayerPrefs.SetInt("CurrentScene", -1);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    #endregion
+
+    #region Screen Layour Activator Functions
+
+    private void SetActiveTitle(bool active = true)
+    {
+        if (active)
+        {
+            TitleScreen.SetActive(true);
+            titleScreenContainer = TitleScreen.GetComponent<TitleScreenContainer>();
+            GrayLoadNotPlayedYet();
+        }
+        else
+        {
+            TitleScreen.SetActive(false);
+        }
+    }
+
+    private void SetActiveSettings(bool active = true)
+    {
+        SettingsScreen.SetActive(active);
+    }
+
+    private void SetActiveStageSelection(bool active = true)
+    {
+        StageSelectionScreen.SetActive(true);
+    }
+
+    #endregion
 
     private string[] scenes = null;
 }

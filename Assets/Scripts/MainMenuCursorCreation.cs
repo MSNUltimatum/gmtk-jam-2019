@@ -15,4 +15,9 @@ public class MainMenuCursorCreation : MonoBehaviour
         Cursor.visible = false;
         Instantiate(mouseCursorObj);
     }
+
+    void Update()
+    {
+        Cursor.visible = false;
+    }
 }
