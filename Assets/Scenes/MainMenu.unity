@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5226,6 +5226,26 @@ PrefabInstance:
     - {fileID: 578118701, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}
     - {fileID: 1393896785003572893, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}
+--- !u!1 &967714093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4305704709854959933, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+    type: 3}
+  m_PrefabInstance: {fileID: 967714092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &967714094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967714093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5472f600c44529e45a682b4d98ceb812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCursorObj: {fileID: 1255140821461985297, guid: b66cbc0b646d81041be6c8615e9a0669,
+    type: 3}
 --- !u!1 &1319755536
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,7 +10166,7 @@ GameObject:
   - component: {fileID: 1672049310}
   - component: {fileID: 1672049309}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10303,11 +10323,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2892025730329295083, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2892025730329295085, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10412,6 +10427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892025730329295083, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2892025730854006915, guid: 1f2dbaa7a366d38488b6607fb29ce7ce,
         type: 3}
