@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 23559d13a6fd71f4aa67d5c1a734309e
+guid: 0ca7f57861635674d9c53e51e1c8d43d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5520860625519563054
-    second: button-newgame_0
+      213: -7925195237252511268
+    second: button-settings_0
   - first:
-      213: 5969685587200337350
-    second: button-newgame_1
+      213: 3009672922408067204
+    second: button-settings_1
   - first:
-      213: -1418608987462892373
-    second: button-newgame_2
+      213: -1665026386043304816
+    second: button-settings_2
   - first:
-      213: -4901061635077252306
-    second: button-newgame_3
+      213: 2541958026032739104
+    second: button-settings_3
   - first:
-      213: -5796458907812023354
-    second: button-newgame_4
+      213: -6127924239481641455
+    second: button-settings_4
   - first:
-      213: 1766015692241879456
-    second: button-newgame_5
+      213: 2558856442383147507
+    second: button-settings_5
   - first:
-      213: 1251367374043918774
-    second: button-newgame_6
+      213: -8288082104821914986
+    second: button-settings_6
   - first:
-      213: -1030818461593503732
-    second: button-newgame_7
+      213: 7863104378097048344
+    second: button-settings_7
   - first:
-      213: -5572492536474787579
-    second: button-newgame_8
+      213: -4386907088319677136
+    second: button-settings_8
   - first:
-      213: -3840423244121145845
-    second: button-newgame_9
+      213: 8073160397765196763
+    second: button-settings_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button-newgame_0
+      name: button-settings_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,20 +136,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 382ae0f09e06c5b49a7dcdd2881363d2
-      internalID: 5520860625519563054
+      spriteID: b0f27fd63967e4e42b1fea4a45d39814
+      internalID: -7925195237252511268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_1
+      name: button-settings_1
       rect:
         serializedVersion: 2
         x: 0
@@ -157,20 +157,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffa76236d070d8740b441ac2ed1b8ba3
-      internalID: 5969685587200337350
+      spriteID: 801471af1fda0834fb55c10670d900cb
+      internalID: 3009672922408067204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_2
+      name: button-settings_2
       rect:
         serializedVersion: 2
         x: 0
@@ -178,20 +178,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccb597c462821f243944c1ec11eca3fd
-      internalID: -1418608987462892373
+      spriteID: 61717f8d0f1f653489533bddda2db3d9
+      internalID: -1665026386043304816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_3
+      name: button-settings_3
       rect:
         serializedVersion: 2
         x: 0
@@ -199,20 +199,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1fbcbe69de54e94f94a3f18a549a9fb
-      internalID: -4901061635077252306
+      spriteID: 8da02a5a100c1c74fb18245c511b870c
+      internalID: 2541958026032739104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_4
+      name: button-settings_4
       rect:
         serializedVersion: 2
         x: 0
@@ -220,20 +220,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45f007f64d97043498205af20f01c01e
-      internalID: -5796458907812023354
+      spriteID: d74c96b821d7ea6459aa4ea068040442
+      internalID: -6127924239481641455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_5
+      name: button-settings_5
       rect:
         serializedVersion: 2
         x: 0
@@ -241,20 +241,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2658efb5c5d4114daf4464629575d4a
-      internalID: 1766015692241879456
+      spriteID: 6c98fb7324abbb743b36481fcba16a29
+      internalID: 2558856442383147507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_6
+      name: button-settings_6
       rect:
         serializedVersion: 2
         x: 0
@@ -262,20 +262,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a718313a2646a1b4cb87e8b8c4db1b90
-      internalID: 1251367374043918774
+      spriteID: f7e627f4cbc0d0d44ab0671154c3fbe6
+      internalID: -8288082104821914986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_7
+      name: button-settings_7
       rect:
         serializedVersion: 2
         x: 0
@@ -283,20 +283,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aff745a4c0350f445ae6298862c12821
-      internalID: -1030818461593503732
+      spriteID: 228573d562a0489408ff2015d2bb9dce
+      internalID: 7863104378097048344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_8
+      name: button-settings_8
       rect:
         serializedVersion: 2
         x: 0
@@ -304,20 +304,20 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 125, y: 25, z: 125, w: 25}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3ee322026c35c749ad68b111f242677
-      internalID: -5572492536474787579
+      spriteID: 403c3501382a28c47b1e96ab32f0f06d
+      internalID: -4386907088319677136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-newgame_9
+      name: button-settings_9
       rect:
         serializedVersion: 2
         x: 0
@@ -325,14 +325,14 @@ TextureImporter:
         width: 560
         height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c726ff13208b688438a4dafa5c5b02f2
-      internalID: -3840423244121145845
+      spriteID: 124291eaf1018b442b60cdb3a1f7400a
+      internalID: 8073160397765196763
       vertices: []
       indices: 
       edges: []
