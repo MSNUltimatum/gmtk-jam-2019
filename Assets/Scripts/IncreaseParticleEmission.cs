@@ -19,6 +19,14 @@ public class IncreaseParticleEmission : MonoBehaviour
     {
         particles = GetComponent<ParticleSystem>();
         em = particles.emission;
+        if (ActivateOnStart)
+        {
+            IncreaseEmission();
+        }
+    }
+
+    public void IncreaseEmission()
+    {
         em.rateOverTimeMultiplier *= EmissionMultiplier;
         StartCoroutine(StopEffect());
     }
