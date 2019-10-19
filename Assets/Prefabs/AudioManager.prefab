@@ -97,7 +97,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: LizardRun
     clip: {fileID: 8300000, guid: a76e5898a1a8abb43bad640dd4a2b16f, type: 3}
-    volume: 0.404
+    volume: 0.345
     pitch: 1
     stereoPan: 0
     spatialBlend: 0.8

@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] soundsToRegister;
     public static AudioManager instance;
 
-    // Name -> (maximum value, time since last sound)
+    // Name -> (time since last sound, maximum value)
     public static Dictionary<string, Vector2> Clips = new Dictionary<string, Vector2>();
 
     private const float lowestSoundValue = 0.3f;
@@ -37,8 +37,7 @@ public class AudioManager : MonoBehaviour
         if (Clips.ContainsKey(name))
         {
             float ltp = Clips[name].x;
-            volume = Mathf.Lerp(Clips[name].y / lowestSoundValue, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
-
+            volume = Mathf.Lerp(lowestSoundValue, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
             Clips[name] = new Vector2(Time.time, Clips[name].y);
         }
         else
