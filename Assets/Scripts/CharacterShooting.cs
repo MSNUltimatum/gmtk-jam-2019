@@ -9,7 +9,7 @@ public class CharacterShooting : MonoBehaviour
 
     private void Start()
     {
-        weapon = new Pistol();
+        weapon = new PistolHokage();
         mainCamera = Camera.main;
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
