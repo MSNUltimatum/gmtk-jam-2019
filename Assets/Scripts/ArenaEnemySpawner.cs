@@ -173,9 +173,9 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected void KillThemAll()
     {
-        for(int i = 0;i < boysList.Count; i++)
+        while (boysList.Count != 0)
         {
-           boysList[i].GetComponent<MonsterLife>().Damage(999);
+           boysList[0].GetComponent<MonsterLife>().Damage(999, ignoreInvulurability: true);
         }
     }
 

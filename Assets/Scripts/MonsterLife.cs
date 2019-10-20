@@ -42,9 +42,9 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
-    public void Damage(int damage = 1)
+    public void Damage(int damage = 1, bool ignoreInvulurability = false)
     {
-        if (THE_BOY)
+        if (THE_BOY || ignoreInvulurability)
         {
             HP -= damage;
             if (HP <= 0)
