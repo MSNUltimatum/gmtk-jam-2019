@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEditor;
 
 public class ArenaEnemySpawner : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     protected bool SpawnZone = false;
 
+    [SerializeField]
+    private bool isInfSpawn;
     static Random random = new Random();
 
 
@@ -30,9 +34,12 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         InitializeFields();
 
+
+
+
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();    
-        isPointVictory = scenesController.isPointVictory;
+        isPointVictory = scenesController.IsPointVictory;
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
@@ -90,6 +97,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             var nextBoy = boysList[Random.Range(0, boysList.Count)];
             CurrentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
             nextBoy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = nextBoy;
         }
         else
         {
@@ -146,6 +154,7 @@ public class ArenaEnemySpawner : MonoBehaviour
                     anyBoy = true;
                     CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
+                    currentBoy = enemy;
                 }
             }
             // Set random enemy name from the dictionary
@@ -181,7 +190,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected void EnemySpawnUpdate()
     {
-        if (isPointVictory)
+        if (isInfSpawn)
         {
             timeToNextSpawn -= Time.deltaTime;
             if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory)
@@ -252,6 +261,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
         boysList.Add(enemy);
         //roomLighting.AddToLight(1);
+
         if (!SpawnZone)
         {
             SetMonsterPosition(enemy);
@@ -297,6 +307,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         {
             currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
             currentEnemy1.GetComponent<MonsterLife>().MakeBoy();
+
             CurrentEnemy.SetCurrentEnemy(name1, currentEnemy1);
             boysList.Remove(currentEnemy1);
             boysList.Insert(0, currentEnemy1);
@@ -313,10 +324,12 @@ public class ArenaEnemySpawner : MonoBehaviour
     protected static GameObject currentBoy;
 
     protected CurrentEnemy currentEnemy;
+
     private SpawnZoneScript SpawnScript;
     protected static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
-    public bool isPointVictory = false;
+    private bool isPointVictory = false;
+    public bool IsInfSpawn { get { return isInfSpawn; } }
 }
