@@ -7,17 +7,23 @@ public class TutorialScene3Victory : RelodScene
 {
     [SerializeField]
     private float timeToVictory = 25.0f;
+
+    public float TimeToVictory { get { return timeToVictory; } }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        light = GetComponent<RoomLighting>();
+        light.SetMaxValue(timeToVictory);
+    }
     protected override void Victory()
     {
         timeToVictory -= Time.deltaTime;
-        if(timeToVictory > 0)
-            Canvas.transform.GetChild(3).GetComponent<Text>().text = timeToVictory.ToString();
-        else
-            Canvas.transform.GetChild(3).GetComponent<Text>().text = "0";
         if (timeToVictory < 0)
         {
             TutorialScript3 tut = GetComponent<TutorialScript3>();
-            tut.isVictory = true;
+            tut.isVictoryT = true;
+            isVictory = true;
             Canvas.transform.GetChild(0).gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
             {
@@ -27,5 +33,10 @@ public class TutorialScene3Victory : RelodScene
                 SceneManager.LoadScene(NextSceneName);
             }
         }
+        else
+        {
+            light.AddToLight(Time.deltaTime / 8);
+        }
     }
+    private RoomLighting light;
 }

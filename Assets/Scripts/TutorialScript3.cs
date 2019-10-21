@@ -6,7 +6,7 @@ public class TutorialScript3 : ArenaEnemySpawner
 {
     private bool firstSpawn = true;
     private bool firstDeath = true;
-    public bool isVictory = false;
+    public bool isVictoryT = false;
     protected override void Update()
     {
         if (firstSpawn)
@@ -19,11 +19,10 @@ public class TutorialScript3 : ArenaEnemySpawner
             firstSpawn = false;
         }
 
-        if(isVictory && firstDeath)
+        if(isVictoryT && firstDeath)
         {
             KillThemAll();
             firstDeath = false;
         }
     }
-
 }

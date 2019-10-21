@@ -41,9 +41,25 @@ public class RoomLighting : MonoBehaviour
         t = 0.0f;
     }
 
+    public void SetMaxValue (float val)
+    {
+        if (val > 0)
+        {
+            maxvalue = val;
+            RecalculateLight();
+            t = 0.0f;
+        }
+    }
+
+    public float GetCurVal()
+    {
+        return CurrentVal;
+    }
+
     private void RecalculateLight()
     {
         Light = 0.1f + Mathf.Pow(Mathf.Clamp01(TotalValue / maxvalue), 1.7f) * 0.9f;
+       // Debug.Log(Light);
     }
 
     private void Update()

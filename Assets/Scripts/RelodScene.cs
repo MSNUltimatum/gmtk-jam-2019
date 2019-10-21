@@ -19,7 +19,7 @@ public class RelodScene : MonoBehaviour
 
     protected static GameObject Canvas;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
         if (spawn.isPointVictory)

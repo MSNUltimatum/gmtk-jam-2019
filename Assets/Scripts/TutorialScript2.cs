@@ -8,7 +8,7 @@ public class TutorialScript2 : ArenaEnemySpawner
     [SerializeField]
     private float timeToEachLight = 7.0f;
     [SerializeField]
-    private float timeToNextLight = 5.0f;
+    private float timeToNextLight = 3.0f;
     protected override void Update()
     {
         base.Update();
