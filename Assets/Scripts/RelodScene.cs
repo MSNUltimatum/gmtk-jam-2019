@@ -11,7 +11,7 @@ public class RelodScene : MonoBehaviour
     [SerializeField]
     protected int SceneNumber = 0;
 
-    public bool isPointVictory = false;
+    public bool isPointVictory { get; } = false;
     public int pointsToVictory;
     public static bool isVictory = false;
     public int TotalValue = 0;
