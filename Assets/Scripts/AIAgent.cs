@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class Agent : MonoBehaviour
+public class AIAgent : MonoBehaviour
 {
     public float maxSpeed;
     public float maxAccel;
@@ -39,7 +40,6 @@ public class Agent : MonoBehaviour
         transform.Translate(displacement, Space.World);
         transform.rotation = new Quaternion();
         transform.Rotate(Vector3.back, orientation);
-        // transform.eulerAngles = new Vector3(0, 0, orientation);
     }
 
     public virtual void LateUpdate()
@@ -51,14 +51,8 @@ public class Agent : MonoBehaviour
             velocity.Normalize();
             velocity = velocity * maxSpeed;
         }
-        if (steering.angular == 0.0f)
-        {
-            rotation = 0.0f;
-        }
-        if (steering.linear.sqrMagnitude == 0.0f)
-        {
-            velocity = Vector2.zero;
-        }
         steering = new EnemySteering();
     }
+
+    private Dictionary<int, List<EnemySteering>> groups;
 }

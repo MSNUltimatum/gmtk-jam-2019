@@ -2,13 +2,14 @@
 
 public abstract class EnemyBehavior : MonoBehaviour
 {
+    public float priority = 1.0f;
     public float weight = 1.0f;
     public GameObject target;
-    protected Agent agent;
+    protected AIAgent agent;
 
     public virtual void Awake()
     {
-        agent = gameObject.GetComponent<Agent>();
+        agent = gameObject.GetComponent<AIAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -17,7 +18,9 @@ public abstract class EnemyBehavior : MonoBehaviour
         agent.SetSteering(GetSteering(), weight);
     }
 
-    public abstract EnemySteering GetSteering();
+    public virtual EnemySteering GetSteering() {
+        return new EnemySteering();
+    }
 
     public float MapToRange(float rotation)
     {
