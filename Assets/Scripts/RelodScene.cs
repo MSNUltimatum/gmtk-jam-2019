@@ -6,21 +6,20 @@ using UnityEditor;
 
 public class RelodScene : MonoBehaviour
 {
-    public string NextSceneName = "";
-    public int SceneNumber = 0;
-
     [SerializeField]
-    private bool isPointVictory = false;
+    protected string NextSceneName = "";
+    [SerializeField]
+    protected int SceneNumber = 0;
 
-    public bool IsPointVictory {get {return isPointVictory;}}
+    public bool isPointVictory { get; } = false;
     public int pointsToVictory;
     public static bool isVictory = false;
     public int TotalValue = 0;
     private float maxvalue = 0;
 
-    private static GameObject Canvas;
+    protected static GameObject Canvas;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
         CharacterLife.isDeath = false;
@@ -116,7 +115,6 @@ public class RelodScene : MonoBehaviour
     }
 }
 
-
 /*[CustomEditor(typeof(RelodScene))]
 public class MyEditorClass : Editor
 {
@@ -138,5 +136,4 @@ public class MyEditorClass : Editor
 
         }
     }
-}
 }*/

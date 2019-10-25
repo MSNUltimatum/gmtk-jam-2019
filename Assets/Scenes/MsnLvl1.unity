@@ -336,12 +336,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEachSpawn: 5
+  timeToEachSpawn: 3
   timeToNextSpawn: 0
   enemyWaves:
   - {fileID: 2656027671443589482, guid: c0788a57d047ecb43aebd14be3a84563, type: 3}
   SpawnZone: 0
-  isInfSpawn: 0
+  isInfSpawn: 1
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 577427625}
 --- !u!1001 &733173626
