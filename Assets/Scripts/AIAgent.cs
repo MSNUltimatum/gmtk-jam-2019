@@ -17,6 +17,9 @@ public class AIAgent : MonoBehaviour
     {
         velocity = Vector2.zero;
         steering = new EnemySteering();
+        
+        orientation = 360.0f - transform.eulerAngles.z;
+        rotation = 0;
     }
 
     public void SetSteering(EnemySteering steering, float weight)
@@ -25,25 +28,25 @@ public class AIAgent : MonoBehaviour
         this.steering.angular += steering.angular * weight;
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         Vector2 displacement = velocity * Time.deltaTime;
         orientation += rotation * Time.deltaTime;
-        while (orientation < 0.0f)
+        orientation %= 360.0f;
+        if (orientation < 0.0f)
         {
             orientation += 360.0f;
-        }
-        while (orientation > 360.0f)
-        {
-            orientation -= 360.0f;
         }
         transform.Translate(displacement, Space.World);
         transform.rotation = new Quaternion();
         transform.Rotate(Vector3.back, orientation);
-    }
+        
+        var behaviors = GetComponents<EnemyBehavior>();
+        foreach (var i in behaviors)
+        {
+            i.CalledUpdate();
+        }
 
-    public virtual void LateUpdate()
-    {
         velocity += steering.linear * Time.deltaTime;
         rotation += steering.angular * Time.deltaTime;
         if (velocity.magnitude > maxSpeed)
@@ -54,5 +57,5 @@ public class AIAgent : MonoBehaviour
         steering = new EnemySteering();
     }
 
-    private Dictionary<int, List<EnemySteering>> groups;
+    // private Dictionary<int, List<EnemySteering>> groups;
 }

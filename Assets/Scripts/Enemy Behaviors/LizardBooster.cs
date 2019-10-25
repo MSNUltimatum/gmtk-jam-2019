@@ -6,21 +6,21 @@ public class LizardBooster : EnemyBehavior
     private float boostedSpeed = 5.0f;
 
     [SerializeField]
-    private float cooldownTime = 6.0f;
+    private Vector2 cooldownTimeRange = new Vector2(4f, 12f);
 
     [SerializeField]
     private float boostTime = 2.0f;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         baseSpeed = agent.maxSpeed;
-        cooldownTimeLeft = cooldownTime;
+        cooldownTimeLeft = Random.Range(cooldownTimeRange.x, cooldownTimeRange.y);
         boostTimeLeft = 0.0f;
         boost = false;
     }
 
-    public override void Update()
+    public override void CalledUpdate()
     {
         cooldownTimeLeft = Mathf.Max(cooldownTimeLeft - Time.deltaTime, 0);
         boostTimeLeft = Mathf.Max(boostTimeLeft - Time.deltaTime, 0);
@@ -35,7 +35,7 @@ public class LizardBooster : EnemyBehavior
             var audio = GetComponent<AudioSource>();
             AudioManager.Play("LizardRun", audio);
 
-            cooldownTimeLeft = cooldownTime;
+            cooldownTimeLeft = Random.Range(cooldownTimeRange.x, cooldownTimeRange.y);
             boostTimeLeft = boostTime;
             agent.maxSpeed = boostedSpeed;
         }

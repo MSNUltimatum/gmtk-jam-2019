@@ -3,7 +3,7 @@
 public abstract class Align : EnemyBehavior
 {
     public float targetRadius;
-    public float slowRadius;
+    public float slowRadius = 0.1f;
     public float timeToTarget = 0.1f;
 
     public override EnemySteering GetSteering()
@@ -16,9 +16,9 @@ public abstract class Align : EnemyBehavior
         if (rotationSize < targetRadius)
             return steering;
         float targetRotation = agent.maxRotation;
-        if (rotationSize <= slowRadius)
+        if (rotationSize < slowRadius)
             targetRotation = agent.maxRotation * rotationSize / slowRadius;
-        targetRotation *= rotation / rotationSize;
+        targetRotation *= Mathf.Sign(rotation);
         steering.angular = targetRotation - agent.rotation;
         steering.angular /= timeToTarget;
         float angularAccel = Mathf.Abs(steering.angular);

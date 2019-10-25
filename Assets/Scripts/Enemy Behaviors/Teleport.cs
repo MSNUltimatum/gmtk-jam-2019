@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Teleport : EnemyBehavior
 {
@@ -12,15 +10,15 @@ public class Teleport : EnemyBehavior
 
     private ArenaEnemySpawner arena;
 
-    public override void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         CoolDownBefore = Random.Range(TpCooldownRange.x, TpCooldownRange.y);
         arena = GameObject.FindGameObjectWithTag("GameController")
             .GetComponent<ArenaEnemySpawner>();
-        base.Awake();
     }
 
-    public override void Update()
+    public override void CalledUpdate()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         if (CoolDownBefore == 0)
@@ -48,6 +46,6 @@ public class Teleport : EnemyBehavior
                 
             }
         }
-        base.Update();
+        base.CalledUpdate();
     }
 }

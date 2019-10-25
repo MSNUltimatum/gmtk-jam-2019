@@ -2,18 +2,18 @@
 
 public abstract class EnemyBehavior : MonoBehaviour
 {
-    public float priority = 1.0f;
+    // public float priority = 1.0f;
     public float weight = 1.0f;
-    public GameObject target;
+    protected GameObject target;
     protected AIAgent agent;
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         agent = gameObject.GetComponent<AIAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public virtual void Update()
+    public virtual void CalledUpdate()
     {
         agent.SetSteering(GetSteering(), weight);
     }
@@ -22,7 +22,7 @@ public abstract class EnemyBehavior : MonoBehaviour
         return new EnemySteering();
     }
 
-    public float MapToRange(float rotation)
+    protected float MapToRange(float rotation)
     {
         rotation %= 360.0f;
         if (Mathf.Abs(rotation) > 180.0f)

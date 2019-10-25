@@ -12,7 +12,7 @@ public class SeekAndStrafe : Seek
         return steering;
     }
 
-    public override void Update()
+    public override void CalledUpdate()
     {
         if (dirChangeTimer <= 0)
         {
@@ -20,7 +20,7 @@ public class SeekAndStrafe : Seek
             dirChangeTimer = dirChangeTimeMax;
         }
         dirChangeTimer -= Time.deltaTime;
-        base.Update();
+        base.CalledUpdate();
     }
 
     private float dirChangeTimer = 0.0f;
