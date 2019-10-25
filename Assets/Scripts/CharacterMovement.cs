@@ -8,14 +8,12 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 12f;
     
     private Animator anim;
-    private AudioSource walkingSound;
+    private AudioSource audio;
 
     private void Start()
     {
-        var sounds = GetComponents<AudioSource>();
-        walkingSound = sounds[1];
+        audio = GetComponent<AudioSource>();       
         anim = GetComponentInChildren<Animator>();
-
         mainCamera = Camera.main;
     }
 
@@ -33,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
     }
     
     private void Movement()
-    {
+    {       
         Vector2 direction = new Vector2();
         direction += new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (direction.magnitude > 1)
@@ -44,19 +42,18 @@ public class CharacterMovement : MonoBehaviour
         {
             if (direction.magnitude == 0) 
             {
-                walkingSound.Pause();
+                AudioManager.Pause("Walk", audio);
                 anim.Play("HeroIdle");
             }
-            else if (walkingSound.isPlaying == false)
+            else if (AudioManager.isPlaying("Walk", audio) == false)
             {
-                walkingSound.volume = Random.Range(0.4f, 0.6f);
-                walkingSound.pitch = Random.Range(0.8f, 1f);
-                walkingSound.Play();            
+                AudioManager.Play("Walk", audio);
                 anim.Play("HeroWalking");
-            }
+            }        
         }
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);      
     }
 
     private Camera mainCamera = null;
+
 }

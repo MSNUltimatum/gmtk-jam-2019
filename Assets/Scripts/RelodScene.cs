@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 
 public class RelodScene : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class RelodScene : MonoBehaviour
     [SerializeField]
     protected int SceneNumber = 0;
 
-    public bool isPointVictory = false;
+    public bool isPointVictory { get; } = false;
     public int pointsToVictory;
     public static bool isVictory = false;
     public int TotalValue = 0;
@@ -22,16 +22,17 @@ public class RelodScene : MonoBehaviour
     protected virtual void Awake()
     {
         ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
-        if (spawn.isPointVictory)
-            isPointVictory = true;
-        else
-            isPointVictory = false;
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
         maxvalue = arena.EnemyCount();
         if (isPointVictory)
         {
+            if (!spawn.IsInfSpawn && pointsToVictory > spawn.baseEnemyCount())
+            {
+                pointsToVictory = spawn.baseEnemyCount();
+            }
+
             Canvas.transform.GetChild(3).gameObject.SetActive(true);
             Canvas.transform.GetChild(0).gameObject.SetActive(true);
             Time.timeScale = 0.0f;
@@ -41,6 +42,7 @@ public class RelodScene : MonoBehaviour
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
         }
         isVictory = false;
+        Debug.Log(isPointVictory);
     }
 
     public void CurrentCount(int val)
@@ -68,6 +70,7 @@ public class RelodScene : MonoBehaviour
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
+                Debug.Log(NextSceneName);
                 if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
                 {
                     if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
@@ -79,7 +82,7 @@ public class RelodScene : MonoBehaviour
         }
         else
         {
-            if (TotalValue == maxvalue)
+            if (TotalValue >= maxvalue)
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
@@ -87,7 +90,7 @@ public class RelodScene : MonoBehaviour
                 {
                     if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
                         PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                    Canvas.transform.GetChild(0).gameObject.SetActive (false);
                     SceneManager.LoadScene(NextSceneName);
                 }
             }
