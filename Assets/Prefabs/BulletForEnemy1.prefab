@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4537968617460850083}
   - component: {fileID: 2029696957105847991}
   - component: {fileID: 6961320020642883888}
+  - component: {fileID: 2529535576517682936}
   m_Layer: 0
   m_Name: BulletForEnemy1
   m_TagString: Untagged
@@ -141,6 +142,21 @@ MonoBehaviour:
   lifeSpanIn: 0.25
   lifeSpanOut: 0.25
   shouldFadeOut: 0
+--- !u!114 &2529535576517682936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556247329906426865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb0e913c00601d4bb7d8ac1d2ef564c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlickerValueRange: {x: -0.1, y: 0.2}
+  FlickerPeriodRange: {x: 0.05, y: 0.1}
+  SinFactor: 0
 --- !u!1 &8514799866707657762
 GameObject:
   m_ObjectHideFlags: 0
