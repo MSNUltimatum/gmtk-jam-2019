@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 
 public class RelodScene : MonoBehaviour
 {
-    [SerializeField]
-    private string NextSceneName = "";
-    [SerializeField]
-    private int SceneNumber = 0;
+    public string NextSceneName = "";
+    public int SceneNumber = 0;
 
+    [SerializeField]
     private bool isPointVictory = false;
+
+    public bool IsPointVictory {get {return isPointVictory;}}
     public int pointsToVictory;
     public static bool isVictory = false;
     public int TotalValue = 0;
@@ -19,19 +20,30 @@ public class RelodScene : MonoBehaviour
 
     private static GameObject Canvas;
 
-    private void Start()
+    private void Awake()
     {
         ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
-        if (spawn.isPointVictory)
-            isPointVictory = true;
-        else
-            isPointVictory = false;
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
-        Canvas.transform.GetChild(0).gameObject.SetActive(false);
         maxvalue = arena.EnemyCount();
+        if (isPointVictory)
+        {
+            if (!spawn.IsInfSpawn && pointsToVictory > spawn.baseEnemyCount())
+            {
+                pointsToVictory = spawn.baseEnemyCount();
+            }
+
+            Canvas.transform.GetChild(3).gameObject.SetActive(true);
+            Canvas.transform.GetChild(0).gameObject.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            Canvas.transform.GetChild(0).gameObject.SetActive(false);
+        }
         isVictory = false;
+        Debug.Log(isPointVictory);
     }
 
     public void CurrentCount(int val)
@@ -49,11 +61,17 @@ public class RelodScene : MonoBehaviour
     {
         if (isPointVictory)
         {
-
-            if (TotalValue == pointsToVictory)
+            if(Input.GetKeyDown(KeyCode.F) && Canvas.transform.GetChild(3).gameObject.activeSelf)
+            {
+                Canvas.transform.GetChild(3).gameObject.SetActive(false);
+                Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                Time.timeScale = 1.0f;
+            }
+            if (TotalValue >= pointsToVictory)
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
+                Debug.Log(NextSceneName);
                 if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
                 {
                     if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
@@ -65,7 +83,7 @@ public class RelodScene : MonoBehaviour
         }
         else
         {
-            if (TotalValue == maxvalue)
+            if (TotalValue >= maxvalue)
             {
                 isVictory = true;
                 Canvas.transform.GetChild(0).gameObject.SetActive(true);
@@ -73,7 +91,7 @@ public class RelodScene : MonoBehaviour
                 {
                     if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
                         PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
+                    Canvas.transform.GetChild(0).gameObject.SetActive (false);
                     SceneManager.LoadScene(NextSceneName);
                 }
             }
@@ -97,3 +115,28 @@ public class RelodScene : MonoBehaviour
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
+
+
+/*[CustomEditor(typeof(RelodScene))]
+public class MyEditorClass : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        // If we call base the default inspector will get drawn too.
+        // Remove this line if you don't want that to happen.
+        //base.OnInspectorGUI();
+
+        RelodScene myReload = target as RelodScene;
+
+        myReload.NextSceneName = EditorGUILayout.TextField("NextLevel", myReload.NextSceneName);
+        myReload.SceneNumber = EditorGUILayout.IntField("Scene Number", myReload.SceneNumber);
+        myReload.isPointVictory = EditorGUILayout.Toggle("isPointVictory", myReload.isPointVictory);
+
+        if (myReload.isPointVictory)
+        {
+            myReload.pointsToVictory = EditorGUILayout.IntField("Points to victory:", myReload.pointsToVictory);
+
+        }
+    }
+}
+}*/
