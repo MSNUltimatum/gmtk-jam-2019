@@ -17,7 +17,6 @@ public class LizardBooster : EnemyBehavior
         baseSpeed = agent.maxSpeed;
         cooldownTimeLeft = Random.Range(cooldownTimeRange.x, cooldownTimeRange.y);
         boostTimeLeft = 0.0f;
-        boost = false;
     }
 
     public override void CalledUpdate()
@@ -44,5 +43,4 @@ public class LizardBooster : EnemyBehavior
     private float baseSpeed;
     private float cooldownTimeLeft;
     private float boostTimeLeft;
-    private bool boost;
 }
