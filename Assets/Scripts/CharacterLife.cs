@@ -46,6 +46,7 @@ public class CharacterLife : MonoBehaviour
         StartCoroutine(StopGlow());
 
         GetComponentInChildren<Animator>().Play("Death");
+        ShadowObject.GetComponent<Animator>().Play("Death");
 
         transform.eulerAngles = new Vector3(0, 0, 180);
         
