@@ -1260,7 +1260,7 @@ MonoBehaviour:
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 1547487593}
   isPointVictory: 0
-  timeToEachLight: 7
+  timeToEachLight: 5
   timeToNextLight: 3
 --- !u!1001 &1648034756
 PrefabInstance:

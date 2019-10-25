@@ -10,6 +10,9 @@ public class TutorialScene3Victory : RelodScene
 
     public float TimeToVictory { get { return timeToVictory; } }
 
+    private float TimeForAdd = 1f;
+    private float TimeForNextAdd = 1f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -35,7 +38,15 @@ public class TutorialScene3Victory : RelodScene
         }
         else
         {
-            light.AddToLight(Time.deltaTime / 8);
+            if (TimeForNextAdd > 0)
+            {
+                TimeForNextAdd -= Time.deltaTime;
+            }
+            else
+            {
+                light.AddToLight(0.15f);
+                TimeForNextAdd = TimeForAdd;
+            }
         }
     }
     private RoomLighting light;
