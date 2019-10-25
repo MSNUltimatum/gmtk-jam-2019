@@ -8,7 +8,7 @@ public class CharacterLife : MonoBehaviour
     public static bool isDeath = false;
     [SerializeField]
     private GameObject ShadowObject;
-
+    private AudioSource audio;
     public void Death()
     {
         if (isDeath) return; // Already died
@@ -29,12 +29,20 @@ public class CharacterLife : MonoBehaviour
         if (shooting)
             shooting.enabled = false;
         isDeath = true;
+        audio = GetComponent<AudioSource>();
+        AudioManager.Pause("Walk", audio);
     }
 
     private void VisualDeathBlock()
     {
         lighter = GetComponentInChildren<Light2D>();
         glowIntense = lighter.intensity;
+
+        mainCam = Camera.main;
+        cameraScale = mainCam.orthographicSize;
+        cameraStartPosition = mainCam.gameObject.transform.position;
+        cameraMovePosition = gameObject.transform.position + new Vector3(0, 0, -20);
+
         StartCoroutine(StopGlow());
 
         GetComponentInChildren<Animator>().Play("Death");
@@ -52,6 +60,10 @@ public class CharacterLife : MonoBehaviour
         {
             glowFadeTime -= Time.fixedDeltaTime;
             lighter.intensity = Mathf.Lerp(0, glowIntense, glowFadeTime);
+            
+            // Also move camera "forward" together with glow fadeout
+            mainCam.orthographicSize = Mathf.Lerp(cameraScale / 2, cameraScale, glowFadeTime);
+            mainCam.gameObject.transform.position = Vector3.Lerp(cameraMovePosition, cameraStartPosition, glowFadeTime);
 
             //ShadowObject.transform.localEulerAngles = 
 
@@ -78,4 +90,10 @@ public class CharacterLife : MonoBehaviour
     private float glowIntense;
     private float glowFadeTime = 3;
     private CircleCollider2D circleCollider;
+
+    //Camera
+    private Camera mainCam;
+    private float cameraScale;
+    private Vector3 cameraStartPosition;
+    private Vector3 cameraMovePosition;
 }
