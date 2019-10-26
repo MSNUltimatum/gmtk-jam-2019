@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &611582959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4305704709854959873, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+    type: 3}
+  m_PrefabInstance: {fileID: 967714092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &733173626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: NextSceneName
-      value: Level1
+      value: Chapter1level2
       objectReference: {fileID: 0}
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
@@ -204,14 +210,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
+      propertyPath: enemyWaves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
+        type: 3}
       propertyPath: timeToEachSpawn
-      value: 5.5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: SpawnZone
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[1]
+      value: 
+      objectReference: {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0,
+        type: 3}
+    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[2]
+      value: 
+      objectReference: {fileID: 8109258291629398269, guid: 56eaf28768d474e488b6165f98220ab7,
+        type: 3}
     - target: {fileID: 92031012, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
       propertyPath: SceneNumber
       value: 1
@@ -701,6 +724,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 611582959}
+    - target: {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: cameraFollow
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7008990872234128438, guid: 4fc24a6bf72ff344196c67178f97cf36,
         type: 3}
       propertyPath: m_Name
@@ -761,5 +794,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8797610113026404234, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
+    - {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
