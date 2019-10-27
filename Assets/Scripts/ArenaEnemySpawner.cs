@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEditor;
 
 public class ArenaEnemySpawner : MonoBehaviour
 {
@@ -10,11 +12,13 @@ public class ArenaEnemySpawner : MonoBehaviour
     private float timeToNextSpawn = 0;
 
     [SerializeField]
-    private GameObject[] enemyWaves = null;
+    protected GameObject[] enemyWaves = null;
 
     [SerializeField]
-    private bool SpawnZone = false;
+    protected bool SpawnZone = false;
 
+    [SerializeField]
+    private bool isInfSpawn;
     static Random random = new Random();
 
 
@@ -29,7 +33,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     void Awake()
     {
         InitializeFields();
-
+        
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();    
         isPointVictory = scenesController.isPointVictory;
@@ -94,6 +98,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             var nextBoy = boysList[Random.Range(0, boysList.Count)];
             CurrentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
             nextBoy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = nextBoy;
         }
         else
         {
@@ -133,7 +138,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         enemy.transform.position = RandomBorderSpawnPos();
     }
 
-    protected void SpawnMonsters(int waveNum)
+    private void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
@@ -150,6 +155,7 @@ public class ArenaEnemySpawner : MonoBehaviour
                     anyBoy = true;
                     CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
+                    currentBoy = enemy;
                 }
             }
             // Set random enemy name from the dictionary
@@ -170,22 +176,22 @@ public class ArenaEnemySpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         EnemySpawnUpdate();
     }
 
     protected void KillThemAll()
     {
-        for(int i = 0;i < boysList.Count; i++)
+        while (boysList.Count != 0)
         {
-            boysList[i].GetComponent<MonsterLife>().Damage(5);
+           boysList[0].GetComponent<MonsterLife>().Damage(999, ignoreInvulurability: true);
         }
     }
 
     protected void EnemySpawnUpdate()
     {
-        if (isPointVictory)
+        if (isInfSpawn)
         {
             timeToNextSpawn -= Time.deltaTime;
             if (timeToNextSpawn < 0 && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory)
@@ -328,15 +334,17 @@ public class ArenaEnemySpawner : MonoBehaviour
     private Queue<string> enemyOrder;
 
     protected static GameObject currentBoy;
+
     private GameObject SpawnSquare;
 
     protected CurrentEnemy currentEnemy;
 
     private SpawnZoneScript SpawnScript;
-    private static List<GameObject> boysList = new List<GameObject>();
+    protected static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
+
     public bool isPointVictory = false;
 
     public bool IsInfSpawn { get { return isInfSpawn; } }

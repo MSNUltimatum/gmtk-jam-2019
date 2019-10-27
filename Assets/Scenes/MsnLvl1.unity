@@ -309,7 +309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextSceneName: Level2
   SceneNumber: 1
-  pointsToVictory: 5
+  isPointVictory: 1
+  pointsToVictory: 3
   TotalValue: 0
 --- !u!114 &577427625 stripped
 MonoBehaviour:
@@ -335,13 +336,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEachSpawn: 5
+  timeToEachSpawn: 3
   timeToNextSpawn: 0
   enemyWaves:
-  - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
-  - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
-  - {fileID: 8670341746661068075, guid: 8058cb5b8a6dcd74faae0ec160408fe2, type: 3}
-  SpawnZone: 0
+  - {fileID: 2656027671443589482, guid: c0788a57d047ecb43aebd14be3a84563, type: 3}
+  SpawnZone: 1
+  isInfSpawn: 1
   RoomBounds: {x: 15, y: 10}
   evilDictionary: {fileID: 577427625}
   isPointVictory: 0
@@ -415,6 +415,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 92031012, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
     - {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
+    - {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!1001 &745672070
 PrefabInstance:
