@@ -36,10 +36,14 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
-        GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
+        SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
         if (SpawnSquare)
         {
             SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
+        }
+        else
+        {
+            SpawnZone = false;
         }
 
         currentEvilDictionary = evilDictionary;
@@ -223,14 +227,97 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            EnemiesCount = 0;
-            foreach (var e in enemyWaves)
-            {
-                EnemiesCount += e.transform.childCount;
-            }
-            int res = EnemiesCount;
-            EnemiesCount = 0;
-            return res;
+          return baseEnemyCount ();
+        }
+    }
+
+    public int baseEnemyCount ()
+    {
+        EnemiesCount = 0;
+        foreach (var e in enemyWaves)
+        {
+            EnemiesCount += e.transform.childCount;
+        }
+        int res = EnemiesCount;
+        EnemiesCount = 0;
+        return res;
+    }
+
+    public void SpawnIntoSpawnZone (GameObject monster)
+    {
+        if (SpawnSquare)
+        {
+            bool tmp = SpawnZone;
+            SpawnZone = true;
+            SpawnCertainMonsterWithoutName(monster);
+            SpawnZone = tmp;
+        }
+    }
+
+    public void SpawnСertainMonsterWithName(GameObject monster, string name)
+    {
+        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
+        if (!anyBoy)
+        {
+            anyBoy = true;
+            CurrentEnemy.SetCurrentEnemy(name, enemy);
+            enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
+        }
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
+        boysList.Add(enemy);
+        //roomLighting.AddToLight(1);
+
+        if (!SpawnZone)
+        {
+            SetMonsterPosition(enemy);
+        }
+        else
+        {
+            enemy.transform.position = SpawnScript.SpawnPosition();
+        }
+    }
+
+    public void SpawnCertainMonsterWithoutName(GameObject monster)
+    {
+
+        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
+        if (!anyBoy)
+        {
+            anyBoy = true;
+            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
+            enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
+        }
+
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
+        boysList.Add(enemy);
+        //roomLighting.AddToLight(1);
+
+        if (!SpawnZone)
+        {
+            SetMonsterPosition(enemy);
+        }
+        else
+        {
+            enemy.transform.position = SpawnScript.SpawnPosition();
+        }
+
+        sequenceIndex++;
+    }
+
+    public void MakeMonsterActive(string name1)
+    {
+        GameObject currentEnemy1 = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == name1);
+        if (currentEnemy)
+        {
+            currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
+            currentEnemy1.GetComponent<MonsterLife>().MakeBoy();
+
+            CurrentEnemy.SetCurrentEnemy(name1, currentEnemy1);
+            boysList.Remove(currentEnemy1);
+            boysList.Insert(0, currentEnemy1);
+            currentBoy = currentEnemy1;
         }
     }
 
@@ -240,12 +327,18 @@ public class ArenaEnemySpawner : MonoBehaviour
     private EvilDictionary currentEvilDictionary;
     private Queue<string> enemyOrder;
 
-    
-    private CurrentEnemy currentEnemy;
+    protected static GameObject currentBoy;
+    private GameObject SpawnSquare;
+
+    protected CurrentEnemy currentEnemy;
+
     private SpawnZoneScript SpawnScript;
     private static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
     public bool isPointVictory = false;
+
+    public bool IsInfSpawn { get { return isInfSpawn; } }
+
 }
