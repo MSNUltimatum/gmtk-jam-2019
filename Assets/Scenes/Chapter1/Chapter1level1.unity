@@ -724,6 +724,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7008990872234128438, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36,
         type: 3}
       propertyPath: playerTransform
@@ -733,11 +738,6 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraFollow
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008990872234128438, guid: 4fc24a6bf72ff344196c67178f97cf36,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 7008990872234128586, guid: 4fc24a6bf72ff344196c67178f97cf36,
         type: 3}
