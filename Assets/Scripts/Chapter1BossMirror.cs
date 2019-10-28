@@ -5,9 +5,9 @@ using UnityEngine;
 public class Chapter1BossMirror : MirrorTriggerScript
 {
     [SerializeField]
-    private Sprite MirrorSpriteActive;
+    private Sprite MirrorSpriteActive = null;
     [SerializeField]
-    private Sprite MirrorSpriteInactive;
+    private Sprite MirrorSpriteInactive = null;
 
     private bool isActive = false;
 

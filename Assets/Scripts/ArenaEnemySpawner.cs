@@ -18,6 +18,9 @@ public class ArenaEnemySpawner : MonoBehaviour
     protected bool SpawnZone = false;
 
     [SerializeField]
+    protected bool AllowEarlySpawns = true;
+
+    [SerializeField]
     private bool isInfSpawn;
     static Random random = new Random();
 
@@ -190,8 +193,8 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (isInfSpawn)
         {
             timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy) && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory 
-                && sequenceIndex < scenesController.pointsToVictory + 12)
+            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) 
+                && !RelodScene.isVictory && sequenceIndex < scenesController.pointsToVictory + 12)
             {
                 timeToNextSpawn = timeToEachSpawn;
                 SpawnMonsters(spawnIndex);
@@ -211,7 +214,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         else
         {
             timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy) && spawnIndex < enemyWaves.GetLength(0))
+            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0))
             {
                 timeToNextSpawn = timeToEachSpawn;
                 SpawnMonsters(spawnIndex);
