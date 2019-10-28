@@ -249,7 +249,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         return res;
     }
 
-    public void SpawnСertainMonsterWithName(GameObject monster, string name)
+    public void SpawnСertainMonsterWithName(GameObject monster, string name, bool makeBoyIfPossible = true)
     {
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
         if (!anyBoy)

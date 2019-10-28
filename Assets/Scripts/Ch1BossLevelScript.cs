@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Ch1BossLevelScript : MonoBehaviour
 {
-    private Transform camera;
+    [SerializeField]
+    private GameObject bossSpawnEffect = null;
+    [SerializeField]
+    private GameObject BossPrefab = null;
+    private GameObject BossInstance;
+
+    new private Transform camera;
     enum Phase
     {
         INACTIVE,
         INTRO,
+        PRE_PHASE1,
+        PHASE1,
     }
 
     // Start is called before the first frame update
@@ -27,29 +35,36 @@ public class Ch1BossLevelScript : MonoBehaviour
             case Phase.INACTIVE:
                 break;
             case Phase.INTRO:
+                UpdateIntro();
+                break;
+            case Phase.PRE_PHASE1:
+                UpdatePrePhase1();
                 break;
             default:
                 break;
         }
     }
 
-    private void LateUpdate()
+    public void StartFight()
     {
-        switch (CurrentPhase)
+        CurrentPhase = Phase.PRE_PHASE1;
+        Instantiate(bossSpawnEffect, new Vector3(0, 16.5f, 0), Quaternion.identity);
+    }
+
+    private void UpdateIntro()
+    {
+
+    }
+
+    private float phasePre1TimeToBossSpawn = 2f;
+
+    private void UpdatePrePhase1()
+    {
+        phasePre1TimeToBossSpawn -= Time.deltaTime;
+        if (phasePre1TimeToBossSpawn <= 0)
         {
-            case Phase.INTRO:
-                CameraShakeUpdate();
-                break;
-            default:
-                break;
+            CurrentPhase = Phase.PHASE1;
+            Instantiate(BossPrefab, new Vector3(0, 16.5f, 0), Quaternion.identity);
         }
-    }
-
-    private float shakeDuration = 0;
-    private float shakeAmount = 0.7f;
-
-    private void CameraShakeUpdate()
-    {
-        
     }
 }
