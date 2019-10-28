@@ -50,6 +50,8 @@ public class MonsterLife : MonoBehaviour
             newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
             sprite.color = newColor;
         }
+
+        if (fadeInLeft == 0) GetComponent<Collider2D>().enabled = true;
     }
 
     public void Damage(int damage = 1, bool ignoreInvulurability = false)
@@ -79,6 +81,7 @@ public class MonsterLife : MonoBehaviour
 
     public void FadeIn(float _fadeInTime)
     {
+        GetComponent<Collider2D>().enabled = false;
         fadeInTime = _fadeInTime;
         fadeInLeft = _fadeInTime;
     }
@@ -113,7 +116,7 @@ public class MonsterLife : MonoBehaviour
     {
         return THE_BOY;
     }
-
+    
     private float fadeInTime = 1f;
     private float fadeInLeft;
     private SpriteRenderer[] sprites;
