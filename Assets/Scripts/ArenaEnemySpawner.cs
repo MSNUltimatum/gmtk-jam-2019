@@ -15,6 +15,9 @@ public class ArenaEnemySpawner : MonoBehaviour
     protected GameObject[] enemyWaves = null;
 
     [SerializeField]
+    protected GameObject[] spawnZones = null;
+
+    [SerializeField]
     protected bool SpawnZone = false;
 
     [SerializeField]
@@ -40,12 +43,8 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
-        SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
-        if (SpawnSquare)
-        {
-            SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
-        }
-        else
+        //SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
+        if (spawnZones.Length == 0)
         {
             SpawnZone = false;
         }
@@ -138,6 +137,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         enemy.transform.position = RandomBorderSpawnPos();
     }
 
+    protected void SetMonsterPositionIntoSpawnZone (GameObject enemy)
+    {
+        var tmp = Random.Range(0, spawnZones.Length);
+        enemy.transform.position = spawnZones[tmp].GetComponent<SpawnZoneScript>().SpawnPosition();
+    }
     private void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
@@ -168,7 +172,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             }
             else
             {
-                enemy.transform.position = SpawnScript.SpawnPosition();
+                SetMonsterPositionIntoSpawnZone(enemy);
             }
 
             sequenceIndex++;
@@ -249,15 +253,22 @@ public class ArenaEnemySpawner : MonoBehaviour
         return res;
     }
 
-    public void SpawnIntoSpawnZone (GameObject monster)
+    public void SpawnIntoSpawnZone (GameObject monster, GameObject spawnZonePref)
     {
-        if (SpawnSquare)
+        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
+        if (!anyBoy)
         {
-            bool tmp = SpawnZone;
-            SpawnZone = true;
-            SpawnCertainMonsterWithoutName(monster);
-            SpawnZone = tmp;
+            anyBoy = true;
+            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
+            enemy.GetComponent<MonsterLife>().MakeBoy();
+            currentBoy = enemy;
         }
+
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
+        boysList.Add(enemy);
+
+        enemy.transform.position = spawnZonePref.GetComponent<SpawnZoneScript>().SpawnPosition();
+        sequenceIndex++;
     }
 
     public void SpawnСertainMonsterWithName(GameObject monster, string name)
@@ -280,7 +291,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            enemy.transform.position = SpawnScript.SpawnPosition();
+            SetMonsterPositionIntoSpawnZone(enemy);
         }
     }
 
@@ -306,7 +317,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            enemy.transform.position = SpawnScript.SpawnPosition();
+            SetMonsterPositionIntoSpawnZone(enemy);
         }
 
         sequenceIndex++;
@@ -335,7 +346,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected static GameObject currentBoy;
 
-    private GameObject SpawnSquare;
+    //private GameObject SpawnSquare;
 
     protected CurrentEnemy currentEnemy;
 
