@@ -13,9 +13,8 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     [SerializeField]
     protected GameObject[] enemyWaves = null;
-
-    [SerializeField]
-    protected bool SpawnZone = false;
+    
+    public SpawnZoneScript SpawnZone = null;
 
     [SerializeField]
     protected bool AllowEarlySpawns = true;
@@ -46,7 +45,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
         if (SpawnSquare)
         {
-            SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
+            SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
 
         currentEvilDictionary = evilDictionary;
@@ -167,7 +166,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             }
             else
             {
-                enemy.transform.position = SpawnScript.SpawnPosition();
+                enemy.transform.position = SpawnZone.SpawnPosition();
             }
 
             sequenceIndex++;
@@ -269,7 +268,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            enemy.transform.position = SpawnScript.SpawnPosition();
+            enemy.transform.position = SpawnZone.SpawnPosition();
         }
     }
 
@@ -295,7 +294,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            enemy.transform.position = SpawnScript.SpawnPosition();
+            enemy.transform.position = SpawnZone.SpawnPosition();
         }
 
         sequenceIndex++;
@@ -326,7 +325,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected CurrentEnemy currentEnemy;
 
-    private SpawnZoneScript SpawnScript;
     protected static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;

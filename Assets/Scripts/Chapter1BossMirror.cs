@@ -13,6 +13,7 @@ public class Chapter1BossMirror : MirrorTriggerScript
     private bool isActive = false;
 
     private float timer = 0;
+    [SerializeField]
     private float timeToActivate = 7;
     private bool finallyActivated = false;
 
@@ -34,12 +35,15 @@ public class Chapter1BossMirror : MirrorTriggerScript
 
     private void Update()
     {
-        if (finallyActivated && timer != 0)
+        if (finallyActivated)
         {
-            timer = 0;
-            DeactivateMirrorEffect();
-            DestroyMirror();
-            bossScript.StartFight();
+            if (timer != 0)
+            {
+                timer = 0;
+                DeactivateMirrorEffect();
+                DestroyMirror();
+                bossScript.StartFight();
+            }
             return;
         }
 

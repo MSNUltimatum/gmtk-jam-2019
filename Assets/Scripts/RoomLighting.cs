@@ -12,13 +12,17 @@ public class RoomLighting : MonoBehaviour
     [SerializeField]
     private GameObject swampPrefab = null;
 
+    [SerializeField]
+    bool StandartLightIncrease = true;
+    [SerializeField]
+    private float maxvalue = 0;
 
     private void Start()
     {
         sceneLight = GetComponentInChildren<Light2D>();
         Light = DefaultLight;
         var arena = GetComponent<ArenaEnemySpawner>();
-        if (arena)
+        if (arena && !StandartLightIncrease)
         {
             maxvalue = arena.EnemyCount();
             RecalculateLight();
@@ -34,8 +38,9 @@ public class RoomLighting : MonoBehaviour
     /// a current to maximum percentage
     /// </summary>
     /// <param name="val">Value to add to light</param>
-    public void AddToLight(float val)
+    public void AddToLight(float val, bool automatic = true)
     {
+        if (automatic != StandartLightIncrease) return;
         TotalValue = TotalValue + val;
         RecalculateLight();
         t = 0.0f;
@@ -122,7 +127,6 @@ public class RoomLighting : MonoBehaviour
     private Light2D sceneLight;
 
     private float TotalValue = 0;
-    private float maxvalue = 0;
     private float CurrentVal;
     float t = 0.0f;
     static float Light;

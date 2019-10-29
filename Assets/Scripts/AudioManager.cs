@@ -83,8 +83,11 @@ public class AudioManager : MonoBehaviour
     public static void Pause(string name, AudioSource source)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source = source;
-        s.source.Pause();
+        if (s != null)
+        {
+            s.source = source;
+            s.source.Pause();
+        }
     }
     public static bool isPlaying(string name, AudioSource source)
     {

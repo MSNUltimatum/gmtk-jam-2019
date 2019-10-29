@@ -13,7 +13,6 @@ public class TutorialScript3 : ArenaEnemySpawner
         {
             SpawnCertainMonsterWithoutName(enemyWaves[0].transform.GetChild(0).gameObject);
             SpawnCertainMonsterWithoutName(enemyWaves[0].transform.GetChild(1).gameObject);
-            SpawnZone = true;
             SpawnСertainMonsterWithName(enemyWaves[0].transform.GetChild(2).gameObject, "Reluctance");
             MakeMonsterActive("Reluctance");
             firstSpawn = false;

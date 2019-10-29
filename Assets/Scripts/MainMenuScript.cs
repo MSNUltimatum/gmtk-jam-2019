@@ -52,7 +52,7 @@ public class MainMenuScript : MonoBehaviour
     void GrayLoadNotPlayedYet()
     {
         // TODO ВРЕМЕННЫЙ ФИКС
-        if (true || (!PlayerPrefs.HasKey("CurrentScene") || PlayerPrefs.GetInt("CurrentScene") == -1))
+        if (!PlayerPrefs.HasKey("CurrentScene") || PlayerPrefs.GetInt("CurrentScene") == -1)
         {
             PlayerPrefs.SetInt("CurrentScene", -1);
             var btn = titleScreenContainer.GetButtonContinue();
@@ -83,6 +83,11 @@ public class MainMenuScript : MonoBehaviour
     {
         DeactivateEverything();
         SetActiveSettings(true);
+    }
+
+    public void ClickButtonLoadGame()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentScene"));
     }
 
     // moves to the stage selection screen
