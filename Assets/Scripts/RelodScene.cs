@@ -13,6 +13,8 @@ public class RelodScene : MonoBehaviour
 
     public bool isPointVictory = false;
     public int pointsToVictory;
+    // How much monsters should be spawned after limit is exceeded (not exactly, waves are not cut)
+    public int monsterAdditionLimit = 12;
     public static bool isVictory = false;
     public int TotalValue = 0;
     private float maxvalue = 0;

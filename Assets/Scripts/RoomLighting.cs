@@ -101,6 +101,11 @@ public class RoomLighting : MonoBehaviour
         {
             sprite.sharedMaterial = swampMat;
         }
+        var emitters = swampInstance.GetComponentsInChildren<ParticleSystemRenderer>();
+        foreach (var emitter in emitters)
+        {
+            emitter.sharedMaterial = swampMat;
+        }
     }
     
     private void NewSwampLight()

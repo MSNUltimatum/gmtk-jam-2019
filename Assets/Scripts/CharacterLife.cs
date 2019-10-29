@@ -46,12 +46,15 @@ public class CharacterLife : MonoBehaviour
         StartCoroutine(StopGlow());
 
         GetComponentInChildren<Animator>().Play("Death");
+        ShadowObject.GetComponent<Animator>().Play("Death");
 
         transform.eulerAngles = new Vector3(0, 0, 180);
         
-
         circleCollider.radius = 1.35f;
         GetComponent<Rigidbody2D>().mass = 10000;
+
+        var CameraFollow = Camera.main.GetComponent<CameraFollowScript>();
+        if (CameraFollow) CameraFollow.enabled = false;
     }
 
     private IEnumerator StopGlow()
