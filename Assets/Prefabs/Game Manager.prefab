@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 1705778125510524197}
   - component: {fileID: 152912017}
   - component: {fileID: 5526407621052106132}
+  - component: {fileID: 3388020774218258525}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -198,6 +199,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextSceneName: InfinityLevel1
   SceneNumber: 3
+  isPointVictory: 0
   pointsToVictory: 0
   monsterAdditionLimit: 12
   TotalValue: 0
+--- !u!114 &3388020774218258525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566114f985a21e1438d21600338cfa11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0

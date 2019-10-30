@@ -4,6 +4,8 @@ using UnityEngine.Networking;
 
 public class NetRequestSender : MonoBehaviour
 {
+    public bool debugMode = false;
+
     protected IEnumerator GetRequest(string uri)
     {
         UnityWebRequest webRequest = UnityWebRequest.Get(uri);
@@ -35,6 +37,8 @@ public class NetRequestSender : MonoBehaviour
 
     private void DebugLogNetworkRequest(UnityWebRequest webRequest)
     {
+        if (!debugMode) return;
+
         if (webRequest.isNetworkError || webRequest.isHttpError)
         {
             Debug.Log("Error: " + webRequest.error);
