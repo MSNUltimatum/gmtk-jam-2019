@@ -1,0 +1,643 @@
+fileFormatVersion: 2
+guid: 830696d70ee47b1409bc67130a223261
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3356676277005356299
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_0
+  - first:
+      213: -5095807441104306815
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_1
+  - first:
+      213: 502260640851775160
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_2
+  - first:
+      213: 8073414621959565336
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_3
+  - first:
+      213: -1994564485253804831
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_4
+  - first:
+      213: 7670212207080845330
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_5
+  - first:
+      213: 7779357040294939752
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_6
+  - first:
+      213: 8841216356377739305
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_7
+  - first:
+      213: 8127054944806942268
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_8
+  - first:
+      213: 7895860971001998424
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_9
+  - first:
+      213: 3374974849880640119
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_10
+  - first:
+      213: 5026506895201181384
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_11
+  - first:
+      213: -1496856714887914521
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_12
+  - first:
+      213: -7419418095364437003
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_13
+  - first:
+      213: 661253779299839725
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_14
+  - first:
+      213: 8301581167617708702
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_15
+  - first:
+      213: -5764872372502468763
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_16
+  - first:
+      213: 4189989663813199714
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_17
+  - first:
+      213: 3010288570192218047
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_18
+  - first:
+      213: -7247461238491743261
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_19
+  - first:
+      213: -8159135663673328740
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_20
+  - first:
+      213: -1466805943738835495
+    second: Pokhodka_s_oruzh1_raskadrovka_TYoMN_21
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 810
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f58c9d2269f0fa44b251cb01aaef31f
+      internalID: 3356676277005356299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_1
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664cd7c7e81aed149a4dd60cedfc64c8
+      internalID: -5095807441104306815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_2
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5216aa86fcbb1164593e114c2b146501
+      internalID: 502260640851775160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_3
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b55b9296fe5ab46b048c216db51d12
+      internalID: 8073414621959565336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_4
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc18c3309523a841af0a652bfcd5d91
+      internalID: -1994564485253804831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_5
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6446b47e77db99d4387a77c5edb5ff21
+      internalID: 7670212207080845330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_6
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd202d4a3df0e1742b820f4ea888512b
+      internalID: 7779357040294939752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_7
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7287beb77526d945bcb5bc437ab635c
+      internalID: 8841216356377739305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_8
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4cf98b8e9d94e4ba1e28f9063a674d
+      internalID: 8127054944806942268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_9
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa2f759ee3d29c4e9993507d03f625f
+      internalID: 7895860971001998424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_10
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 1150
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64a0bae796e54245b8453e1693fe1e9
+      internalID: 3374974849880640119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ba15b4839d09294aa552c9326dce7b4
+      internalID: 5026506895201181384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_12
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31254c74c201cca48947d0cf403da398
+      internalID: -1496856714887914521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_13
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff84d2d95fef0a4cb9c6779a02302ab
+      internalID: -7419418095364437003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_14
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3754621548b0730449bce295f69fd062
+      internalID: 661253779299839725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_15
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc4cc6c90a63dc42b71f51a6f2001cf
+      internalID: 8301581167617708702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_16
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83cb446571be5504ba88ceca44fedbd7
+      internalID: -5764872372502468763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_17
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4363030ec92849419f878dfc39bd260
+      internalID: 4189989663813199714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_18
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d9129f5cd6d4f459c60b6d6cb24c83
+      internalID: 3010288570192218047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_19
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81e53bddd681e14ab54199d2605ff10
+      internalID: -7247461238491743261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_20
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58dcc95c586a5844da7428b7a9d2746f
+      internalID: -8159135663673328740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_raskadrovka_TYoMN_21
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 0
+        width: 900
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 483fc072e89004243b0ea38a73b8d211
+      internalID: -1466805943738835495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

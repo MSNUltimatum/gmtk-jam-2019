@@ -13,9 +13,11 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     [SerializeField]
     protected GameObject[] enemyWaves = null;
+    
+    public SpawnZoneScript SpawnZone = null;
 
     [SerializeField]
-    protected bool SpawnZone = false;
+    protected bool AllowEarlySpawns = true;
 
     [SerializeField]
     private bool isInfSpawn;
@@ -43,7 +45,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
         if (SpawnSquare)
         {
-            SpawnScript = SpawnSquare.GetComponent<SpawnZoneScript>();
+            SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
 
         currentEvilDictionary = evilDictionary;
@@ -164,7 +166,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             }
             else
             {
-                enemy.transform.position = SpawnScript.SpawnPosition();
+                enemy.transform.position = SpawnZone.SpawnPosition();
             }
 
             sequenceIndex++;
@@ -181,7 +183,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         while (boysList.Count != 0)
         {
-           boysList[0].GetComponent<MonsterLife>().Damage(999, ignoreInvulurability: true);
+           boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
         }
     }
 
@@ -190,8 +192,8 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (isInfSpawn)
         {
             timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy) && spawnIndex < enemyWaves.GetLength(0) && !RelodScene.isVictory 
-                && sequenceIndex < scenesController.pointsToVictory + 12)
+            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) 
+                && !RelodScene.isVictory && sequenceIndex < scenesController.pointsToVictory + 12)
             {
                 timeToNextSpawn = timeToEachSpawn;
                 SpawnMonsters(spawnIndex);
@@ -211,7 +213,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         else
         {
             timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy) && spawnIndex < enemyWaves.GetLength(0))
+            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0))
             {
                 timeToNextSpawn = timeToEachSpawn;
                 SpawnMonsters(spawnIndex);
@@ -246,7 +248,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         return res;
     }
 
-    public void SpawnСertainMonsterWithName(GameObject monster, string name)
+    public void SpawnСertainMonsterWithName(GameObject monster, string name, bool makeBoyIfPossible = true)
     {
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
         if (!anyBoy)
@@ -266,11 +268,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            enemy.transform.position = SpawnScript.SpawnPosition();
+            enemy.transform.position = SpawnZone.SpawnPosition();
         }
     }
 
-    public void SpawnCertainMonsterWithoutName(GameObject monster)
+    public GameObject SpawnCertainMonsterWithoutName(GameObject monster)
     {
 
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
@@ -292,10 +294,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-            enemy.transform.position = SpawnScript.SpawnPosition();
+            enemy.transform.position = SpawnZone.SpawnPosition();
         }
 
         sequenceIndex++;
+        return enemy;
     }
 
     public void MakeMonsterActive(string name1)
@@ -323,7 +326,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected CurrentEnemy currentEnemy;
 
-    private SpawnZoneScript SpawnScript;
     protected static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
