@@ -19,6 +19,15 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         sounds = soundsToRegister;
+        if (PlayerPrefs.HasKey("SoundVolume"))
+        {
+            userPrefSound = PlayerPrefs.GetFloat("SoundVolume");
+        }
+        else
+        {
+            userPrefSound = 0.5f;
+            PlayerPrefs.SetFloat("SoundVolume", 0.5f);
+        }
 
         if (instance == null)
         {
