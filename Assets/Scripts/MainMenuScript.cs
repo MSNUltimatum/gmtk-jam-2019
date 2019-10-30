@@ -103,8 +103,21 @@ public class MainMenuScript : MonoBehaviour
     // old and simple
     public void NewGame()
     {
-        print(stageDifficulty);
-        SceneManager.LoadScene(1);
+        switch (stageDifficulty)
+        {
+            case Difficulty.Easy:
+                SceneManager.LoadScene("EasyTutorialScene1");
+                break;
+            case Difficulty.Normal:
+                SceneManager.LoadScene("TutorialScene");
+                break;
+            case Difficulty.Hardcore:
+                SceneManager.LoadScene("HardTutorialScene");
+                break;
+            default:
+                break;
+        }
+        
     }
 
     public void ClickButtonSettings()

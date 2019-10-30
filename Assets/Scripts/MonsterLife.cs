@@ -13,6 +13,8 @@ public class MonsterLife : MonoBehaviour
     private GameObject absorbPrefab = null;
     [SerializeField]
     private GameObject enemyExplosionPrefab = null;
+    [SerializeField]
+    private float fadeInTime = 0.5f;
 
     private void Start()
     {
@@ -59,6 +61,8 @@ public class MonsterLife : MonoBehaviour
         return true;
     }
 
+    protected virtual void HitEffect() { }
+
     public void Damage(GameObject source, int damage = 1, bool ignoreInvulurability = false)
     {
         if ((THE_BOY || ignoreInvulurability) && SpecialConditions(source))
@@ -71,6 +75,10 @@ public class MonsterLife : MonoBehaviour
                 PreDestroyEffect();
                 
                 Destroy(gameObject);
+            }
+            else
+            {
+                HitEffect();
             }
         }
         else
@@ -128,7 +136,6 @@ public class MonsterLife : MonoBehaviour
         return THE_BOY;
     }
     
-    private float fadeInTime = 1f;
     private float fadeInLeft;
     private SpriteRenderer[] sprites;
 }

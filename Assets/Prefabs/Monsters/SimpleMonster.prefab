@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: 1.22, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2873645921850147136
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +427,7 @@ MonoBehaviour:
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
+  fadeInTime: 0.4
 --- !u!82 &-8664493499008248624
 AudioSource:
   m_ObjectHideFlags: 0

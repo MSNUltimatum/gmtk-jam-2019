@@ -154,6 +154,11 @@ public class Ch1BossLevelScript : MonoBehaviour
         CurrentEnemy.SetCurrentEnemyName("Survive!");
     }
 
+    [SerializeField]
+    private int BigBurstBulletAmount = 12;
+    [SerializeField]
+    private int MediumBurstBulletAmount = 8;
+
     private void UpdatePhase1()
     {
         Phase1TimeElapsed += Time.deltaTime;
@@ -202,11 +207,11 @@ public class Ch1BossLevelScript : MonoBehaviour
                     Phase1TimeToExplosion = 0.65f;
                     if (timeElapsed < 5)
                     {
-                        BossCircleBulletBurst(12, BossBulletMiddle);
+                        BossCircleBulletBurst(BigBurstBulletAmount, BossBulletMiddle);
                     }
                     else
                     {
-                        BossCircleBulletBurst(8, BossBulletMiddle);
+                        BossCircleBulletBurst(MediumBurstBulletAmount, BossBulletMiddle);
                     }
                     
                 }
@@ -286,6 +291,8 @@ public class Ch1BossLevelScript : MonoBehaviour
     private float Phase2TimeToMonsterSpawn = 0.0f;
     private int Phase2SpawnIndex = 0;
     private ArenaEnemySpawner monsterSpawner;
+    [SerializeField]
+    private float Phase2TimeToEachMonsterSpawn = 1f;
 
     private void UpdatePhase2()
     {
@@ -311,7 +318,7 @@ public class Ch1BossLevelScript : MonoBehaviour
                     spawnZone = dice < 0 ? leftSpawnZone : rightSpawnZone;
                     monsterSpawner.SpawnZone = spawnZone;
 
-                    Phase2TimeToMonsterSpawn = 1f;
+                    Phase2TimeToMonsterSpawn = Phase2TimeToEachMonsterSpawn;
                     if (Phase2SpawnIndex < Phase2Monsters.Length)
                     {
                         var monsterToSpawn = Phase2Monsters[Phase2SpawnIndex];
@@ -352,10 +359,19 @@ public class Ch1BossLevelScript : MonoBehaviour
     private float idleWaitTime = 1.24f;
     private Vector3 phase4SpawnPosition;
     private MonsterLife bossScript;
+    [SerializeField]
     private float phase4FadeIn = 1.5f;
     private float phase4FadeInLeft;
     [SerializeField]
     private GameObject MirrorCrack;
+    [SerializeField]
+    private int BurstBulletAmount = 36;
+    [SerializeField]
+    private Vector2 BulletSpeedRange = new Vector2(5, 15);
+    [SerializeField]
+    private float AfterBossFadeInExtraTime = 0.3f;
+    [SerializeField]
+    private float Phase4AfterAttackIdleTime = 2.75f;
 
     private void StartPhase4()
     {
@@ -401,15 +417,15 @@ public class Ch1BossLevelScript : MonoBehaviour
             case Phase4Attack.Spawn:
                 bossScript.FadeIn(phase4FadeIn);
                 phase4FadeInLeft -= Time.deltaTime;
-                if (phase4FadeInLeft + 0.3f <= 0)
+                if (phase4FadeInLeft + AfterBossFadeInExtraTime <= 0)
                 {
                     phase4FadeInLeft = phase4FadeIn;
                     phase4Attack = Phase4Attack.Attack;
                 }
                 break;
             case Phase4Attack.Attack:
-                idleWaitTime = 2;
-                Random360Burst(36);
+                idleWaitTime = Phase4AfterAttackIdleTime;
+                Random360Burst(BurstBulletAmount);
                 phase4Attack = Phase4Attack.Idle;
                 break;
             default:
@@ -438,7 +454,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         {
             var bullet = Instantiate(BossBulletMiddle, BossInstance.transform.position,
                 Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360))));
-            bullet.GetComponent<EnemyBulletLife>().BulletSpeed = Random.Range(5, 15);
+            bullet.GetComponent<EnemyBulletLife>().BulletSpeed = Random.Range(BulletSpeedRange.x, BulletSpeedRange.y);
         }
     }
 }

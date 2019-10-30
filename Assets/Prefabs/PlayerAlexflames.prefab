@@ -303,7 +303,6 @@ GameObject:
   - component: {fileID: 8124210527876159285}
   - component: {fileID: 4620249736018191623}
   - component: {fileID: 578118701}
-  - component: {fileID: 2266955740713272216}
   m_Layer: 0
   m_Name: PlayerAlexflames
   m_TagString: Player
@@ -510,15 +509,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShadowObject: {fileID: 51824688}
---- !u!114 &2266955740713272216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4305704709854959933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84a386ca55871a498bd56ed0a4af0e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
