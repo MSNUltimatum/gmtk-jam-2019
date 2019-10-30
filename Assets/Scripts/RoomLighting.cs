@@ -16,6 +16,7 @@ public class RoomLighting : MonoBehaviour
     bool StandartLightIncrease = true;
     [SerializeField]
     private float maxvalue = 0;
+    public float DefaultLight = 0.13f;
 
     private void Start()
     {
@@ -63,7 +64,7 @@ public class RoomLighting : MonoBehaviour
 
     private void RecalculateLight()
     {
-        Light = 0.1f + Mathf.Pow(Mathf.Clamp01(TotalValue / maxvalue), 1.7f) * 0.9f;
+        Light = DefaultLight + Mathf.Pow(Mathf.Clamp01(TotalValue / maxvalue), 1.7f) * (1 - DefaultLight);
        // Debug.Log(Light);
     }
 
@@ -130,5 +131,5 @@ public class RoomLighting : MonoBehaviour
     private float CurrentVal;
     float t = 0.0f;
     static float Light;
-    public float DefaultLight = 0.5f;
+    
 }

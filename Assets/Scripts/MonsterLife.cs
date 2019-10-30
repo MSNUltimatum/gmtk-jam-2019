@@ -54,17 +54,22 @@ public class MonsterLife : MonoBehaviour
         if (fadeInLeft == 0) GetComponent<Collider2D>().enabled = true;
     }
 
-    public void Damage(int damage = 1, bool ignoreInvulurability = false)
+    protected virtual bool SpecialConditions(GameObject source)
     {
-        if (THE_BOY || ignoreInvulurability)
+        return true;
+    }
+
+    public void Damage(GameObject source, int damage = 1, bool ignoreInvulurability = false)
+    {
+        if ((THE_BOY || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;
             if (HP <= 0)
             {
                 ArenaEnemySpawner.ChangeTheBoy(gameObject);
 
-                var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
-                Destroy(enemyExplosion, 0.5f);
+                PreDestroyEffect();
+                
                 Destroy(gameObject);
             }
         }
@@ -77,6 +82,12 @@ public class MonsterLife : MonoBehaviour
                 Destroy(absorb, 0.5f);
             }
         }
+    }
+
+    protected virtual void PreDestroyEffect()
+    {
+        var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
+        Destroy(enemyExplosion, 0.5f);
     }
 
     public void FadeIn(float _fadeInTime)

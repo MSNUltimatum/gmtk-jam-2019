@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Ch1BossLevelScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Ch1BossLevelScript : MonoBehaviour
     [SerializeField]
     private GameObject BossPrefab = null;
     private GameObject BossInstance;
+    private GameObject Player;
 
     new private Transform camera;
     enum Phase
@@ -18,6 +20,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         PRE_PHASE1,
         PHASE1,
         PHASE2,
+        PHASE4,
     }
 
     // Start is called before the first frame update
@@ -25,6 +28,7 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     private void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         AudioManager.Pause("Chapter1BossMusic", GetComponent<AudioSource>());
         CurrentEnemy.SetCurrentEnemyName("???");
         camera = Camera.main.transform;
@@ -34,6 +38,7 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     private void Update()
     {
+        if (CharacterLife.isDeath) return;
         timeElapsed += Time.deltaTime;
         switch (CurrentPhase)
         {
@@ -51,6 +56,9 @@ public class Ch1BossLevelScript : MonoBehaviour
                 break;
             case Phase.PHASE2:
                 UpdatePhase2();
+                break;
+            case Phase.PHASE4:
+                UpdatePhase4();
                 break;
             default:
                 break;
@@ -118,6 +126,9 @@ public class Ch1BossLevelScript : MonoBehaviour
     private float HomingShotCount = 0;
     private float Phase1MoveTimeElapsed = 0;
 
+    [SerializeField]
+    private Tilemap BossRoomEntrance = null;
+
     private void StartPhase1()
     {
         /////////////////////////////////////
@@ -126,7 +137,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         /////////////////////////////////////
         /////////////////////////////////////
         /////////////////////////////////////
-        timeElapsed = 20f;
+        //timeElapsed = 20f;
         
         CurrentPhase = Phase.PHASE1;
         BossInstance = Instantiate(BossPrefab, new Vector3(0, 16.5f, 0), Quaternion.identity);
@@ -149,6 +160,10 @@ public class Ch1BossLevelScript : MonoBehaviour
         switch (Phase1CurrentAttack)
         {
             case Phase1Attack.IDLE:
+                BossRoomEntrance.gameObject.SetActive(true);
+                BossRoomEntrance.color = new Color(
+                    BossRoomEntrance.color.r, BossRoomEntrance.color.g, BossRoomEntrance.color.b,
+                    Mathf.Lerp(0, 1, Phase1TimeElapsed / Phase1IdleTime));
                 if (Phase1TimeElapsed > Phase1IdleTime)
                 {
                     Phase1CurrentAttack = Phase1Attack.MoveExplode;
@@ -169,8 +184,9 @@ public class Ch1BossLevelScript : MonoBehaviour
                             Phase1StartingPosition.y,
                             Phase1StartingPosition.z);
                     }
-                    else
+                    if (timeElapsed > 16)
                     {
+                        Phase1MoveTimeElapsed = 0;
                         Phase1MoveStartPosition = BossInstance.transform.position;
                         Phase1PositionToMoveTo = new Vector3(
                             Phase1StartingPosition.x,
@@ -184,7 +200,15 @@ public class Ch1BossLevelScript : MonoBehaviour
                 if (Phase1TimeToExplosion <= 0)
                 {
                     Phase1TimeToExplosion = 0.65f;
-                    BossCircleBulletBurst(8, BossBulletMiddle);
+                    if (timeElapsed < 5)
+                    {
+                        BossCircleBulletBurst(12, BossBulletMiddle);
+                    }
+                    else
+                    {
+                        BossCircleBulletBurst(8, BossBulletMiddle);
+                    }
+                    
                 }
 
                 // Homing shot part
@@ -291,7 +315,8 @@ public class Ch1BossLevelScript : MonoBehaviour
                     if (Phase2SpawnIndex < Phase2Monsters.Length)
                     {
                         var monsterToSpawn = Phase2Monsters[Phase2SpawnIndex];
-                        monsterSpawner.SpawnCertainMonsterWithoutName(monsterToSpawn);
+                        var enemy = monsterSpawner.SpawnCertainMonsterWithoutName(monsterToSpawn);
+                        enemy.GetComponent<MonsterLife>().FadeIn(0.3f);
                     }
                     else
                     {
@@ -306,9 +331,114 @@ public class Ch1BossLevelScript : MonoBehaviour
                 GlassSprite.color = new Color(
                     GlassSprite.color.r, GlassSprite.color.g, GlassSprite.color.b,
                     Mathf.Lerp(0.5f, 0, GlassFadeOutPassed / GlassFadeOutDuration));
+                if (GlassFadeOutPassed / GlassFadeOutDuration > 1)
+                {
+                    StartPhase4();
+                }
                 break;
             default:
                 break;
+        }
+    }
+
+    enum Phase4Attack
+    {
+        Idle,
+        Spawn,
+        Attack
+    }
+
+    private Phase4Attack phase4Attack;
+    private float idleWaitTime = 1.24f;
+    private Vector3 phase4SpawnPosition;
+    private MonsterLife bossScript;
+    private float phase4FadeIn = 1.5f;
+    private float phase4FadeInLeft;
+    [SerializeField]
+    private GameObject MirrorCrack;
+
+    private void StartPhase4()
+    {
+        MirrorCrack.SetActive(true);
+        CurrentPhase = Phase.PHASE4;
+        phase4Attack = Phase4Attack.Idle;
+        phase4SpawnPosition = Phase4CalculateSpawnPosition();
+        CurrentEnemy.SetCurrentEnemyName("Shadow");
+        
+        Player.GetComponentInChildren<TMPro.TextMeshPro>().text = "Hero";
+        var bossName = BossInstance.GetComponentInChildren<TMPro.TextMeshPro>();
+        bossName.text = "Shadow";
+        var labelPosition = bossName.GetComponent<StopRotation>();
+        labelPosition.baseEulerRotation = new Vector3(0, 180, 0);
+        labelPosition.offset = new Vector3(
+            -labelPosition.offset.x, labelPosition.offset.y, labelPosition.offset.z);
+        
+        BossInstance.SetActive(true);
+        bossScript = BossInstance.GetComponent<MonsterLife>();
+        bossScript.FadeIn(phase4FadeIn);
+        bossScript.MakeBoy();
+    }
+
+    private void UpdatePhase4()
+    {
+        if (BossInstance == null)
+        {
+            CurrentEnemy.SetCurrentEnemyName(" ");
+            return;
+        }
+        CurrentEnemy.SetCurrentEnemyName("Shadow");
+        switch (phase4Attack)
+        {
+            case Phase4Attack.Idle:
+                idleWaitTime -= Time.deltaTime;
+                if (idleWaitTime <= 0)
+                {
+                    phase4Attack = Phase4Attack.Spawn;
+                    phase4FadeInLeft = phase4FadeIn;
+                    Phase4Spawn();
+                }
+                break;
+            case Phase4Attack.Spawn:
+                bossScript.FadeIn(phase4FadeIn);
+                phase4FadeInLeft -= Time.deltaTime;
+                if (phase4FadeInLeft + 0.3f <= 0)
+                {
+                    phase4FadeInLeft = phase4FadeIn;
+                    phase4Attack = Phase4Attack.Attack;
+                }
+                break;
+            case Phase4Attack.Attack:
+                idleWaitTime = 2;
+                Random360Burst(36);
+                phase4Attack = Phase4Attack.Idle;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private Vector3 Phase4CalculateSpawnPosition()
+    {
+        return new Vector3(
+            Random.Range(-10, 10),
+            Random.Range(7, 12),
+            0);
+    }
+
+    private void Phase4Spawn()
+    {
+        phase4SpawnPosition = Phase4CalculateSpawnPosition();
+        BossInstance.transform.position = phase4SpawnPosition;
+        Instantiate(bossSpawnEffect, phase4SpawnPosition, Quaternion.identity);
+    }
+
+    private void Random360Burst(int bullets)
+    {
+        for (int i = 0; i < bullets; i++)
+        {
+            var bullet = Instantiate(BossBulletMiddle, BossInstance.transform.position,
+                Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360))));
+            bullet.GetComponent<EnemyBulletLife>().BulletSpeed = Random.Range(5, 15);
         }
     }
 }

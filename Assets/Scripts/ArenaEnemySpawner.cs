@@ -183,7 +183,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         while (boysList.Count != 0)
         {
-           boysList[0].GetComponent<MonsterLife>().Damage(999, ignoreInvulurability: true);
+           boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
         }
     }
 
@@ -272,7 +272,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnCertainMonsterWithoutName(GameObject monster)
+    public GameObject SpawnCertainMonsterWithoutName(GameObject monster)
     {
 
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
@@ -298,6 +298,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
 
         sequenceIndex++;
+        return enemy;
     }
 
     public void MakeMonsterActive(string name1)
