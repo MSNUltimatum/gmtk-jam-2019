@@ -16,7 +16,7 @@ public class Pause : MonoBehaviour
         ChangeMenuVisibility();
     }
 
-    private static void ChangeMenuVisibility()
+    public static void ChangeMenuVisibility()
     {
         for (int i = 0; i < myTransform.childCount; i++)
         {
