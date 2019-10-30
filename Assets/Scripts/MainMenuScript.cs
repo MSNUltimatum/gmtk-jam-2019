@@ -19,6 +19,9 @@ public class MainMenuScript : MonoBehaviour
 
     [SerializeField]
     private GameObject Credits = null;
+
+    [SerializeField]
+    private GameObject Chapter1 = null;
     
 
     #region Monobehaviour functions

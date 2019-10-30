@@ -41,9 +41,11 @@ public class CharacterMovement : MonoBehaviour
         {
             direction.Normalize();
         }
+        var previousPosition = transform.position;
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
         if (anim != null)
         {
-            if (direction.magnitude == 0) 
+            if (direction.magnitude == 0 || Vector3.Distance(previousPosition, transform.position) < 0.001) 
             {
                 AudioManager.Pause("Walk", audio);
                 anim.Play("HeroIdle");
@@ -56,7 +58,6 @@ public class CharacterMovement : MonoBehaviour
                 shadowAnim.speed = 1;
             }        
         }
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);      
     }
 
     private Camera mainCamera = null;
