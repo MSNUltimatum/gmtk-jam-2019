@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Pause : MonoBehaviour
         ChangeMenuVisibility();
     }
 
-    private static void ChangeMenuVisibility()
+    public static void ChangeMenuVisibility()
     {
         for (int i = 0; i < myTransform.childCount; i++)
         {
@@ -42,6 +43,10 @@ public class Pause : MonoBehaviour
         {
             SetPause(!Paused);
         }
+    }
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     private static Transform myTransform;
