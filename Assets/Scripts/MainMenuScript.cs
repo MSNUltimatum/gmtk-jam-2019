@@ -16,6 +16,9 @@ public class MainMenuScript : MonoBehaviour
 
     [SerializeField]
     private GameObject StageSelectionScreen = null;
+
+    [SerializeField]
+    private GameObject Credits = null;
     
 
     #region Monobehaviour functions
@@ -24,6 +27,7 @@ public class MainMenuScript : MonoBehaviour
     {
         SetActiveTitle(true);
         GetScenesInBuild();
+        creditsStartPosition = Credits.transform.position;
     }
 
     private void Update()
@@ -67,6 +71,7 @@ public class MainMenuScript : MonoBehaviour
         SetActiveTitle(false);
         SetActiveSettings(false);
         SetActiveStageSelection(false);
+        SetActiveCredits(false);
     }
 
     #endregion
@@ -95,6 +100,11 @@ public class MainMenuScript : MonoBehaviour
     {
         DeactivateEverything();
         SetActiveStageSelection(true);
+    }
+
+    public void ClickButtonCredits()
+    {
+        SetActiveCredits(true);
     }
 
     public void ResetProgress()
@@ -135,7 +145,14 @@ public class MainMenuScript : MonoBehaviour
         StageSelectionScreen.SetActive(active);
     }
 
+    private void SetActiveCredits(bool active = true)
+    {
+        Credits.transform.position = creditsStartPosition;
+        Credits.SetActive(active);
+    }
+
     #endregion
 
     private string[] scenes = null;
+    private Vector3 creditsStartPosition;
 }

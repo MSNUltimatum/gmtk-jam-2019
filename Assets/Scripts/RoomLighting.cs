@@ -23,7 +23,7 @@ public class RoomLighting : MonoBehaviour
         sceneLight = GetComponentInChildren<Light2D>();
         Light = DefaultLight;
         var arena = GetComponent<ArenaEnemySpawner>();
-        if (arena && !StandartLightIncrease)
+        if (arena && StandartLightIncrease)
         {
             maxvalue = arena.EnemyCount();
             RecalculateLight();
