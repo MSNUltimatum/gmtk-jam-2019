@@ -150,6 +150,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapter1/EasyChapter1Level14.unity
     guid: d2a82e9440e743344a399008a0e0db61
   - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1levelboss.unity
+    guid: edd78d4036feebb4cb4839e51fa79171
+  - enabled: 1
     path: Assets/Scenes/Chapter1/HardTutorialScene.unity
     guid: c73ceed7e0f62d441b175be5db85af6c
   - enabled: 1

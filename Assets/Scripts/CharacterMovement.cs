@@ -45,17 +45,19 @@ public class CharacterMovement : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
         if (anim != null)
         {
+            if (CharacterLife.isDeath) return;
+
             if (direction.magnitude == 0 || Vector3.Distance(previousPosition, transform.position) < 0.001) 
             {
                 AudioManager.Pause("Walk", audio);
                 anim.Play("HeroIdle");
-                shadowAnim.speed = 0;
+                shadowAnim.Play("ShadowIdle");
             }
             else if (AudioManager.isPlaying("Walk", audio) == false)
             {
                 AudioManager.Play("Walk", audio);
                 anim.Play("HeroWalking");
-                shadowAnim.speed = 1;
+                shadowAnim.Play("HeroShadow");
             }        
         }
     }
