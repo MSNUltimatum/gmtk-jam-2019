@@ -483,13 +483,16 @@ public class Ch1BossLevelScript : MonoBehaviour
         CurrentPhase = Phase.DEAD;
     }
 
+    [SerializeField]
+    private string NextSceneName = "FinalCredits";
+
     private void UpdateDead()
     {
         GlassStartTimePassed += Time.deltaTime;
         GlassSprite.color = new Color(0, 0, 0, Mathf.Lerp(0, 1, GlassStartTimePassed / GlassStartDuration));
         if (GlassStartTimePassed / GlassStartDuration > 1)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(NextSceneName);
         }
     }
 }
