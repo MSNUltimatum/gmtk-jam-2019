@@ -81,7 +81,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Work in progress
 
-    0.2 (355)'
+    0.2 (392)'
 --- !u!114 &1604220384346249491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,3 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeDuration: 5
   text: {fileID: 5409723128484961763}
+  FadeOut: 1
