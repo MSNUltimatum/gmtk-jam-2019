@@ -248,3 +248,20 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 500
     source: {fileID: 0}
+  - name: Chapter1BossMusic
+    clip: {fileID: 8300000, guid: e2aec614fc285a74e9e1816c9e4e8d10, type: 3}
+    volume: 0.5
+    pitch: 1
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    loop: 0
+    mute: 0
+    bypassEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    source: {fileID: 0}

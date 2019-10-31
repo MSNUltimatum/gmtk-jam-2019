@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ca3a105cba4c46048857d8b27424c4c2
   - enabled: 1
+    path: Assets/Scenes/Chapter1/TutorialScene.unity
+    guid: 6db00fb990fb9a941af83978ca6c4bf6
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/TutorialScene2.unity
+    guid: 45c61941580814d40ba60776cc51c365
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/TutorialScene3.unity
+    guid: b11658d7125c6424e90ccdab2bd57749
+  - enabled: 1
     path: Assets/Scenes/Chapter1/Chapter1level1.unity
     guid: 59de8bf203e522f4aa5cb23a20bc969b
   - enabled: 1
@@ -44,12 +53,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapter1/Chapter1level14.unity
     guid: ce2db13866ef50c429903d9a2f256065
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/Chapter1levelboss.unity
+    guid: cabbf6a1813fe32429a98b38fa87ac45
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/TutorialScene.unity
-    guid: 1a66e6a22d4644b44b4926b9f3c70b5a
   - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: 8384673f6a713694891722ce26463aab
@@ -95,4 +104,100 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level10.unity
     guid: c70c7c4cadc5ef140a6ec45d45526c06
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyTutorialScene1.unity
+    guid: 79be5531e1cb593478c65cb60b2aa184
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyTutorialScene2.unity
+    guid: 21a36b8d7a3ce4e4d8fe30267f39455b
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyTutorialScene3.unity
+    guid: 040230dcb995db640ae1a260f6654315
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level1.unity
+    guid: d76faad8f531eb04cbf0d080bf7ef49a
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level2.unity
+    guid: 47d1e348e789a3e439ce677f97c7db6e
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level3.unity
+    guid: b949db98cb4f2214790f55fee74454ec
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level4.unity
+    guid: 652092e37938c4e44b52bdc1e2bae3a1
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level5.unity
+    guid: 15a12a0178a5e6e4995786347ce8dc3f
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level6.unity
+    guid: 7bd6f3f69a13ff7489028d201817bb8f
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level7.unity
+    guid: 361e228f43ff36c47bbf4f1748d1dfd0
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level8.unity
+    guid: caaa71a81efb47d489f81dcb3456c5a1
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level10.unity
+    guid: 47709da8d3fbe6842baabceba82b2ca5
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level11.unity
+    guid: e9a942170ba08994699b712fce40f4c3
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level12.unity
+    guid: 3b90082d4d9ea834f8c142a6e15e18ec
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1Level14.unity
+    guid: d2a82e9440e743344a399008a0e0db61
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/EasyChapter1levelboss.unity
+    guid: edd78d4036feebb4cb4839e51fa79171
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardTutorialScene.unity
+    guid: c73ceed7e0f62d441b175be5db85af6c
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardTutorialScene2.unity
+    guid: 222abe283909dfa47b33df74944ed907
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardTutorialScene3.unity
+    guid: c6d7e73bf2befbf4b8466e97fa6c3c71
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level1.unity
+    guid: b46339645dd380a49be74a677b3deb54
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level2.unity
+    guid: 9b560623a25d1e74aa67e29f4b472af2
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level3.unity
+    guid: 06c97027e85afc748a54850d3425a249
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level4.unity
+    guid: dc92eebb34dcdc2418a779706966123a
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level5.unity
+    guid: 35c59c23a613362418902df666e3bfe0
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level6.unity
+    guid: afb77deddb5ef55418ec403c6caa72bc
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level7.unity
+    guid: db6966576c8a1a943a0eb18ff1cbebe0
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level8.unity
+    guid: 4b53ea1ce4dc6fe4c871170cba710196
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level10.unity
+    guid: cab34f35aa71aa24082f7c9ec4a626fe
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level11.unity
+    guid: 93a92a6f581721b459dd292c15a91b97
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level12.unity
+    guid: 398c4310f7b46ff46b3b80e58fdefb50
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1level14.unity
+    guid: 418abb5c86b7cfd488c45cd82028100d
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardChapter1levelboss.unity
+    guid: f7e2543ed613e454fa8cbfd8a9a22a01
   m_configObjects: {}

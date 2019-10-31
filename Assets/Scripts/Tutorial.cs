@@ -7,6 +7,8 @@ public class Tutorial : MonoBehaviour
 {
     private GameObject Canvas;
     private GameObject Player;
+    [SerializeField]
+    private string NextRoomName = "TutorialScene2";
     void Start()
     {
         Tutorial1Victory = false;
@@ -26,7 +28,7 @@ public class Tutorial : MonoBehaviour
       
       if (Input.GetKeyDown (KeyCode.F) && Tutorial1Victory)
         {
-            SceneManager.LoadScene("TutorialScene2");
+            SceneManager.LoadScene(NextRoomName);
         }
 
     }

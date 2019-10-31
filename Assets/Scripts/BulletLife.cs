@@ -18,7 +18,9 @@ public class BulletLife : MonoBehaviour
     }
 
     void FixedUpdate()
-    { 
+    {
+        if (Pause.Paused) return;
+
         transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
         TTDLeft -= Time.fixedDeltaTime;
     }
@@ -30,7 +32,7 @@ public class BulletLife : MonoBehaviour
             var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
             if (monsterComp)
             {
-                monsterComp.Damage();
+                monsterComp.Damage(gameObject);
             }
             else
             {

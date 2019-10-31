@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -221,17 +221,17 @@ PrefabInstance:
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: timeToEachSpawn
-      value: 5
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: SpawnZone
-      value: 0
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
@@ -261,13 +261,13 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyWaves.Array.data[4]
       value: 
-      objectReference: {fileID: 3335050255548650855, guid: 99165c989dbcaf84b950db9821565ef8,
+      objectReference: {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[5]
       value: 
-      objectReference: {fileID: 3332098615629668360, guid: e63be7c6321389f4f9fcd1148eb8786f,
+      objectReference: {fileID: 3335050255548650855, guid: 99165c989dbcaf84b950db9821565ef8,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
@@ -768,6 +768,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7008990872234128438, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36,
         type: 3}
       propertyPath: playerTransform
@@ -777,11 +782,6 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraFollow
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008990872234128438, guid: 4fc24a6bf72ff344196c67178f97cf36,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 7008990872234128586, guid: 4fc24a6bf72ff344196c67178f97cf36,
         type: 3}

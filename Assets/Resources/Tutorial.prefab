@@ -40,11 +40,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1678975047963196677}
     m_Modifications:
-    - target: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_Name
-      value: SimpleMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -100,6 +95,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: m_Name
+      value: SimpleMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938150299196942965, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: weight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769902977028094434, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: timeToTarget
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769902977028094434, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: weight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986228130421800251, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: fadeInTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: maxAngularAccel
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -108,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -123,7 +148,12 @@ PrefabInstance:
     - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_text
-      value: TestMonstr
+      value: Heavy Push
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2873645921533590711, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}

@@ -27,7 +27,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    protected virtual void Update()
+    protected void Update()
+    {
+        if (Pause.Paused && !wasPausedLastFrame)
+        {
+            wasPausedLastFrame = true;
+            OnPauseGame();
+        }
+
+        if (Pause.UnPaused)
+        {
+            if (wasPausedLastFrame)
+            {
+                wasPausedLastFrame = false;
+                OnResumeGame();
+            }
+
+            UpdateEnemy();
+        }
+    }
+
+    protected virtual void UpdateEnemy()
     {
         MoveAndRotate();
     }
@@ -55,6 +75,25 @@ public class EnemyMovement : MonoBehaviour
         
         allowMovement = true;
     }
+
+    void OnPauseGame()
+    {
+        var rigidbody = GetComponent<Rigidbody2D>();
+        savedVelocity = rigidbody.velocity;
+        rigidbody.isKinematic = true;
+        rigidbody.Sleep();
+    }
+
+    void OnResumeGame()
+    {
+        var rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.WakeUp();
+        rigidbody.isKinematic = false;
+        rigidbody.AddForce(savedVelocity, ForceMode2D.Impulse);
+    }
+
+    Vector3 savedVelocity = new Vector3();
+    private bool wasPausedLastFrame = false;
 
     private bool allowMovement = true;
 }

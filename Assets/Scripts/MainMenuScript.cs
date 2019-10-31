@@ -16,6 +16,30 @@ public class MainMenuScript : MonoBehaviour
 
     [SerializeField]
     private GameObject StageSelectionScreen = null;
+
+    [SerializeField]
+    private GameObject Credits = null;
+
+    [SerializeField]
+    private GameObject Chapter1 = null;
+
+    [SerializeField]
+    private GameObject DiffictultyLabel = null;
+
+    [SerializeField]
+    private Sprite Chapter1EasyDiff;
+    [SerializeField]
+    private Sprite Chapter1NormalDiff;
+    [SerializeField]
+    private Sprite Chapter1HardcoreDiff;
+
+    enum Difficulty
+    {
+        Easy,
+        Normal,
+        Hardcore
+    }
+    private Difficulty stageDifficulty = Difficulty.Normal;
     
 
     #region Monobehaviour functions
@@ -24,6 +48,7 @@ public class MainMenuScript : MonoBehaviour
     {
         SetActiveTitle(true);
         GetScenesInBuild();
+        creditsStartPosition = Credits.transform.position;
     }
 
     private void Update()
@@ -52,7 +77,7 @@ public class MainMenuScript : MonoBehaviour
     void GrayLoadNotPlayedYet()
     {
         // TODO ВРЕМЕННЫЙ ФИКС
-        if (true || (!PlayerPrefs.HasKey("CurrentScene") || PlayerPrefs.GetInt("CurrentScene") == -1))
+        if (!PlayerPrefs.HasKey("CurrentScene") || PlayerPrefs.GetInt("CurrentScene") == -1)
         {
             PlayerPrefs.SetInt("CurrentScene", -1);
             var btn = titleScreenContainer.GetButtonContinue();
@@ -67,6 +92,8 @@ public class MainMenuScript : MonoBehaviour
         SetActiveTitle(false);
         SetActiveSettings(false);
         SetActiveStageSelection(false);
+        SetActiveCredits(false);
+        SetActiveChapter1(false);
     }
 
     #endregion
@@ -76,7 +103,21 @@ public class MainMenuScript : MonoBehaviour
     // old and simple
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        switch (stageDifficulty)
+        {
+            case Difficulty.Easy:
+                SceneManager.LoadScene("EasyTutorialScene1");
+                break;
+            case Difficulty.Normal:
+                SceneManager.LoadScene("TutorialScene");
+                break;
+            case Difficulty.Hardcore:
+                SceneManager.LoadScene("HardTutorialScene");
+                break;
+            default:
+                break;
+        }
+        
     }
 
     public void ClickButtonSettings()
@@ -85,11 +126,27 @@ public class MainMenuScript : MonoBehaviour
         SetActiveSettings(true);
     }
 
+    public void ClickButtonLoadGame()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentScene"));
+    }
+
     // moves to the stage selection screen
     public void ClickButtonNewGame()
     {
         DeactivateEverything();
         SetActiveStageSelection(true);
+    }
+
+    public void ClickButtonCredits()
+    {
+        SetActiveCredits(true);
+    }
+
+    public void ClickButtonChapter1()
+    {
+        DeactivateEverything();
+        SetActiveChapter1(true);
     }
 
     public void ResetProgress()
@@ -100,6 +157,44 @@ public class MainMenuScript : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void ClickButtonDifficultyLeft()
+    {
+        switch (stageDifficulty)
+        {
+            case Difficulty.Easy:
+                break;
+            case Difficulty.Normal:
+                stageDifficulty = Difficulty.Easy;
+                DiffictultyLabel.GetComponent<Image>().sprite = Chapter1EasyDiff;
+                break;
+            case Difficulty.Hardcore:
+                stageDifficulty = Difficulty.Normal;
+                DiffictultyLabel.GetComponent<Image>().sprite = Chapter1NormalDiff;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void ClickButtonDifficultyRight()
+    {
+        switch (stageDifficulty)
+        {
+            case Difficulty.Easy:
+                stageDifficulty = Difficulty.Normal;
+                DiffictultyLabel.GetComponent<Image>().sprite = Chapter1NormalDiff;
+                break;
+            case Difficulty.Normal:
+                stageDifficulty = Difficulty.Hardcore;
+                DiffictultyLabel.GetComponent<Image>().sprite = Chapter1HardcoreDiff;
+                break;
+            case Difficulty.Hardcore:
+                break;
+            default:
+                break;
+        }
     }
 
     #endregion
@@ -130,7 +225,19 @@ public class MainMenuScript : MonoBehaviour
         StageSelectionScreen.SetActive(active);
     }
 
+    private void SetActiveCredits(bool active = true)
+    {
+        Credits.transform.position = creditsStartPosition;
+        Credits.SetActive(active);
+    }
+
+    private void SetActiveChapter1(bool active = true)
+    {
+        Chapter1.SetActive(active);
+    }
+
     #endregion
 
     private string[] scenes = null;
+    private Vector3 creditsStartPosition;
 }

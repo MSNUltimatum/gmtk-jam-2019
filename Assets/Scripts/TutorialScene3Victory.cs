@@ -44,7 +44,7 @@ public class TutorialScene3Victory : RelodScene
             }
             else
             {
-                light.AddToLight(0.15f);
+                light.AddToLight(0.31f);
                 TimeForNextAdd = TimeForAdd;
             }
         }

@@ -13,6 +13,8 @@ public class MonsterLife : MonoBehaviour
     private GameObject absorbPrefab = null;
     [SerializeField]
     private GameObject enemyExplosionPrefab = null;
+    [SerializeField]
+    private float fadeInTime = 0.5f;
 
     private void Start()
     {
@@ -37,6 +39,7 @@ public class MonsterLife : MonoBehaviour
 
     private void Update()
     {
+        if (Pause.Paused) return;
         if (fadeInLeft != 0) FadeInLogic();
     }
 
@@ -50,20 +53,33 @@ public class MonsterLife : MonoBehaviour
             newColor.a = Mathf.Lerp(1, 0, fadeInLeft / fadeInTime);
             sprite.color = newColor;
         }
+
+        if (fadeInLeft == 0) GetComponent<Collider2D>().enabled = true;
     }
 
-    public void Damage(int damage = 1, bool ignoreInvulurability = false)
+    protected virtual bool SpecialConditions(GameObject source)
     {
-        if (THE_BOY || ignoreInvulurability)
+        return true;
+    }
+
+    protected virtual void HitEffect() { }
+
+    public void Damage(GameObject source, int damage = 1, bool ignoreInvulurability = false)
+    {
+        if ((THE_BOY || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;
             if (HP <= 0)
             {
                 ArenaEnemySpawner.ChangeTheBoy(gameObject);
 
-                var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
-                Destroy(enemyExplosion, 0.5f);
+                PreDestroyEffect();
+                
                 Destroy(gameObject);
+            }
+            else
+            {
+                HitEffect();
             }
         }
         else
@@ -77,8 +93,15 @@ public class MonsterLife : MonoBehaviour
         }
     }
 
+    protected virtual void PreDestroyEffect()
+    {
+        var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
+        Destroy(enemyExplosion, 0.5f);
+    }
+
     public void FadeIn(float _fadeInTime)
     {
+        GetComponent<Collider2D>().enabled = false;
         fadeInTime = _fadeInTime;
         fadeInLeft = _fadeInTime;
     }
@@ -113,8 +136,7 @@ public class MonsterLife : MonoBehaviour
     {
         return THE_BOY;
     }
-
-    private float fadeInTime = 1f;
+    
     private float fadeInLeft;
     private SpriteRenderer[] sprites;
 }

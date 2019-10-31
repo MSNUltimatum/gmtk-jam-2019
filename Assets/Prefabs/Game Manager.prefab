@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 152912017}
   - component: {fileID: 5526407621052106132}
   - component: {fileID: 3388020774218258525}
+  - component: {fileID: 972267073607571025}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -127,7 +128,8 @@ MonoBehaviour:
   - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
   - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
   - {fileID: 8109258291629398269, guid: 56eaf28768d474e488b6165f98220ab7, type: 3}
-  SpawnZone: 0
+  SpawnZone: {fileID: 0}
+  AllowEarlySpawns: 1
   isInfSpawn: 0
   RoomBounds: {x: 19, y: 11.5}
   evilDictionary: {fileID: 1705778125510524197}
@@ -160,7 +162,9 @@ MonoBehaviour:
   swampMatPrefab: {fileID: 2100000, guid: 996168049758bae4d8e65a05eff3fb12, type: 2}
   swampPrefab: {fileID: 6481534978391547033, guid: 6c7cec5c104f2f14a99506dc6676f3f9,
     type: 3}
-  DefaultLight: 0.5
+  StandartLightIncrease: 1
+  maxvalue: 0
+  DefaultLight: 0.13
 --- !u!114 &1705778125510524197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,3 +220,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
+--- !u!114 &972267073607571025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a72bdb1e203c74d834f389661165e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseCanvas: {fileID: 2892025730329295081, guid: 87515145ea6b5574a8e3cdef0f3c2431,
+    type: 3}

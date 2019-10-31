@@ -8,17 +8,22 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 12f;
     
     private Animator anim;
+    private Animator shadowAnim;
     private AudioSource audio;
 
     private void Start()
     {
         audio = GetComponent<AudioSource>();       
-        anim = GetComponentInChildren<Animator>();
+        var anims = GetComponentsInChildren<Animator>();
+        anim = anims[0];
+        shadowAnim = anims[1];
         mainCamera = Camera.main;
     }
 
     private void Update()
     {
+        if (Pause.Paused) return;
+
         Movement();
         Rotation();
     }
@@ -38,20 +43,25 @@ public class CharacterMovement : MonoBehaviour
         {
             direction.Normalize();
         }
+        var previousPosition = transform.position;
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
         if (anim != null)
         {
-            if (direction.magnitude == 0) 
+            if (CharacterLife.isDeath) return;
+
+            if (direction.magnitude == 0 || Vector3.Distance(previousPosition, transform.position) < 0.001) 
             {
                 AudioManager.Pause("Walk", audio);
                 anim.Play("HeroIdle");
+                shadowAnim.Play("ShadowIdle");
             }
             else if (AudioManager.isPlaying("Walk", audio) == false)
             {
                 AudioManager.Play("Walk", audio);
                 anim.Play("HeroWalking");
+                shadowAnim.Play("HeroShadow");
             }        
         }
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);      
     }
 
     private Camera mainCamera = null;

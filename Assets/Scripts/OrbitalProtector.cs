@@ -20,7 +20,7 @@ public class OrbitalProtector : EnemyMovement
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         if (host != null)
         {
