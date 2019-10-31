@@ -12,6 +12,8 @@ public class BulletLife : MonoBehaviour
 
     void Start()
     {
+        var audio = GetComponent<AudioSource>();
+        AudioManager.Play("WeaponShot", audio);
         TTDLeft = timeToDestruction;
     }
 
@@ -30,7 +32,7 @@ public class BulletLife : MonoBehaviour
             var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
             if (monsterComp)
             {
-                monsterComp.Damage();
+                monsterComp.Damage(gameObject);
             }
             else
             {

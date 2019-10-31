@@ -8,14 +8,15 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 12f;
     
     private Animator anim;
-    private AudioSource walkingSound;
+    private Animator shadowAnim;
+    private AudioSource audio;
 
     private void Start()
     {
-        var sounds = GetComponents<AudioSource>();
-        walkingSound = sounds[1];
-        anim = GetComponentInChildren<Animator>();
-
+        audio = GetComponent<AudioSource>();       
+        var anims = GetComponentsInChildren<Animator>();
+        anim = anims[0];
+        shadowAnim = anims[1];
         mainCamera = Camera.main;
     }
 
@@ -35,30 +36,34 @@ public class CharacterMovement : MonoBehaviour
     }
     
     private void Movement()
-    {
+    {       
         Vector2 direction = new Vector2();
         direction += new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (direction.magnitude > 1)
         {
             direction.Normalize();
         }
+        var previousPosition = transform.position;
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
         if (anim != null)
         {
-            if (direction.magnitude == 0) 
+            if (CharacterLife.isDeath) return;
+
+            if (direction.magnitude == 0 || Vector3.Distance(previousPosition, transform.position) < 0.001) 
             {
-                walkingSound.Pause();
+                AudioManager.Pause("Walk", audio);
                 anim.Play("HeroIdle");
+                shadowAnim.Play("ShadowIdle");
             }
-            else if (walkingSound.isPlaying == false)
+            else if (AudioManager.isPlaying("Walk", audio) == false)
             {
-                walkingSound.volume = Random.Range(0.4f, 0.6f);
-                walkingSound.pitch = Random.Range(0.8f, 1f);
-                walkingSound.Play();            
+                AudioManager.Play("Walk", audio);
                 anim.Play("HeroWalking");
-            }
+                shadowAnim.Play("HeroShadow");
+            }        
         }
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
     private Camera mainCamera = null;
+
 }

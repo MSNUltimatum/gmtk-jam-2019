@@ -10,10 +10,15 @@ public class Pause : MonoBehaviour
 
     public static bool UnPaused { get { return !Paused; } }
 
+    [SerializeField]
+    GameObject pauseCanvas = null;
+
     private void Start()
     {
+        var pause = Instantiate(pauseCanvas);
+
         Paused = false;
-        myTransform = transform;
+        myTransform = pause.transform;
         ChangeMenuVisibility();
     }
 
