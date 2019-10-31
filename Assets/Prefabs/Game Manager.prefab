@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 1705778125510524197}
   - component: {fileID: 152912017}
   - component: {fileID: 5526407621052106132}
+  - component: {fileID: 972267073607571025}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -205,3 +206,17 @@ MonoBehaviour:
   pointsToVictory: 0
   monsterAdditionLimit: 12
   TotalValue: 0
+--- !u!114 &972267073607571025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a72bdb1e203c74d834f389661165e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseCanvas: {fileID: 2892025730329295081, guid: 87515145ea6b5574a8e3cdef0f3c2431,
+    type: 3}

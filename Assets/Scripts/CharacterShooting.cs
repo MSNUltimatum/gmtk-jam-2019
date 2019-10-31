@@ -23,6 +23,13 @@ public class CharacterShooting : MonoBehaviour
 
     private void Update()
     {
+        if (Pause.Paused)
+        {
+            Cursor.visible = true;
+            return;
+        }
+        Cursor.visible = false;
+
         if (reloadTimeLeft > 0)
         {
             reloadTimeLeft -= Time.deltaTime;

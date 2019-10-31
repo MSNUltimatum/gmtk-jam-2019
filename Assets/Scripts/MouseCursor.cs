@@ -19,13 +19,20 @@ public class MouseCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var mousePos = Input.mousePosition;
-        var screenPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        screenPoint.z = 0;
-        //Vector3 mousePos = Input.mousePosition;
-        transform.position = screenPoint;
+        if (Pause.Paused)
+        {
+            transform.position = new Vector3(-1337, -1337);
+        }
+        else
+        {
+            var mousePos = Input.mousePosition;
+            var screenPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            screenPoint.z = 0;
+            //Vector3 mousePos = Input.mousePosition;
+            transform.position = screenPoint;
 
-        if (ShouldRotate) RotateFromCharacter(mousePos);
+            if (ShouldRotate) RotateFromCharacter(mousePos);
+        }
     }
 
     // Rotate cursor towards main character

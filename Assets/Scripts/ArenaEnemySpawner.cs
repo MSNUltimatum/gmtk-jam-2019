@@ -176,6 +176,8 @@ public class ArenaEnemySpawner : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (Pause.Paused) return;
+
         EnemySpawnUpdate();
     }
 

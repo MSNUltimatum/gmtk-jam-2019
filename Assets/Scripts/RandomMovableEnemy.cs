@@ -24,11 +24,11 @@ public class RandomMovableEnemy : EnemyMovement
         transform.position = Vector3.MoveTowards(transform.position, direct, EnemySpeed * Time.deltaTime);
     }
 
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         NewDirect();
-        base.Update();
+        base.UpdateEnemy();
     }
 
     private void NewDirect()

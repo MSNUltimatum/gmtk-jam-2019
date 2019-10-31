@@ -22,11 +22,11 @@ public class Ghost : EnemyMovement
         base.Start();
     }
 
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         GhostMode();
-        base.Update();
+        base.UpdateEnemy();
     }
 
     private void GhostMode()

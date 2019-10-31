@@ -14,6 +14,9 @@ public class Chapter1BossMonsterLife : MonsterLife
         base.PreDestroyEffect();
         AudioManager.Pause("Chapter1BossMusic",
             GameObject.FindWithTag("GameController").GetComponent<AudioSource>());
+        var lightController = GameObject.FindGameObjectWithTag("GameController")
+            .GetComponent<RoomLighting>();
+        lightController.AddToLight(100);
     }
 
     protected override void HitEffect()
