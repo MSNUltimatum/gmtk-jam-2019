@@ -21,7 +21,7 @@ public class MouseCursor : MonoBehaviour
     {
         if (Pause.Paused)
         {
-            transform.position = new Vector3(-1000, -1000);
+            transform.position = new Vector3(-1337, -1337);
         }
         else
         {

@@ -28,6 +28,7 @@ public class CharacterShooting : MonoBehaviour
             Cursor.visible = true;
             return;
         }
+        Cursor.visible = false;
 
         if (reloadTimeLeft > 0)
         {

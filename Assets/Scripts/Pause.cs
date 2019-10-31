@@ -15,11 +15,14 @@ public class Pause : MonoBehaviour
 
     private void Start()
     {
-        var pause = Instantiate(pauseCanvas);
+        if (pauseCanvas != null)
+        {
+            var pause = Instantiate(pauseCanvas);
 
-        Paused = false;
-        myTransform = pause.transform;
-        ChangeMenuVisibility();
+            Paused = false;
+            myTransform = pause.transform;
+            SetPause(false);
+        }
     }
 
     public static void ChangeMenuVisibility()
@@ -51,7 +54,8 @@ public class Pause : MonoBehaviour
     }
     public void GoToMenu()
     {
-        SceneManager.LoadScene("MenuScene");
+        SetPause(false);
+        SceneManager.LoadScene("MainMenu");
     }
 
     private static Transform myTransform;
