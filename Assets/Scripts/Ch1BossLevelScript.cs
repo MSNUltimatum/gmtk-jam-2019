@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Ch1BossLevelScript : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         PHASE1,
         PHASE2,
         PHASE4,
+        DEAD
     }
 
     // Start is called before the first frame update
@@ -59,6 +61,9 @@ public class Ch1BossLevelScript : MonoBehaviour
                 break;
             case Phase.PHASE4:
                 UpdatePhase4();
+                break;
+            case Phase.DEAD:
+                UpdateDead();
                 break;
             default:
                 break;
@@ -269,7 +274,7 @@ public class Ch1BossLevelScript : MonoBehaviour
     private Phase2Attack Phase2CurrentAttack;
     private float GlassStartDuration = 1.5f;
     private float GlassStartTimePassed;
-    private float GlassFadeOutDuration = 0.5f;
+    private float GlassFadeOutDuration = 1f;
     private float GlassFadeOutPassed;
     [SerializeField]
     private SpawnZoneScript leftSpawnZone = null;
@@ -335,9 +340,13 @@ public class Ch1BossLevelScript : MonoBehaviour
                 break;
             case Phase2Attack.GlassFade:
                 GlassFadeOutPassed += Time.deltaTime;
-                GlassSprite.color = new Color(
-                    GlassSprite.color.r, GlassSprite.color.g, GlassSprite.color.b,
-                    Mathf.Lerp(0.5f, 0, GlassFadeOutPassed / GlassFadeOutDuration));
+                if (GlassFadeOutPassed < GlassFadeOutDuration)
+                {
+                    GlassSprite.color = new Color(
+                        GlassSprite.color.r, GlassSprite.color.g, GlassSprite.color.b,
+                        Mathf.Lerp(0.5f, 1, GlassFadeOutPassed / GlassFadeOutDuration));
+                }
+                
                 if (GlassFadeOutPassed / GlassFadeOutDuration > 1)
                 {
                     StartPhase4();
@@ -393,12 +402,21 @@ public class Ch1BossLevelScript : MonoBehaviour
         bossScript = BossInstance.GetComponent<MonsterLife>();
         bossScript.FadeIn(phase4FadeIn);
         bossScript.MakeBoy();
+
+        GlassFadeOutDuration = GlassFadeOutDuration / 3;
+        GlassFadeOutPassed = 0;
     }
 
     private void UpdatePhase4()
     {
+        GlassFadeOutPassed += Time.deltaTime;
+        GlassSprite.color = new Color(
+            GlassSprite.color.r, GlassSprite.color.g, GlassSprite.color.b,
+            Mathf.Lerp(1, 0, GlassFadeOutPassed / GlassFadeOutDuration));
+
         if (BossInstance == null)
         {
+            StartDead();
             CurrentEnemy.SetCurrentEnemyName(" ");
             return;
         }
@@ -455,6 +473,23 @@ public class Ch1BossLevelScript : MonoBehaviour
             var bullet = Instantiate(BossBulletMiddle, BossInstance.transform.position,
                 Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360))));
             bullet.GetComponent<EnemyBulletLife>().BulletSpeed = Random.Range(BulletSpeedRange.x, BulletSpeedRange.y);
+        }
+    }
+
+    private void StartDead()
+    {
+        GlassStartDuration = 3;
+        GlassStartTimePassed = 0;
+        CurrentPhase = Phase.DEAD;
+    }
+
+    private void UpdateDead()
+    {
+        GlassStartTimePassed += Time.deltaTime;
+        GlassSprite.color = new Color(0, 0, 0, Mathf.Lerp(0, 1, GlassStartTimePassed / GlassStartDuration));
+        if (GlassStartTimePassed / GlassStartDuration > 1)
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
