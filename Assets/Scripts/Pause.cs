@@ -58,5 +58,10 @@ public class Pause : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void ExitSave()
+    {
+        Application.Quit();
+    }
+
     private static Transform myTransform;
 }

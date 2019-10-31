@@ -200,4 +200,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapter1/HardChapter1levelboss.unity
     guid: f7e2543ed613e454fa8cbfd8a9a22a01
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/FinalCredits.unity
+    guid: 0989436f6194b7d43a778accb4a8d00f
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/HardFinalCredits.unity
+    guid: 2d3d30c3368ee544eaf3a420dc0918c3
   m_configObjects: {}
