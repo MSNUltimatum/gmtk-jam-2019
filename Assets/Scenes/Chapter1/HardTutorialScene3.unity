@@ -5941,7 +5941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592b26361a0b5da4691f67d1c939113c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: HardLevel1
+  NextSceneName: HardChapter1level1
   SceneNumber: 0
   isPointVictory: 0
   pointsToVictory: 0
