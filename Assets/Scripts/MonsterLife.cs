@@ -66,6 +66,7 @@ public class MonsterLife : MonoBehaviour
 
     public void Damage(GameObject source, int damage = 1, bool ignoreInvulurability = false)
     {
+        if (HP <= 0) return; // Already dead
         if ((THE_BOY || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;

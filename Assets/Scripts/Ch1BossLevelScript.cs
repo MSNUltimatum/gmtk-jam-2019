@@ -72,6 +72,7 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     public void StartFight()
     {
+        Pause.AllowPause = false;
         CurrentPhase = Phase.PRE_PHASE1;
         Instantiate(bossSpawnEffect, new Vector3(0, 16.5f, 0), Quaternion.identity);
     }
@@ -170,10 +171,6 @@ public class Ch1BossLevelScript : MonoBehaviour
         switch (Phase1CurrentAttack)
         {
             case Phase1Attack.IDLE:
-                BossRoomEntrance.gameObject.SetActive(true);
-                BossRoomEntrance.color = new Color(
-                    BossRoomEntrance.color.r, BossRoomEntrance.color.g, BossRoomEntrance.color.b,
-                    Mathf.Lerp(0, 1, Phase1TimeElapsed / Phase1IdleTime));
                 if (Phase1TimeElapsed > Phase1IdleTime)
                 {
                     Phase1CurrentAttack = Phase1Attack.MoveExplode;
@@ -256,6 +253,10 @@ public class Ch1BossLevelScript : MonoBehaviour
     {
         timeElapsed = 0;
         phasePre1TimeToBossSpawn -= Time.deltaTime;
+        BossRoomEntrance.gameObject.SetActive(true);
+        BossRoomEntrance.color = new Color(
+            BossRoomEntrance.color.r, BossRoomEntrance.color.g, BossRoomEntrance.color.b,
+            Mathf.Lerp(1, 0, phasePre1TimeToBossSpawn / 2));
         if (phasePre1TimeToBossSpawn <= 0)
         {
             StartPhase1();
@@ -388,7 +389,6 @@ public class Ch1BossLevelScript : MonoBehaviour
         CurrentPhase = Phase.PHASE4;
         phase4Attack = Phase4Attack.Idle;
         phase4SpawnPosition = Phase4CalculateSpawnPosition();
-        CurrentEnemy.SetCurrentEnemyName("Shadow");
         
         Player.GetComponentInChildren<TMPro.TextMeshPro>().text = "Hero";
         var bossName = BossInstance.GetComponentInChildren<TMPro.TextMeshPro>();
@@ -420,7 +420,10 @@ public class Ch1BossLevelScript : MonoBehaviour
             CurrentEnemy.SetCurrentEnemyName(" ");
             return;
         }
-        CurrentEnemy.SetCurrentEnemyName("Shadow");
+        if (ArenaEnemySpawner.boysList.Count == 0)
+        {
+            CurrentEnemy.SetCurrentEnemyName("Shadow");
+        }
         switch (phase4Attack)
         {
             case Phase4Attack.Idle:

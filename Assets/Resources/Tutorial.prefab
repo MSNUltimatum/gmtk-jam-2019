@@ -40,6 +40,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1678975047963196677}
     m_Modifications:
+    - target: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: m_Name
+      value: SimpleMonster
+      objectReference: {fileID: 0}
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,10 +100,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
+    - target: {fileID: 1986228130421800251, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
-      propertyPath: m_Name
-      value: SimpleMonster
+      propertyPath: fadeInTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: maxAngularAccel
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7938150299196942965, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -115,15 +125,26 @@ PrefabInstance:
       propertyPath: weight
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 1986228130421800251, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: fadeInTime
-      value: 0.25
+    - target: {fileID: 1730985608, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
+    - target: {fileID: 1730985608, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
+      propertyPath: m_Color.g
+      value: 0.41960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730985608, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730985608, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
+      propertyPath: m_Color.a
+      value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873645921533590711, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
-      propertyPath: maxAngularAccel
-      value: 10000
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2873645921533590705, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -154,11 +175,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.spaceCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873645921533590711, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4244844303079205824, guid: 49e2859874a9916439d03436ec6cfa94, type: 3}
@@ -240,6 +256,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305704709305310690, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.23553754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305704709305310690, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.57026315
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305704709305310690, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305704709305310690, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.62352943
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4305704709854959935, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}

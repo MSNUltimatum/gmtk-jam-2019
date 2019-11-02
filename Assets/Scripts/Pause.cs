@@ -9,12 +9,14 @@ public class Pause : MonoBehaviour
     public static bool Paused { get; private set; } = false;
 
     public static bool UnPaused { get { return !Paused; } }
+    public static bool AllowPause = true;
 
     [SerializeField]
     GameObject pauseCanvas = null;
 
-    private void Start()
+    private void Awake()
     {
+        AllowPause = true;
         if (pauseCanvas != null)
         {
             var pause = Instantiate(pauseCanvas);
@@ -36,6 +38,7 @@ public class Pause : MonoBehaviour
     public static void SetPause(bool shouldPause, bool openMenu = true)
     {
         Paused = shouldPause;
+        Cursor.visible = shouldPause;
 
         if (openMenu) ChangeMenuVisibility();
     }
@@ -47,7 +50,7 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && AllowPause)
         {
             SetPause(!Paused);
         }

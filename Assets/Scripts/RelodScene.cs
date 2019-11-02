@@ -45,32 +45,32 @@ public class RelodScene : MonoBehaviour
         Reload();
     }
 
+    protected virtual void ProcessVictory()
+    {
+        CurrentEnemy.SetCurrentEnemyName(" ");
+        isVictory = true;
+        Canvas.transform.GetChild(0).gameObject.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
+        {
+            Canvas.transform.GetChild(0).gameObject.SetActive(false);
+            SceneManager.LoadScene(NextSceneName);
+        }
+    }
+
     protected virtual void Victory()
     {
         if (isPointVictory)
         {
             if (TotalValue >= pointsToVictory)
             {
-                isVictory = true;
-                Canvas.transform.GetChild(0).gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
-                {
-                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
-                    SceneManager.LoadScene(NextSceneName);
-                }
+                ProcessVictory();
             }
         }
         else
         {
             if (TotalValue >= maxvalue)
             {
-                isVictory = true;
-                Canvas.transform.GetChild(0).gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
-                {
-                    Canvas.transform.GetChild(0).gameObject.SetActive (false);
-                    SceneManager.LoadScene(NextSceneName);
-                }
+                ProcessVictory();
             }
         }
     }

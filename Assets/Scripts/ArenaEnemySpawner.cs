@@ -328,7 +328,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected CurrentEnemy currentEnemy;
 
-    protected static List<GameObject> boysList = new List<GameObject>();
+    public static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
