@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RicochetMonsterMovement : EnemyMovement
+public class RicochetMovement : EnemyBehavior
 {
-    private Vector2 direction;
-
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        direction = (Player.transform.position - gameObject.transform.position).normalized;
+        base.Awake();
+        transform.forward = (target.transform.position - gameObject.transform.position).normalized;
     }
 
-    // Update is called once per frame
-    protected override void Update()
+    public override EnemySteering GetSteering()
     {
-        transform.Translate(direction * EnemySpeed * Time.deltaTime);
-       
+        EnemySteering steering = new EnemySteering();
+        steering.linear = transform.forward * agent.maxAccel;
+
+        return steering;
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Environment")
         {
+            var direction = transform.forward;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,
                     float.PositiveInfinity, LayerMask.GetMask("Default"));
             if (hit)
