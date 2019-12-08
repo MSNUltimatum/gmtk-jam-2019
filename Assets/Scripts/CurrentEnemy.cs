@@ -8,20 +8,22 @@ public class CurrentEnemy : MonoBehaviour
     GameObject CanvasPrefab = null;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        // UI BLOCK
-        var canvas = Instantiate(CanvasPrefab);
-        EnemyName = canvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        // LOGIC BLOCK
+        var canvasEnemyName = Instantiate(CanvasPrefab);
+        EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
-    public void SetCurrentEnemy(string enemyName, GameObject enemy)
+    public static void SetCurrentEnemy(string enemyName, GameObject enemy)
     {
-        // UI BLOCK
         EnemyName.text = enemyName;
-        // LOGIC BLOCK
     }
 
-    private TMPro.TextMeshProUGUI EnemyName;
+    public static void SetCurrentEnemyName(string enemyName)
+    {
+        EnemyName.text = enemyName;
+    }
+
+    private GameObject gameController;
+    private static TMPro.TextMeshProUGUI EnemyName;
 }
