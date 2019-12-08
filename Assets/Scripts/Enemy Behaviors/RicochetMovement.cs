@@ -8,27 +8,29 @@ public class RicochetMovement : EnemyBehavior
     protected override void Awake()
     {
         base.Awake();
-        transform.forward = (target.transform.position - gameObject.transform.position).normalized;
+        transform.LookAt((target.transform.position - gameObject.transform.position).normalized, Vector3.forward);
     }
 
     public override EnemySteering GetSteering()
     {
         EnemySteering steering = new EnemySteering();
-        steering.linear = transform.forward * agent.maxAccel;
+        steering.linear = transform.up;
+        steering.linear *= agent.maxAccel;
 
         return steering;
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Environment")
         {
-            var direction = transform.forward;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,
-                    float.PositiveInfinity, LayerMask.GetMask("Default"));
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1);
             if (hit)
             {
-                direction = Vector2.Reflect(direction, hit.normal);
+                print("yosh");
+                print(transform.up);
+                transform.LookAt(Vector2.Reflect(transform.up, hit.normal), Vector3.forward);
+                print(transform.up);
             }
         }
     }
