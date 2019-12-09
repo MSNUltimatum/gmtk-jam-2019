@@ -12,11 +12,15 @@ public class BulletLife : MonoBehaviour
 
     void Start()
     {
+        var audio = GetComponent<AudioSource>();
+        AudioManager.Play("WeaponShot", audio);
         TTDLeft = timeToDestruction;
     }
 
     void FixedUpdate()
-    { 
+    {
+        if (Pause.Paused) return;
+
         transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
         TTDLeft -= Time.fixedDeltaTime;
     }
@@ -28,7 +32,7 @@ public class BulletLife : MonoBehaviour
             var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
             if (monsterComp)
             {
-                monsterComp.Damage();
+                monsterComp.Damage(gameObject);
             }
             else
             {
@@ -65,7 +69,9 @@ public class BulletLife : MonoBehaviour
     {
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<DynamicLightInOut>().FadeOut();
         Destroy(gameObject, 1);
+        Destroy(particlesEmitter.gameObject, 2);
         StopEmitter();
     }
 

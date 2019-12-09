@@ -5,17 +5,16 @@ using UnityEngine;
 public class CharacterShooting : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Bullet = null;
-
-    [SerializeField]
-    private float randomShootingAngle = 0;
-
-    [SerializeField]
     private GameObject mouseCursorObj = null;
-
+    [SerializeField]
+    bool ExtraWeapon;
     private void Start()
     {
-        weapon = new Pistol();
+        if (ExtraWeapon == true)   
+            weapon = new PistolHokage();    
+        else
+            weapon = new Pistol();
+        
         mainCamera = Camera.main;
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
@@ -24,6 +23,13 @@ public class CharacterShooting : MonoBehaviour
 
     private void Update()
     {
+        if (Pause.Paused)
+        {
+            Cursor.visible = true;
+            return;
+        }
+        Cursor.visible = false;
+
         if (reloadTimeLeft > 0)
         {
             reloadTimeLeft -= Time.deltaTime;

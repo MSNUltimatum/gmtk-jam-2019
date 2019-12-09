@@ -37,9 +37,6 @@ public class ToxicMonsterBulletLife : EnemyBulletLife
     {
         var PlayerPos = Player.transform.position;
         var offset = new Vector2(PlayerPos.x - transform.position.x, PlayerPos.y - transform.position.y);
-        //var angle = Mathf.Clamp(
-        //    Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg,
-        //    -HomingEulerAnglesPerSecond, HomingEulerAnglesPerSecond) * Time.deltaTime;
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         var currentAngle = gameObject.transform.rotation.eulerAngles.z;
         var difference = angle180fix(angle - currentAngle);

@@ -11,6 +11,8 @@ public class EnemyBulletLife : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (Pause.Paused) return;
+
         transform.Translate(Vector2.right * BulletSpeed * Time.deltaTime, Space.Self);
         Destroy(gameObject, BulletLifeLength);
     }

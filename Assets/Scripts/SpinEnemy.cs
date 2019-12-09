@@ -17,7 +17,7 @@ public class SpinEnemy : EnemyMovement
         NotSpinSpeed = EnemySpeed;
     }
 
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         MoveToward();
         Spin();

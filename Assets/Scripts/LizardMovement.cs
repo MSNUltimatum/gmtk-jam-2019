@@ -22,11 +22,11 @@ public class LizardMovement : EnemyMovement
         base.Start();
     }
 
-    protected override void Update()
+    protected override void UpdateEnemy()
     {
         CDTLeft = Mathf.Max(CDTLeft - Time.deltaTime, 0);
         LBTLeft = Mathf.Max(LBTLeft - Time.deltaTime, 0);
-        base.Update();
+        base.UpdateEnemy();
     }
 
     protected override void MoveToward()

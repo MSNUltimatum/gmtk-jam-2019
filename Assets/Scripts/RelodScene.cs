@@ -2,26 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 
 public class RelodScene : MonoBehaviour
 {
     [SerializeField]
-    private int SceneNumber = 0;
-    private static bool isVictory = false;
-    private float TotalValue = 0;
-    private float maxvalue = 0;
+    protected string NextSceneName = "";
     [SerializeField]
-    private string NextSceneName = "";
-    private static GameObject Canvas;
+    protected int SceneNumber = 0;
 
-    private void Start()
+    public bool isPointVictory = false;
+    public int pointsToVictory;
+    // How much monsters should be spawned after limit is exceeded (not exactly, waves are not cut)
+    public int monsterAdditionLimit = 12;
+    public static bool isVictory = false;
+    public int TotalValue = 0;
+    private float maxvalue = 0;
+
+    protected static GameObject Canvas;
+
+    protected virtual void Awake()
     {
+        ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
-        Canvas.transform.GetChild(0).gameObject.SetActive(false);
         maxvalue = arena.EnemyCount();
+
+        Canvas.transform.GetChild(0).gameObject.SetActive(false);
+        isVictory = false;
+        PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
     }
 
     public void CurrentCount(int val)
@@ -31,19 +41,42 @@ public class RelodScene : MonoBehaviour
 
     private void Update()
     {
-        if (TotalValue == maxvalue)
+        Victory();
+        Reload();
+    }
+
+    protected virtual void ProcessVictory()
+    {
+        CurrentEnemy.SetCurrentEnemyName(" ");
+        isVictory = true;
+        Canvas.transform.GetChild(0).gameObject.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
         {
-            isVictory = true;
-            Canvas.transform.GetChild(0).gameObject.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
+            Canvas.transform.GetChild(0).gameObject.SetActive(false);
+            SceneManager.LoadScene(NextSceneName);
+        }
+    }
+
+    protected virtual void Victory()
+    {
+        if (isPointVictory)
+        {
+            if (TotalValue >= pointsToVictory)
             {
-                if(PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
-                    PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                Canvas.transform.GetChild(0).gameObject.SetActive(false);
-                SceneManager.LoadScene(NextSceneName);
+                ProcessVictory();
             }
         }
+        else
+        {
+            if (TotalValue >= maxvalue)
+            {
+                ProcessVictory();
+            }
+        }
+    }
 
+    protected virtual void Reload()
+    {
         if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
         {
             TotalValue = 0;
@@ -59,3 +92,26 @@ public class RelodScene : MonoBehaviour
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
+
+/*[CustomEditor(typeof(RelodScene))]
+public class MyEditorClass : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        // If we call base the default inspector will get drawn too.
+        // Remove this line if you don't want that to happen.
+        //base.OnInspectorGUI();
+
+        RelodScene myReload = target as RelodScene;
+
+        myReload.NextSceneName = EditorGUILayout.TextField("NextLevel", myReload.NextSceneName);
+        myReload.SceneNumber = EditorGUILayout.IntField("Scene Number", myReload.SceneNumber);
+        myReload.isPointVictory = EditorGUILayout.Toggle("isPointVictory", myReload.isPointVictory);
+
+        if (myReload.isPointVictory)
+        {
+            myReload.pointsToVictory = EditorGUILayout.IntField("Points to victory:", myReload.pointsToVictory);
+
+        }
+    }
+}*/
