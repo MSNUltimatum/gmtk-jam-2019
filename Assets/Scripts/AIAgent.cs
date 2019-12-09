@@ -33,7 +33,6 @@ public class AIAgent : MonoBehaviour
         if (Pause.Paused) return;
 
         Vector2 displacement = velocity * Time.deltaTime;
-        print(orientation + " /// " + (orientation + rotation * Time.deltaTime));
         orientation += rotation * Time.deltaTime;
         
         orientation %= 360.0f;

@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class RicochetMovement : EnemyBehavior
 {
+    private void Start()
+    {
+        RotateInstantlyTowardsTarget();
+    }
+
     public override EnemySteering GetSteering()
     {
         EnemySteering steering = new EnemySteering();
-        steering.linear = transform.forward;
+        steering.linear = transform.up;
         steering.linear *= agent.maxAccel;
 
         return steering;
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    void OnTriggerStay2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Environment")
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1, LayerMask.GetMask("Default"));
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 2, LayerMask.GetMask("Default"));
             if (hit)
             {
-                print("yosh");
-                print(transform.up);
-                transform.LookAt(Vector2.Reflect(transform.up, hit.normal), Vector3.forward);
-                print(transform.up);
+                Vector2 direction = Vector2.Reflect(transform.up, hit.normal);
+                if (direction.magnitude > 0.0f)
+                {
+                    float rot = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+                    print("yosh: " + transform.up + "///" + hit.normal + "///" + direction + "///" + rot);
+                    GetComponent<AIAgent>().orientation = rot;
+                }
             }
         }
     }
