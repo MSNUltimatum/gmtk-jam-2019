@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class RicochetMovement : EnemyBehavior
 {
-    // Start is called before the first frame update
-    protected override void Awake()
-    {
-        base.Awake();
-        transform.LookAt((target.transform.position - gameObject.transform.position).normalized, Vector3.forward);
-    }
-
     public override EnemySteering GetSteering()
     {
         EnemySteering steering = new EnemySteering();
-        steering.linear = transform.up;
+        steering.linear = transform.forward;
         steering.linear *= agent.maxAccel;
 
         return steering;
@@ -24,7 +17,7 @@ public class RicochetMovement : EnemyBehavior
     {
         if (coll.gameObject.tag == "Environment")
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1, LayerMask.GetMask("Default"));
             if (hit)
             {
                 print("yosh");

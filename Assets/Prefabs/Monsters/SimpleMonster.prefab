@@ -556,6 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  rotateInstantlyAtStart: 0
 --- !u!114 &8769902977028094434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  rotateInstantlyAtStart: 1
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
