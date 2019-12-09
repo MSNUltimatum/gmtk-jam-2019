@@ -5,62 +5,65 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 10f;
-
-    private Vector2 movement;
-    private SpriteRenderer CharacterSprite;
+    public float speed = 12f;
+    
     private Animator anim;
-
-    private AudioSource[] sounds;
-    private AudioSource noise1;
-    private AudioSource noise2;
+    private Animator shadowAnim;
+    private AudioSource audio;
 
     private void Start()
     {
-        sounds = GetComponents<AudioSource>();
-        noise1 = sounds[0];
-        noise2 = sounds[1];
-        CharacterSprite = GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponentInChildren<Animator>();
+        audio = GetComponent<AudioSource>();       
+        var anims = GetComponentsInChildren<Animator>();
+        anim = anims[0];
+        shadowAnim = anims[1];
+        mainCamera = Camera.main;
     }
 
     private void Update()
     {
+        if (Pause.Paused) return;
+
         Movement();
         Rotation();
     }
     private void Rotation()
     {
-        var mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var mousepos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Quaternion rot = Quaternion.LookRotation(transform.position - mousepos, Vector3.forward);
         transform.rotation = rot;
         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
     }
     
     private void Movement()
-    {
+    {       
         Vector2 direction = new Vector2();
-        direction += new Vector2(Input.GetAxis("Horizontal"), 0);
-        direction += new Vector2(0, Input.GetAxis("Vertical"));
+        direction += new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (direction.magnitude > 1)
         {
             direction.Normalize();
         }
+        var previousPosition = transform.position;
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
         if (anim != null)
         {
-            if (direction.magnitude == 0) 
+            if (CharacterLife.isDeath) return;
+
+            if (direction.magnitude == 0 || Vector3.Distance(previousPosition, transform.position) < 0.001) 
             {
-                noise2.Pause();
+                AudioManager.Pause("Walk", audio);
                 anim.Play("HeroIdle");
+                shadowAnim.Play("ShadowIdle");
             }
-            else if (noise2.isPlaying == false)
+            else if (AudioManager.isPlaying("Walk", audio) == false)
             {
-                noise2.volume = Random.Range(0.4f, 0.6f);
-                noise2.pitch = Random.Range(0.8f, 1f);
-                noise2.Play();            
+                AudioManager.Play("Walk", audio);
                 anim.Play("HeroWalking");
-            }
+                shadowAnim.Play("HeroShadow");
+            }        
         }
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
-    }   
+    }
+
+    private Camera mainCamera = null;
+
 }

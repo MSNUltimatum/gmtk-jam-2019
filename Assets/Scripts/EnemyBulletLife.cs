@@ -6,33 +6,28 @@ public class EnemyBulletLife : MonoBehaviour
 {
     [SerializeField]
     public float BulletSpeed = 12f;
-    private GameObject game;
-    private RelodScene scenes;
+    [SerializeField]
+    protected float BulletLifeLength = 3f;
 
-    private void Start()
+    protected virtual void Update()
     {
-        game = GameObject.FindGameObjectWithTag("GameController");
-        scenes = game.GetComponent<RelodScene>();
+        if (Pause.Paused) return;
+
+        transform.Translate(Vector2.right * BulletSpeed * Time.deltaTime, Space.Self);
+        Destroy(gameObject, BulletLifeLength);
     }
 
-    void Update()
+    protected virtual void OnTriggerEnter2D(Collider2D coll)
     {
-        transform.Translate(Vector2.right * BulletSpeed * Time.deltaTime);
-        Destroy(gameObject, 3f);
-    }
-
-    void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            Destroy(coll.gameObject);
-            Time.timeScale = 0;
-            scenes.PressR();
-        }
-
         if (coll.gameObject.tag == "Environment")
         {
             Destroy(gameObject);
+        }
+        else if (coll.gameObject.tag == "Player")
+        {
+            CharacterLife life = coll.gameObject.GetComponent<CharacterLife>();
+            life.Death();
+            RelodScene.PressR();
         }
     }
 }

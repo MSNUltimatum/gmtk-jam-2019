@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class BulletLife : MonoBehaviour
 {
+    // Logic
     public float Speed = 18f;
+    [SerializeField]
+    private float timeToDestruction = 1.2f;
+    private float TTDLeft = 0;
+
+    void Start()
+    {
+        var audio = GetComponent<AudioSource>();
+        AudioManager.Play("WeaponShot", audio);
+        TTDLeft = timeToDestruction;
+    }
 
     void FixedUpdate()
-    { 
+    {
+        if (Pause.Paused) return;
+
         transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
-        Destroy(gameObject,1.2f); 
+        TTDLeft -= Time.fixedDeltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -19,27 +32,22 @@ public class BulletLife : MonoBehaviour
             var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
             if (monsterComp)
             {
-                monsterComp.Damage();
+                monsterComp.Damage(gameObject);
             }
             else
             {
                 Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
                 Destroy(coll.gameObject);
             }
-            Destroy(gameObject);
+            DestroyBullet();
         }
-
-        if (coll.gameObject.tag == "Environment")
+        else if (coll.gameObject.tag == "Environment")
         {
             if (coll.gameObject.GetComponent<DestructibleWall>() != null)
             {
-                Destroy(coll.gameObject);
+                DestroyBullet();
             }
-            if (coll.gameObject.GetComponent<MirrorWall>() == null)
-            {
-                Destroy(gameObject);
-            }
-            else
+            if (coll.gameObject.GetComponent<MirrorWall>() != null)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right,
                     float.PositiveInfinity, LayerMask.GetMask("Default"));
@@ -50,6 +58,32 @@ public class BulletLife : MonoBehaviour
                     transform.eulerAngles = new Vector3(0, 0, rot);
                 }
             }
+            else
+            {
+                DestroyBullet();
+            }
         }
+    }
+
+    public void DestroyBullet()
+    {
+        this.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<DynamicLightInOut>().FadeOut();
+        Destroy(gameObject, 1);
+        Destroy(particlesEmitter.gameObject, 2);
+        StopEmitter();
+    }
+
+    // Non-logic
+    [SerializeField]
+    private ParticleSystem particlesEmitter = null;
+    [SerializeField]
+    private SpriteRenderer sprite = null;
+
+    private void StopEmitter()
+    {
+        particlesEmitter.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        sprite.color = new Color(0, 0, 0, 0);
     }
 }

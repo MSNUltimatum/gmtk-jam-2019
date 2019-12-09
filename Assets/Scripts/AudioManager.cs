@@ -6,19 +6,33 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
-
     public static Sound[] sounds;
     public Sound[] soundsToRegister;
     public static AudioManager instance;
+    public static float userPrefSound = 0.5f;
+
+    // Name -> (time since last sound, maximum value)
     public static Dictionary<string, Vector2> Clips = new Dictionary<string, Vector2>();
+
+    private const float lowestSoundValue = 0.3f;
 
     void Awake()
     {
         sounds = soundsToRegister;
+        if (PlayerPrefs.HasKey("SoundVolume"))
+        {
+            userPrefSound = PlayerPrefs.GetFloat("SoundVolume");
+        }
+        else
+        {
+            userPrefSound = 0.5f;
+            PlayerPrefs.SetFloat("SoundVolume", 0.5f);
+        }
 
         if (instance == null)
+        {
             instance = this;
-
+        }
         else
         {
             Destroy(gameObject);
@@ -30,25 +44,22 @@ public class AudioManager : MonoBehaviour
 
     public static float GetVolume(string name, float volume)
     {
-
         if (Clips.ContainsKey(name))
         {
             float ltp = Clips[name].x;
-            volume = Mathf.Lerp(Clips[name].y / 3, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
-
+            volume = Mathf.Lerp(lowestSoundValue, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
             Clips[name] = new Vector2(Time.time, Clips[name].y);
         }
-
         else
         {
             Clips.Add(name, new Vector2(Time.time, volume));
         }
-
-        return volume;
+        return volume * userPrefSound;
     }
 
     public static void Play(string name, AudioSource source)
     {
+
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source = source;
         s.source.clip = s.clip;
@@ -72,7 +83,28 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-
+        if (CharacterLife.isDeath == true)
+        {
+            s.source.volume = s.volume / 2;
+        }
         s.source.Play();
+    }
+    public static void Pause(string name, AudioSource source)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            s.source = source;
+            s.source.Pause();
+        }
+    }
+    public static bool isPlaying(string name, AudioSource source)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source = source;
+        if (s.source.isPlaying)
+            return true;
+        else
+            return false;
     }
 }
