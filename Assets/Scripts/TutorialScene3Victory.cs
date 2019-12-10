@@ -21,7 +21,7 @@ public class TutorialScene3Victory : RelodScene
     }
     protected override void Victory()
     {
-        if (CharacterLife.isDeath) return;
+        if (CharacterLife.isDeath || Pause.Paused) return;
         timeToVictory -= Time.deltaTime;
         if (timeToVictory < 0)
         {

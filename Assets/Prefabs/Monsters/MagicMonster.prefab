@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1997476023090138409
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0.05, y: 0.393, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2725628155222143190
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &4813827667180084527
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -0.053, y: 0.393, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &5157507255320454297
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +498,7 @@ MonoBehaviour:
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
+  fadeInTime: 0.5
 --- !u!114 &7337340545462130261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +606,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8565313045126812073, guid: 17f949ea84c9c534da4fca4d9a11d60f,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 05da481fe7b26934c878838c99dbe905, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -905,3 +910,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: 1.22, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
