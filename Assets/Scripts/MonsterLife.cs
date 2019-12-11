@@ -25,16 +25,6 @@ public class MonsterLife : MonoBehaviour
         {
             absorbPrefab = Resources.Load<GameObject>("AbsorbBubble.prefab");
         }
-
-        GameObject target = GameObject.FindGameObjectWithTag("Player");
-        Vector2 direction = target.transform.position - transform.position;
-        if (direction.magnitude > 0.0f)
-        {
-            float orientation = Mathf.Atan2(direction.x, direction.y);
-            orientation *= Mathf.Rad2Deg;
-            transform.rotation = new Quaternion();
-            transform.Rotate(Vector3.back, orientation);
-        }
     }
 
     private void Update()
