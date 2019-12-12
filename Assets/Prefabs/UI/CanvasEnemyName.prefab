@@ -68,8 +68,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Happy life
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de308a5751e0ee14bb3e8e50916936df, type: 2}
-  m_sharedMaterial: {fileID: -14163907469050033, guid: de308a5751e0ee14bb3e8e50916936df,
+  m_fontAsset: {fileID: 11400000, guid: 144e108086d13c54db1fce3b0447ce8d, type: 2}
+  m_sharedMaterial: {fileID: -7649981593547508652, guid: 144e108086d13c54db1fce3b0447ce8d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
