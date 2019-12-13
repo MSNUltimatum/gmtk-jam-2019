@@ -30,8 +30,8 @@ Transform:
   m_Children:
   - {fileID: 962440591872272289}
   - {fileID: 4455958183003365812}
-  - {fileID: 8422244060955026205}
-  - {fileID: 3998912692174087094}
+  - {fileID: 5917341757184931623}
+  - {fileID: 1261484309468919692}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,6 +58,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ReptileMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380104140017662329, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
@@ -164,36 +194,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c810a750a555ce84091332819db92524, type: 3}
---- !u!224 &8422244060955026205 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
+--- !u!4 &5917341757184931623 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7380104140017662329, guid: c810a750a555ce84091332819db92524,
     type: 3}
   m_PrefabInstance: {fileID: 3780203882797567582}
   m_PrefabAsset: {fileID: 0}
@@ -209,15 +214,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportMonster
       objectReference: {fileID: 0}
-    - target: {fileID: 513247253, guid: 0d86570df5d218e4293d07ddf7d4760c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8136202553713554334, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 8122783078656520589, guid: 0d86570df5d218e4293d07ddf7d4760c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8122783078656520587, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -237,11 +243,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122783078656520589, guid: 0d86570df5d218e4293d07ddf7d4760c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8122783078331616383, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
@@ -373,15 +374,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 513247253, guid: 0d86570df5d218e4293d07ddf7d4760c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8136202553713554334, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 8122783078656520589, guid: 0d86570df5d218e4293d07ddf7d4760c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8122783078656520587, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -401,11 +403,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122783078656520589, guid: 0d86570df5d218e4293d07ddf7d4760c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8122783078331616383, guid: 0d86570df5d218e4293d07ddf7d4760c,
         type: 3}
@@ -532,6 +529,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReptileMonster (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7380104140017662329, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -637,36 +664,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524343, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653389663410524337, guid: c810a750a555ce84091332819db92524,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c810a750a555ce84091332819db92524, type: 3}
---- !u!224 &3998912692174087094 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4653389663735491907, guid: c810a750a555ce84091332819db92524,
+--- !u!4 &1261484309468919692 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7380104140017662329, guid: c810a750a555ce84091332819db92524,
     type: 3}
   m_PrefabInstance: {fileID: 8640952853281361653}
   m_PrefabAsset: {fileID: 0}
