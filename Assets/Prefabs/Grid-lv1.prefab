@@ -1984,7 +1984,7 @@ GameObject:
   - component: {fileID: 1562711243}
   - component: {fileID: 2147036073882533875}
   - component: {fileID: 7359185048016170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap-walls
   m_TagString: Environment
   m_Icon: {fileID: 0}

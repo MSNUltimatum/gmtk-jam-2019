@@ -23,7 +23,6 @@ public class SpriteFadePeriodic : MonoBehaviour
         accumulator += Time.deltaTime;
         var newColor = sprite.color;
         newColor.a = Mathf.Clamp01(Mathf.Sin(accumulator / cycleLength * 2 * Mathf.PI) + (1 - fadeOutTime * 2 / cycleLength));
-        print(newColor.a);
         sprite.color = newColor;
     }
 
