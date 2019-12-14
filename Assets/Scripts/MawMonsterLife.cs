@@ -8,6 +8,6 @@ public class MawMonsterLife : MonsterLife
 
     protected override bool Vulnurable()
     {
-        return Opened;
+        return Opened && isBoy();
     }
 }

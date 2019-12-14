@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -136,6 +137,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -260,6 +262,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -397,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: 1.22, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &8207431494545658662
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +414,10 @@ GameObject:
   - component: {fileID: 8207431494545658663}
   - component: {fileID: 5892418988149900982}
   - component: {fileID: 6043772631732954433}
-  - component: {fileID: 6043772631732954434}
+  - component: {fileID: 5338092387312809706}
+  - component: {fileID: 8733009754373814606}
+  - component: {fileID: 5347490303717420499}
+  - component: {fileID: 3331315612611451878}
   m_Layer: 0
   m_Name: MawMonster
   m_TagString: Enemy
@@ -595,8 +602,9 @@ MonoBehaviour:
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
+  fadeInTime: 0.5
   Opened: 0
---- !u!114 &6043772631732954434
+--- !u!114 &5338092387312809706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -605,11 +613,61 @@ MonoBehaviour:
   m_GameObject: {fileID: 8207431494545658662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94310b3076bb4242a473b93e9f17fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: c983f7a3bdf77a04686eb8be607bec57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 3
+  weight: 1
+--- !u!114 &8733009754373814606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207431494545658662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851423767a200cf4eaf5bea045e99598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 3.5
+  maxAccel: 100
+  maxRotation: 200
+  maxAngularAccel: 10000
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0}
+--- !u!114 &5347490303717420499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207431494545658662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c1d796790c0c0408260dacf14ea289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  targetRadius: 0
+  slowRadius: 0.1
+  timeToTarget: 0.1
+  rotateAtStart: 1
+--- !u!114 &3331315612611451878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207431494545658662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f05e90e3dd7a7448588f3c768a5a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
   DistanceToActivate: 5
+  TimeToActivate: 0.5
+  mainSprite: {fileID: 6199093597622709486}
   OpenedColor: {r: 0, g: 1, b: 0, a: 1}
-  BaseColor: {r: 0.9837489, g: 1, b: 0, a: 1}
-  sprite: {fileID: 6199093597622709486}
+  BaseColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
