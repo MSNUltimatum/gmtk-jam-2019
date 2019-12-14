@@ -48,8 +48,8 @@ public class ArenaEnemySpawner : MonoBehaviour
             SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
 
-        currentEvilDictionary = evilDictionary;
-        randomSequence = GenerateRandom(currentEvilDictionary.EvilNames.Length / 2, currentEvilDictionary.EvilNames.Length - 1);
+        currentEvilDictionary = evilDictionary.EvilNames.OrderBy(a => Random.Range(0, 10000)).ToList();
+        randomSequence = GenerateRandom(currentEvilDictionary.Count / 2, currentEvilDictionary.Count - 1);
     }
 
     private void InitializeFields()
@@ -151,13 +151,13 @@ public class ArenaEnemySpawner : MonoBehaviour
                 if (!anyBoy)
                 {
                     anyBoy = true;
-                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
+                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[randomSequence[sequenceIndex]], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
                     currentBoy = enemy;
                 }
             }
             // Set random enemy name from the dictionary
-            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
+            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[randomSequence[sequenceIndex]];
             boysList.Add(enemy);
 
             if (!SpawnZone)
@@ -281,12 +281,12 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (!anyBoy)
         {
             anyBoy = true;
-            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]], enemy);
+            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[randomSequence[sequenceIndex]], enemy);
             enemy.GetComponent<MonsterLife>().MakeBoy();
             currentBoy = enemy;
         }
 
-        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary.EvilNames[randomSequence[sequenceIndex]];
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[randomSequence[sequenceIndex]];
         boysList.Add(enemy);
         //roomLighting.AddToLight(1);
 
@@ -321,7 +321,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     private int EnemiesCount = 0;
     private static bool anyBoy = false;
     protected int spawnIndex = 0;
-    private EvilDictionary currentEvilDictionary;
+    private List<string> currentEvilDictionary;
     private Queue<string> enemyOrder;
 
     protected static GameObject currentBoy;
