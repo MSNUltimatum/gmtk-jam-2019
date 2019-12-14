@@ -34,4 +34,15 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
         return rotation;
     }
+
+    protected void RotateInstantlyTowardsTarget() {
+        Vector2 direction = target.transform.position - transform.position;
+        if (direction.magnitude > 0.0f)
+        {
+            float targetOrientation = Mathf.Atan2(direction.x, direction.y);
+            targetOrientation *= Mathf.Rad2Deg;
+            targetOrientation += transform.localEulerAngles.z;
+            transform.rotation = Quaternion.Euler(0, 0, -MapToRange(targetOrientation));
+        }
+    }
 }

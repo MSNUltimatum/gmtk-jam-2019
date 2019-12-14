@@ -5,6 +5,12 @@ public abstract class Align : EnemyBehavior
     public float targetRadius;
     public float slowRadius = 0.1f;
     public float timeToTarget = 0.1f;
+    public bool rotateAtStart = true;
+
+    protected virtual void Start()
+    {
+        if (rotateAtStart) RotateInstantlyTowardsTarget();
+    }
 
     public override EnemySteering GetSteering()
     {

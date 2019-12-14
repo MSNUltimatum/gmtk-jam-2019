@@ -32,7 +32,10 @@ public class TutorialScene3Victory : RelodScene
             if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
             {
                 if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
+                {
                     PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
+                    PlayerPrefs.Save();
+                }
                 Canvas.transform.GetChild(0).gameObject.SetActive(false);
                 SceneManager.LoadScene(NextSceneName);
             }
