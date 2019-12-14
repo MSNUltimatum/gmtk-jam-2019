@@ -24,7 +24,7 @@ public class Teleport : EnemyBehavior
         if (CoolDownBefore == 0)
         {
             int i = 0;
-            while (i < 10)
+            while (i < 5)
             {
                 i++;
                 float Xpos = Random.Range(-100, 100);
@@ -36,16 +36,27 @@ public class Teleport : EnemyBehavior
                 if (arena.RoomBounds.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
                     arena.RoomBounds.y > Mathf.Abs(target.transform.position.y + NVector.y))
                 {
-                    var audio = GetComponent<AudioSource>();
-                    AudioManager.Play("Blink", audio);
-                    CoolDownBefore = Random.Range(TpCooldownRange.x, TpCooldownRange.y);
-                    transform.position = target.transform.position + NVector;
-                    GetComponent<MonsterLife>().FadeIn(0.5f);
-                    return;
+                    // We need teleport position not to be a solid object
+                    if (Physics2D.OverlapCircle(target.transform.position + NVector, 2.5f, LayerMask.GetMask("Solid")) == null)
+                    {
+                        var audio = GetComponent<AudioSource>();
+                        AudioManager.Play("Blink", audio);
+                        transform.position = target.transform.position + NVector;
+                        GetComponent<MonsterLife>().FadeIn(0.5f);
+                        StopKnockback();
+                        break;
+                    }
                 }
-                
             }
+            CoolDownBefore = Random.Range(TpCooldownRange.x, TpCooldownRange.y);
         }
         base.CalledUpdate();
+    }
+
+    private void StopKnockback()
+    {
+        var rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.isKinematic = true;
+        rigidbody.isKinematic = false;
     }
 }

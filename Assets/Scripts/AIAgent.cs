@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class AIAgent : MonoBehaviour
@@ -30,7 +30,8 @@ public class AIAgent : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (Pause.Paused) return;
+        ProceedPauseUnpause();
+        if (Pause.Paused || !allowMovement) return;
 
         Vector2 displacement = velocity * Time.deltaTime;
         orientation += rotation * Time.deltaTime;
@@ -58,6 +59,54 @@ public class AIAgent : MonoBehaviour
         }
         steering = new EnemySteering();
     }
+
+    public void StopMovement(float time)
+    {
+        allowMovement = false;
+        StartCoroutine(EnableMovement(time));
+    }
+
+    // TODO: Заменить на Event + Listener?
+    private void ProceedPauseUnpause()
+    {
+        if (Pause.Paused && !wasPausedLastFrame)
+        {
+            wasPausedLastFrame = true;
+            PauseKnockback();
+        }
+
+        if (Pause.UnPaused && wasPausedLastFrame)
+        {
+            wasPausedLastFrame = false;
+            ResumeKnockback();
+        }
+    }
+
+    private IEnumerator EnableMovement(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        allowMovement = true;
+    }
+
+    public void PauseKnockback()
+    {
+        var rigidbody = GetComponent<Rigidbody2D>();
+        savedVelocity = rigidbody.velocity;
+        rigidbody.isKinematic = true;
+        rigidbody.Sleep();
+    }
+
+    private void ResumeKnockback()
+    {
+        var rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.WakeUp();
+        rigidbody.isKinematic = false;
+        rigidbody.AddForce(savedVelocity, ForceMode2D.Impulse);
+    }
+
+    Vector3 savedVelocity = new Vector3();
+    private bool wasPausedLastFrame = false;
+    private bool allowMovement = true;
 
     // private Dictionary<int, List<EnemySteering>> groups;
 }

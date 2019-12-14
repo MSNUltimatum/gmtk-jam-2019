@@ -9,11 +9,11 @@ public class IQ7000DictionarySkills : MonoBehaviour
     private void Awake()
     {
         skills = new Dictionary<string, SkillBase>();
-
         WeirdPill Pill = new WeirdPill();
         skills.Add("SpeedAura", Pill);
         GhostMode ghost = new GhostMode();
         skills.Add("GhostMode", ghost);
+
         ActiveSpeedSkill active = new ActiveSpeedSkill();
         skills.Add("ActiveSpeedSkill", active);
     }

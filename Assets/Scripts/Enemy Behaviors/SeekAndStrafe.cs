@@ -2,6 +2,9 @@
 
 public class SeekAndStrafe : Seek
 {
+    [SerializeField]
+    private float strafeLockTimeOnStart = 0.8f;
+
     public override EnemySteering GetSteering()
     {
         EnemySteering steering = base.GetSteering();
@@ -14,12 +17,14 @@ public class SeekAndStrafe : Seek
 
     public override void CalledUpdate()
     {
-        if (dirChangeTimer <= 0)
+
+        if (dirChangeTimer <= 0 && strafeLockTimeOnStart <= 0)
         {
             dirChangeAngle = Random.Range(-dirChangeMaxAngle, dirChangeMaxAngle);
             dirChangeTimer = dirChangeTimeMax;
         }
         dirChangeTimer -= Time.deltaTime;
+        strafeLockTimeOnStart -= Time.deltaTime;
         base.CalledUpdate();
     }
 
