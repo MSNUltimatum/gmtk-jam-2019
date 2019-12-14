@@ -5,11 +5,15 @@ using UnityEngine;
 public class StopRotation : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 offset = new Vector3(-0.65f, 1.22f);
+    public Vector3 offset = new Vector3(0, 0);
+
+    [SerializeField]
+    public Vector3 baseEulerRotation = new Vector3(0, 0, 0);
+
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.rotation = Quaternion.identity;
         transform.position = transform.parent.position + offset;
+        transform.eulerAngles = baseEulerRotation;
     }
 }

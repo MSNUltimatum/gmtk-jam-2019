@@ -8,7 +8,9 @@ public class TextSlowlyFade : MonoBehaviour
     [SerializeField]
     private float FadeDuration = 3;
     [SerializeField]
-    private Text text;
+    private Text text = null;
+    [SerializeField]
+    private bool FadeOut = true;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,14 @@ public class TextSlowlyFade : MonoBehaviour
     void Update()
     {
         Color prevColor = text.color;
-        prevColor.a -= Time.deltaTime / FadeDuration;
+        if (FadeOut)
+        {
+            prevColor.a -= Time.deltaTime / FadeDuration;
+        }
+        else {
+            prevColor.a += Time.deltaTime / FadeDuration;
+        }
+        
         text.color = prevColor;
     }
 }
