@@ -11,13 +11,12 @@ public class GhostMode : ActiveSkill
             Name = "GhostMode";
             Description = "Yoo could walk";
             CoolDown = 5f;
-           isInstantSkill = true;  
-            ActionTime = 3f;            
+            isInstantSkill = true;  
+            ActionTime = 3f;
         }
 
     public override void ActiveResult()
     {
         Debug.Log("Ghost");
     }
-
 }
