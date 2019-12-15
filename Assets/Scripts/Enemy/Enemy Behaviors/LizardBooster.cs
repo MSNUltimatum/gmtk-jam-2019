@@ -3,7 +3,7 @@
 public class LizardBooster : Attack
 {
     [SerializeField]
-    private float boostedSpeed = 5.0f;
+    private float boostedSpeed = 6f;
 
     [SerializeField]
     private float boostTime = 2.0f;
@@ -26,7 +26,7 @@ public class LizardBooster : Attack
 
     public override void CalledUpdate()
     {
-        cooldownTimeLeft = Mathf.Max(cooldownTimeLeft - Time.deltaTime, 1);
+        base.CalledUpdate();
         boostTimeLeft = Mathf.Max(boostTimeLeft - Time.deltaTime, 0);
 
         if (boostTimeLeft <= 0)
@@ -36,6 +36,5 @@ public class LizardBooster : Attack
     }
 
     private float baseSpeed;
-    private float cooldownTimeLeft;
     private float boostTimeLeft;
 }
