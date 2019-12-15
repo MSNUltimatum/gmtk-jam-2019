@@ -11,6 +11,9 @@ public class CurrentEnemy : MonoBehaviour
     void Awake()
     {
         var canvasEnemyName = Instantiate(CanvasPrefab);
+        var canvasScript = canvasEnemyName.GetComponent<Canvas>();
+        canvasScript.worldCamera = Camera.main;
+        canvasScript.sortingLayerName = "OnEffect";
         EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
@@ -25,5 +28,5 @@ public class CurrentEnemy : MonoBehaviour
     }
 
     private GameObject gameController;
-    private static TMPro.TextMeshProUGUI EnemyName;
+    public static TMPro.TextMeshProUGUI EnemyName;
 }

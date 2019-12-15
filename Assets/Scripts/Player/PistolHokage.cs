@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PistolHokage : WeaponSkill
 {
-    private float randomShootingAngle = 0;
     private GameObject bulletPrefab;
     private AudioSource WeaponShot;
     private GameObject Player;

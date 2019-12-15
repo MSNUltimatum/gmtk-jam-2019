@@ -7,8 +7,8 @@ public class CharacterLife : MonoBehaviour
 {
     public static bool isDeath = false;
     [SerializeField]
-    private GameObject ShadowObject;
-    private AudioSource audio;
+    private GameObject ShadowObject = null;
+    new private AudioSource audio;
     public void Death()
     {
         if (isDeath) return; // Already died

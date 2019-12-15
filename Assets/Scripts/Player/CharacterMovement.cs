@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour
     
     private Animator anim;
     private Animator shadowAnim;
-    private AudioSource audio;
+    new private AudioSource audio;
 
     private void Start()
     {

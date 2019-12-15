@@ -697,8 +697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
+  cooldownRange: {x: 3, y: 8}
   boostedSpeed: 5
-  cooldownTimeRange: {x: 3, y: 8}
   boostTime: 2
 --- !u!82 &-4325479809275201537
 AudioSource:

@@ -46,7 +46,7 @@ MonoBehaviour:
   soundsToRegister:
   - name: Blink
     clip: {fileID: 8300000, guid: 732a19e36ed53c740a6825fc15799ac6, type: 3}
-    volume: 0.358
+    volume: 0.604
     pitch: 1
     stereoPan: 0
     spatialBlend: 0.8

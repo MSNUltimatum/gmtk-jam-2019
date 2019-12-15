@@ -164,6 +164,8 @@ public class Ch1BossLevelScript : MonoBehaviour
     private int BigBurstBulletAmount = 12;
     [SerializeField]
     private int MediumBurstBulletAmount = 8;
+    [SerializeField]
+    private GameObject Phase1StaticShooters = null;
 
     private void UpdatePhase1()
     {
@@ -236,6 +238,12 @@ public class Ch1BossLevelScript : MonoBehaviour
                     }
                 }
 
+                // Only in hardmode now
+                if (Phase1StaticShooters != null)
+                {
+                    Phase1StaticShooters.SetActive(timeElapsed > 7 && timeElapsed < 11 ? true : false);
+                }
+
                 // Switch phase part
                 if (timeElapsed > 18)
                 {
@@ -286,7 +294,6 @@ public class Ch1BossLevelScript : MonoBehaviour
     {
         CurrentPhase = Phase.PHASE2;
         BossInstance.SetActive(false);
-        print(BossInstance.name);
         Phase2CurrentAttack = Phase2Attack.GlassStart;
         GlassStartTimePassed = 0;
         monsterSpawner = GetComponent<ArenaEnemySpawner>();
@@ -330,6 +337,8 @@ public class Ch1BossLevelScript : MonoBehaviour
                         var monsterToSpawn = Phase2Monsters[Phase2SpawnIndex];
                         var enemy = monsterSpawner.SpawnCertainMonsterWithoutName(monsterToSpawn);
                         enemy.GetComponent<MonsterLife>().FadeIn(0.3f);
+                        var attack = enemy.GetComponent<Attack>();
+                        if (attack) attack.ForceAttack();
                     }
                     else
                     {
@@ -373,7 +382,7 @@ public class Ch1BossLevelScript : MonoBehaviour
     private float phase4FadeIn = 1.5f;
     private float phase4FadeInLeft;
     [SerializeField]
-    private GameObject MirrorCrack;
+    private GameObject MirrorCrack = null;
     [SerializeField]
     private int BurstBulletAmount = 36;
     [SerializeField]
@@ -382,6 +391,8 @@ public class Ch1BossLevelScript : MonoBehaviour
     private float AfterBossFadeInExtraTime = 0.3f;
     [SerializeField]
     private float Phase4AfterAttackIdleTime = 2.75f;
+    [SerializeField]
+    private GameObject Phase4Shards = null;
 
     private void StartPhase4()
     {
@@ -389,15 +400,15 @@ public class Ch1BossLevelScript : MonoBehaviour
         CurrentPhase = Phase.PHASE4;
         phase4Attack = Phase4Attack.Idle;
         phase4SpawnPosition = Phase4CalculateSpawnPosition();
-        
+
         Player.GetComponentInChildren<TMPro.TextMeshPro>().text = "Hero";
         var bossName = BossInstance.GetComponentInChildren<TMPro.TextMeshPro>();
         bossName.text = "Shadow";
-        var labelPosition = bossName.GetComponent<StopRotation>();
-        labelPosition.baseEulerRotation = new Vector3(0, 180, 0);
-        labelPosition.offset = new Vector3(
-            -labelPosition.offset.x, labelPosition.offset.y, labelPosition.offset.z);
-        
+        //var labelPosition = bossName.GetComponent<StopRotation>();
+        //labelPosition.baseEulerRotation = new Vector3(0, 180, 0);
+        //labelPosition.offset = new Vector3(
+        //    -labelPosition.offset.x, labelPosition.offset.y, labelPosition.offset.z);
+
         BossInstance.SetActive(true);
         bossScript = BossInstance.GetComponent<MonsterLife>();
         bossScript.FadeIn(phase4FadeIn);
@@ -405,6 +416,11 @@ public class Ch1BossLevelScript : MonoBehaviour
 
         GlassFadeOutDuration = GlassFadeOutDuration / 3;
         GlassFadeOutPassed = 0;
+
+        if (Phase4Shards)
+        {
+            Phase4Shards.SetActive(true);
+        }
     }
 
     private void UpdatePhase4()
@@ -423,6 +439,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         if (ArenaEnemySpawner.boysList.Count == 0)
         {
             CurrentEnemy.SetCurrentEnemyName("Shadow");
+            CurrentEnemy.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         switch (phase4Attack)
         {

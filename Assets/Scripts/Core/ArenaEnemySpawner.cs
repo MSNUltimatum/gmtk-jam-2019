@@ -20,7 +20,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     protected bool AllowEarlySpawns = true;
 
     [SerializeField]
-    private bool isInfSpawn;
+    private bool isInfSpawn = false;
     static Random random = new Random();
 
 

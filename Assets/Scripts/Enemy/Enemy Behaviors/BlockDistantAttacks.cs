@@ -9,7 +9,7 @@ public class BlockDistantAttacks : EnemyBehavior
     [SerializeField]
     private float TimeToActivate = 0.5f;
     [SerializeField]
-    private SpriteRenderer mainSprite;
+    private SpriteRenderer mainSprite = null;
     [SerializeField]
     private Color OpenedColor = Color.green;
     [SerializeField]

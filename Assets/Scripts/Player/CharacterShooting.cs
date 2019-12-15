@@ -7,7 +7,8 @@ public class CharacterShooting : MonoBehaviour
     [SerializeField]
     private GameObject mouseCursorObj = null;
     [SerializeField]
-    bool ExtraWeapon;
+    bool ExtraWeapon = false;
+
     private void Start()
     {
         if (ExtraWeapon == true)   

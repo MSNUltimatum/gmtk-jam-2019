@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
-public class Teleport : EnemyBehavior
+public class Teleport : Attack
 {
-    [SerializeField]
-    private Vector2 TpCooldownRange = new Vector2(3, 10);
     private float CoolDownBefore;
     [SerializeField]
     private float Scatter = 8f;
@@ -13,12 +11,11 @@ public class Teleport : EnemyBehavior
     protected override void Awake()
     {
         base.Awake();
-        CoolDownBefore = Random.Range(TpCooldownRange.x, TpCooldownRange.y);
         arena = GameObject.FindGameObjectWithTag("GameController")
             .GetComponent<ArenaEnemySpawner>();
     }
 
-    public override void CalledUpdate()
+    protected override void DoAttack()
     {
         CoolDownBefore = Mathf.Max(CoolDownBefore - Time.deltaTime, 0);
         if (CoolDownBefore == 0)
@@ -48,9 +45,7 @@ public class Teleport : EnemyBehavior
                     }
                 }
             }
-            CoolDownBefore = Random.Range(TpCooldownRange.x, TpCooldownRange.y);
         }
-        base.CalledUpdate();
     }
 
     private void StopKnockback()

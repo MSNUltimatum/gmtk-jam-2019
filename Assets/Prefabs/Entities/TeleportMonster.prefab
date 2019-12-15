@@ -458,6 +458,7 @@ MonoBehaviour:
   targetRadius: 0
   slowRadius: 0
   timeToTarget: 0.1
+  rotateAtStart: 1
 --- !u!114 &7279820065272308435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  TpCooldownRange: {x: 5, y: 7}
+  cooldownRange: {x: 5, y: 7}
   Scatter: 8
 --- !u!82 &5216238258658365549
 AudioSource:

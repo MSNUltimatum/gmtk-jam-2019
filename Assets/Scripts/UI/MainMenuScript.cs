@@ -27,11 +27,11 @@ public class MainMenuScript : MonoBehaviour
     private GameObject DiffictultyLabel = null;
 
     [SerializeField]
-    private Sprite Chapter1EasyDiff;
+    private Sprite Chapter1EasyDiff = null;
     [SerializeField]
-    private Sprite Chapter1NormalDiff;
+    private Sprite Chapter1NormalDiff = null;
     [SerializeField]
-    private Sprite Chapter1HardcoreDiff;
+    private Sprite Chapter1HardcoreDiff = null;
 
     enum Difficulty
     {

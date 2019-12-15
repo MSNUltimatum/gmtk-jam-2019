@@ -3,12 +3,12 @@ using UnityEngine;
 public abstract class Attack : EnemyBehavior
 {
     [SerializeField]
-    protected float cooldown = 1f;
+    protected Vector2 cooldownRange = new Vector2(1f, 1f);
 
     protected override void Awake()
     {
         base.Awake();
-        cooldownLeft = cooldown;
+        cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
     }
 
     public override void CalledUpdate()
@@ -18,8 +18,14 @@ public abstract class Attack : EnemyBehavior
         if (cooldownLeft <= 0)
         {
             DoAttack();
-            cooldownLeft = cooldown;
+            cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
         }
+    }
+
+    public void ForceAttack()
+    {
+        DoAttack();
+        cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
     }
 
     protected abstract void DoAttack();

@@ -53,5 +53,5 @@ public class TutorialScene3Victory : RelodScene
             }
         }
     }
-    private RoomLighting light;
+    new private RoomLighting light;
 }
