@@ -78,7 +78,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level5.unity
     guid: 7203227ef8b79e04dacb744f7c264a72
   - enabled: 0
-    path: Assets/Scenes/Final.unity
+    path: Assets/Scenes/Testing/Final.unity
     guid: 2f2027d789d5d824397f41adb893ebb0
   - enabled: 0
     path: Assets/Scenes/AlexflamesGMTK.unity
@@ -90,7 +90,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level7.unity
     guid: 1ffca623c3137d246864b848c84bfdf2
   - enabled: 0
-    path: Assets/Scenes/InfinityLevel2.unity
+    path: Assets/Scenes/Testing/InfinityLevel2.unity
     guid: 09c1bcc9bf9ae234d90492e6902443dc
   - enabled: 0
     path: Assets/Scenes/Level8.unity
