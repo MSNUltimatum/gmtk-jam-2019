@@ -1,0 +1,643 @@
+fileFormatVersion: 2
+guid: fdb97734bccdfc940b65b9674ff86c5f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6736182566132170281
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_0
+  - first:
+      213: 7214197189207367181
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_1
+  - first:
+      213: -3068669776129444491
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_2
+  - first:
+      213: 2509827225216336029
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_3
+  - first:
+      213: -7803245834277563656
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_4
+  - first:
+      213: 6973365878088078441
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_5
+  - first:
+      213: 7536436407944359131
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_6
+  - first:
+      213: -1276896048217962593
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_7
+  - first:
+      213: -5383621356703825493
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_8
+  - first:
+      213: -2510692698092058233
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_9
+  - first:
+      213: 4524493379072880429
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_10
+  - first:
+      213: -1521231810201366172
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_11
+  - first:
+      213: 72914051068730200
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_12
+  - first:
+      213: 5754975478525150065
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_13
+  - first:
+      213: 5612573941402328581
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_14
+  - first:
+      213: 4490925918769375558
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_15
+  - first:
+      213: -6163113181300918617
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_16
+  - first:
+      213: 8430149743007255462
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_17
+  - first:
+      213: 7220241278716658719
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_18
+  - first:
+      213: 5572536424958700011
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_19
+  - first:
+      213: -5392240531637621656
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_20
+  - first:
+      213: 4821545019367542067
+    second: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_21
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 216
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61625421d4f232b45b4f53c61b529467
+      internalID: -6736182566132170281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838a78991f7f02d458006fb28cacfe41
+      internalID: 7214197189207367181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_2
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8572eb023927f84e9cea5377efbed12
+      internalID: -3068669776129444491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_3
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095fe57c8dbdabe48ab74535ea99b499
+      internalID: 2509827225216336029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_4
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bda5f4e97524dd4f9854f2bf7217e16
+      internalID: -7803245834277563656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_5
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd0d507d0b6e8bb4ab183718989eb0c4
+      internalID: 6973365878088078441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_6
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e474663dec0c764d85bfd1e3859669b
+      internalID: 7536436407944359131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_7
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e908ca8a2b9073a4ba08c2e8d8963c00
+      internalID: -1276896048217962593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_8
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d369579f3a99c4dbfa1444c53b04f3
+      internalID: -5383621356703825493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_9
+      rect:
+        serializedVersion: 2
+        x: 2025
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf3d0817877cc644a9759d8b5a9cfe2
+      internalID: -2510692698092058233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_10
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 287.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19fa156b1f5f9c548b955fbfe1339877
+      internalID: 4524493379072880429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb447563f62340440b82ff061ffd6783
+      internalID: -1521231810201366172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_12
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ad4f8886696dc3448f042794d472771
+      internalID: 72914051068730200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_13
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3ebc2418a622f14c95612e80f3d46a5
+      internalID: 5754975478525150065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_14
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ff062ad167422488487247c2b8c096
+      internalID: 5612573941402328581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_15
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55f9841ba2f5c5044bc890521e6f0476
+      internalID: 4490925918769375558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_16
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a7910e902f78841929024af10e68d9
+      internalID: -6163113181300918617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_17
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7092ed77934257c4f984c97ccac33924
+      internalID: 8430149743007255462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_18
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81657426f1b10f74caa2c5d667ffd9a8
+      internalID: 7220241278716658719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_19
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 182e935dd2019694dabb20358ec8b555
+      internalID: 5572536424958700011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_20
+      rect:
+        serializedVersion: 2
+        x: 2025
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7b6be23a275b242ae83679928df17b
+      internalID: -5392240531637621656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokhodka_s_oruzh1_ten_raskadr_MEN_Sh_21
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 0.5
+        width: 225
+        height: 287.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c398db163932c574180bd8c1c73a8275
+      internalID: 4821545019367542067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
