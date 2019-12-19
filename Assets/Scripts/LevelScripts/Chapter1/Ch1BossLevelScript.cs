@@ -166,6 +166,8 @@ public class Ch1BossLevelScript : MonoBehaviour
     private int MediumBurstBulletAmount = 8;
     [SerializeField]
     private GameObject Phase1StaticShooters = null;
+    [SerializeField]
+    private GameObject Phase1StatueOfShooters = null;
 
     private void UpdatePhase1()
     {
@@ -241,6 +243,7 @@ public class Ch1BossLevelScript : MonoBehaviour
                 // Only in hardmode now
                 if (Phase1StaticShooters != null)
                 {
+                    Phase1StatueOfShooters.SetActive(timeElapsed > 7 && timeElapsed < 11 ? false : true);
                     Phase1StaticShooters.SetActive(timeElapsed > 7 && timeElapsed < 11 ? true : false);
                 }
 
