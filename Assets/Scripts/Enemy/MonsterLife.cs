@@ -122,11 +122,19 @@ public class MonsterLife : MonoBehaviour
     public void MakeBoy()
     {
         THE_BOY = true;
+        var enemyName = GetComponentInChildren<TMPro.TextMeshPro>();
+        if (enemyName == null) return;
+        enemyName.sortingLayerID = SortingLayer.NameToID("OnEffect");
+        enemyName.sortingOrder = 3;
     }
 
     public void MakeNoBoy()
     {
         THE_BOY = false;
+        var enemyName = GetComponentInChildren<TMPro.TextMeshPro>();
+        if (enemyName == null) return;
+        enemyName.sortingLayerID = SortingLayer.NameToID("Default");
+        enemyName.sortingOrder = 2;
     }
 
     public bool isBoy()

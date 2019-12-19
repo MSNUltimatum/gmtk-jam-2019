@@ -117,7 +117,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Testing
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de308a5751e0ee14bb3e8e50916936df, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ef96c2a98d198aa47affcd741ef8c36b, type: 2}
   m_sharedMaterial: {fileID: 5292497508315700715, guid: ef96c2a98d198aa47affcd741ef8c36b,
     type: 2}
   m_fontSharedMaterials: []
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2882529184434149376}
   m_subTextObjects:
   - {fileID: 0}
