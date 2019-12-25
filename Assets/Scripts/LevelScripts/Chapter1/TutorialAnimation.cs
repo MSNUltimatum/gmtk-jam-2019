@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialAnimation : MonoBehaviour
 {
+    [SerializeField]
     private GameObject pref;
     private float timeToNextAnim = 3f;
     private float currTime = 0f;
