@@ -1400,7 +1400,7 @@ MonoBehaviour:
     italicTypeface: {fileID: 0}
   fontWeights: []
   normalStyle: 0
-  normalSpacingOffset: 1
+  normalSpacingOffset: 2
   boldStyle: 0.35
   boldSpacing: 7
   italicStyle: 35

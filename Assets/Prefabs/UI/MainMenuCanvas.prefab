@@ -1806,7 +1806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 221.4, y: -92.1}
+  m_AnchoredPosition: {x: 224.7, y: -94.7}
   m_SizeDelta: {x: 150, y: 130}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6242707384293438735
@@ -1838,7 +1838,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Fight your way through all the <color=#171013>negative</color> aspects of
-    the world you live in
+    this world!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 57ecec553bed05b45baf904e7baafaa1, type: 2}
   m_sharedMaterial: {fileID: -1141437652245672127, guid: 57ecec553bed05b45baf904e7baafaa1,
