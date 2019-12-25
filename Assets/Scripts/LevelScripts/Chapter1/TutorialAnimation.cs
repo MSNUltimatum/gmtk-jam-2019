@@ -5,14 +5,7 @@ using UnityEngine;
 public class TutorialAnimation : MonoBehaviour
 {
     [SerializeField]
-    private GameObject pref;
-    private float timeToNextAnim = 3f;
-    private float currTime = 0f;
-    private GameObject gm;
-    private void Awake()
-    {
-        pref = Resources.Load("Tutorial") as GameObject;
-    }
+    private GameObject pref = null;
 
     private void Update()
     {
@@ -35,4 +28,8 @@ public class TutorialAnimation : MonoBehaviour
                 Destroy(gm);
         }
     }
+
+    private float timeToNextAnim = 3f;
+    private float currTime = 0f;
+    private GameObject gm;
 }
