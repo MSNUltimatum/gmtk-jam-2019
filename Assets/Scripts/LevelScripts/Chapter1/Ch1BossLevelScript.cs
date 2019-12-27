@@ -492,13 +492,13 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     private void Random360Burst(int bullets)
     {
-        var randomBurstForce = new Vector2(Mathf.Sign(Random.Range(-1f, 1f)), 0);
+        var randomBurstForce = Mathf.Sign(Random.Range(-1f, 1f)) * 2.5f;
         for (int i = 0; i < bullets; i++)
         {
             var bullet = Instantiate(BossBulletMiddle, BossInstance.transform.position,
                 Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360))));
             bullet.GetComponent<EnemyBulletLife>().BulletSpeed = Random.Range(BulletSpeedRange.x, BulletSpeedRange.y);
-            bullet.GetComponent<Rigidbody2D>().AddRelativeForce(randomBurstForce);
+            bullet.GetComponent<Rigidbody2D>().AddTorque(randomBurstForce, ForceMode2D.Impulse);
         }
     }
 

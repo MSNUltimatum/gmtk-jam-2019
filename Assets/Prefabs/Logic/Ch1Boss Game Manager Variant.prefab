@@ -1189,7 +1189,7 @@ MonoBehaviour:
   phase4FadeIn: 1.5
   MirrorCrack: {fileID: 0}
   BurstBulletAmount: 48
-  BulletSpeedRange: {x: 5, y: 15}
+  BulletSpeedRange: {x: 7, y: 15}
   AfterBossFadeInExtraTime: 0
   Phase4AfterAttackIdleTime: 3
   Phase4Shards: {fileID: 589264713}
@@ -1220,8 +1220,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8041433848797643808}
   m_LocalRotation: {x: -0, y: -0, z: 0.22913034, w: 0.97339576}
-  m_LocalPosition: {x: -0.98, y: 13.84, z: 0}
-  m_LocalScale: {x: 1.5033997, y: 1.5033997, z: 1.5034}
+  m_LocalPosition: {x: -0.98, y: 13.86, z: 0}
+  m_LocalScale: {x: 1.8034, y: 1.8034, z: 1.8034}
   m_Children: []
   m_Father: {fileID: 8175731138718100992}
   m_RootOrder: 6
