@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 7807499217646107}
-  TimeToDestroy: 2
+  TimeToDestroy: 0.5
 --- !u!114 &3581136307407725650
 MonoBehaviour:
   m_ObjectHideFlags: 0

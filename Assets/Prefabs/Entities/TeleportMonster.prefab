@@ -473,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   cooldownRange: {x: 5, y: 7}
-  Scatter: 8
+  Scatter: 8.3
 --- !u!82 &5216238258658365549
 AudioSource:
   m_ObjectHideFlags: 0

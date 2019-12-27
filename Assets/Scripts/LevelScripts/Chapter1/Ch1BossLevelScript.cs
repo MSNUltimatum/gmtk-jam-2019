@@ -98,7 +98,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         var bossRotationZ = BossInstance.transform.rotation.eulerAngles.z;
         bossRotationZ += Random.Range(-20, 20);
         var bossPosition = BossInstance.transform.position;
-        for (float i = bossRotationZ; i < bossRotationZ + 360; i += 360 / projectilesCount)
+        for (float i = bossRotationZ; i < bossRotationZ + 360; i += 360 / projectilesCount + 1)
         {
             Instantiate(bulletPrefab, bossPosition, Quaternion.Euler(new Vector3(0, 0, i)));
         }
@@ -300,6 +300,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         Phase2CurrentAttack = Phase2Attack.GlassStart;
         GlassStartTimePassed = 0;
         monsterSpawner = GetComponent<ArenaEnemySpawner>();
+        GetComponentInChildren<ContiniousOutlineAppear>().Activate();
     }
 
     [SerializeField]
@@ -491,11 +492,13 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     private void Random360Burst(int bullets)
     {
+        var randomBurstForce = new Vector2(Mathf.Sign(Random.Range(-1f, 1f)), 0);
         for (int i = 0; i < bullets; i++)
         {
             var bullet = Instantiate(BossBulletMiddle, BossInstance.transform.position,
                 Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360))));
             bullet.GetComponent<EnemyBulletLife>().BulletSpeed = Random.Range(BulletSpeedRange.x, BulletSpeedRange.y);
+            bullet.GetComponent<Rigidbody2D>().AddRelativeForce(randomBurstForce);
         }
     }
 

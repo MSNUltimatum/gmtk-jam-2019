@@ -93,7 +93,6 @@ public class MonsterLife : MonoBehaviour
     protected virtual void PreDestroyEffect()
     {
         var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
-        Destroy(enemyExplosion, 0.5f);
     }
 
     public void FadeIn(float _fadeInTime)

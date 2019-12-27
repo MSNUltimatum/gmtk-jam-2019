@@ -7,20 +7,26 @@ public class DetachDestroyParticleEmitter : MonoBehaviour
     [SerializeField]
     private ParticleSystem particles = null;
     [SerializeField]
-    private float TimeToDestroy = 2f;
+    private float TimeToDestroy = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         particles.transform.SetParent(null);
-        Destroy(particles, TimeToDestroy);
     }
 
-    void OnDestroy()
+    void Update()
     {
-        if (particles)
+        TimeToDestroy -= Time.deltaTime;
+        if (TimeToDestroy < 0)
         {
             particles.Stop();
+            GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+            if (TimeToDestroy + 0.5f < 0)
+            {
+                Destroy(gameObject);
+                Destroy(particles.gameObject);
+            }
         }
     }
 }
