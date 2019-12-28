@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012066977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.007, y: 0.234, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6066653572966047847}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.7857144, y: 1.6793387}
+  m_Size: {x: 2.9296875, y: 1.9569397}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0.007, y: 0.234, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1997476023090138409
 GameObject:
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997476023090138409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.39300537, z: 0}
+  m_LocalPosition: {x: 0.0545, y: 0.3903, z: 0}
   m_LocalScale: {x: 0.03427, y: 0.03427, z: 0.03427}
   m_Children: []
   m_Father: {fileID: 6066653572966047847}
@@ -353,7 +353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4813827667180084527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.053, y: 0.393, z: 0}
+  m_LocalPosition: {x: -0.0575, y: 0.393, z: 0}
   m_LocalScale: {x: 0.03426827, y: 0.03426827, z: 0.03426827}
   m_Children: []
   m_Father: {fileID: 6066653572966047847}
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: -0.053, y: 0.393, z: 0}
+  offset: {x: -0.0575, y: 0.393, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &5157507255320454297
 GameObject:
@@ -431,11 +431,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6066653572966047847}
-  - component: {fileID: 7735108373905851321}
   - component: {fileID: 7735108373905851320}
   - component: {fileID: 7337340545462130261}
   - component: {fileID: 1057457538494757011}
-  - component: {fileID: 5832591496437646689}
+  - component: {fileID: 5825017680835124173}
   - component: {fileID: 210368623}
   - component: {fileID: 210368622}
   - component: {fileID: -5684052281208559902}
@@ -465,22 +464,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7735108373905851321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5157507255320454297}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e8dfb8e9294c649b7576947696aec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySpeed: 2
-  CoolDown: 1
-  RandomShotAngle: 15
-  Bullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca, type: 3}
 --- !u!114 &7735108373905851320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
---- !u!114 &5832591496437646689
+--- !u!114 &5825017680835124173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,13 +523,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5157507255320454297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a132a92722b87994bac38cbaaf82aa69, type: 3}
+  m_Script: {fileID: 11500000, guid: 28d8c4bd69472334caff87427c061567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
   cooldownRange: {x: 1, y: 1}
+  castTime: 0.3
   randomShotAngle: 15
   bullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca, type: 3}
+  bulletSpawnOffset: {x: 0, y: -0.2}
+  isSpawnOffsetWorldCoordinates: 1
+  attackVFX: {fileID: 1617143983919096118, guid: bdcbf7b9eb5e86c4b90f3e0f8816dfa5,
+    type: 3}
 --- !u!61 &210368623
 BoxCollider2D:
   m_ObjectHideFlags: 0
