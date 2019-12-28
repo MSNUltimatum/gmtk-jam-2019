@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: fb2c97f97181e804caf195ae66922a0c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4306497965866259554
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_0
+  - first:
+      213: -4900406124286152667
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_1
+  - first:
+      213: -2519506588911375344
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_2
+  - first:
+      213: -6216116750097138788
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_3
+  - first:
+      213: -5517368615855899040
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_4
+  - first:
+      213: 1956457110036916084
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_5
+  - first:
+      213: -3423396082076211655
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_6
+  - first:
+      213: -7461393431975700262
+    second: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +64,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -60,7 +84,31 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -72,7 +120,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7281cc2a0cdc2c439cf52a1871d70b2
+      internalID: 4306497965866259554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 140
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a028bcc0bb54a45816873e79e91687
+      internalID: -4900406124286152667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_2
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 140
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d14a29df4a1754f8ee4fe0734d8a3f
+      internalID: -2519506588911375344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_3
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 140
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5764b3b2d4afea943b4748080b87322a
+      internalID: -6216116750097138788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f22083537e7172b488fc1116f4a44b2a
+      internalID: -5517368615855899040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_5
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a269d2c3841eb408e2083cae625c29
+      internalID: 1956457110036916084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_6
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 0
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9443c9fb2b8045d44957375690601025
+      internalID: -3423396082076211655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garpia-miniboss_animatsia_polyota_raskadr_194kh140_na_kadr_7
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 0
+        width: 194
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0edc7b7125b842c4990da9ee151c1c8b
+      internalID: -7461393431975700262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

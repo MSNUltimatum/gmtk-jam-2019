@@ -13,7 +13,8 @@ public class StopRotation : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = transform.parent.position + offset;
         transform.eulerAngles = baseEulerRotation;
+        if (baseEulerRotation == Vector3.zero) return;
+        transform.position = transform.parent.position + offset;
     }
 }

@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: -0.058, y: 0.208, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &7182972875831480364
 GameObject:
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0.059, y: 0.269, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &7977928484844902363
 GameObject:
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0.177, y: 0.21, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &8556840193103203059
 GameObject:

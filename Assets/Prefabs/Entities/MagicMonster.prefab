@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0.05, y: 0.393, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2725628155222143190
 GameObject:
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: -0.0575, y: 0.393, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &5157507255320454297
 GameObject:
