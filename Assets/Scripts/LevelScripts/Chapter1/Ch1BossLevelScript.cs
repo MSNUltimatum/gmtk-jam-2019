@@ -30,6 +30,7 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     private void Start()
     {
+        Pause.AllowPause = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         AudioManager.Pause("Chapter1BossMusic", GetComponent<AudioSource>());
         CurrentEnemy.SetCurrentEnemyName("???");
@@ -72,7 +73,6 @@ public class Ch1BossLevelScript : MonoBehaviour
 
     public void StartFight()
     {
-        Pause.AllowPause = false;
         CurrentPhase = Phase.PRE_PHASE1;
         Instantiate(bossSpawnEffect, new Vector3(0, 16.5f, 0), Quaternion.identity);
     }
