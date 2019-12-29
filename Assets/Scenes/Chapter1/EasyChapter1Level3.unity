@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: NextSceneName
-      value: Chapter1level4
+      value: EasyChapter1Level4
       objectReference: {fileID: 0}
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}

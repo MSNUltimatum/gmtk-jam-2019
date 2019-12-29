@@ -28,19 +28,10 @@ public class RelodScene : MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
         maxvalue = arena.EnemyCount();
-        if (isPointVictory)
-        {
-            if (!spawn.IsInfSpawn && pointsToVictory > spawn.baseEnemyCount())
-            {
-                pointsToVictory = spawn.baseEnemyCount();
-            }
-            Canvas.transform.GetChild(0).gameObject.SetActive(false);
-        }
-        else
-        {
-            Canvas.transform.GetChild(0).gameObject.SetActive(false);
-        }
+
+        Canvas.transform.GetChild(0).gameObject.SetActive(false);
         isVictory = false;
+        PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
     }
 
     public void CurrentCount(int val)
@@ -54,36 +45,32 @@ public class RelodScene : MonoBehaviour
         Reload();
     }
 
+    protected virtual void ProcessVictory()
+    {
+        CurrentEnemy.SetCurrentEnemyName(" ");
+        isVictory = true;
+        Canvas.transform.GetChild(0).gameObject.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
+        {
+            Canvas.transform.GetChild(0).gameObject.SetActive(false);
+            SceneManager.LoadScene(NextSceneName);
+        }
+    }
+
     protected virtual void Victory()
     {
         if (isPointVictory)
         {
             if (TotalValue >= pointsToVictory)
             {
-                isVictory = true;
-                Canvas.transform.GetChild(0).gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
-                {
-                    if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
-                        PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                    Canvas.transform.GetChild(0).gameObject.SetActive(false);
-                    SceneManager.LoadScene(NextSceneName);
-                }
+                ProcessVictory();
             }
         }
         else
         {
             if (TotalValue >= maxvalue)
             {
-                isVictory = true;
-                Canvas.transform.GetChild(0).gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
-                {
-                    if (PlayerPrefs.GetInt("CurrentScene") < SceneNumber + 1)
-                        PlayerPrefs.SetInt("CurrentScene", SceneNumber + 1);
-                    Canvas.transform.GetChild(0).gameObject.SetActive (false);
-                    SceneManager.LoadScene(NextSceneName);
-                }
+                ProcessVictory();
             }
         }
     }
