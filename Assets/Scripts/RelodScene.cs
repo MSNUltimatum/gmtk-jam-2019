@@ -34,7 +34,7 @@ public class RelodScene : MonoBehaviour
         PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void CurrentCount(int val)
+    public virtual void CurrentCount(int val)
     {
         TotalValue = TotalValue + val;
     }

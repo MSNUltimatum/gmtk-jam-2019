@@ -48,7 +48,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
 
-        currentEvilDictionary = evilDictionary.EvilNames.OrderBy(a => Random.Range(0, 10000)).ToList();
+        currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
         randomSequence = GenerateRandom(currentEvilDictionary.Count / 2, currentEvilDictionary.Count - 1);
     }
 

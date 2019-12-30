@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class EvilDictionary : MonoBehaviour
 {
-    public readonly string[] EvilNames = {
+    public virtual string[] EvilNames()
+    {
+        return evilNames;
+    }
+
+    private string[] evilNames = {
         "Abomination", "Abuse", "Aggression", "Agony",
         "Bereavement", "Blame", "Betrayal", "Breakdown",
         "Catastrophe", "Chaos", "Conceit", "Conflict", "Crime", "Corruption", "Cheerless",
@@ -16,7 +21,7 @@ public class EvilDictionary : MonoBehaviour
         "Harassment", "Harmful", "Hatred", "Havoc", "Horrid",
         "Idiotic", "Ignore", "Impiety", "Impersonal", "Impolite", "Insanity",
         "Jaded", "Jarring", "Jeer", "Jobless", "Jittery",
-        
+
         "Lack", "Lackadaisical", "Lawless", "Loneliness",
         "Mad", "Malaise", "Malign", "Manipulate", "Marginal", "Misery",
         "Mistake", "Madness", "Mirthless",

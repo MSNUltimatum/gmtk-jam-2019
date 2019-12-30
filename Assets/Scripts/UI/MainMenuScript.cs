@@ -120,6 +120,11 @@ public class MainMenuScript : MonoBehaviour
         
     }
 
+    public void NewYear()
+    {
+        SceneManager.LoadScene("NewYearLevel");
+    }
+
     public void ClickButtonSettings()
     {
         DeactivateEverything();
