@@ -159,8 +159,8 @@ MonoBehaviour:
   NextSceneName: Chapter1level2
   SceneNumber: 50
   isPointVictory: 1
-  pointsToVictory: 30
-  monsterAdditionLimit: 30
+  pointsToVictory: 50
+  monsterAdditionLimit: 50
   TotalValue: 0
   hatsCollected: {fileID: 1049243661}
 --- !u!4 &611582959 stripped
