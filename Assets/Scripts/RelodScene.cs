@@ -57,6 +57,13 @@ public class RelodScene : MonoBehaviour
         }
     }
 
+    protected virtual void CheckVictoryCondition()
+    {
+        var pointToVictory = isPointVictory ? pointsToVictory : maxvalue;
+        isVictory = TotalValue >= pointToVictory;
+        
+    }
+
     protected virtual void Victory()
     {
         if (isPointVictory)
