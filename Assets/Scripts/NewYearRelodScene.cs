@@ -7,9 +7,9 @@ public class NewYearRelodScene : RelodScene
     [SerializeField]
     private TMPro.TextMeshProUGUI hatsCollected = null;
 
-    public override void CurrentCount(int val)
+    public override void UpdateScore(int val)
     {
-        base.CurrentCount(val);
+        base.UpdateScore(val);
         hatsCollected.text = TotalValue.ToString();
     }
 }

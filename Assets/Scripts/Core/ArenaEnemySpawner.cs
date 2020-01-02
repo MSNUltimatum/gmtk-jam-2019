@@ -60,7 +60,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         if (scenesController)
         {
-            scenesController.CurrentCount(1);
+            scenesController.UpdateScore(1);
         }
         roomLighting.AddToLight(1);
 

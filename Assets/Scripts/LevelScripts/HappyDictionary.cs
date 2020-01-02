@@ -6,10 +6,11 @@ public class HappyDictionary : EvilDictionary
 {
     public override string[] EvilNames()
     {
-        return evilNames;
+        return happyNames;
     }
 
-    private string[] evilNames = {"Cheer",
+    private string[] happyNames = {
+        "Cheer",
         "Meme", "Mistery", "Gift",
         ":)", ":')", ":D", ":O",
         "Happiness", "Holiday", "Spirit", "Firework",

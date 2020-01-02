@@ -6,12 +6,9 @@ using UnityEngine.SceneManagement;
 public class TutorialScene3Victory : RelodScene
 {
     [SerializeField]
-    private float timeToVictory = 25.0f;
+    private float timeToVictory = 10.0f;
 
     public float TimeToVictory { get { return timeToVictory; } }
-
-    private float TimeForAdd = 1f;
-    private float TimeForNextAdd = 1f;
 
     protected override void Awake()
     {
@@ -19,8 +16,10 @@ public class TutorialScene3Victory : RelodScene
         light = GetComponent<RoomLighting>();
         light.SetMaxValue(timeToVictory);
     }
-    protected override void Victory()
+
+    protected override void Update()
     {
+        base.Update();
         if (CharacterLife.isDeath || Pause.Paused) return;
         timeToVictory -= Time.deltaTime;
         if (timeToVictory < 0)
@@ -42,16 +41,20 @@ public class TutorialScene3Victory : RelodScene
         }
         else
         {
-            if (TimeForNextAdd > 0)
+            if (timeToNextAdd > 0)
             {
-                TimeForNextAdd -= Time.deltaTime;
+                timeToNextAdd -= Time.deltaTime;
             }
             else
             {
                 light.AddToLight(0.31f);
-                TimeForNextAdd = TimeForAdd;
+                timeToNextAdd = timeToAdd;
             }
         }
     }
+
+    private float timeToAdd = 1f;
+    private float timeToNextAdd = 1f;
+
     new private RoomLighting light;
 }

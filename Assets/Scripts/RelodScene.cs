@@ -19,11 +19,10 @@ public class RelodScene : MonoBehaviour
     public int TotalValue = 0;
     private float maxvalue = 0;
 
-    protected static GameObject Canvas;
+    protected GameObject Canvas;
 
     protected virtual void Awake()
     {
-        ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
@@ -34,15 +33,21 @@ public class RelodScene : MonoBehaviour
         PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
     }
 
-    public virtual void CurrentCount(int val)
+    public virtual void UpdateScore(int val)
     {
         TotalValue = TotalValue + val;
+        CheckVictoryCondition();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        Victory();
-        Reload();
+        if (CharacterLife.isDeath) PressR();
+        if (isVictory) ProcessVictory();
+
+        if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
+        {
+            Reload();
+        }            
     }
 
     protected virtual void ProcessVictory()
@@ -57,29 +62,15 @@ public class RelodScene : MonoBehaviour
         }
     }
 
-    protected virtual void CheckVictoryCondition()
+    /// <summary>
+    /// Updates isVictory field and returns it
+    /// </summary>
+    /// <returns></returns>
+    protected virtual bool CheckVictoryCondition()
     {
         var pointToVictory = isPointVictory ? pointsToVictory : maxvalue;
         isVictory = TotalValue >= pointToVictory;
-        
-    }
-
-    protected virtual void Victory()
-    {
-        if (isPointVictory)
-        {
-            if (TotalValue >= pointsToVictory)
-            {
-                ProcessVictory();
-            }
-        }
-        else
-        {
-            if (TotalValue >= maxvalue)
-            {
-                ProcessVictory();
-            }
-        }
+        return isVictory;
     }
 
     protected virtual void Reload()
@@ -87,15 +78,13 @@ public class RelodScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
         {
             TotalValue = 0;
-            Time.timeScale = 1;
             Canvas.transform.GetChild(1).gameObject.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
-    public static void PressR()
+    public void PressR()
     {
-        if (isVictory && !CharacterLife.isDeath) return;
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
 }

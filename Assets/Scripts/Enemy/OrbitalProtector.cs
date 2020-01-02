@@ -45,9 +45,7 @@ public class OrbitalProtector : EnemyMovement
         }
         else if (coll.gameObject.tag == "Player")
         {
-            Destroy(coll.gameObject);
-            Time.timeScale = 0;
-            RelodScene.PressR();
+            coll.gameObject.GetComponent<CharacterLife>().Death();
         }
     }
 
