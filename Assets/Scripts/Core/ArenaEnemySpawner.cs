@@ -25,8 +25,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
 
     public Vector2 RoomBounds = new Vector2(15, 10);
-
-    private List<int> randomSequence;
+    
     private int sequenceIndex = 0;
 
     [SerializeField]
@@ -48,8 +47,7 @@ public class ArenaEnemySpawner : MonoBehaviour
             SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
 
-        currentEvilDictionary = evilDictionary.EvilNames.OrderBy(a => Random.Range(0, 10000)).ToList();
-        randomSequence = GenerateRandom(currentEvilDictionary.Count / 2, currentEvilDictionary.Count - 1);
+        currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
     }
 
     private void InitializeFields()
@@ -58,35 +56,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         boysList = new List<GameObject>();
     }
 
-    public static List<int> GenerateRandom(int count, int max)
-    {
-        List<int> result = new List<int>(count);
-
-        // generate count random values.
-        HashSet<int> candidates = new HashSet<int>();
-        for (int top = max - count; top < max; top++)
-        {
-            // May strike a duplicate.
-            int value = Random.Range(0, top);
-            if (candidates.Add(value))
-            {
-                result.Add(value);
-            }
-            else
-            {
-                result.Add(top);
-                candidates.Add(top);
-            }
-        }
-
-        return result;
-    }
-
     public static void ChangeTheBoy(GameObject oldBoy)
     {
         if (scenesController)
         {
-            scenesController.CurrentCount(1);
+            scenesController.UpdateScore(1);
         }
         roomLighting.AddToLight(1);
 
@@ -151,13 +125,13 @@ public class ArenaEnemySpawner : MonoBehaviour
                 if (!anyBoy)
                 {
                     anyBoy = true;
-                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[randomSequence[sequenceIndex]], enemy);
+                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[sequenceIndex], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
                     currentBoy = enemy;
                 }
             }
             // Set random enemy name from the dictionary
-            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[randomSequence[sequenceIndex]];
+            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
             boysList.Add(enemy);
 
             if (!SpawnZone)
@@ -281,12 +255,12 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (!anyBoy)
         {
             anyBoy = true;
-            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[randomSequence[sequenceIndex]], enemy);
+            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[sequenceIndex], enemy);
             enemy.GetComponent<MonsterLife>().MakeBoy();
             currentBoy = enemy;
         }
 
-        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[randomSequence[sequenceIndex]];
+        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
         boysList.Add(enemy);
         //roomLighting.AddToLight(1);
 

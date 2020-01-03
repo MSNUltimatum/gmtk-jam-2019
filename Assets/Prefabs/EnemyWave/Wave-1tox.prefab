@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2740356996478432510}
-  - component: {fileID: 8235969916271320008}
   m_Layer: 0
   m_Name: Wave-1tox
   m_TagString: Untagged
@@ -28,22 +27,10 @@ Transform:
   m_LocalPosition: {x: 11.567621, y: -0.055440158, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4805935314580666215}
+  - {fileID: 7494913546540709273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8235969916271320008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740356996478432497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05ff95a30fbdc3448bd28384ed1dd4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9108903353098200152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168,9 +155,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fdf15a18bb35fd43964277d6efe820b, type: 3}
---- !u!224 &4805935314580666215 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4385186494422029119, guid: 4fdf15a18bb35fd43964277d6efe820b,
+--- !u!4 &7494913546540709273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1615133650873618881, guid: 4fdf15a18bb35fd43964277d6efe820b,
     type: 3}
   m_PrefabInstance: {fileID: 9108903353098200152}
   m_PrefabAsset: {fileID: 0}

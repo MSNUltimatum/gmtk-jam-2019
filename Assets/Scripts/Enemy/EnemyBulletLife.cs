@@ -31,7 +31,6 @@ public class EnemyBulletLife : MonoBehaviour
         {
             CharacterLife life = coll.gameObject.GetComponent<CharacterLife>();
             life.Death();
-            RelodScene.PressR();
         }
     }
 }

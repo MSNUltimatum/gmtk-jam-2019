@@ -206,4 +206,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapter1/HardFinalCredits.unity
     guid: 2d3d30c3368ee544eaf3a420dc0918c3
+  - enabled: 1
+    path: Assets/Scenes/Chapter1/NewYearLevel.unity
+    guid: 808b005500eb4bb48ac1f3eb64d905c9
   m_configObjects: {}
