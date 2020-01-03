@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -141,27 +141,17 @@ PrefabInstance:
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: NextSceneName
-      value: EasyChapter1Level7
+      value: Chapter1level2
       objectReference: {fileID: 0}
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: SceneNumber
-      value: 1006
+      value: 1001
       objectReference: {fileID: 0}
     - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: isPointVictory
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: pointsToVictory
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526407621052106132, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: monsterAdditionLimit
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581338, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
@@ -226,54 +216,25 @@ PrefabInstance:
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: timeToEachSpawn
-      value: 5.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: SpawnZone
-      value: 
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
-      objectReference: {fileID: 577698623556847370, guid: e355ea5bacc563d408ce5ab101525157,
+      objectReference: {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1,
         type: 3}
     - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: enemyWaves.Array.data[2]
       value: 
-      objectReference: {fileID: 3598458013119388966, guid: e25953a613f9d644f8846569ecf2bd0e,
+      objectReference: {fileID: 8109258291629398269, guid: 56eaf28768d474e488b6165f98220ab7,
         type: 3}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[0]
-      value: 
-      objectReference: {fileID: 772521035027738140, guid: 59916de902f33c54aaddd41b60bb9919,
-        type: 3}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[3]
-      value: 
-      objectReference: {fileID: 772521035027738140, guid: 59916de902f33c54aaddd41b60bb9919,
-        type: 3}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[4]
-      value: 
-      objectReference: {fileID: 577698623556847370, guid: e355ea5bacc563d408ce5ab101525157,
-        type: 3}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[5]
-      value: 
-      objectReference: {fileID: 3332098615629668360, guid: e63be7c6321389f4f9fcd1148eb8786f,
-        type: 3}
-    - target: {fileID: 3334064150391581339, guid: 0fca9824f899de543a831d6c0c51144e,
-        type: 3}
-      propertyPath: isInfSpawn
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 92031012, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
       propertyPath: SceneNumber
       value: 1
@@ -834,6 +795,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
     - {fileID: 8797610113026404234, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
+    - {fileID: 1107417628678269102, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}

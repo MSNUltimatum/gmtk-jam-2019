@@ -13,7 +13,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     [SerializeField]
     protected GameObject[] enemyWaves = null;
-    
+
     public SpawnZoneScript SpawnZone = null;
 
     [SerializeField]
@@ -35,15 +35,15 @@ public class ArenaEnemySpawner : MonoBehaviour
     void Awake()
     {
         InitializeFields();
-        
+
         roomLighting = GetComponent<RoomLighting>();
-        scenesController = GetComponent<RelodScene>();    
+        scenesController = GetComponent<RelodScene>();
         isPointVictory = scenesController.isPointVictory;
 
         // Get reference for UI current enemy name
         currentEnemy = GetComponent<CurrentEnemy>();
-        //SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
-        if (spawnZones.Length == 0)
+        GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
+        if (SpawnSquare)
         {
             SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
@@ -57,7 +57,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         anyBoy = false;
         boysList = new List<GameObject>();
     }
-    
+
     public static List<int> GenerateRandom(int count, int max)
     {
         List<int> result = new List<int>(count);
@@ -136,17 +136,12 @@ public class ArenaEnemySpawner : MonoBehaviour
         enemy.transform.position = RandomBorderSpawnPos();
     }
 
-    protected void SetMonsterPositionIntoSpawnZone (GameObject enemy)
-    {
-        var tmp = Random.Range(0, spawnZones.Length);
-        enemy.transform.position = spawnZones[tmp].GetComponent<SpawnZoneScript>().SpawnPosition();
-    }
     private void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
         int enemiesInWave = enemyWave.transform.childCount;
-        
+
         for (int i = 0; i < enemiesInWave; i++)
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
@@ -190,7 +185,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         while (boysList.Count != 0)
         {
-           boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
+            boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
         }
     }
 
@@ -199,7 +194,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (isInfSpawn)
         {
             timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) 
+            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0)
                 && !RelodScene.isVictory && sequenceIndex < scenesController.pointsToVictory + 12)
             {
                 timeToNextSpawn = timeToEachSpawn;
@@ -239,11 +234,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
         else
         {
-          return baseEnemyCount ();
+            return baseEnemyCount();
         }
     }
 
-    public int baseEnemyCount ()
+    public int baseEnemyCount()
     {
         EnemiesCount = 0;
         foreach (var e in enemyWaves)
@@ -331,17 +326,12 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected static GameObject currentBoy;
 
-    //private GameObject SpawnSquare;
-
     protected CurrentEnemy currentEnemy;
 
     public static List<GameObject> boysList = new List<GameObject>();
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
-
-    public bool isPointVictory = false;
-
+    private bool isPointVictory = false;
     public bool IsInfSpawn { get { return isInfSpawn; } }
-
 }
