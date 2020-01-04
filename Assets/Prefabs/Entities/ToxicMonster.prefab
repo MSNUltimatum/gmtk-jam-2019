@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 8883467259405946828}
   - component: {fileID: 8883467259405946829}
   - component: {fileID: 5356568824309944641}
+  - component: {fileID: 4762956831574002563}
+  - component: {fileID: 3256055474307122107}
+  - component: {fileID: 6928284819307007496}
   - component: {fileID: 933350302460264204}
   m_Layer: 0
   m_Name: ToxicMonster
@@ -200,6 +203,55 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4762956831574002563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385186494422029114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851423767a200cf4eaf5bea045e99598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 3.5
+  maxAccel: 100
+  maxRotation: 200
+  maxAngularAccel: 10000
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0}
+--- !u!114 &3256055474307122107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385186494422029114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c983f7a3bdf77a04686eb8be607bec57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+--- !u!114 &6928284819307007496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385186494422029114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c1d796790c0c0408260dacf14ea289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  targetRadius: 0
+  slowRadius: 0.1
+  timeToTarget: 0.1
+  rotateAtStart: 1
 --- !u!114 &933350302460264204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,10 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e668774513be5a74cae8eb6f9339cab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 2
-  CoolDown: 2.22
-  RandomShotAngle: 15
-  Bullet: {fileID: 2619945096730714068, guid: 1a1f5dee9ba6d4c4ca4d10c552e99d18, type: 3}
+  weight: 1
+  cooldownRange: {x: 1, y: 1}
+  randomShotAngle: 15
+  bullet: {fileID: 2619945096730714068, guid: 1a1f5dee9ba6d4c4ca4d10c552e99d18, type: 3}
   SecondAttackBullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca,
     type: 3}
   CooldownToSecondAttack: 0.5
@@ -443,11 +495,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1615133650873618881}
     m_Modifications:
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_Name
-      value: Text
-      objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -552,6 +599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
