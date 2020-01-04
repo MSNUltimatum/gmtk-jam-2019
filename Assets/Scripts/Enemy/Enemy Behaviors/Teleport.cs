@@ -51,7 +51,7 @@ public class Teleport : TimedAttack
                     }
                 }
             }
-            if (i == 5) EndShake();//in case we can't find spot for teleport
+            if (i == 5) EndShake(); //in case we can't find spot for teleport
         }
     }
 
@@ -71,7 +71,7 @@ public class Teleport : TimedAttack
         base.CalledUpdate();
         if (shakeMode) {
             Vector2 shift = new Vector2(Random.Range(-shakeAmp, shakeAmp), Random.Range(-shakeAmp, shakeAmp));
-            gameObject.transform.Translate(shift,Space.World);
+            gameObject.transform.Translate(shift, Space.World);
         }
     }
 

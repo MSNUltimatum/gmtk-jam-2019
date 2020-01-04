@@ -22,12 +22,11 @@ public class LizardWaveFace : Align
         return base.GetSteering();
     }
 
-    private float WaveFluctuation() {//delta orientation from line of sight to wave trajectory
-        float fluctuation = 0f;
+    //delta orientation from line of sight to wave trajectory
+    private float WaveFluctuation() {
         wavePhase += Time.deltaTime / wavePeriod;
         if (wavePhase > 1) wavePhase -= 1;
-        fluctuation = Mathf.Sin(wavePhase * 2 * Mathf.PI) * waveAmp;
-        return fluctuation;
+        return Mathf.Sin(wavePhase * 2 * Mathf.PI) * waveAmp;
     }
 
 }
