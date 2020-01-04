@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class LizardWaveFace : Align
 {
-    private float wavePhase = 0f; 
-    public float wavePeriod = 2f; 
-    public float waveAmp = 40f; 
+    [SerializeField]
+    private float wavePeriod = 2f; 
+    [SerializeField]
+    private float waveAmp = 40f;
+    [SerializeField]
+    private float behaviourBlockTime = 0.5f; // without this may get stuck
 
     public override EnemySteering GetSteering()
     {
@@ -22,12 +25,14 @@ public class LizardWaveFace : Align
         return base.GetSteering();
     }
 
-    private float WaveFluctuation() {//delta orientation from line of sight to wave trajectory
-        float fluctuation = 0f;
+    //delta orientation from line of sight to wave trajectory
+    private float WaveFluctuation() {
+        if (Mathf.Max(behaviourBlockTime -= Time.deltaTime, 0) > 0) return 0;
+
         wavePhase += Time.deltaTime / wavePeriod;
         if (wavePhase > 1) wavePhase -= 1;
-        fluctuation = Mathf.Sin(wavePhase * 2 * Mathf.PI) * waveAmp;
-        return fluctuation;
+        return Mathf.Sin(wavePhase * 2 * Mathf.PI) * waveAmp;
     }
-
+    
+    private float wavePhase = 0f;
 }
