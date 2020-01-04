@@ -44,6 +44,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
 
         currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
+        enemiesCount = baseEnemyCount();
     }
 
     private void InitializeFields()
@@ -149,6 +150,10 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (Pause.Paused) return;
 
         EnemySpawnUpdate();
+        if (RelodScene.isVictory)
+        {
+            KillThemAll();
+        }
     }
 
     protected void KillThemAll()
@@ -161,63 +166,37 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected void EnemySpawnUpdate()
     {
-        if (isInfSpawn)
+        timeToNextSpawn -= Time.deltaTime;
+        if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) &&
+            sequenceIndex < scenesController.monsterAdditionLimit + enemiesCount)
         {
-            timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) 
-                && !RelodScene.isVictory && sequenceIndex < scenesController.pointsToVictory + 12)
-            {
-                timeToNextSpawn = timeToEachSpawn;
-                SpawnMonsters(spawnIndex);
-                spawnIndex++;
+            timeToNextSpawn = timeToEachSpawn;
+            SpawnMonsters(spawnIndex);
+            spawnIndex++;
 
-                if (spawnIndex == enemyWaves.GetLength(0))
+            if (spawnIndex >= enemyWaves.GetLength(0))
+            {
+                if (isInfSpawn)
                 {
                     spawnIndex = 0;
                 }
-            }
-
-            if (RelodScene.isVictory)
-            {
-                KillThemAll();
-            }
-        }
-        else
-        {
-            timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0))
-            {
-                timeToNextSpawn = timeToEachSpawn;
-                SpawnMonsters(spawnIndex);
-                spawnIndex++;
-
-                if (spawnIndex > enemyWaves.GetLength(0)) { }
             }
         }
     }
 
     public int EnemyCount()
     {
-        if (isPointVictory)
-        {
-            return scenesController.pointsToVictory;
-        }
-        else
-        {
-          return baseEnemyCount ();
-        }
+        return isPointVictory ? scenesController.pointsToVictory : baseEnemyCount();
     }
 
     public int baseEnemyCount ()
     {
-        EnemiesCount = 0;
+        enemiesCount = 0;
         foreach (var e in enemyWaves)
         {
-            EnemiesCount += e.transform.childCount;
+            enemiesCount += e.transform.childCount;
         }
-        int res = EnemiesCount;
-        EnemiesCount = 0;
-        return res;
+        return enemiesCount;
     }
 
     /// <summary>
@@ -273,12 +252,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
+    private int enemiesCount = 0;
     private int sequenceIndex = 0;
-    private int EnemiesCount = 0;
     private static bool anyBoy = false;
     protected int spawnIndex = 0;
     private List<string> currentEvilDictionary;
-    private Queue<string> enemyOrder;
 
     protected static GameObject currentBoy;
 
