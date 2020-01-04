@@ -15,6 +15,12 @@ public class TimedShootWithOffset : TimedAttack
     [SerializeField]
     protected GameObject attackVFX = null;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        shiftScript = gameObject.GetComponent<ShiftAfterShoot>();
+    }
+    
     protected virtual void ShootBulletStraight(Vector2 direction, GameObject bulletToSpawn, float randomAngle)
     {
         var bullet = Instantiate(bulletToSpawn, transform.position, new Quaternion());
@@ -45,5 +51,9 @@ public class TimedShootWithOffset : TimedAttack
     {
         Vector3 playerPos = target.transform.position;
         ShootBulletStraight(playerPos, bullet, randomShotAngle);
+
+        if (shiftScript != null) shiftScript.DoShift();
     }
+
+    private ShiftAfterShoot shiftScript;
 }
