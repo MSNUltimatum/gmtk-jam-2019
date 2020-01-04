@@ -6,6 +6,8 @@ using UnityEditor;
 
 public class ArenaEnemySpawner : MonoBehaviour
 {
+    public Vector2 RoomBounds = new Vector2(15, 10);
+
     [SerializeField]
     private float timeToEachSpawn = 5;
     [SerializeField]
@@ -13,7 +15,10 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     [SerializeField]
     protected GameObject[] enemyWaves = null;
-    
+
+    [SerializeField]
+    private EvilDictionary evilDictionary = null;
+
     public SpawnZoneScript SpawnZone = null;
 
     [SerializeField]
@@ -21,15 +26,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     [SerializeField]
     private bool isInfSpawn = false;
-    static Random random = new Random();
-
-
-    public Vector2 RoomBounds = new Vector2(15, 10);
-    
-    private int sequenceIndex = 0;
-
-    [SerializeField]
-    private EvilDictionary evilDictionary = null;
 
     void Awake()
     {
@@ -224,33 +220,13 @@ public class ArenaEnemySpawner : MonoBehaviour
         return res;
     }
 
-    public void SpawnСertainMonsterWithName(GameObject monster, string name, bool makeBoyIfPossible = true)
+    /// <summary>
+    /// Spawn the monster with random name
+    /// </summary>
+    /// <param name="monster"></param>
+    /// <returns></returns>
+    public GameObject SpawnMonster(GameObject monster, bool makeBoyIfPossible = true)
     {
-        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
-        if (!anyBoy)
-        {
-            anyBoy = true;
-            CurrentEnemy.SetCurrentEnemy(name, enemy);
-            enemy.GetComponent<MonsterLife>().MakeBoy();
-            currentBoy = enemy;
-        }
-        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
-        boysList.Add(enemy);
-        //roomLighting.AddToLight(1);
-
-        if (!SpawnZone)
-        {
-            SetMonsterPosition(enemy);
-        }
-        else
-        {
-            enemy.transform.position = SpawnZone.SpawnPosition();
-        }
-    }
-
-    public GameObject SpawnCertainMonsterWithoutName(GameObject monster)
-    {
-
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
         if (!anyBoy)
         {
@@ -262,7 +238,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
         boysList.Add(enemy);
-        //roomLighting.AddToLight(1);
 
         if (!SpawnZone)
         {
@@ -275,6 +250,12 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         sequenceIndex++;
         return enemy;
+    }
+
+    public void SpawnMonster(GameObject monster, string name, bool makeBoyIfPossible = true)
+    {
+        var createdMonster = SpawnMonster(monster);
+        createdMonster.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
     }
 
     public void MakeMonsterActive(string name1)
@@ -292,6 +273,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
+    private int sequenceIndex = 0;
     private int EnemiesCount = 0;
     private static bool anyBoy = false;
     protected int spawnIndex = 0;

@@ -339,7 +339,7 @@ public class Ch1BossLevelScript : MonoBehaviour
                     if (Phase2SpawnIndex < Phase2Monsters.Length)
                     {
                         var monsterToSpawn = Phase2Monsters[Phase2SpawnIndex];
-                        var enemy = monsterSpawner.SpawnCertainMonsterWithoutName(monsterToSpawn);
+                        var enemy = monsterSpawner.SpawnMonster(monsterToSpawn);
                         enemy.GetComponent<MonsterLife>().FadeIn(0.3f);
                         var attack = enemy.GetComponent<Attack>();
                         if (attack) attack.ForceAttack();
