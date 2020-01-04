@@ -6,6 +6,8 @@ using UnityEditor;
 
 public class ArenaEnemySpawner : MonoBehaviour
 {
+    public Vector2 RoomBounds = new Vector2(15, 10);
+
     [SerializeField]
     private float timeToEachSpawn = 5;
     [SerializeField]
@@ -14,6 +16,9 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     protected GameObject[] enemyWaves = null;
 
+    [SerializeField]
+    private EvilDictionary evilDictionary = null;
+
     public SpawnZoneScript SpawnZone = null;
 
     [SerializeField]
@@ -21,15 +26,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     [SerializeField]
     private bool isInfSpawn = false;
-    static Random random = new Random();
-
-
-    public Vector2 RoomBounds = new Vector2(15, 10);
-    
-    private int sequenceIndex = 0;
-
-    [SerializeField]
-    private EvilDictionary evilDictionary = null;
 
     void Awake()
     {
@@ -48,6 +44,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
 
         currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
+        enemiesCount = baseEnemyCount();
     }
 
     private void InitializeFields()
@@ -153,6 +150,10 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (Pause.Paused) return;
 
         EnemySpawnUpdate();
+        if (RelodScene.isVictory)
+        {
+            KillThemAll();
+        }
     }
 
     protected void KillThemAll()
@@ -165,92 +166,46 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected void EnemySpawnUpdate()
     {
-        if (isInfSpawn)
+        timeToNextSpawn -= Time.deltaTime;
+        if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) &&
+            sequenceIndex < scenesController.monsterAdditionLimit + enemiesCount)
         {
-            timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0)
-                && !RelodScene.isVictory && sequenceIndex < scenesController.pointsToVictory + 12)
-            {
-                timeToNextSpawn = timeToEachSpawn;
-                SpawnMonsters(spawnIndex);
-                spawnIndex++;
+            timeToNextSpawn = timeToEachSpawn;
+            SpawnMonsters(spawnIndex);
+            spawnIndex++;
 
-                if (spawnIndex == enemyWaves.GetLength(0))
+            if (spawnIndex >= enemyWaves.GetLength(0))
+            {
+                if (isInfSpawn)
                 {
                     spawnIndex = 0;
                 }
-            }
-
-            if (RelodScene.isVictory)
-            {
-                KillThemAll();
-            }
-        }
-        else
-        {
-            timeToNextSpawn -= Time.deltaTime;
-            if ((timeToNextSpawn < 0 || !anyBoy && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0))
-            {
-                timeToNextSpawn = timeToEachSpawn;
-                SpawnMonsters(spawnIndex);
-                spawnIndex++;
-
-                if (spawnIndex > enemyWaves.GetLength(0)) { }
             }
         }
     }
 
     public int EnemyCount()
     {
-        if (isPointVictory)
-        {
-            return scenesController.pointsToVictory;
-        }
-        else
-        {
-            return baseEnemyCount();
-        }
+        return isPointVictory ? scenesController.pointsToVictory : baseEnemyCount();
     }
 
     public int baseEnemyCount()
     {
-        EnemiesCount = 0;
+        enemiesCount = 0;
         foreach (var e in enemyWaves)
         {
-            EnemiesCount += e.transform.childCount;
+            enemiesCount += e.transform.childCount;
         }
-        int res = EnemiesCount;
-        EnemiesCount = 0;
-        return res;
+        return enemiesCount;
     }
 
-    public void SpawnСertainMonsterWithName(GameObject monster, string name, bool makeBoyIfPossible = true)
+    /// <summary>
+    /// Spawn the monster with random name
+    /// </summary>
+    /// <param name="monster"></param>
+    /// <returns></returns>
+    public GameObject SpawnMonster(GameObject monster, bool makeBoyIfPossible = true)
     {
-        var enemy = Instantiate(monster, transform.position, Quaternion.identity);
-        if (!anyBoy)
-        {
-            anyBoy = true;
-            CurrentEnemy.SetCurrentEnemy(name, enemy);
-            enemy.GetComponent<MonsterLife>().MakeBoy();
-            currentBoy = enemy;
-        }
-        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
-        boysList.Add(enemy);
-        //roomLighting.AddToLight(1);
-
-        if (!SpawnZone)
-        {
-            SetMonsterPosition(enemy);
-        }
-        else
-        {
-            enemy.transform.position = SpawnZone.SpawnPosition();
-        }
-    }
-
-    public GameObject SpawnCertainMonsterWithoutName(GameObject monster)
-    {
-
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
         if (!anyBoy)
         {
@@ -262,7 +217,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
         boysList.Add(enemy);
-        //roomLighting.AddToLight(1);
 
         if (!SpawnZone)
         {
@@ -275,6 +229,12 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         sequenceIndex++;
         return enemy;
+    }
+
+    public void SpawnMonster(GameObject monster, string name, bool makeBoyIfPossible = true)
+    {
+        var createdMonster = SpawnMonster(monster);
+        createdMonster.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
     }
 
     public void MakeMonsterActive(string name1)
@@ -292,11 +252,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
-    private int EnemiesCount = 0;
+    private int enemiesCount = 0;
+    private int sequenceIndex = 0;
     private static bool anyBoy = false;
     protected int spawnIndex = 0;
     private List<string> currentEvilDictionary;
-    private Queue<string> enemyOrder;
 
     protected static GameObject currentBoy;
 
