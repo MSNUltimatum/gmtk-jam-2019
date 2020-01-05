@@ -28,5 +28,5 @@ public abstract class TimedAttack : Attack
 
     protected abstract void CompleteAttack();
 
-    private float castTimeLeft = 0;
+    private float castTimeLeft = float.PositiveInfinity;
 }
