@@ -1423,7 +1423,8 @@ PrefabInstance:
       propertyPath: randomShotAngle
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2494812483425867362, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
 --- !u!4 &793729477739535343 stripped
 Transform:
@@ -1663,7 +1664,8 @@ PrefabInstance:
       propertyPath: randomShotAngle
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2494812483425867362, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
 --- !u!4 &793729477069851147 stripped
 Transform:
@@ -1983,7 +1985,8 @@ PrefabInstance:
       propertyPath: randomShotAngle
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2494812483425867362, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
 --- !u!4 &793729479022521743 stripped
 Transform:
@@ -2127,7 +2130,8 @@ PrefabInstance:
       propertyPath: randomShotAngle
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2494812483425867362, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22eff29559e39984d8287a12d653b5a8, type: 3}
 --- !u!4 &793729478610785211 stripped
 Transform:
