@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrentEnemy : MonoBehaviour
+public class CurrentEnemyUI : MonoBehaviour
 {
     [SerializeField]
     GameObject CanvasPrefab = null;

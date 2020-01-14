@@ -33,7 +33,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         Pause.AllowPause = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         AudioManager.PauseMusic(GetComponent<AudioSource>());
-        CurrentEnemy.SetCurrentEnemyName("???");
+        CurrentEnemyUI.SetCurrentEnemyName("???");
         camera = Camera.main.transform;
     }
 
@@ -157,7 +157,7 @@ public class Ch1BossLevelScript : MonoBehaviour
             bossPosition.x + Mathf.Sign(Random.Range(-1, 1)) * 10, bossPosition.y, bossPosition.z);
 
         Phase1TimeToHomingShooting = 5.1f - Phase1IdleTime;
-        CurrentEnemy.SetCurrentEnemyName("Survive!");
+        CurrentEnemyUI.SetCurrentEnemyName("Survive!");
     }
 
     [SerializeField]
@@ -437,13 +437,13 @@ public class Ch1BossLevelScript : MonoBehaviour
         if (BossInstance == null)
         {
             StartDead();
-            CurrentEnemy.SetCurrentEnemyName(" ");
+            CurrentEnemyUI.SetCurrentEnemyName(" ");
             return;
         }
         if (ArenaEnemySpawner.boysList.Count == 0)
         {
-            CurrentEnemy.SetCurrentEnemyName("Shadow");
-            CurrentEnemy.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            CurrentEnemyUI.SetCurrentEnemyName("Shadow");
+            CurrentEnemyUI.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         switch (phase4Attack)
         {
