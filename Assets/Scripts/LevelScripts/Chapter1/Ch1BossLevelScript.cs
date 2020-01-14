@@ -32,7 +32,7 @@ public class Ch1BossLevelScript : MonoBehaviour
     {
         Pause.AllowPause = false;
         Player = GameObject.FindGameObjectWithTag("Player");
-        AudioManager.Pause("Chapter1BossMusic", GetComponent<AudioSource>());
+        AudioManager.PauseMusic(GetComponent<AudioSource>());
         CurrentEnemy.SetCurrentEnemyName("???");
         camera = Camera.main.transform;
     }
@@ -147,7 +147,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         
         CurrentPhase = Phase.PHASE1;
         BossInstance = Instantiate(BossPrefab, new Vector3(0, 16.5f, 0), Quaternion.identity);
-        AudioManager.Play("Chapter1BossMusic", GetComponent<AudioSource>());
+        AudioManager.PlayMusic(GetComponent<AudioSource>());
         Phase1PlayerNameLabel.SetActive(true);
         
         var bossPosition = BossInstance.transform.position;
