@@ -576,8 +576,9 @@ MonoBehaviour:
   slowRadius: 0.1
   timeToTarget: 0.1
   rotateAtStart: 1
-  wavePeriod: 2
+  wavePeriod: 3
   waveAmp: 60
+  behaviourBlockTime: 0.5
 --- !u!1 &7414698465562440439
 GameObject:
   m_ObjectHideFlags: 0
