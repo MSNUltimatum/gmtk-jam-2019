@@ -17,10 +17,10 @@ public class AudioManager : MonoBehaviour
     private const float lowestSoundValue = 0.3f;
 
     [SerializeField]
-    private AudioSource SourceMusic; // duplicate of static for inspector
+    private AudioSource SourceMusic = null; // duplicate of static for inspector
 
     [SerializeField]
-    AudioClip[] musicList;
+    AudioClip[] musicList = null;
     [SerializeField]
     private bool restartMusicOnLoad = false;
 
@@ -163,6 +163,17 @@ public class AudioManager : MonoBehaviour
 #else
         audioSourceMusic.volume = userPrefMusic;
 #endif
+    }
+
+    public static void PlayMusic(AudioSource sorce)// for externall audio sorce with music volume, like on boss
+    {
+        sorce.volume = userPrefMusic;
+        sorce.Play();
+    }
+
+    public static void PauseMusic(AudioSource sorce)
+    { 
+        sorce.Pause();
     }
 
     private static AudioSource audioSourceSFX;
