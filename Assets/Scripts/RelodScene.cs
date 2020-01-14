@@ -52,7 +52,7 @@ public class RelodScene : MonoBehaviour
 
     protected virtual void ProcessVictory()
     {
-        CurrentEnemyUI.SetCurrentEnemyName(" ");
+        CurrentEnemyUI.SetCurrentEnemy(" ");
         isVictory = true;
         Canvas.transform.GetChild(0).gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)

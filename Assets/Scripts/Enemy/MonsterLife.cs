@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
-    protected int HP = 1;
+    public int HP { get; private set; } = 1;
 
     bool THE_BOY = false;
 
@@ -16,6 +16,9 @@ public class MonsterLife : MonoBehaviour
     private GameObject enemyExplosionPrefab = null;
     [SerializeField]
     private float fadeInTime = 0.5f;
+
+    public delegate void EnemyDeath();
+    public static event EnemyDeath OnEnemyDead;
 
     protected virtual bool Vulnurable()
     {
@@ -68,8 +71,8 @@ public class MonsterLife : MonoBehaviour
             HP -= damage;
             if (HP <= 0)
             {
-                ArenaEnemySpawner.ChangeTheBoy(gameObject);
-
+                // Trigger an event for those who listen to it (if any)
+                OnEnemyDead?.Invoke();
                 PreDestroyEffect();
                 
                 Destroy(gameObject);
