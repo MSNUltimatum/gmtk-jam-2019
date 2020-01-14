@@ -17,13 +17,6 @@ public class CameraFollowScript : MonoBehaviour
     {
         var player = GameObject.FindWithTag("Player");
         Setup(() => player.transform.position);
-
-        //if (camera != null) Destroy(gameObject);
-        //else
-        //{
-        //    camera = gameObject;
-        //    DontDestroyOnLoad(gameObject);
-        //}
     }
 
     private Func<Vector3> GetCameraFollowPositionFunc;

@@ -70,7 +70,6 @@ public class CurrentEnemySelector : MonoBehaviour
         if (enemy == null) return false;
         if (currentCamera == null)
         {
-            print("haha");
             currentCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
         var enemyInScreenSpace = currentCamera.WorldToViewportPoint(enemy.transform.position);

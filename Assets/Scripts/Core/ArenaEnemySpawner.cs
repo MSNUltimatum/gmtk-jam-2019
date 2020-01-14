@@ -153,7 +153,11 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         while (boysList.Count != 0)
         {
-           boysList[0].GetComponent<MonsterLife>()?.Damage(null, 999, ignoreInvulurability: true);
+            if (boysList[0] == null) boysList.RemoveAt(0);
+            else
+            {
+                boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
+            }
         }
     }
 
