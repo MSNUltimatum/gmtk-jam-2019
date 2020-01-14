@@ -74,7 +74,6 @@ public class Teleport : TimedAttack
     }
 
     private float maxspeedSaved = 0f; //to hold maxSpeed when monster is stopped
-    private float CoolDownBefore = 0f;
     private bool shakeMode = false;
     private ArenaEnemySpawner arena;
 }
