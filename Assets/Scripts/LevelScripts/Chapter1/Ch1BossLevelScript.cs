@@ -301,6 +301,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         GlassStartTimePassed = 0;
         monsterSpawner = GetComponent<ArenaEnemySpawner>();
         GetComponentInChildren<ContiniousOutlineAppear>().Activate();
+        GetComponent<CurrentEnemySelector>().enableScanning = true;
     }
 
     [SerializeField]
@@ -440,7 +441,7 @@ public class Ch1BossLevelScript : MonoBehaviour
             CurrentEnemyUI.SetCurrentEnemy(" ");
             return;
         }
-        if (ArenaEnemySpawner.boysList.Count == 0)
+        if (ArenaEnemySpawner.boysCount == 0)
         {
             CurrentEnemyUI.SetCurrentEnemy("Shadow");
             CurrentEnemyUI.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);

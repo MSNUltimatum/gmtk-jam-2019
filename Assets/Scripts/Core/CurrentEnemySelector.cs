@@ -20,7 +20,7 @@ public class CurrentEnemySelector : MonoBehaviour
     private void Update()
     {
         // If current enemy is far away by a certain proximity check
-        if (!ProximitySuccess(currentBoy))
+        if (enableScanning && !ProximitySuccess(currentBoy))
         {
             timeToNextScan = Mathf.Max(0, timeToNextScan - Time.deltaTime);
             if (timeToNextScan <= 0)

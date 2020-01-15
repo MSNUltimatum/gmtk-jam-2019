@@ -8,12 +8,14 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     public int HP = 1;
 
-    bool THE_BOY = false;
+    private bool THE_BOY = false;
+
+    [SerializeField]
+    private bool allowAutoSelection = true;
 
     [SerializeField]
     protected GameObject absorbPrefab = null;
     [SerializeField]
-
     private GameObject enemyExplosionPrefab = null;
     [SerializeField]
     private float fadeInTime = 0.5f;

@@ -27,6 +27,8 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     private bool isInfSpawn = false;
 
+    public static int boysCount = 0;
+
     void Awake()
     {
         roomLighting = GetComponent<RoomLighting>();
@@ -222,22 +224,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         return enemy;
     }
 
-    public void SpawnMonster(GameObject monster, string name)
+    public GameObject SpawnMonster(GameObject monster, string name)
     {
         var createdMonster = SpawnMonster(monster);
         createdMonster.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
-    }
-
-    public void MakeMonsterActive(string monsterName)
-    {
-        GameObject currentEnemy = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == monsterName);
-        currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
-        currentEnemy.GetComponent<MonsterLife>().MakeBoy();
-
-        CurrentEnemyUI.SetCurrentEnemy(monsterName);
-        boysList.Remove(currentEnemy);
-        boysList.Insert(0, currentEnemy);
-        currentBoy = currentEnemy;
+        return createdMonster;
     }
 
     private void LowerBoysCount()
@@ -253,7 +244,6 @@ public class ArenaEnemySpawner : MonoBehaviour
     protected static GameObject currentBoy;
 
     public static List<GameObject> boysList = new List<GameObject>();
-    private int boysCount = 0;
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;

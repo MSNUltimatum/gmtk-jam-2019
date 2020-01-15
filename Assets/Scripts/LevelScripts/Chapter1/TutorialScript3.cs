@@ -11,10 +11,10 @@ public class TutorialScript3 : ArenaEnemySpawner
     {
         if (firstSpawn)
         {
-            SpawnMonster(enemyWaves[0].transform.GetChild(2).gameObject, "Reluctance");
+            var boyMonster = SpawnMonster(enemyWaves[0].transform.GetChild(2).gameObject, "Reluctance");
             SpawnZone = null;
             SpawnMonster(enemyWaves[0].transform.GetChild(0).gameObject);
-            MakeMonsterActive("Reluctance");
+            GetComponent<CurrentEnemySelector>().SelectEnemy(boyMonster);
             CurrentEnemyUI.SetCurrentEnemy("Shoot even if you can't kill it");
             firstSpawn = false;
         }
