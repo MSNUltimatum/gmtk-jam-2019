@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
-    public int HP { get; private set; } = 1;
+    public int HP = 1;
 
     bool THE_BOY = false;
 
