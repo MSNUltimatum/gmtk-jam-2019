@@ -32,7 +32,7 @@ public class RoomLighting : MonoBehaviour
 
         SetSwampMaterial();
 
-        MonsterLife.OnEnemyDead += AddOneToLight;
+        MonsterLife.OnEnemyDead.AddListener(AddOneToLight);
     }
 
     /// <summary>

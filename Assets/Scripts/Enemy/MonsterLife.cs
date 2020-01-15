@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MonsterLife : MonoBehaviour
 {
@@ -16,9 +17,9 @@ public class MonsterLife : MonoBehaviour
     private GameObject enemyExplosionPrefab = null;
     [SerializeField]
     private float fadeInTime = 0.5f;
-
-    public delegate void EnemyDeath();
-    public static event EnemyDeath OnEnemyDead;
+    
+    // Apply listeners on start!!
+    public static UnityEvent OnEnemyDead = new UnityEvent();
 
     protected virtual bool Vulnurable()
     {

@@ -14,7 +14,7 @@ public class CurrentEnemySelector : MonoBehaviour
 
         currentCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         // Listen "Enemy is dead" events. If someone dies we immediately select a new enemy
-        MonsterLife.OnEnemyDead += SelectRandomEnemy;
+        MonsterLife.OnEnemyDead.AddListener(SelectRandomEnemy);
     }
 
     private void Update()

@@ -31,8 +31,11 @@ public class RelodScene : MonoBehaviour
         Canvas.transform.GetChild(0).gameObject.SetActive(false);
         isVictory = false;
         PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
+    }
 
-        MonsterLife.OnEnemyDead += UpdateScoreByOne;
+    protected virtual void Start()
+    {
+        MonsterLife.OnEnemyDead.AddListener(UpdateScoreByOne);
     }
 
     private void UpdateScoreByOne()

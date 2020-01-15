@@ -29,11 +29,8 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Awake()
     {
-        InitializeFields();
-        
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();
-        enemySelector = GetComponent<CurrentEnemySelector>();
         isPointVictory = scenesController.isPointVictory;
 
         GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
@@ -41,17 +38,22 @@ public class ArenaEnemySpawner : MonoBehaviour
         {
             SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
         }
+    }
 
-        currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
-        enemiesCount = baseEnemyCount();
-
-        // Listens for "Enemy dead" event to lower the number of enemies on screen
-        MonsterLife.OnEnemyDead += LowerBoysCount;
+    void Start()
+    {
+        InitializeFields();
     }
 
     private void InitializeFields()
     {
+        // Listens for "Enemy dead" event to lower the number of enemies on screen
+        MonsterLife.OnEnemyDead.AddListener(LowerBoysCount);
+
         boysList = new List<GameObject>();
+        boysCount = 0;
+        currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
+        enemiesCount = baseEnemyCount();
     }
 
     //public static void ChangeTheBoy(GameObject oldBoy)
@@ -134,7 +136,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
             sequenceIndex++;
         }
-        if (enemySelector.currentBoy == null) enemySelector.SelectRandomEnemy();
     }
 
     // Update is called once per frame
@@ -168,7 +169,6 @@ public class ArenaEnemySpawner : MonoBehaviour
         if ((timeToNextSpawn < 0 || boysCount == 0 && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) &&
             sequenceIndex < scenesController.monsterAdditionLimit + enemiesCount)
         {
-            print("oooof");
             timeToNextSpawn = timeToEachSpawn;
             SpawnMonsters(spawnIndex);
             spawnIndex++;
@@ -203,7 +203,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     /// </summary>
     /// <param name="monster"></param>
     /// <returns></returns>
-    public GameObject SpawnMonster(GameObject monster, bool makeBoyIfPossible = true)
+    public GameObject SpawnMonster(GameObject monster)
     {
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
         enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
@@ -222,7 +222,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         return enemy;
     }
 
-    public void SpawnMonster(GameObject monster, string name, bool makeBoyIfPossible = true)
+    public void SpawnMonster(GameObject monster, string name)
     {
         var createdMonster = SpawnMonster(monster);
         createdMonster.GetComponentInChildren<TMPro.TextMeshPro>().text = name;
@@ -253,11 +253,10 @@ public class ArenaEnemySpawner : MonoBehaviour
     protected static GameObject currentBoy;
 
     public static List<GameObject> boysList = new List<GameObject>();
-    private static int boysCount = 0;
+    private int boysCount = 0;
 
     private static RoomLighting roomLighting;
     private static RelodScene scenesController;
-    private static CurrentEnemySelector enemySelector;
 
     private bool isPointVictory = false;
     public bool IsInfSpawn { get { return isInfSpawn; } }
