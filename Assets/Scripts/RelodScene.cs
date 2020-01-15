@@ -47,6 +47,7 @@ public class RelodScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
         {
             Reload();
+            Metrics.OnDeath();
         }            
     }
 
@@ -59,6 +60,7 @@ public class RelodScene : MonoBehaviour
         {
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(NextSceneName);
+            Metrics.OnWin();
         }
     }
 
