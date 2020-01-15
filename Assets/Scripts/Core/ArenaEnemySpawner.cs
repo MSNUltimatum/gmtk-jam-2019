@@ -30,9 +30,9 @@ public class ArenaEnemySpawner : MonoBehaviour
     void Awake()
     {
         InitializeFields();
-        
+
         roomLighting = GetComponent<RoomLighting>();
-        scenesController = GetComponent<RelodScene>();    
+        scenesController = GetComponent<RelodScene>();
         isPointVictory = scenesController.isPointVictory;
 
         GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
@@ -110,7 +110,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
         int enemiesInWave = enemyWave.transform.childCount;
-        
+
         for (int i = 0; i < enemiesInWave; i++)
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
@@ -158,7 +158,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     {
         while (boysList.Count != 0)
         {
-           boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
+            boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
         }
     }
 
@@ -187,7 +187,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         return isPointVictory ? scenesController.pointsToVictory : baseEnemyCount();
     }
 
-    public int baseEnemyCount ()
+    public int baseEnemyCount()
     {
         enemiesCount = 0;
         foreach (var e in enemyWaves)
