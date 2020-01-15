@@ -35,8 +35,6 @@ public class ArenaEnemySpawner : MonoBehaviour
         scenesController = GetComponent<RelodScene>();
         isPointVictory = scenesController.isPointVictory;
 
-        // Get reference for UI current enemy name
-        currentEnemy = GetComponent<CurrentEnemy>();
         GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
         if (SpawnSquare)
         {
@@ -65,7 +63,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (boysList.Count != 0)
         {
             var nextBoy = boysList[Random.Range(0, boysList.Count)];
-            CurrentEnemy.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
+            CurrentEnemyUI.SetCurrentEnemy(nextBoy.GetComponentInChildren<TMPro.TextMeshPro>().text, nextBoy);
             nextBoy.GetComponent<MonsterLife>().MakeBoy();
             currentBoy = nextBoy;
         }
@@ -122,7 +120,7 @@ public class ArenaEnemySpawner : MonoBehaviour
                 if (!anyBoy)
                 {
                     anyBoy = true;
-                    CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[sequenceIndex], enemy);
+                    CurrentEnemyUI.SetCurrentEnemy(currentEvilDictionary[sequenceIndex], enemy);
                     enemy.GetComponent<MonsterLife>().MakeBoy();
                     currentBoy = enemy;
                 }
@@ -210,7 +208,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (!anyBoy)
         {
             anyBoy = true;
-            CurrentEnemy.SetCurrentEnemy(currentEvilDictionary[sequenceIndex], enemy);
+            CurrentEnemyUI.SetCurrentEnemy(currentEvilDictionary[sequenceIndex], enemy);
             enemy.GetComponent<MonsterLife>().MakeBoy();
             currentBoy = enemy;
         }
@@ -239,17 +237,14 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     public void MakeMonsterActive(string name1)
     {
-        GameObject currentEnemy1 = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == name1);
-        if (currentEnemy)
-        {
-            currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
-            currentEnemy1.GetComponent<MonsterLife>().MakeBoy();
+        GameObject currentEnemy = boysList.Find(x => x.GetComponentInChildren<TMPro.TextMeshPro>().text == name1);
+        currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
+        currentEnemy.GetComponent<MonsterLife>().MakeBoy();
 
-            CurrentEnemy.SetCurrentEnemy(name1, currentEnemy1);
-            boysList.Remove(currentEnemy1);
-            boysList.Insert(0, currentEnemy1);
-            currentBoy = currentEnemy1;
-        }
+        CurrentEnemyUI.SetCurrentEnemy(name1, currentEnemy);
+        boysList.Remove(currentEnemy);
+        boysList.Insert(0, currentEnemy);
+        currentBoy = currentEnemy;
     }
 
     private int enemiesCount = 0;
@@ -259,8 +254,6 @@ public class ArenaEnemySpawner : MonoBehaviour
     private List<string> currentEvilDictionary;
 
     protected static GameObject currentBoy;
-
-    protected CurrentEnemy currentEnemy;
 
     public static List<GameObject> boysList = new List<GameObject>();
 
