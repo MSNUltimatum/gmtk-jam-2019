@@ -32,8 +32,8 @@ public class Ch1BossLevelScript : MonoBehaviour
     {
         Pause.AllowPause = false;
         Player = GameObject.FindGameObjectWithTag("Player");
-        AudioManager.Pause("Chapter1BossMusic", GetComponent<AudioSource>());
-        CurrentEnemy.SetCurrentEnemyName("???");
+        AudioManager.PauseMusic(GetComponent<AudioSource>());
+        CurrentEnemyUI.SetCurrentEnemyName("???");
         camera = Camera.main.transform;
     }
 
@@ -147,7 +147,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         
         CurrentPhase = Phase.PHASE1;
         BossInstance = Instantiate(BossPrefab, new Vector3(0, 16.5f, 0), Quaternion.identity);
-        AudioManager.Play("Chapter1BossMusic", GetComponent<AudioSource>());
+        AudioManager.PlayMusic(GetComponent<AudioSource>());
         Phase1PlayerNameLabel.SetActive(true);
         
         var bossPosition = BossInstance.transform.position;
@@ -157,7 +157,7 @@ public class Ch1BossLevelScript : MonoBehaviour
             bossPosition.x + Mathf.Sign(Random.Range(-1, 1)) * 10, bossPosition.y, bossPosition.z);
 
         Phase1TimeToHomingShooting = 5.1f - Phase1IdleTime;
-        CurrentEnemy.SetCurrentEnemyName("Survive!");
+        CurrentEnemyUI.SetCurrentEnemyName("Survive!");
     }
 
     [SerializeField]
@@ -437,13 +437,13 @@ public class Ch1BossLevelScript : MonoBehaviour
         if (BossInstance == null)
         {
             StartDead();
-            CurrentEnemy.SetCurrentEnemyName(" ");
+            CurrentEnemyUI.SetCurrentEnemyName(" ");
             return;
         }
         if (ArenaEnemySpawner.boysList.Count == 0)
         {
-            CurrentEnemy.SetCurrentEnemyName("Shadow");
-            CurrentEnemy.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            CurrentEnemyUI.SetCurrentEnemyName("Shadow");
+            CurrentEnemyUI.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         switch (phase4Attack)
         {

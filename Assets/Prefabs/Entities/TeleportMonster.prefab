@@ -109,7 +109,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 678979879}
+  - component: {fileID: 5484491257023105279}
   - component: {fileID: 8136202553713554334}
   - component: {fileID: 1071404660378440822}
   m_Layer: 0
@@ -119,8 +119,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &678979879
-RectTransform:
+--- !u!4 &5484491257023105279
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,11 +133,6 @@ RectTransform:
   m_Father: {fileID: 6451945491531228393}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &8136202553713554334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -339,7 +334,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2328351178551563220}
-  - {fileID: 678979879}
+  - {fileID: 5484491257023105279}
   - {fileID: 513247254}
   - {fileID: 2571059088101012750}
   m_Father: {fileID: 0}
@@ -459,6 +454,7 @@ MonoBehaviour:
   slowRadius: 0
   timeToTarget: 0.1
   rotateAtStart: 1
+  bypassAngleAccumulationSpeed: 50
 --- !u!114 &7279820065272308435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   cooldownRange: {x: 5, y: 7}
+  castTime: 0.8
   Scatter: 8.3
+  shakeAmp: 0.1
 --- !u!82 &5216238258658365549
 AudioSource:
   m_ObjectHideFlags: 0
