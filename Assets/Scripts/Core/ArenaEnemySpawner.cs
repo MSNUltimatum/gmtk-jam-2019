@@ -151,13 +151,14 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     protected void KillThemAll()
     {
-        while (boysList.Count != 0)
-        {
-            if (boysList[0] == null) boysList.RemoveAt(0);
-            else
+        var iToKill = 0;
+        while (iToKill < boysList.Count)
+        {            
+            if (boysList[iToKill] != null) 
             {
-                boysList[0].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
+                boysList[iToKill].GetComponent<MonsterLife>().Damage(null, 999, ignoreInvulurability: true);
             }
+            iToKill++;
         }
     }
 
