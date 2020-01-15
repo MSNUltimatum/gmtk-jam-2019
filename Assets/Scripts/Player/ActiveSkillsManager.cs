@@ -48,7 +48,7 @@ public class ActiveSkillsManager : MonoBehaviour
                     }
                 
             }
-        }
+       }
 
         for (int i = 0; i < CoolDown.Count; i++)
         {

@@ -6,6 +6,7 @@ public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
     protected int HP = 1;
+    public int GetHp { get { return HP; } }
 
     bool THE_BOY = false;
 

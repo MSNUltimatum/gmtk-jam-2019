@@ -43,7 +43,6 @@ public class CharacterShooting : MonoBehaviour
             reloadTimeLeft = weapon.ReloadTime;
         }
     }
-
     private float reloadTimeLeft = 0;
     private Camera mainCamera;
     private AudioSource shootSound;

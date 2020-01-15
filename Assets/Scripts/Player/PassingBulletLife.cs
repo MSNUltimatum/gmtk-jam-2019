@@ -2,44 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletLife : MonoBehaviour
+public class PassingBulletLife : BulletLife
 {
-    // Logic
-    public float Speed = 18f;
-    [SerializeField]
-    private float timeToDestruction = 1.2f;
-    protected float TTDLeft = 0;
-
-    void Start()
-    {
-        var audio = GetComponent<AudioSource>();
-        AudioManager.Play("WeaponShot", audio);
-        TTDLeft = timeToDestruction;
-    }
-
-    void FixedUpdate()
-    {
-        if (Pause.Paused) return;
-
-        transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
-        TTDLeft -= Time.fixedDeltaTime;
-    }
-
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Enemy")
         {
             var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
+            var monsterHp = monsterComp.GetHp;
             if (monsterComp)
             {
                 monsterComp.Damage(gameObject);
+                if(monsterComp.GetHp != monsterHp)
+                {
+                    isPass = false;
+                }
             }
             else
             {
                 Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
                 Destroy(coll.gameObject);
             }
-            DestroyBullet();
+            if (!isPass)
+            {
+                DestroyBullet();
+            }
         }
         else if (coll.gameObject.tag == "Environment")
         {
@@ -64,26 +51,5 @@ public class BulletLife : MonoBehaviour
             }
         }
     }
-
-    public void DestroyBullet()
-    {
-        this.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<DynamicLightInOut>().FadeOut();
-        Destroy(gameObject, 1);
-        Destroy(particlesEmitter.gameObject, 2);
-        StopEmitter();
-    }
-
-    // Non-logic
-    [SerializeField]
-    private ParticleSystem particlesEmitter = null;
-    [SerializeField]
-    private SpriteRenderer sprite = null;
-
-    private void StopEmitter()
-    {
-        particlesEmitter.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-        sprite.color = new Color(0, 0, 0, 0);
-    }
+    private bool isPass = true;
 }
