@@ -256,6 +256,7 @@ MonoBehaviour:
   slowRadius: 0.1
   timeToTarget: 0.1
   rotateAtStart: 1
+  bypassAngleAccumulationSpeed: 50
   offsetAngleMax: 40
   cooldownRange: {x: 3, y: 5}
 --- !u!1 &4183647638066128296

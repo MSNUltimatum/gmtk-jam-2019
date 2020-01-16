@@ -117,7 +117,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
 
         int enemiesInWave = enemyWave.transform.childCount;
-        
+
         for (int i = 0; i < enemiesInWave; i++)
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
@@ -190,7 +190,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         return isPointVictory ? scenesController.pointsToVictory : baseEnemyCount();
     }
 
-    public int baseEnemyCount ()
+    public int baseEnemyCount()
     {
         enemiesCount = 0;
         foreach (var e in enemyWaves)
