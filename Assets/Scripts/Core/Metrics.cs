@@ -18,7 +18,7 @@ public class Metrics : MonoBehaviour
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (metrics == null) {
-            LoadMetrics(out metrics);
+            LoadMetrics();
         }
         metrics.levelSceneName[sceneIndex] = SceneManager.GetActiveScene().name;        
     }
@@ -44,7 +44,7 @@ public class Metrics : MonoBehaviour
     }
 
     public static void OnContineuGame() {
-        LoadMetrics(out metrics);
+        LoadMetrics();
     }
 
     public static void OnWin() { 
@@ -66,23 +66,23 @@ public class Metrics : MonoBehaviour
         file.Close();
     }
 
-    private static void LoadMetrics(out MetricsRecords data) {
+    private static void LoadMetrics() {
         if (File.Exists(Application.persistentDataPath + fileName))
         {
             BinaryFormatter binaryformatter = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
-            data = (MetricsRecords)binaryformatter.Deserialize(file);
+            metrics = (MetricsRecords)binaryformatter.Deserialize(file);
 
             file.Close();
         }
         else {
-            data = new MetricsRecords();
-            SaveMetrics(data); // saving empty file
+            metrics = new MetricsRecords();
+            SaveMetrics(metrics); // saving empty file
         }
     }
 
     private static void OutputMetrics() {
-        Debug.Log( "metrics output");
+        Debug.Log("metrics output");
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++) {
             if (metrics.levelComlpeted[i]) { // for finished levels
                 Debug.Log(i.ToString() + " " + metrics.levelSceneName[i] + " death:" + metrics.deathCount[i] + " time:" + metrics.levelTime[i]);
