@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 3388020774218258525}
   - component: {fileID: 972267073607571025}
   - component: {fileID: 7941728865494954054}
+  - component: {fileID: 7910944739925845454}
+  - component: {fileID: 1109340570288807967}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -250,6 +252,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToEachSpawn: {x: 5, y: 15}
   firefly: {fileID: 795010810916821201, guid: c9688ec54b2975941a61f98cde33f11a, type: 3}
+--- !u!114 &7910944739925845454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22474ed8f28ae7e49834dd5df34a5c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableScanning: 1
+--- !u!114 &1109340570288807967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e01edcef864dd74dafac1acbadbdb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6534402564482476595
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +286,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18185783415254562}
-  - component: {fileID: 8534598051501013503}
   m_Layer: 0
   m_Name: Metrics
   m_TagString: Untagged
@@ -281,15 +307,3 @@ Transform:
   m_Father: {fileID: 3334064150391581338}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8534598051501013503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6534402564482476595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e01edcef864dd74dafac1acbadbdb1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

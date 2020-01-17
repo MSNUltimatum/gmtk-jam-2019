@@ -17,12 +17,12 @@ public class CurrentEnemyUI : MonoBehaviour
         EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
-    public static void SetCurrentEnemy(string enemyName, GameObject enemy)
+    public static void SetCurrentEnemy(GameObject enemy)
     {
-        EnemyName.text = enemyName;
+        EnemyName.text = enemy.GetComponent<TMPro.TextMeshPro>().text;
     }
 
-    public static void SetCurrentEnemyName(string enemyName)
+    public static void SetCurrentEnemy(string enemyName)
     {
         EnemyName.text = enemyName;
     }

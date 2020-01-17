@@ -34,7 +34,7 @@ public class TutorialScript2 : ArenaEnemySpawner
     {
         for (int i = 0; i < boysList.Count; i++)
         {
-            if (boysList[i].gameObject.GetComponent<MonsterLife>().isBoy())
+            if (boysList[i] != null && boysList[i].gameObject.GetComponent<MonsterLife>().isBoy())
             {
                 boysList[i].gameObject.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Clamp(1/timeToNextLight,0.25f,1);
               
@@ -46,7 +46,7 @@ public class TutorialScript2 : ArenaEnemySpawner
     {
         for (int i = 0; i < boysList.Count; i++)
         {
-            if (boysList[i].gameObject.GetComponent<MonsterLife>().isBoy())
+            if (boysList[i] != null && boysList[i].gameObject.GetComponent<MonsterLife>().isBoy())
             {
                 boysList[i].gameObject.GetComponent<Light2D>().pointLightOuterRadius = 0.0f;
             }

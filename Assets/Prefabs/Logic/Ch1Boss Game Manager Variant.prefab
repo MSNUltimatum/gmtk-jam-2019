@@ -1873,6 +1873,11 @@ PrefabInstance:
       propertyPath: maxvalue
       value: 100000
       objectReference: {fileID: 0}
+    - target: {fileID: 7910944739925845454, guid: 0fca9824f899de543a831d6c0c51144e,
+        type: 3}
+      propertyPath: enableScanning
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!1 &8175731138718100999 stripped
