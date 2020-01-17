@@ -2,31 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SkillBase
+public abstract class SkillBase : ScriptableObject
 {
-    public string Name;
+    new public string name;
     [Multiline]
-    public string Description;
-    public Sprite img;
+    public string description;
+    public Sprite pickupSprite;
 
     public void SaveSkill()
     {
         if (PlayerPrefs.HasKey("SkillString"))
         {
             string skills = PlayerPrefs.GetString("SkillString");
-            skills += Name;
+            skills += name;
             skills += " ";
             PlayerPrefs.SetString("SkillString", skills);
         }
         else
         {
-            string skills = Name;
+            string skills = name;
             skills += " ";
             PlayerPrefs.SetString("SkillString", skills);
         }
     }
 
-    public virtual void ActiAcquireSkill()
-    {
-    }
+    public abstract void FillSkillInformation();
+
+    public abstract void InitializeSkill();
+
+    public abstract void UpdateEffect();
 }

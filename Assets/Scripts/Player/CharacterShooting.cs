@@ -42,8 +42,8 @@ public class CharacterShooting : MonoBehaviour
         {
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
-            weapon.Shoot(mousePos,screenPoint);
-            reloadTimeLeft = weapon.ReloadTime;
+            weapon.Attack(mousePos,screenPoint);
+            reloadTimeLeft = weapon.reloadTime;
             shotFrame = true;
         }
     }
