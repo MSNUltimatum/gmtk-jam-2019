@@ -5,6 +5,9 @@ using System;
 
 public class SkillManager : MonoBehaviour
 {
+    public EquippedWeapon equippedWeapon = null;
+    
+    [Serializable]
     private class EquippedActiveSkill
     {
         public ActiveSkill skill;
@@ -19,25 +22,30 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    private class EquippedWeapon
+    [Serializable]
+    public class EquippedWeapon
     {
-        public WeaponSkill weapon;
+        public WeaponSkill logic;
         public int ammoLeft;
         public float reloadTimeLeft;
         public int weaponIndex;
+        public AudioClip[] attackSound;
 
         public EquippedWeapon(WeaponSkill weapon, int weaponIndex)
         {
-            this.weapon = weapon;
+            this.logic = weapon;
             ammoLeft = weapon.ammoMagazine;
             reloadTimeLeft = 0;
             this.weaponIndex = weaponIndex;
+            attackSound = weapon.attackSound;
         }
     }
 
     private void Start()
     {
         InitializeSkills();
+        attackManager = GetComponent<CharacterShooting>();
+        attackManager.LoadNewWeapon(equippedWeapon, 0);
     }
 
     private void InitializeSkills()
@@ -90,11 +98,11 @@ public class SkillManager : MonoBehaviour
         {
             activeSkills[i].cooldown = Mathf.Max(0, activeSkills[i].cooldown - Time.deltaTime);
 
-            if (activeSkills[i].activeTimeLeft >= 0)
+            if (activeSkills[i].activeTimeLeft > 0)
             {
                 activeSkills[i].skill.UpdateEffect();
                 activeSkills[i].activeTimeLeft = Mathf.Max(0, activeSkills[i].activeTimeLeft - Time.deltaTime);
-                if (activeSkills[i].activeTimeLeft >= 0)
+                if (activeSkills[i].activeTimeLeft <= 0)
                 {
                     activeSkills[i].skill.EndOfSkill();
                 }
@@ -106,20 +114,29 @@ public class SkillManager : MonoBehaviour
         {
             var newWeaponIndex = (equippedWeapon.weaponIndex + equippedWeapons.Count - 1) % equippedWeapons.Count;
             equippedWeapon = equippedWeapons[newWeaponIndex];
+            attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
         }
         else if (Input.GetKeyDown(rotateWeaponRight))
         {
             var newWeaponIndex = (equippedWeapon.weaponIndex + 1) % equippedWeapons.Count;
             equippedWeapon = equippedWeapons[newWeaponIndex];
+            attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
         }
 
         // Update reload time of all weapons & call update
         foreach (var weapon in equippedWeapons)
         {
-            weapon.reloadTimeLeft = Mathf.Max(0, weapon.reloadTimeLeft - Time.deltaTime);
-            weapon.weapon.UpdateEffect();
+            if (weapon.reloadTimeLeft != 0)
+            {
+                weapon.reloadTimeLeft = Mathf.Max(0, weapon.reloadTimeLeft - Time.deltaTime);
+                if (weapon.reloadTimeLeft == 0)
+                {
+                    weapon.ammoLeft = weapon.logic.ammoMagazine;
+                }
+            }
+            weapon.logic.UpdateEffect();
         }
-        equippedWeapon.weapon.UpdateEquippedEffect();
+        equippedWeapon.logic.UpdateEquippedEffect();
 
         // Update effect of passive skills
         foreach (var s in skills)
@@ -131,12 +148,12 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    private List<SkillBase> skills = new List<SkillBase>();
+    public List<SkillBase> skills = new List<SkillBase>();
 
     private List<EquippedActiveSkill> activeSkills = new List<EquippedActiveSkill>();
 
     private List<EquippedWeapon> equippedWeapons = new List<EquippedWeapon>();
-    private EquippedWeapon equippedWeapon = null;
     private KeyCode rotateWeaponLeft = KeyCode.Q;
     private KeyCode rotateWeaponRight = KeyCode.E;
+    private CharacterShooting attackManager;
 }

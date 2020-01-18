@@ -5,14 +5,14 @@ using UnityEngine;
 public abstract class ShootingWeapon : WeaponSkill
 {
     protected float randomShootingAngle = 0;
-    protected GameObject bulletPrefab;
+    public GameObject bulletPrefab;
 
     public override void InitializeSkill()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public virtual void Shoot(Vector3 mousePos, Vector3 screenPoint)
+    public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 screenPoint)
     {
         var bullet = GameObject.Instantiate(bulletPrefab, Player.transform.position, new Quaternion());
 
@@ -23,5 +23,5 @@ public abstract class ShootingWeapon : WeaponSkill
         bullet.transform.Translate(Vector2.right * 0.5f);
     }
 
-    private GameObject Player;
+    protected GameObject Player;
 }

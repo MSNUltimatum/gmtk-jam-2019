@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class WeaponSkill : SkillBase
 {
-    protected AudioSource[] WeaponAttack;
+    public AudioClip[] attackSound;
     public float reloadTime;
     public float timeBetweenAttacks;
     public int ammoMagazine;
@@ -17,5 +17,6 @@ public abstract class WeaponSkill : SkillBase
     public override void UpdateEffect() { }
     public virtual void UpdateEquippedEffect() { }
 
-    public virtual void Attack(Vector3 mousePos, Vector3 screenPoint) { }
+    public virtual void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 screenPoint) { }
+    public virtual int AmmoConsumption() { return 1; }
 }

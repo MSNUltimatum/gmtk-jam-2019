@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class SkillBase : ScriptableObject
 {
-    new public string name;
     [Multiline]
     public string description;
     public Sprite pickupSprite;

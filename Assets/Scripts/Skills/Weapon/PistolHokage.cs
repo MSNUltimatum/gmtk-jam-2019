@@ -5,7 +5,6 @@ using UnityEngine;
 public class PistolHokage : WeaponSkill
 {
     private GameObject bulletPrefab;
-    private AudioSource WeaponShot;
     private GameObject Player;
     private float ArcAngle = 45;
     private int SphereNumber = 3;
