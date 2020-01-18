@@ -7,9 +7,8 @@ public class ActiveSpeedSkill : ActiveSkill
 {
     private CharacterMovement character;
 
-    public override void FillSkillInformation()
+    protected ActiveSpeedSkill()
     {
-        name = "ActiveSpeedSkill";
         description = "Yoo could ";
         cooldownDuration = 5f;
         activeDuration = 3f;

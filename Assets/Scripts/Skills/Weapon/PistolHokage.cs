@@ -10,7 +10,7 @@ public class PistolHokage : WeaponSkill
     private int SphereNumber = 3;
 
     // этот скрипт поломан, не смотреть
-    public override void FillSkillInformation()
+    protected PistolHokage()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         name = "PistolHokage";

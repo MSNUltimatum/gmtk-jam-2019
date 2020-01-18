@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Pistol", menuName = "ScriptableObject/Weapon/Pistol", order = 1)]
 public class Pistol : ShootingWeapon
 {
-    public override void FillSkillInformation()
+    protected Pistol()
     {
         description = "Your first gun";
         reloadTime = 1f;

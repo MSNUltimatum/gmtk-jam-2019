@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "SpeedBoost", menuName = "ScriptableObject/PassiveSkill/SpeedBoost", order = 1)]
 public class WeirdPill : PassiveSkill
 {
     private CharacterMovement character;
 
-    public override void FillSkillInformation()
+    protected WeirdPill()
     {
         name = "SpeedAura";
         description = "Yellow strange pill";
@@ -15,11 +16,6 @@ public class WeirdPill : PassiveSkill
     public override void InitializeSkill()
     {
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>();
-
-    }
-
-    public override void UpdateEffect()
-    {
         character.speed *= 2;
     }
 }

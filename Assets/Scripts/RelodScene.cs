@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.Events;
 
 public class RelodScene : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class RelodScene : MonoBehaviour
     private float maxvalue = 0;
 
     protected GameObject Canvas;
+
+    public static UnityEvent OnSceneChange = new UnityEvent();
 
     protected virtual void Awake()
     {
@@ -71,6 +74,7 @@ public class RelodScene : MonoBehaviour
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(NextSceneName);
             Metrics.OnWin();
+            OnSceneChange?.Invoke();
         }
     }
 

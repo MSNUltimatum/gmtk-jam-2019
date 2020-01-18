@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class SkillManager : MonoBehaviour
 {
@@ -38,6 +40,53 @@ public class SkillManager : MonoBehaviour
             reloadTimeLeft = 0;
             this.weaponIndex = weaponIndex;
             attackSound = weapon.attackSound;
+        }
+    }
+
+    private void Awake()
+    {
+        RelodScene.OnSceneChange.AddListener(SaveSkills);
+        LoadSkills();
+    }
+
+    private string fileName = "progress.bin";
+
+    private void SaveSkills()
+    {
+        BinaryFormatter binaryformatter = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + fileName);
+        var skillsSavedInfo = new SkillsRecord(skills);
+        binaryformatter.Serialize(file, skillsSavedInfo);
+
+        file.Close();
+    }
+
+    private void LoadSkills()
+    {
+        if (File.Exists(Application.persistentDataPath + fileName))
+        {
+            BinaryFormatter binaryformatter = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
+            var skillsSavedInfo = (SkillsRecord)binaryformatter.Deserialize(file);
+            file.Close();
+
+            skills = new List<SkillBase>();
+            foreach (var skill in skillsSavedInfo.activeSkills)
+            {
+                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill) as ActiveSkill);
+            }
+            foreach (var skill in skillsSavedInfo.passiveSkills)
+            {
+                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill) as PassiveSkill);
+            }
+            foreach (var skill in skillsSavedInfo.weapons)
+            {
+                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill) as WeaponSkill);
+            }
+        }
+        else
+        {
+            SaveSkills();
         }
     }
 

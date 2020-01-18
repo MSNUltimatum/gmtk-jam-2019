@@ -25,8 +25,6 @@ public abstract class SkillBase : ScriptableObject
         }
     }
 
-    public abstract void FillSkillInformation();
-
     public abstract void InitializeSkill();
 
     public abstract void UpdateEffect();

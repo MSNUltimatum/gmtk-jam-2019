@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Pistol", menuName = "ScriptableObject/ActiveSkill/Ghost", order = 1)]
+[CreateAssetMenu(fileName = "GhostMode", menuName = "ScriptableObject/ActiveSkill/Ghost", order = 1)]
 public class GhostMode : ActiveSkill
 {
-    public override void FillSkillInformation()
+    protected GhostMode()
     {
         description = "Does nothing";
         cooldownDuration = 5f;
