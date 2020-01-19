@@ -26,17 +26,17 @@ public class SkillsRecord
         {
             if (skill is PassiveSkill)
             {
-                passiveSkills[i] = skill.name;
+                passiveSkills[i] = skill.SkillName();
                 i++;
             }
             else if  (skill is ActiveSkill)
             {
-                activeSkills[j] = skill.name;
+                activeSkills[j] = skill.SkillName();
                 j++;
             }
             else
             {
-                weapons[i] = skill.name;
+                weapons[i] = skill.SkillName();
                 k++;
             }
         }

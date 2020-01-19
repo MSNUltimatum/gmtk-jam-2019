@@ -8,6 +8,35 @@ using System.IO;
 public class SkillManager : MonoBehaviour
 {
     public EquippedWeapon equippedWeapon = null;
+
+    private static Dictionary<string, List<UnityEngine.Object>> registeredSkills = new Dictionary<string, List<UnityEngine.Object>>();
+    public static bool SaveSkill(string name, List<UnityEngine.Object> references)
+    {
+        if (!registeredSkills.ContainsKey(name))
+        {
+            registeredSkills.Add(name, references);
+            return true;
+        }
+        else
+        {
+            Debug.LogError("Skill manager already contains reference to this skill. Why again?!");
+            return false;
+        }
+    }
+
+    public static void PrintRegisteredSkills()
+    {
+        foreach (var skill in registeredSkills.Keys)
+        {
+            print(skill + " " + registeredSkills[skill]);
+        }
+    }
+
+    public static List<UnityEngine.Object> LoadSkill(string name)
+    {
+        //print(name);
+        return registeredSkills[name];
+    }
     
     [Serializable]
     private class EquippedActiveSkill
@@ -46,7 +75,6 @@ public class SkillManager : MonoBehaviour
     private void Awake()
     {
         RelodScene.OnSceneChange.AddListener(SaveSkills);
-        LoadSkills();
     }
 
     private string fileName = "progress.bin";
@@ -73,15 +101,15 @@ public class SkillManager : MonoBehaviour
             skills = new List<SkillBase>();
             foreach (var skill in skillsSavedInfo.activeSkills)
             {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill) as ActiveSkill);
+                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill.Split(':')[0]) as ActiveSkill);
             }
             foreach (var skill in skillsSavedInfo.passiveSkills)
             {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill) as PassiveSkill);
+                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill.Split(':')[0]) as PassiveSkill);
             }
             foreach (var skill in skillsSavedInfo.weapons)
             {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill) as WeaponSkill);
+                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill.Split(':')[0]) as WeaponSkill);
             }
         }
         else
@@ -92,6 +120,8 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
+        //PrintRegisteredSkills();
+        LoadSkills();
         InitializeSkills();
         attackManager = GetComponent<CharacterShooting>();
         attackManager.LoadNewWeapon(equippedWeapon, 0);

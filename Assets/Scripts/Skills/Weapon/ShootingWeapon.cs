@@ -7,6 +7,17 @@ public abstract class ShootingWeapon : WeaponSkill
     protected float randomShootingAngle = 0;
     public GameObject bulletPrefab;
 
+    protected override List<Object> SaveReferences()
+    {
+        referencesToSave.Add(bulletPrefab);
+        return referencesToSave;
+    }
+
+    protected override void LoadReferences(List<Object> references)
+    {
+        bulletPrefab = references[1] as GameObject;
+    }
+
     public override void InitializeSkill()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
