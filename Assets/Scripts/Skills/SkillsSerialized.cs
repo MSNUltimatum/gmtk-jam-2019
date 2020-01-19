@@ -22,6 +22,7 @@ public class SkillsRecord
 
         // indices for arrays ^^^
         i = j = k = 0;
+        
         foreach (var skill in skills)
         {
             if (skill is PassiveSkill)
@@ -29,14 +30,14 @@ public class SkillsRecord
                 passiveSkills[i] = skill.SkillName();
                 i++;
             }
-            else if  (skill is ActiveSkill)
+            else if (skill is ActiveSkill)
             {
                 activeSkills[j] = skill.SkillName();
                 j++;
             }
             else
             {
-                weapons[i] = skill.SkillName();
+                weapons[k] = skill.SkillName();
                 k++;
             }
         }

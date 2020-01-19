@@ -9,12 +9,12 @@ public class SkillManager : MonoBehaviour
 {
     public EquippedWeapon equippedWeapon = null;
 
-    private static Dictionary<string, List<UnityEngine.Object>> registeredSkills = new Dictionary<string, List<UnityEngine.Object>>();
-    public static bool SaveSkill(string name, List<UnityEngine.Object> references)
+    private static Dictionary<string, SkillBase> registeredSkills = new Dictionary<string, SkillBase>();
+    public static bool SaveSkill(string name, SkillBase skill)
     {
         if (!registeredSkills.ContainsKey(name))
         {
-            registeredSkills.Add(name, references);
+            registeredSkills.Add(name, skill);
             return true;
         }
         else
@@ -32,7 +32,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public static List<UnityEngine.Object> LoadSkill(string name)
+    public static SkillBase LoadSkill(string name)
     {
         //print(name);
         return registeredSkills[name];
@@ -84,6 +84,8 @@ public class SkillManager : MonoBehaviour
         BinaryFormatter binaryformatter = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + fileName);
         var skillsSavedInfo = new SkillsRecord(skills);
+        foreach (var skill in skillsSavedInfo.weapons)
+        
         binaryformatter.Serialize(file, skillsSavedInfo);
 
         file.Close();
@@ -101,15 +103,15 @@ public class SkillManager : MonoBehaviour
             skills = new List<SkillBase>();
             foreach (var skill in skillsSavedInfo.activeSkills)
             {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill.Split(':')[0]) as ActiveSkill);
+                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as ActiveSkill);
             }
             foreach (var skill in skillsSavedInfo.passiveSkills)
             {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill.Split(':')[0]) as PassiveSkill);
+                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as PassiveSkill);
             }
             foreach (var skill in skillsSavedInfo.weapons)
             {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(ScriptableObject.CreateInstance(skill.Split(':')[0]) as WeaponSkill);
+                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as WeaponSkill);
             }
         }
         else

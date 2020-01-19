@@ -12,7 +12,6 @@ public abstract class SkillBase : ScriptableObject
     public string description;
     public Sprite pickupSprite;
     public string itemIndividualName = "";
-    protected List<Object> referencesToSave = new List<Object>();
 
     public string SkillName() => $"{GetType()}:{itemIndividualName}";
     
@@ -35,17 +34,9 @@ public abstract class SkillBase : ScriptableObject
     }
 
     /// <summary>
-    /// Save to SkillManager -> Registered skills
-    /// </summary>
-    protected virtual List<Object> SaveReferences() {
-        referencesToSave.Add(pickupSprite);
-        return referencesToSave;
-    }
-
-    /// <summary>
     /// Load from SkillManager -> Registered skills
     /// </summary>
-    protected virtual void LoadReferences(List<Object> references) { }
+    protected virtual void LoadReferences(SkillBase references) { }
 
     public abstract void InitializeSkill();
 
