@@ -302,9 +302,9 @@ GameObject:
   - component: {fileID: 8999717580740530493}
   - component: {fileID: 4922783919604684963}
   - component: {fileID: 7589481869606093919}
-  - component: {fileID: 3230158739323297929}
   - component: {fileID: -600990550494270343}
   - component: {fileID: -4325479809275201537}
+  - component: {fileID: 8551717688342551131}
   m_Layer: 0
   m_Name: ReptileMonster
   m_TagString: Enemy
@@ -447,23 +447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
---- !u!114 &3230158739323297929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4653389663735491910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1d796790c0c0408260dacf14ea289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  targetRadius: 0
-  slowRadius: 0
-  timeToTarget: 0.1
-  rotateAtStart: 1
 --- !u!114 &-600990550494270343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +474,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.507
   m_Pitch: 1
   Loop: 0
@@ -576,6 +559,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8551717688342551131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653389663735491910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caeef6ea168fc74cbd581d7def225e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  targetRadius: 0
+  slowRadius: 0.1
+  timeToTarget: 0.1
+  rotateAtStart: 1
+  bypassAngleAccumulationSpeed: 50
+  wavePeriod: 3
+  waveAmp: 60
+  behaviourBlockTime: 0.5
 --- !u!1 &7414698465562440439
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,11 +667,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7380104140017662329}
     m_Modifications:
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_Name
-      value: Text
-      objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -772,6 +771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}

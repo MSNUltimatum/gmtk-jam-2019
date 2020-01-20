@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
+  allowAutoSelection: 0
   absorbPrefab: {fileID: 4237170780078402785, guid: b005df549a8eb9443b1d4f8eb257e157,
     type: 3}
   enemyExplosionPrefab: {fileID: 4315148799679399590, guid: 5e92d0f32688a8e4d80e5d03cb03a7bd,
@@ -5386,11 +5387,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2247092661878191898}
     m_Modifications:
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_Name
-      value: Text
-      objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5496,10 +5492,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149383, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
@@ -5510,6 +5506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7de89d6f6c44c545a0ee0a468f39a29, type: 3}

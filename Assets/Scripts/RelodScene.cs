@@ -33,7 +33,17 @@ public class RelodScene : MonoBehaviour
         PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
     }
 
-    public virtual void UpdateScore(int val)
+    protected virtual void Start()
+    {
+        MonsterLife.OnEnemyDead.AddListener(UpdateScoreByOne);
+    }
+
+    private void UpdateScoreByOne()
+    {
+        UpdateScore(1);
+    }
+
+    public virtual void UpdateScore(int val = 1)
     {
         TotalValue = TotalValue + val;
         CheckVictoryCondition();
@@ -47,18 +57,20 @@ public class RelodScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
         {
             Reload();
+            Metrics.OnDeath();
         }            
     }
 
     protected virtual void ProcessVictory()
     {
-        CurrentEnemy.SetCurrentEnemyName(" ");
+        CurrentEnemyUI.SetCurrentEnemy(" ");
         isVictory = true;
         Canvas.transform.GetChild(0).gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
         {
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(NextSceneName);
+            Metrics.OnWin();
         }
     }
 

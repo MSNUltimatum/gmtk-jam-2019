@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToxicMonsterMovement : ShootableMonster
+public class ToxicMonsterAttack : Shoot
 {
     [SerializeField]
     private GameObject SecondAttackBullet = null;
     [SerializeField]
     private float CooldownToSecondAttack = 0.5f;
     [SerializeField, Range(0.25f, 2)]
-    private float angleFactor = 1f;
+    private float angleFactor = 0.7f;
     [SerializeField]
     private int Attack2BulletCount = 3;
 
@@ -18,9 +18,8 @@ public class ToxicMonsterMovement : ShootableMonster
     [SerializeField]
     private int OrbitalCount = 3;
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         SpawnOrbitals();
     }
 
@@ -35,9 +34,9 @@ public class ToxicMonsterMovement : ShootableMonster
     }
 
     // Update is called once per frame
-    protected override void Attack()
+    protected override void DoAttack()
     {
-        ShootBulletStraight(Player.transform.position, Bullet, 0f);
+        ShootBulletStraight(target.transform.position, bullet, 0f);
         StartCoroutine(SecondAttackAfterTimer(CooldownToSecondAttack));
     }
 
@@ -50,12 +49,12 @@ public class ToxicMonsterMovement : ShootableMonster
 
     private void SecondAttack()
     {
-        var distanceToPlayer = Vector2.Distance(Player.transform.position, gameObject.transform.position);
+        var distanceToPlayer = Vector2.Distance(target.transform.position, gameObject.transform.position);
         for (int i = 0; i < Attack2BulletCount; i++)
         {
             var curAngleFactor = Mathf.Lerp(-angleFactor * distanceToPlayer, angleFactor * distanceToPlayer, 
                 i / (Attack2BulletCount - 1.0f));
-            ShootBulletStraight(Player.transform.position + transform.right * curAngleFactor, SecondAttackBullet, 0f);
+            ShootBulletStraight(target.transform.position + transform.right * curAngleFactor, SecondAttackBullet, 0f);
         }
     }
 }

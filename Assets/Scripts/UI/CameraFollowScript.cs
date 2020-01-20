@@ -10,7 +10,14 @@ public class CameraFollowScript : MonoBehaviour
 
     [SerializeField]
     private Vector4 CameraMoveBound = new Vector4(-18, 18, -15, 15);
-        
+
+    private static GameObject camera = null;
+
+    private void Start()
+    {
+        var player = GameObject.FindWithTag("Player");
+        Setup(() => player.transform.position);
+    }
 
     private Func<Vector3> GetCameraFollowPositionFunc;
     public void Setup(Func<Vector3> GetCameraFollowPositionFunc)

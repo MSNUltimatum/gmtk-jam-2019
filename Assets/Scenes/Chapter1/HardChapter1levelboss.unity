@@ -133,16 +133,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 85675246}
     m_Modifications:
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyName
-      objectReference: {fileID: 0}
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,10 +238,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Name
+      value: EnemyName
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149383, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
@@ -277,6 +272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7de89d6f6c44c545a0ee0a468f39a29, type: 3}
@@ -909,6 +909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: soundsToRegister.Array.data[12].volume
       value: 0.436
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250443242761020241, guid: 87b5ca7909564c54cbfd1be8eaac096b,
+        type: 3}
+      propertyPath: Mute
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b5ca7909564c54cbfd1be8eaac096b, type: 3}
@@ -14825,6 +14830,66 @@ PrefabInstance:
     - target: {fileID: 1128052989, guid: 634c80fae62a0e1419f3fd3e54e94ce8, type: 3}
       propertyPath: MediumBurstBulletAmount
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162520544733201, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: randomShotAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162520544733201, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162520544733201, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162520893567393, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: randomShotAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162520893567393, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162520893567393, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162521281896517, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: randomShotAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162521281896517, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145162521281896517, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057196512963355905, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: randomShotAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057196512963355905, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057196512963355905, guid: 634c80fae62a0e1419f3fd3e54e94ce8,
+        type: 3}
+      propertyPath: cooldownRange.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 634c80fae62a0e1419f3fd3e54e94ce8, type: 3}
