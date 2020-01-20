@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5ffda35c1496424d8bb08821d0e6de2, type: 3}
-  m_Name: Pistol-Glock
+  m_Script: {fileID: 11500000, guid: a3d03bccd4bb84046a9dc38fa69bc2c6, type: 3}
+  m_Name: TriplePistol
   m_EditorClassIdentifier: 
-  description: Your first gun
+  description: Your second gun
   pickupSprite: {fileID: 0}
-  itemIndividualName: Glock-17
-  attackSound:
-  - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
-  reloadTime: 3
-  timeBetweenAttacks: 0.2
-  ammoMagazine: 17
+  itemIndividualName: 
+  attackSound: []
+  reloadTime: 1
+  timeBetweenAttacks: 0.5
+  ammoMagazine: 6
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}

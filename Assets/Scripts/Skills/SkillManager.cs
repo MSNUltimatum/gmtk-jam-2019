@@ -9,6 +9,9 @@ public class SkillManager : MonoBehaviour
 {
     public EquippedWeapon equippedWeapon = null;
 
+    [SerializeField, Header("Important")]
+    private bool forceSkillRewrite = false;
+
     private static Dictionary<string, SkillBase> registeredSkills = new Dictionary<string, SkillBase>();
     public static bool SaveSkill(string name, SkillBase skill)
     {
@@ -93,7 +96,7 @@ public class SkillManager : MonoBehaviour
 
     private void LoadSkills()
     {
-        if (File.Exists(Application.persistentDataPath + fileName))
+        if (!forceSkillRewrite && File.Exists(Application.persistentDataPath + fileName))
         {
             BinaryFormatter binaryformatter = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
@@ -117,6 +120,20 @@ public class SkillManager : MonoBehaviour
         else
         {
             SaveSkills();
+        }
+    }
+
+    public void AddSkill(SkillBase skill)
+    {
+        skills.Add(skill);
+        if (skill is ActiveSkill)
+        {
+            activeSkills.Add(new EquippedActiveSkill(skill as ActiveSkill));
+        }
+        else
+        {
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! index
+            equippedWeapons.Add(new EquippedWeapon(skill as WeaponSkill, equippedWeapon.weaponIndex + 1));
         }
     }
 
