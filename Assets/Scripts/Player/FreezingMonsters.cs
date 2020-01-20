@@ -6,43 +6,30 @@ public class FreezingMonsters : MonoBehaviour
 {
     [SerializeField]
     private float freezingDuration = 3f;
-    public void FreezingShoot(GameObject monster)
+    private float freezingDurationTime;
+
+    private void Start()
     {
-        monster.GetComponent<MonsterLife>().enabled = false;
-        monster.GetComponent<AIAgent>().enabled = false;
-        monster.GetComponentInChildren<Animator>().enabled = false;
-        freezingMonsters.Add(monster);
-        freezingDurations.Add(freezingDuration);
+        freezingDurationTime = freezingDuration;
+        GetComponent<MonsterLife>().enabled = false;
+        GetComponent<AIAgent>().enabled = false;
+        GetComponentInChildren<Animator>().enabled = false;
     }
 
-    private void Freeze()
+    private void Update()
     {
-        for (int i = 0; i < freezingDurations.Count; i++)
+        freezingDurationTime -= Time.deltaTime;
+        if(freezingDurationTime <= 0)
         {
-            if (freezingMonsters[i] != null)
-            {
-                freezingDurations[i] -= Time.deltaTime;
-
-                if (freezingDurations[i] <= 0)
-                {
-                    freezingDurations.RemoveAt(i);
-                    freezingMonsters[i].GetComponent<MonsterLife>().enabled = true;
-                    freezingMonsters[i].GetComponent<AIAgent>().enabled = true;
-                    freezingMonsters[i].GetComponentInChildren<Animator>().enabled = true;
-                    freezingMonsters.RemoveAt(i);
-                }
-            }
-            else
-            {
-                freezingMonsters.RemoveAt(i);
-                freezingDurations.RemoveAt(i);
-            }
+            GetComponent<MonsterLife>().enabled = true;
+            GetComponent<AIAgent>().enabled = true;
+            GetComponentInChildren<Animator>().enabled = true;
+            Destroy(this);
         }
     }
-    void Update()
+
+    public void Reboot()
     {
-        Freeze();
+        freezingDurationTime = freezingDuration;
     }
-    private List<GameObject> freezingMonsters = new List<GameObject>();
-    private List<float> freezingDurations = new List<float>();
 }

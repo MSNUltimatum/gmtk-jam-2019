@@ -8,8 +8,15 @@ public class Freezing : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<FreezingMonsters>().FreezingShoot(other.gameObject);
+            var fr = other.gameObject.GetComponent<FreezingMonsters>();
+            if(!fr)
+            {
+                other.gameObject.AddComponent<FreezingMonsters>();
+            }
+            else
+            {
+                fr.Reboot();
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ public class Pistol : WeaponSkill
         Name = "Pistol";
         Description = "Your first gun";
         ReloadTime = 0.6f;
-        bulletPrefab = Resources.Load("Pistol/HeroBulletPassing") as GameObject;
+        bulletPrefab = Resources.Load("Pistol/HeroBulletMouse") as GameObject;
     }
 
     public override void Shoot(Vector3 mousePos, Vector3 screenPoint)
