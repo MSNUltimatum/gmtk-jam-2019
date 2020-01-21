@@ -12,7 +12,7 @@ public class MetricsRecords
     public int[] deathCount;
 
     public MetricsRecords() {
-        int max = SceneManager.sceneCountInBuildSettings; // почему то не работает, может потому что создается статик до того как получено количество сцен
+        int max = SceneManager.sceneCountInBuildSettings; 
         
         levelComlpeted = new bool[max+1];//number is from scene count
         levelSceneName = new string[max+1];
