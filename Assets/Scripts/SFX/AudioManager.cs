@@ -3,22 +3,29 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public static Sound[] sounds;
-    public Sound[] soundsToRegister;
     public static AudioManager instance;
-    public static float userPrefSound = 0.5f;
+    private static float userPrefSound = 0.5f;
+    private static float userPrefMusic = 0.5f;
 
     // Name -> (time since last sound, maximum value)
     public static Dictionary<string, Vector2> Clips = new Dictionary<string, Vector2>();
 
     private const float lowestSoundValue = 0.3f;
 
+    [SerializeField]
+    private AudioSource SourceMusic = null; // duplicate of static for inspector
+
+    [SerializeField]
+    AudioClip[] musicList = null;
+    [SerializeField]
+    private bool restartMusicOnLoad = false;
+
     void Awake()
     {
-        sounds = soundsToRegister;
         if (PlayerPrefs.HasKey("SoundVolume"))
         {
             userPrefSound = PlayerPrefs.GetFloat("SoundVolume");
@@ -29,17 +36,68 @@ public class AudioManager : MonoBehaviour
             PlayerPrefs.SetFloat("SoundVolume", 0.5f);
         }
 
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            userPrefMusic = PlayerPrefs.GetFloat("MusicVolume");
+        }
+        else
+        {
+            userPrefMusic = 0.5f;
+            PlayerPrefs.SetFloat("MusicVolume", 0.5f);
+        }
+
         if (instance == null)
         {
             instance = this;
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
         DontDestroyOnLoad(gameObject);
+
+        audioSourceSFX = GetComponent<AudioSource>();
+        audioSourceMusic = SourceMusic; // from inspector to static
+
+        if (audioSourceMusic != null)
+        {
+            SetVolumeMusic(userPrefMusic);
+            MusicCheck();
+        }
+    }
+
+    private Scene lastFrameScene;
+
+    private void Update()
+    {
+        Scene newScene = SceneManager.GetActiveScene();
+        if (lastFrameScene != newScene) { MusicCheck(); } // if scene changed
+        lastFrameScene = newScene;
+    }
+
+    void MusicCheck() 
+    { // checking if music is correct and changing it if needed        
+        int expectedMusicIndex = 0; // index for array musicList, 0 is for no music
+        String sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "MainMenu") { expectedMusicIndex = 2; } //logic for music selection 
+        else if (sceneName.Contains("boss")) { expectedMusicIndex = 0; }
+        else { expectedMusicIndex = 1; }
+
+        if (expectedMusicIndex == 0){
+            audioSourceMusic.Stop();
+        } else if (!audioSourceMusic.isPlaying || audioSourceMusic.clip != musicList[expectedMusicIndex])
+        {
+            audioSourceMusic.Stop();
+            audioSourceMusic.clip = musicList[expectedMusicIndex];
+            audioSourceMusic.Play();
+        } else if (restartMusicOnLoad)
+        {
+            audioSourceMusic.Stop();
+            audioSourceMusic.Play();
+        }
     }
 
     public static float GetVolume(string name, float volume)
@@ -47,11 +105,7 @@ public class AudioManager : MonoBehaviour
         if (Clips.ContainsKey(name))
         {
             float ltp = Clips[name].x;
-#if UNITY_WEBGL
-            volume = Mathf.Lerp(0.02f, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
-#else
-            volume = Mathf.Lerp(lowestSoundValue, Clips[name].y, Mathf.Clamp(Time.time - ltp, 0, 1));
-#endif
+            volume = Mathf.Lerp(Clips[name].y / 5, Clips[name].y, Time.time - ltp); //sound suppression for multiple identical effects in short time
             Clips[name] = new Vector2(Time.time, Clips[name].y);
         }
         else
@@ -63,57 +117,65 @@ public class AudioManager : MonoBehaviour
 
     public static void Play(string name, AudioSource source)
     {
-
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source = source;
-        s.source.clip = s.clip;
-        
-        s.source.pitch = s.pitch;
-        s.source.playOnAwake = s.playOnAwake;
-        s.source.loop = s.loop;
-        s.source.mute = s.mute;
 #if UNITY_WEBGL
-        s.source.volume = GetVolume(name, s.volume / 3);
+        source.volume = GetVolume(name, source.volume / 3);
 #else
-        s.source.volume = GetVolume(name, s.volume);
-        s.source.panStereo = s.stereoPan;
-        s.source.spatialBlend = s.spatialBlend;
-        s.source.reverbZoneMix = s.reverbZoneMix;
-        s.source.bypassEffects = s.bypassEffects;
-        s.source.bypassReverbZones = s.bypassReverbZones;
-        s.source.dopplerLevel = s.dopplerLevel;
-        s.source.spread = s.spread;
-        s.source.minDistance = s.minDistance;
-        s.source.maxDistance = s.maxDistance;
+        source.volume = GetVolume(name, source.volume);
 #endif
-
-        if (s == null)
-        {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
-        }
         if (CharacterLife.isDeath == true)
         {
-            s.source.volume = s.volume / 2;
+            source.volume = source.volume / 2;
         }
-        s.source.Play();
+        source.Play();
     }
+
     public static void Pause(string name, AudioSource source)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s != null)
+        if (source != null)
         {
-            s.source = source;
-            s.source.Pause();
+            source.Pause();
         }
     }
+
     public static bool isPlaying(string name, AudioSource source)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source = source;
-        if (s.source.isPlaying)
+        if (source.isPlaying)
             return true;
         else
             return false;
     }
+
+    public static void SetVolumeSFX(float value)
+    {
+        userPrefSound = value;
+#if UNITY_WEBGL
+        audioSourceSFX.volume = userPrefSound / 3f;
+#else
+        audioSourceSFX.volume = userPrefSound;
+#endif
+    }
+
+    public static void SetVolumeMusic(float value)
+    {
+        userPrefMusic = value;
+#if UNITY_WEBGL
+        audioSourceMusic.volume = userPrefMusic / 3f;
+#else
+        audioSourceMusic.volume = userPrefMusic;
+#endif
+    }
+
+    public static void PlayMusic(AudioSource sorce)// for externall audio sorce with music volume, like on boss
+    {
+        sorce.volume = userPrefMusic;
+        sorce.Play();
+    }
+
+    public static void PauseMusic(AudioSource sorce)
+    { 
+        sorce.Pause();
+    }
+
+    private static AudioSource audioSourceSFX;
+    private static AudioSource audioSourceMusic;
 }

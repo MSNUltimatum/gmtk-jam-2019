@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 3388020774218258525}
   - component: {fileID: 972267073607571025}
   - component: {fileID: 7941728865494954054}
+  - component: {fileID: 7910944739925845454}
+  - component: {fileID: 1109340570288807967}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -107,6 +109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415469622524337007}
+  - {fileID: 18185783415254562}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomBounds: {x: 19, y: 11.5}
   timeToEachSpawn: 5.5
   timeToNextSpawn: 0
   enemyWaves:
@@ -129,11 +133,10 @@ MonoBehaviour:
   - {fileID: 4795927371164965385, guid: 99a6051f2e8181b48baddebae729ebc1, type: 3}
   - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
   - {fileID: 8109258291629398269, guid: 56eaf28768d474e488b6165f98220ab7, type: 3}
+  evilDictionary: {fileID: 1705778125510524197}
   SpawnZone: {fileID: 0}
   AllowEarlySpawns: 1
   isInfSpawn: 0
-  RoomBounds: {x: 19, y: 11.5}
-  evilDictionary: {fileID: 1705778125510524197}
 --- !u!114 &406660203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,3 +252,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToEachSpawn: {x: 5, y: 15}
   firefly: {fileID: 795010810916821201, guid: c9688ec54b2975941a61f98cde33f11a, type: 3}
+--- !u!114 &7910944739925845454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22474ed8f28ae7e49834dd5df34a5c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableScanning: 1
+--- !u!114 &1109340570288807967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334064150391581341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e01edcef864dd74dafac1acbadbdb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6534402564482476595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 18185783415254562}
+  m_Layer: 0
+  m_Name: Metrics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &18185783415254562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534402564482476595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3334064150391581338}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

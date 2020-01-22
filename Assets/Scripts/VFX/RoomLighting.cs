@@ -31,6 +31,8 @@ public class RoomLighting : MonoBehaviour
         NewLight(Light);
 
         SetSwampMaterial();
+
+        MonsterLife.OnEnemyDead.AddListener(AddOneToLight);
     }
 
     /// <summary>
@@ -45,6 +47,11 @@ public class RoomLighting : MonoBehaviour
         TotalValue = TotalValue + val;
         RecalculateLight();
         t = 0.0f;
+    }
+
+    private void AddOneToLight()
+    {
+        AddToLight(1);
     }
 
     public void SetMaxValue (float val)

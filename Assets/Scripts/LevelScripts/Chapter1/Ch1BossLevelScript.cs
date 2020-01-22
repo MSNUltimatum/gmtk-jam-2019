@@ -32,8 +32,8 @@ public class Ch1BossLevelScript : MonoBehaviour
     {
         Pause.AllowPause = false;
         Player = GameObject.FindGameObjectWithTag("Player");
-        AudioManager.Pause("Chapter1BossMusic", GetComponent<AudioSource>());
-        CurrentEnemy.SetCurrentEnemyName("???");
+        AudioManager.PauseMusic(GetComponent<AudioSource>());
+        CurrentEnemyUI.SetCurrentEnemy("???");
         camera = Camera.main.transform;
     }
 
@@ -147,7 +147,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         
         CurrentPhase = Phase.PHASE1;
         BossInstance = Instantiate(BossPrefab, new Vector3(0, 16.5f, 0), Quaternion.identity);
-        AudioManager.Play("Chapter1BossMusic", GetComponent<AudioSource>());
+        AudioManager.PlayMusic(GetComponent<AudioSource>());
         Phase1PlayerNameLabel.SetActive(true);
         
         var bossPosition = BossInstance.transform.position;
@@ -157,7 +157,7 @@ public class Ch1BossLevelScript : MonoBehaviour
             bossPosition.x + Mathf.Sign(Random.Range(-1, 1)) * 10, bossPosition.y, bossPosition.z);
 
         Phase1TimeToHomingShooting = 5.1f - Phase1IdleTime;
-        CurrentEnemy.SetCurrentEnemyName("Survive!");
+        CurrentEnemyUI.SetCurrentEnemy("Survive!");
     }
 
     [SerializeField]
@@ -301,6 +301,7 @@ public class Ch1BossLevelScript : MonoBehaviour
         GlassStartTimePassed = 0;
         monsterSpawner = GetComponent<ArenaEnemySpawner>();
         GetComponentInChildren<ContiniousOutlineAppear>().Activate();
+        GetComponent<CurrentEnemySelector>().enableScanning = true;
     }
 
     [SerializeField]
@@ -339,7 +340,7 @@ public class Ch1BossLevelScript : MonoBehaviour
                     if (Phase2SpawnIndex < Phase2Monsters.Length)
                     {
                         var monsterToSpawn = Phase2Monsters[Phase2SpawnIndex];
-                        var enemy = monsterSpawner.SpawnCertainMonsterWithoutName(monsterToSpawn);
+                        var enemy = monsterSpawner.SpawnMonster(monsterToSpawn);
                         enemy.GetComponent<MonsterLife>().FadeIn(0.3f);
                         var attack = enemy.GetComponent<Attack>();
                         if (attack) attack.ForceAttack();
@@ -437,13 +438,13 @@ public class Ch1BossLevelScript : MonoBehaviour
         if (BossInstance == null)
         {
             StartDead();
-            CurrentEnemy.SetCurrentEnemyName(" ");
+            CurrentEnemyUI.SetCurrentEnemy(" ");
             return;
         }
-        if (ArenaEnemySpawner.boysList.Count == 0)
+        if (ArenaEnemySpawner.boysCount == 0)
         {
-            CurrentEnemy.SetCurrentEnemyName("Shadow");
-            CurrentEnemy.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            CurrentEnemyUI.SetCurrentEnemy("Shadow");
+            CurrentEnemyUI.EnemyName.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         switch (phase4Attack)
         {

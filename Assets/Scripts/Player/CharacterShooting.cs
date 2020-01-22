@@ -9,6 +9,8 @@ public class CharacterShooting : MonoBehaviour
     [SerializeField]
     bool ExtraWeapon = false;
 
+    public bool shotFrame = false; //flag for reactions on shot
+
     private void Start()
     {
         if (ExtraWeapon == true)   
@@ -31,6 +33,7 @@ public class CharacterShooting : MonoBehaviour
         }
         Cursor.visible = false;
 
+        shotFrame = false;
         if (reloadTimeLeft > 0)
         {
             reloadTimeLeft -= Time.deltaTime;
@@ -41,6 +44,7 @@ public class CharacterShooting : MonoBehaviour
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
             weapon.Shoot(mousePos,screenPoint);
             reloadTimeLeft = weapon.ReloadTime;
+            shotFrame = true;
         }
     }
     private float reloadTimeLeft = 0;
