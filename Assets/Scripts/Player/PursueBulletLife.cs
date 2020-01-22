@@ -5,12 +5,11 @@ using System.Linq;
 
 public class PursueBulletLife : BulletLife
 {
-    void FixedUpdate()
+    protected override void Move()
     {
-        if (Pause.Paused) return;
         if (targ == null)
         {
-            transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
+            base.Move();
             Targeting();
         }
         else
@@ -33,8 +32,8 @@ public class PursueBulletLife : BulletLife
                     timeBeforePursue -= Time.fixedDeltaTime;
                 }
             }
+            TTDLeft -= Time.fixedDeltaTime;
         }
-        TTDLeft -= Time.fixedDeltaTime;
     }
 
     private void Targeting()

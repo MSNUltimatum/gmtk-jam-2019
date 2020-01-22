@@ -18,10 +18,10 @@ public class SinBulletLife : BulletLife
         axis = transform.up;
     }
 
-    void FixedUpdate()
+    protected override void Move()
     {
         pos += transform.right * Time.fixedDeltaTime * Speed;
-        if(!isCos)
+        if (!isCos)
             transform.position = pos + axis * Mathf.Sin(Time.time * frequency) * magnitude;
         else
             transform.position = pos + axis * Mathf.Cos(Time.time * frequency) * magnitude;
