@@ -13,10 +13,9 @@ public class Chest : Container
         base.Awake();
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < destanceToOpen)
-        {
+        if (collision.gameObject == player) {
             //VFX/SFX?
             Open();
         }

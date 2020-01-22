@@ -64,7 +64,7 @@ public class BulletLife : MonoBehaviour
             }
         }
         else if (coll.gameObject.GetComponent<Box>()) {
-            coll.gameObject.GetComponent<Box>().OnBullenHit(gameObject);
+            coll.gameObject.GetComponent<Box>().OnBullenHit();
             DestroyBullet();
         }
     }

@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class Box : Container
 {
-    public void OnBullenHit(GameObject bullet) {
+    public void OnBullenHit() {
         //SFX/VFX? 
         Open();
     }

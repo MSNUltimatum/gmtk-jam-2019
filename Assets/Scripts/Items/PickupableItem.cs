@@ -6,6 +6,8 @@ public class PickupableItem : MonoBehaviour
 {
     private GameObject player = null;
     public float destanceToPickup = 1f;
+    public float inactiveTime = 0.5f;
+    private bool active = false;
 
     void Awake()
     {
@@ -14,9 +16,17 @@ public class PickupableItem : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < destanceToPickup) {
-            PickUp();
+        if (!active)
+        {
+            inactiveTime -= Time.deltaTime;
+            if (inactiveTime <= 0) active = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (active && collision.gameObject == player)
+            PickUp();
     }
 
     void PickUp() {
