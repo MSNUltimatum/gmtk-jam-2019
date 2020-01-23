@@ -12,8 +12,37 @@ public class SkillManager : MonoBehaviour
     [SerializeField, Header("Important")]
     private bool forceSkillRewrite = false;
 
-    private static Dictionary<string, SkillBase> registeredSkills = new Dictionary<string, SkillBase>();
-    public static bool SaveSkill(string name, SkillBase skill)
+    private Dictionary<string, SkillBase> registeredSkills = new Dictionary<string, SkillBase>();
+
+    [SerializeField, Tooltip("Skill database-like prefab")]
+    private GameObject prefabSkillLoader = null;
+    /// <summary>
+    /// Get all skills in-game from database object
+    /// </summary>
+    public void FillRegisteredSkills()
+    {
+        if (prefabSkillLoader == null)
+        {
+            Debug.LogError("Skill loader prefab not assigned! Can't load skills because of that");
+        }
+        else
+        {
+            var skillContainer = prefabSkillLoader.GetComponent<SkillPullFromDatabase>();
+            if (skillContainer != null)
+            {
+                foreach (var skill in skillContainer.LoadSkills().Values)
+                {
+                    registeredSkills.Add(skill.SkillName(), skill);
+                }
+            }
+            else
+            {
+                Debug.LogError("Skill loader has no database-pull-script assigned! Can't load skills because of that");
+            }   
+        }
+    }
+
+    public bool SaveSkill(string name, SkillBase skill)
     {
         if (!registeredSkills.ContainsKey(name))
         {
@@ -22,20 +51,20 @@ public class SkillManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Skill manager already contains reference to this skill. Why again?!");
             return false;
         }
     }
 
-    public static void PrintRegisteredSkills()
+    public void PrintRegisteredSkills()
     {
+        print($"Skills registered: {registeredSkills.Count}");
         foreach (var skill in registeredSkills.Keys)
         {
             print(skill + " " + registeredSkills[skill]);
         }
     }
 
-    public static SkillBase LoadSkill(string name)
+    public SkillBase LoadSkill(string name)
     {
         //print(name);
         return registeredSkills[name];
@@ -94,6 +123,9 @@ public class SkillManager : MonoBehaviour
         file.Close();
     }
 
+    /// <summary>
+    /// Loads skills by name. Grab skill information from "registered" skills
+    /// </summary>
     private void LoadSkills()
     {
         if (!forceSkillRewrite && File.Exists(Application.persistentDataPath + fileName))
@@ -132,18 +164,23 @@ public class SkillManager : MonoBehaviour
         }
         else
         {
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! index
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! index?
             equippedWeapons.Add(new EquippedWeapon(skill as WeaponSkill, equippedWeapon.weaponIndex + 1));
         }
     }
 
     private void Start()
     {
+        FillRegisteredSkills();
         //PrintRegisteredSkills();
+
         LoadSkills();
         InitializeSkills();
         attackManager = GetComponent<CharacterShooting>();
-        attackManager.LoadNewWeapon(equippedWeapon, 0);
+        if (attackManager != null)
+        {
+            attackManager.LoadNewWeapon(equippedWeapon, 0);
+        }
     }
 
     private void InitializeSkills()
@@ -234,7 +271,10 @@ public class SkillManager : MonoBehaviour
             }
             weapon.logic.UpdateEffect();
         }
-        equippedWeapon.logic.UpdateEquippedEffect();
+        if (equippedWeapon.logic != null)
+        {
+            equippedWeapon.logic.UpdateEquippedEffect();
+        }
 
         // Update effect of passive skills
         foreach (var s in skills)

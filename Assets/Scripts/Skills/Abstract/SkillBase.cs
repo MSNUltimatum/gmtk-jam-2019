@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[ExecuteAlways]
 public abstract class SkillBase : ScriptableObject
 {
     [Multiline]
@@ -14,29 +13,6 @@ public abstract class SkillBase : ScriptableObject
     public string itemIndividualName = "";
 
     public string SkillName() => $"{GetType()}:{itemIndividualName}";
-    
-    protected void OnEnable()
-    {
-        if (Application.isEditor)
-        {
-            SkillManager.SaveSkill(SkillName(), this);
-        }
-    }
-
-    protected void Awake()
-    {
-        if (Application.isPlaying)
-        {
-            SkillManager.PrintRegisteredSkills();
-            //Debug.Log("Trying to get: " + GetType());
-            LoadReferences(SkillManager.LoadSkill(SkillName()));
-        }
-    }
-
-    /// <summary>
-    /// Load from SkillManager -> Registered skills
-    /// </summary>
-    protected virtual void LoadReferences(SkillBase references) { }
 
     public abstract void InitializeSkill();
 

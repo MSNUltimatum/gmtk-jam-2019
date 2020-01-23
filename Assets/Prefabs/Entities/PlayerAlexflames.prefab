@@ -534,7 +534,10 @@ MonoBehaviour:
     reloadTimeLeft: 0
     weaponIndex: 0
     attackSound: []
+  forceSkillRewrite: 0
+  prefabSkillLoader: {fileID: 218089639845207119, guid: e370b22612c01224f82b01ad8c874bf6,
+    type: 3}
   skills:
-  - {fileID: 11400000, guid: e341703b3e0de8040a445e142f93c96e, type: 2}
+  - {fileID: 11400000, guid: 9c7f83ae5537bbf448f224351df4abf3, type: 2}
   - {fileID: 11400000, guid: f0fe970116203044e875a369e68e8610, type: 2}
-  - {fileID: 11400000, guid: e341703b3e0de8040a445e142f93c96e, type: 2}
+  - {fileID: 11400000, guid: 9928273a409763a48b8e67fad61de033, type: 2}
