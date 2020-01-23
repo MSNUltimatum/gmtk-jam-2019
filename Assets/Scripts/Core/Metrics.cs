@@ -43,7 +43,7 @@ public class Metrics : MonoBehaviour
         SaveMetrics(metrics); // overwrite the save
     }
 
-    public static void OnContineuGame() {
+    public static void OnContinueGame() {
         LoadMetrics();
     }
 
@@ -71,11 +71,32 @@ public class Metrics : MonoBehaviour
         {
             BinaryFormatter binaryformatter = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
-            metrics = (MetricsRecords)binaryformatter.Deserialize(file);
-
-            file.Close();
+            try
+            {
+                if (file.Length > 0)
+                {
+                    metrics = (MetricsRecords)binaryformatter.Deserialize(file);
+                    file.Close();
+                }
+                else
+                {
+                    Debug.Log("Empty metrics file exception");
+                    metrics = new MetricsRecords();
+                    file.Close();
+                    SaveMetrics(metrics);
+                }
+            }
+            catch (UnityException E) 
+            {
+                Debug.Log("Unexpected error on metrics load.");
+                Debug.Log(E);
+                file.Close();
+                metrics = new MetricsRecords();
+                SaveMetrics(metrics);
+            }
         }
-        else {
+        else
+        {
             metrics = new MetricsRecords();
             SaveMetrics(metrics); // saving empty file
         }
