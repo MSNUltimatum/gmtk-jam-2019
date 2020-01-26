@@ -12,6 +12,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField, Header("Important")]
     private bool forceSkillRewrite = false;
 
+    #region Skill Register & Load
     private Dictionary<string, SkillBase> registeredSkills = new Dictionary<string, SkillBase>();
 
     [SerializeField, Tooltip("Skill database-like prefab")]
@@ -69,7 +70,55 @@ public class SkillManager : MonoBehaviour
         //print(name);
         return registeredSkills[name];
     }
-    
+
+    private string fileName = "progress.bin";
+
+    private void SaveSkills()
+    {
+        BinaryFormatter binaryformatter = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + fileName);
+        var skillsSavedInfo = new SkillsRecord(skills);
+        foreach (var skill in skillsSavedInfo.weapons)
+
+            binaryformatter.Serialize(file, skillsSavedInfo);
+
+        file.Close();
+    }
+
+    /// <summary>
+    /// Loads skills by name. Grab skill information from "registered" skills
+    /// </summary>
+    private void LoadSkills()
+    {
+        if (!forceSkillRewrite && File.Exists(Application.persistentDataPath + fileName))
+        {
+            BinaryFormatter binaryformatter = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
+            var skillsSavedInfo = (SkillsRecord)binaryformatter.Deserialize(file);
+            file.Close();
+
+            skills = new List<SkillBase>();
+            foreach (var skill in skillsSavedInfo.activeSkills)
+            {
+                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as ActiveSkill);
+            }
+            foreach (var skill in skillsSavedInfo.passiveSkills)
+            {
+                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as PassiveSkill);
+            }
+            foreach (var skill in skillsSavedInfo.weapons)
+            {
+                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as WeaponSkill);
+            }
+        }
+        else
+        {
+            SaveSkills();
+        }
+    }
+
+    #endregion
+
     [Serializable]
     private class EquippedActiveSkill
     {
@@ -107,52 +156,7 @@ public class SkillManager : MonoBehaviour
     private void Awake()
     {
         RelodScene.OnSceneChange.AddListener(SaveSkills);
-    }
-
-    private string fileName = "progress.bin";
-
-    private void SaveSkills()
-    {
-        BinaryFormatter binaryformatter = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + fileName);
-        var skillsSavedInfo = new SkillsRecord(skills);
-        foreach (var skill in skillsSavedInfo.weapons)
-        
-        binaryformatter.Serialize(file, skillsSavedInfo);
-
-        file.Close();
-    }
-
-    /// <summary>
-    /// Loads skills by name. Grab skill information from "registered" skills
-    /// </summary>
-    private void LoadSkills()
-    {
-        if (!forceSkillRewrite && File.Exists(Application.persistentDataPath + fileName))
-        {
-            BinaryFormatter binaryformatter = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
-            var skillsSavedInfo = (SkillsRecord)binaryformatter.Deserialize(file);
-            file.Close();
-
-            skills = new List<SkillBase>();
-            foreach (var skill in skillsSavedInfo.activeSkills)
-            {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as ActiveSkill);
-            }
-            foreach (var skill in skillsSavedInfo.passiveSkills)
-            {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as PassiveSkill);
-            }
-            foreach (var skill in skillsSavedInfo.weapons)
-            {
-                if (!String.IsNullOrEmpty(skill)) skills.Add(registeredSkills[skill] as WeaponSkill);
-            }
-        }
-        else
-        {
-            SaveSkills();
-        }
+        skillsUI = GameObject.FindGameObjectWithTag("Canvas").GetComponent<SkillsUI>();
     }
 
     public void AddSkill(SkillBase skill)
@@ -259,6 +263,8 @@ public class SkillManager : MonoBehaviour
         }
 
         // Update reload time of all weapons & call update
+        float[] cooldownsProportion = new float[SkillsUI.weaponsCount];
+        int j = 0;
         foreach (var weapon in equippedWeapons)
         {
             if (weapon.reloadTimeLeft != 0)
@@ -269,8 +275,14 @@ public class SkillManager : MonoBehaviour
                     weapon.ammoLeft = weapon.logic.ammoMagazine;
                 }
             }
+            cooldownsProportion[j] = weapon.reloadTimeLeft / weapon.logic.reloadTime;
+
             weapon.logic.UpdateEffect();
+            j++;
         }
+
+        skillsUI.UpdateReloadVisualCooldown(cooldownsProportion);
+
         if (equippedWeapon.logic != null)
         {
             equippedWeapon.logic.UpdateEquippedEffect();
@@ -286,6 +298,13 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    #region UI block
+    private void InitializeUI()
+    {
+        GameObject.Find("");
+    }
+    #endregion
+
     public List<SkillBase> skills = new List<SkillBase>();
 
     private List<EquippedActiveSkill> activeSkills = new List<EquippedActiveSkill>();
@@ -294,4 +313,5 @@ public class SkillManager : MonoBehaviour
     private KeyCode rotateWeaponLeft = KeyCode.Q;
     private KeyCode rotateWeaponRight = KeyCode.E;
     private CharacterShooting attackManager;
+    private SkillsUI skillsUI;
 }
