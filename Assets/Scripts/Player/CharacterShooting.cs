@@ -36,7 +36,7 @@ public class CharacterShooting : MonoBehaviour
         {
             reloadTimeLeft -= Time.deltaTime;
         }
-        else if(Input.GetButton("Fire1") && currentWeapon.reloadTimeLeft <= 0)
+        else if (Input.GetButton("Fire1") && currentWeapon.reloadTimeLeft <= 0)
         {
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
@@ -46,18 +46,30 @@ public class CharacterShooting : MonoBehaviour
                 currentWeapon.ammoLeft -= ammoNeeded;
                 if (currentWeapon.ammoLeft == 0)
                 {
-                    currentWeapon.reloadTimeLeft = currentWeapon.logic.reloadTime;
+                    StartReloadWeapon();
                 }
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
-
+                shotFrame = true;
             }
             reloadTimeLeft = currentWeapon.logic.timeBetweenAttacks;
-            shotFrame = true;
+        }
+        if (Input.GetKeyDown(reloadButton))
+        {
+            StartReloadWeapon();
+        }
+    }
+
+    private void StartReloadWeapon()
+    {
+        if (currentWeapon.reloadTimeLeft == 0)
+        {
+            currentWeapon.reloadTimeLeft = currentWeapon.logic.reloadTime;
         }
     }
 
     // between attack cooldown
     private float reloadTimeLeft = 0;
     private Camera mainCamera;
+    private KeyCode reloadButton = KeyCode.R;
     public SkillManager.EquippedWeapon currentWeapon;
 }

@@ -13,7 +13,7 @@ public class SkillsUI : MonoBehaviour
     [SerializeField]
     private GameObject weaponContainerUI;
 
-    public static int weaponsCount = 5;
+    public static int weaponsCount = 3;
     public Transform[] weaponCells = new Transform[weaponsCount];
     private Material[] weaponCooldownEffect = new Material[weaponsCount];
 
@@ -32,21 +32,31 @@ public class SkillsUI : MonoBehaviour
         }
     }
 
-    public void UpdateReloadVisualCooldown(float[] proportionOfTimeLeft)
+    public void UpdateReloadVisualCooldown(float[] proportionOfTimeLeft, int currentWeaponIndex)
     {
+        var diffInCellNumeration = 1 - currentWeaponIndex;
         for (int i = 0; i < weaponsCount; i++)
         {
-            weaponCooldownEffect[i].SetFloat("_CooldownProgress", proportionOfTimeLeft[i]);
+            var cellIndex = (weaponsCount + i + diffInCellNumeration) % weaponsCount;
+            weaponCooldownEffect[cellIndex].SetFloat("_CooldownProgress", proportionOfTimeLeft[i]);
         }
     }
 
-    public void SetWeaponSprites(Sprite[] weaponSprites)
+    public void SetWeaponSprites(Sprite[] weaponSprites, int currentWeaponIndex)
     {
+        var diffInCellNumeration = 1 - currentWeaponIndex;
         for (int i = 0; i < weaponsCount; i++)
         {
+            var cellIndex = (weaponsCount + i + diffInCellNumeration) % weaponsCount;
             if (weaponSprites[i] != null)
             {
-                weaponCells[i].GetChild(1).GetComponent<Image>().sprite = weaponSprites[i];
+                var weaponImage = weaponCells[cellIndex].GetChild(1).GetComponent<Image>();
+                weaponImage.color = Color.white;
+                weaponImage.sprite = weaponSprites[i];
+            }
+            else
+            {
+                weaponCells[cellIndex].GetChild(1).GetComponent<Image>().color = Color.clear;
             }
         }
     }

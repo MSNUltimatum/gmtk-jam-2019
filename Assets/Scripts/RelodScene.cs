@@ -57,7 +57,7 @@ public class RelodScene : MonoBehaviour
         if (CharacterLife.isDeath) PressR();
         if (isVictory) ProcessVictory();
 
-        if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
+        if (Input.GetKeyDown(KeyCode.R) && (Input.GetKey(KeyCode.LeftControl) || CharacterLife.isDeath))
         {
             Reload();
             Metrics.OnDeath();
@@ -91,12 +91,9 @@ public class RelodScene : MonoBehaviour
 
     protected virtual void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
-        {
-            TotalValue = 0;
-            Canvas.transform.GetChild(1).gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        TotalValue = 0;
+        Canvas.transform.GetChild(1).gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void PressR()

@@ -251,18 +251,18 @@ public class SkillManager : MonoBehaviour
         }
 
         // Switch weapon
-        if (Input.GetKeyDown(rotateWeaponLeft))
+        if (Input.GetKeyDown(rotateWeaponLeft) || Input.GetKeyDown(rotateWeaponRight))
         {
-            var newWeaponIndex = (equippedWeapon.weaponIndex + equippedWeapons.Count - 1) % equippedWeapons.Count;
+            var newWeaponIndex = 0;
+            if (Input.GetKeyDown(rotateWeaponLeft))
+                newWeaponIndex = (equippedWeapon.weaponIndex + equippedWeapons.Count - 1) % equippedWeapons.Count;
+            else if (Input.GetKeyDown(rotateWeaponRight))
+                newWeaponIndex = (equippedWeapon.weaponIndex + 1) % equippedWeapons.Count;
             equippedWeapon = equippedWeapons[newWeaponIndex];
             attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
+            ApplyWeaponSprites();
         }
-        else if (Input.GetKeyDown(rotateWeaponRight))
-        {
-            var newWeaponIndex = (equippedWeapon.weaponIndex + 1) % equippedWeapons.Count;
-            equippedWeapon = equippedWeapons[newWeaponIndex];
-            attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
-        }
+
 
         // Update reload time of all weapons & call update
         float[] cooldownsProportion = new float[SkillsUI.weaponsCount];
@@ -283,7 +283,7 @@ public class SkillManager : MonoBehaviour
             j++;
         }
 
-        skillsUI.UpdateReloadVisualCooldown(cooldownsProportion);
+        skillsUI.UpdateReloadVisualCooldown(cooldownsProportion, equippedWeapon.weaponIndex);
 
         if (equippedWeapon.logic != null)
         {
@@ -303,12 +303,17 @@ public class SkillManager : MonoBehaviour
     #region UI block
     private void InitializeWeaponsUI()
     {
+        ApplyWeaponSprites();
+    }
+
+    private void ApplyWeaponSprites()
+    {
         var weaponIcons = new Sprite[SkillsUI.weaponsCount];
         for (int i = 0; i < equippedWeapons.Count; i++)
         {
             weaponIcons[i] = equippedWeapons[i].logic.pickupSprite;
         }
-        skillsUI.SetWeaponSprites(weaponIcons);
+        skillsUI.SetWeaponSprites(weaponIcons, equippedWeapon.weaponIndex);
     }
     #endregion
 

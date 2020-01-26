@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol-Glock
   m_EditorClassIdentifier: 
   description: Your first gun
-  pickupSprite: {fileID: 0}
+  pickupSprite: {fileID: 21300000, guid: 10c3096c2a2a0e84db5e37330fa65644, type: 3}
   itemIndividualName: Glock-17
   attackSound:
   - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
