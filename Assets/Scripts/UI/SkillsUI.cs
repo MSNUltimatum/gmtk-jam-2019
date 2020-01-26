@@ -34,12 +34,20 @@ public class SkillsUI : MonoBehaviour
 
     public void UpdateReloadVisualCooldown(float[] proportionOfTimeLeft)
     {
-        var debugSum = 0f;
         for (int i = 0; i < weaponsCount; i++)
         {
             weaponCooldownEffect[i].SetFloat("_CooldownProgress", proportionOfTimeLeft[i]);
-            debugSum += proportionOfTimeLeft[i];
         }
-        Debug.Log(debugSum);
+    }
+
+    public void SetWeaponSprites(Sprite[] weaponSprites)
+    {
+        for (int i = 0; i < weaponsCount; i++)
+        {
+            if (weaponSprites[i] != null)
+            {
+                weaponCells[i].GetChild(1).GetComponent<Image>().sprite = weaponSprites[i];
+            }
+        }
     }
 }

@@ -204,6 +204,8 @@ public class SkillManager : MonoBehaviour
             s.InitializeSkill();
         }
         equippedWeapon = equippedWeapons[0];
+
+        InitializeWeaponsUI();
     }
 
     private List<KeyCode> keys = new List<KeyCode>() {
@@ -299,9 +301,14 @@ public class SkillManager : MonoBehaviour
     }
 
     #region UI block
-    private void InitializeUI()
+    private void InitializeWeaponsUI()
     {
-        GameObject.Find("");
+        var weaponIcons = new Sprite[SkillsUI.weaponsCount];
+        for (int i = 0; i < equippedWeapons.Count; i++)
+        {
+            weaponIcons[i] = equippedWeapons[i].logic.pickupSprite;
+        }
+        skillsUI.SetWeaponSprites(weaponIcons);
     }
     #endregion
 
