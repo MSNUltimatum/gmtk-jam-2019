@@ -15,7 +15,15 @@ public class CurrentEnemyUI : MonoBehaviour
         canvasScript.worldCamera = Camera.main;
         canvasScript.sortingLayerName = "OnEffect";
         EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        EnemyName.GetComponent<Canvas>().sortingLayerName = "OnEffect";
         enemyNameUICenter = canvasEnemyName.transform.GetChild(0).GetChild(1).GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        timeSinceLastNewName = Mathf.Clamp01(timeSinceLastNewName + (Time.deltaTime / transitionTime));
+        EnemyName.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, timeSinceLastNewName));
+        enemyNameUICenter.sizeDelta = new Vector2(Mathf.Lerp(oldUIwidth, newUIwidth, timeSinceLastNewName), 80);
     }
 
     public static void SetCurrentEnemy(GameObject enemy)
@@ -26,10 +34,18 @@ public class CurrentEnemyUI : MonoBehaviour
 
     public static void SetCurrentEnemy(string enemyName)
     {
-        var UIwidth = Mathf.Lerp(80, 200, (enemyName.Length - 5) / 8f);
-        enemyNameUICenter.sizeDelta = new Vector2(UIwidth, 80);
+        timeSinceLastNewName = 0;
+        oldUIwidth = enemyNameUICenter.sizeDelta.x;
+        newUIwidth = Mathf.Lerp(20, 120, (enemyName.Length - 5) / 8f);
+        
         EnemyName.text = enemyName;
     }
+
+    private const float transitionTime = 0.35f;
+    private static float timeSinceLastNewName = 1;
+    private static float newUIwidth = 40;
+    private static float oldUIwidth = 40;
+    private static float newNameOpacity = 1;
 
     private GameObject gameController;
     private static RectTransform enemyNameUICenter = null;
