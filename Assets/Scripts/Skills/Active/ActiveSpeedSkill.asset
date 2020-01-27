@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActiveSpeedSkill
   m_EditorClassIdentifier: 
   description: 
-  pickupSprite: {fileID: 0}
+  pickupSprite: {fileID: 21300000, guid: 22c5f48dc8b3e53419553b06f205d1f0, type: 3}
+  itemIndividualName: 
   activeDuration: 3
   cooldownDuration: 5

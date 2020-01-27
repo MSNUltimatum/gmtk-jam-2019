@@ -205,7 +205,7 @@ public class SkillManager : MonoBehaviour
         }
         equippedWeapon = equippedWeapons[0];
 
-        InitializeWeaponsUI();
+        InitializeUI();
     }
 
     private List<KeyCode> keys = new List<KeyCode>() {
@@ -235,6 +235,7 @@ public class SkillManager : MonoBehaviour
         }
 
         // Update effect, cooldown and active time left for active skill
+        float[] skillCooldownsProportion = new float[SkillsUI.skillCount];
         for (int i = 0; i < activeSkills.Count; i++)
         {
             activeSkills[i].cooldown = Mathf.Max(0, activeSkills[i].cooldown - Time.deltaTime);
@@ -248,7 +249,9 @@ public class SkillManager : MonoBehaviour
                     activeSkills[i].skill.EndOfSkill();
                 }
             }
+            skillCooldownsProportion[i] = activeSkills[i].cooldown / activeSkills[i].skill.cooldownDuration;
         }
+        skillsUI.UpdateSkillRecoverVisualCooldown(skillCooldownsProportion);
 
         // Switch weapon
         if (Input.GetKeyDown(rotateWeaponLeft) || Input.GetKeyDown(rotateWeaponRight))
@@ -265,7 +268,7 @@ public class SkillManager : MonoBehaviour
 
 
         // Update reload time of all weapons & call update
-        float[] cooldownsProportion = new float[SkillsUI.weaponsCount];
+        float[] weaponCooldownsProportion = new float[SkillsUI.weaponsCount];
         int j = 0;
         foreach (var weapon in equippedWeapons)
         {
@@ -277,13 +280,12 @@ public class SkillManager : MonoBehaviour
                     weapon.ammoLeft = weapon.logic.ammoMagazine;
                 }
             }
-            cooldownsProportion[j] = weapon.reloadTimeLeft / weapon.logic.reloadTime;
+            weaponCooldownsProportion[j] = weapon.reloadTimeLeft / weapon.logic.reloadTime;
 
             weapon.logic.UpdateEffect();
             j++;
         }
-
-        skillsUI.UpdateReloadVisualCooldown(cooldownsProportion, equippedWeapon.weaponIndex);
+        skillsUI.UpdateWeaponReloadVisualCooldown(weaponCooldownsProportion, equippedWeapon.weaponIndex);
 
         if (equippedWeapon.logic != null)
         {
@@ -301,9 +303,10 @@ public class SkillManager : MonoBehaviour
     }
 
     #region UI block
-    private void InitializeWeaponsUI()
+    private void InitializeUI()
     {
         ApplyWeaponSprites();
+        ApplySkillSprites();
     }
 
     private void ApplyWeaponSprites()
@@ -314,6 +317,19 @@ public class SkillManager : MonoBehaviour
             weaponIcons[i] = equippedWeapons[i].logic.pickupSprite;
         }
         skillsUI.SetWeaponSprites(weaponIcons, equippedWeapon.weaponIndex);
+    }
+
+    private void ApplySkillSprites()
+    {
+        var skillIcons = new Sprite[SkillsUI.skillCount];
+        for (int i = 0; i < activeSkills.Count; i++)
+        {
+            if (activeSkills[i] != null)
+            {
+                skillIcons[i] = activeSkills[i].skill.pickupSprite;
+            }
+        }
+        skillsUI.SetSkillSprites(skillIcons);
     }
     #endregion
 

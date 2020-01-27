@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WeaponReload
+  m_Name: SkillReload
   m_Shader: {fileID: 4800000, guid: b1c91d13f8ea1af4089b22d62c2f8e74, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
