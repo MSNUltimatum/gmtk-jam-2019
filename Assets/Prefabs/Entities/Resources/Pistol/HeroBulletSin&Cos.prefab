@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8073902287602069101}
   - component: {fileID: 7557517241692919768}
   - component: {fileID: 6700102588978567546}
+  - component: {fileID: 8579107546917372483}
   m_Layer: 2
   m_Name: HeroBulletSin
   m_TagString: Untagged
@@ -254,6 +255,20 @@ MonoBehaviour:
   isCos: 0
   frequency: 10
   magnitude: 1
+--- !u!114 &8579107546917372483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420314774492973020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06257caebfc23849a199b8e58a60e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 10
+  knockTime: 0.1
 --- !u!1 &3140848717153494927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,6 +5271,7 @@ GameObject:
   - component: {fileID: 4516594092214744854}
   - component: {fileID: 4356566775053411772}
   - component: {fileID: 1504503203404806908}
+  - component: {fileID: 4175324121669911281}
   m_Layer: 2
   m_Name: HeroBulletCos
   m_TagString: Untagged
@@ -5495,6 +5511,20 @@ MonoBehaviour:
   isCos: 1
   frequency: 10
   magnitude: 1
+--- !u!114 &4175324121669911281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5890352882075975959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06257caebfc23849a199b8e58a60e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 10
+  knockTime: 0.1
 --- !u!1 &8249177365150765617
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PassingBulletLife : BulletLife
 {
+    public bool passField = true;
     protected override void EnemyCollider(Collider2D coll)
     {
         var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
@@ -21,7 +22,7 @@ public class PassingBulletLife : BulletLife
             Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
             Destroy(coll.gameObject);
         }
-        if (!isPass)
+        if (!isPass && !passField)
         {
             DestroyBullet();
         }

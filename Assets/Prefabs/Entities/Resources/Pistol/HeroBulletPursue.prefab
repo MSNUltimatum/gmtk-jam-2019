@@ -4768,6 +4768,7 @@ GameObject:
   - component: {fileID: 5347869780768163885}
   - component: {fileID: 5222526939029659214}
   - component: {fileID: 7776149646922565687}
+  - component: {fileID: -2087822992900434161}
   m_Layer: 2
   m_Name: HeroBulletPursue
   m_TagString: Untagged
@@ -5004,6 +5005,20 @@ MonoBehaviour:
   timeToDestruction: 1.2
   particlesEmitter: {fileID: 4364573488591142210}
   sprite: {fileID: 6191924689547157748}
+--- !u!114 &-2087822992900434161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191924688321695861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06257caebfc23849a199b8e58a60e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 10
+  knockTime: 0.1
 --- !u!1 &6191924689547157642
 GameObject:
   m_ObjectHideFlags: 0

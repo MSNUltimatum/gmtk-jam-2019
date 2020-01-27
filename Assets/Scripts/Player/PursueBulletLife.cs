@@ -5,6 +5,8 @@ using System.Linq;
 
 public class PursueBulletLife : BulletLife
 {
+    [SerializeField]
+    private float PursueBulletAngle = 360f;
     protected override void Move()
     {
         if (targ == null)
@@ -14,24 +16,23 @@ public class PursueBulletLife : BulletLife
         }
         else
         {
-            if (Vector2.Angle(transform.position, targ.transform.position) % 180 < 10f)
+            transform.Translate(Vector2.right * Speed * Time.deltaTime, Space.Self);
+            RotateToTarget(targ);
+            /*if (Vector2.Angle(transform.position, targ.transform.position) % 180 < 10f)
             {
-                transform.right = targ.transform.position - transform.position;
                 transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
             }
             else
             {
                 if (timeBeforePursue <= 0)
                 {
-                    transform.right = targ.transform.position - transform.position;
                     transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
                 }
                 else
                 {
-                    transform.right = targ.transform.position - transform.position;
                     timeBeforePursue -= Time.fixedDeltaTime;
                 }
-            }
+            }*/
             TTDLeft -= Time.fixedDeltaTime;
         }
     }
@@ -53,8 +54,32 @@ public class PursueBulletLife : BulletLife
         }
     }
 
-    private float radius = 2f;
-    private float timeBeforePursue = 0.2f;
+    private float angle180fix(float angle)
+    {
+        if (angle > 180)
+        {
+            return -360 + angle;
+        }
+        else if (angle < -180)
+        {
+            return 360 + angle;
+        }
+        else return angle;
+    }
+
+    private void RotateToTarget(GameObject target)
+    {
+        var targetPos = target.transform.position;
+        var offset = new Vector2(targetPos.x - transform.position.x, targetPos.y - transform.position.y);
+        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+        var currentAngle = gameObject.transform.rotation.eulerAngles.z;
+        var difference = angle180fix(angle - currentAngle);
+        var differenceClamped = Mathf.Clamp(difference, -PursueBulletAngle, PursueBulletAngle) * Time.deltaTime;
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + differenceClamped);
+    }
+
+    private float radius = 5f;
+    private float timeBeforePursue = 0.5f;
     private bool isFound = false;
     private float minDistance = float.MaxValue;
     private GameObject targ = null;
