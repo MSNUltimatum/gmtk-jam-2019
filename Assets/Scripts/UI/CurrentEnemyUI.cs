@@ -15,18 +15,23 @@ public class CurrentEnemyUI : MonoBehaviour
         canvasScript.worldCamera = Camera.main;
         canvasScript.sortingLayerName = "OnEffect";
         EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        enemyNameUICenter = canvasEnemyName.transform.GetChild(0).GetChild(1).GetComponent<RectTransform>();
     }
 
     public static void SetCurrentEnemy(GameObject enemy)
     {
-        EnemyName.text = enemy.GetComponent<TMPro.TextMeshPro>().text;
+        var text = enemy.GetComponent<TMPro.TextMeshPro>().text;
+        SetCurrentEnemy(text);
     }
 
     public static void SetCurrentEnemy(string enemyName)
     {
+        var UIwidth = Mathf.Lerp(80, 200, (enemyName.Length - 5) / 8f);
+        enemyNameUICenter.sizeDelta = new Vector2(UIwidth, 80);
         EnemyName.text = enemyName;
     }
 
     private GameObject gameController;
+    private static RectTransform enemyNameUICenter = null;
     public static TMPro.TextMeshProUGUI EnemyName;
 }
