@@ -134,7 +134,7 @@ public class MainMenuScript : MonoBehaviour
     public void ClickButtonLoadGame()
     {
         SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentScene"));
-        Metrics.OnContineuGame();
+        Metrics.OnContinueGame();
     }
 
     // moves to the stage selection screen
