@@ -22,7 +22,16 @@ public class CurrentEnemyUI : MonoBehaviour
     private void Update()
     {
         timeSinceLastNewName = Mathf.Clamp01(timeSinceLastNewName + (Time.deltaTime / transitionTime));
-        EnemyName.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, timeSinceLastNewName));
+        if (timeSinceLastNewName < 0.5f)
+        {
+            EnemyName.color = new Color(1, 1, 1, Mathf.Lerp(1, 0, timeSinceLastNewName * 2));
+            EnemyName.text = oldCurrentEnemy;
+        }
+        else
+        {
+            EnemyName.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, (timeSinceLastNewName - 0.5f) * 2));
+            EnemyName.text = newCurrentEnemy;
+        }
         enemyNameUICenter.sizeDelta = new Vector2(Mathf.Lerp(oldUIwidth, newUIwidth, timeSinceLastNewName), 80);
     }
 
@@ -37,8 +46,9 @@ public class CurrentEnemyUI : MonoBehaviour
         timeSinceLastNewName = 0;
         oldUIwidth = enemyNameUICenter.sizeDelta.x;
         newUIwidth = Mathf.Lerp(20, 120, (enemyName.Length - 5) / 8f);
-        
-        EnemyName.text = enemyName;
+
+        oldCurrentEnemy = newCurrentEnemy;
+        newCurrentEnemy = enemyName;
     }
 
     private const float transitionTime = 0.35f;
@@ -46,6 +56,8 @@ public class CurrentEnemyUI : MonoBehaviour
     private static float newUIwidth = 40;
     private static float oldUIwidth = 40;
     private static float newNameOpacity = 1;
+    private static string oldCurrentEnemy;
+    private static string newCurrentEnemy;
 
     private GameObject gameController;
     private static RectTransform enemyNameUICenter = null;
