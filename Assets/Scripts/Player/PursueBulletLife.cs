@@ -74,11 +74,13 @@ public class PursueBulletLife : BulletLife
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         var currentAngle = gameObject.transform.rotation.eulerAngles.z;
         var difference = angle180fix(angle - currentAngle);
-        var differenceClamped = Mathf.Clamp(difference, -PursueBulletAngle, PursueBulletAngle) * Time.deltaTime;
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + differenceClamped);
+        if (Mathf.Abs(difference) < Mathf.Abs(PursueBulletAngle))
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + difference * 4 * Time.deltaTime);
+        }
     }
 
-    private float radius = 5f;
+    private float radius = 8f;
     private float timeBeforePursue = 0.5f;
     private bool isFound = false;
     private float minDistance = float.MaxValue;
