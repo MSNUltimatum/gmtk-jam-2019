@@ -21,8 +21,8 @@ public class Teleport : TimedAttack
         while (i < 5)
         {
             i++;
-            float Xpos = Random.Range(-100, 100);
-            float YPos = Random.Range(-100, 100);
+            float Xpos = Random.Range(-500, 500);
+            float YPos = Random.Range(-500, 500);
             var vect = new Vector2(target.transform.position.x - Xpos, target.transform.position.y - YPos);
             vect.Normalize();
             vect *= Scatter;
@@ -31,7 +31,11 @@ public class Teleport : TimedAttack
                 arena.RoomBounds.y > Mathf.Abs(target.transform.position.y + NVector.y))
             {
                 // We need teleport position not to be a solid object
-                if (Physics2D.OverlapCircle(target.transform.position + NVector, 2.5f, LayerMask.GetMask("Solid")) == null)
+                var canDrawDirectLine = !(Physics2D.Raycast(target.transform.position, NVector,
+                NVector.magnitude, LayerMask.GetMask("Solid")));
+                Debug.DrawRay(target.transform.position, NVector, Color.green, 1);
+                //var hasWallSurrounding = Physics2D.OverlapCircle(target.transform.position + NVector, 2.5f, LayerMask.GetMask("Solid")) == null;
+                if (canDrawDirectLine)
                 {
                     var audio = GetComponent<AudioSource>();
                     AudioManager.Play("Blink", audio);
