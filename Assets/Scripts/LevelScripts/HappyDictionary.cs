@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HappyDictionary : EvilDictionary
 {
-    public override string[] EvilNames()
+    public override List<string> EvilNames()
     {
         return happyNames;
     }
 
-    private string[] happyNames = {
+    public List<string> happyNames = new List<string> {
         "Cheer",
         "Meme", "Mistery", "Gift",
         ":)", ":')", ":D", ":O",

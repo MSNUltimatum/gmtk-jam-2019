@@ -483,6 +483,7 @@ MonoBehaviour:
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.5
+  evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
 --- !u!114 &7337340545462130261
 MonoBehaviour:
   m_ObjectHideFlags: 0

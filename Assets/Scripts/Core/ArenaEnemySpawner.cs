@@ -16,8 +16,7 @@ public class ArenaEnemySpawner : MonoBehaviour
     [SerializeField]
     protected GameObject[] enemyWaves = null;
 
-    [SerializeField]
-    private EvilDictionary evilDictionary = null;
+
 
     public SpawnZoneScript SpawnZone = null;
 
@@ -54,7 +53,6 @@ public class ArenaEnemySpawner : MonoBehaviour
 
         boysList = new List<GameObject>();
         boysCount = 0;
-        currentEvilDictionary = evilDictionary.EvilNames().OrderBy(a => Random.Range(0, 10000)).ToList();
         enemiesCount = baseEnemyCount();
     }
 
@@ -122,7 +120,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
             // Set random enemy name from the dictionary
-            enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
+            //enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
             
             boysList.Add(enemy);
             boysCount++;
@@ -208,7 +206,6 @@ public class ArenaEnemySpawner : MonoBehaviour
     public GameObject SpawnMonster(GameObject monster)
     {
         var enemy = Instantiate(monster, transform.position, Quaternion.identity);
-        enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
         boysList.Add(enemy);
 
         if (!SpawnZone)
@@ -239,7 +236,6 @@ public class ArenaEnemySpawner : MonoBehaviour
     private int enemiesCount = 0;
     private int sequenceIndex = 0;
     protected int spawnIndex = 0;
-    private List<string> currentEvilDictionary;
 
     protected static GameObject currentBoy;
 
