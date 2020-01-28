@@ -67,7 +67,6 @@ public class CharacterShooting : MonoBehaviour
         }
     }
 
-    // between attack cooldown
     private float reloadTimeLeft = 0;
     private Camera mainCamera;
     private KeyCode reloadButton = KeyCode.R;
