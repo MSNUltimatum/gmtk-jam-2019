@@ -82,7 +82,7 @@ public class Container : MonoBehaviour
             GUILayout.BeginHorizontal();
             {
                 GameObject lastItem = container.itemList[i];
-                container.itemList[i] = (GameObject)EditorGUILayout.ObjectField(container.itemList[i], typeof(GameObject), GUILayout.Width(120));
+                container.itemList[i] = (GameObject)EditorGUILayout.ObjectField(container.itemList[i], typeof(GameObject), false, GUILayout.Width(120));
                 if (lastItem != container.itemList[i])
                     EditorUtility.SetDirty(container);
 

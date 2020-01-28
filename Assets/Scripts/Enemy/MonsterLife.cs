@@ -11,9 +11,6 @@ public class MonsterLife : MonoBehaviour
     private bool THE_BOY = false;
 
     [SerializeField]
-    private bool allowAutoSelection = true;
-
-    [SerializeField]
     protected GameObject absorbPrefab = null;
     [SerializeField]
     private GameObject enemyExplosionPrefab = null;

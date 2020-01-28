@@ -55,7 +55,6 @@ public class CurrentEnemyUI : MonoBehaviour
     private static float timeSinceLastNewName = 1;
     private static float newUIwidth = 40;
     private static float oldUIwidth = 40;
-    private static float newNameOpacity = 1;
     private static string oldCurrentEnemy;
     private static string newCurrentEnemy;
 
