@@ -98,6 +98,7 @@ public class AIAgent : MonoBehaviour
 
     private void ResumeKnockback()
     {
+        orientation = -transform.rotation.eulerAngles.z;
         var rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.WakeUp();
         rigidbody.isKinematic = false;

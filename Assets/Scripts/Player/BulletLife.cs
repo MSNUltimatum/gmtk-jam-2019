@@ -24,11 +24,31 @@ public class BulletLife : MonoBehaviour
         transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
         TTDLeft -= Time.fixedDeltaTime;
     }
+    
+    public float knockThrust = 10;
+    public float knockTime = 0.5f;
 
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Enemy")
         {
+            // KnockBack
+            Rigidbody2D Enemy = coll.GetComponent<Rigidbody2D>();
+            if (Enemy != null)
+            {
+                Enemy.drag = 1;
+                Vector2 direction = Enemy.transform.position - transform.position;
+                direction = direction.normalized * knockThrust;
+                Enemy.AddForce(direction, ForceMode2D.Impulse);
+
+                var moveComps = Enemy.GetComponentsInChildren<AIAgent>();
+                foreach (var moveComp in moveComps)
+                {
+                    moveComp.StopMovement(knockTime);
+                }
+            }
+
+            // Damage
             var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
             if (monsterComp)
             {
@@ -37,7 +57,6 @@ public class BulletLife : MonoBehaviour
             else
             {
                 Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
-                Destroy(coll.gameObject);
             }
             DestroyBullet();
         }

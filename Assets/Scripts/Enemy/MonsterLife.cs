@@ -56,7 +56,13 @@ public class MonsterLife : MonoBehaviour
             sprite.color = newColor;
         }
 
-        if (fadeInLeft == 0) GetComponent<Collider2D>().enabled = true;
+        //if (fadeInLeft == 0)
+        //{
+        //    foreach (var collider in GetComponentsInChildren<Collider2D>())
+        //    {
+        //        collider.enabled = true;
+        //    }
+        //}
     }
 
     protected virtual bool SpecialConditions(GameObject source)
@@ -103,7 +109,10 @@ public class MonsterLife : MonoBehaviour
 
     public void FadeIn(float _fadeInTime)
     {
-        GetComponent<Collider2D>().enabled = false;
+        //foreach (var collider in GetComponentsInChildren<Collider2D>())
+        //{
+        //    collider.enabled = false;
+        //}
         fadeInTime = _fadeInTime;
         fadeInLeft = _fadeInTime;
     }
