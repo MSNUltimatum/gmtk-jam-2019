@@ -9,6 +9,7 @@ public class ContiniousOutlineAppear : MonoBehaviour
     private void Start()
     {
         continiousOutlineMaterial = GetComponent<SpriteRenderer>().material;
+        continiousOutlineMaterial = new Material(continiousOutlineMaterial);
         if (continiousOutlineMaterial.shader.name != "Unlit/ContiniousWithOutline")
         {
             Debug.LogError("Material shader: " + continiousOutlineMaterial.shader.name + 

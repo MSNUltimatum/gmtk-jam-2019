@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ffda35c1496424d8bb08821d0e6de2, type: 3}
+  m_Name: Pistol-Glock
+  m_EditorClassIdentifier: 
+  description: Your first gun
+  pickupSprite: {fileID: 21300000, guid: 10c3096c2a2a0e84db5e37330fa65644, type: 3}
+  itemIndividualName: Glock-17
+  attackSound:
+  - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
+  reloadTime: 3
+  timeBetweenAttacks: 0.2
+  ammoMagazine: 17
+  bulletPrefab: {fileID: 6191924688321695861, guid: 593a9a15e433b804dad73dc9b652c033,
+    type: 3}

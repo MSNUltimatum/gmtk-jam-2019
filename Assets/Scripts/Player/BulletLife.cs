@@ -74,6 +74,10 @@ public class BulletLife : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, rot);
             }
         }
+        else if (coll.gameObject.GetComponent<Box>())
+        {
+            coll.gameObject.GetComponent<Box>().OnBullenHit();
+        }
         else
         {
             DestroyBullet();

@@ -6,22 +6,20 @@ public class CharacterShooting : MonoBehaviour
 {
     [SerializeField]
     private GameObject mouseCursorObj = null;
-    [SerializeField]
-    bool ExtraWeapon = false;
 
     public bool shotFrame = false; //flag for reactions on shot
+    
+    public void LoadNewWeapon(SkillManager.EquippedWeapon weapon, float punishmentReload)
+    {
+        currentWeapon = weapon;
+        reloadTimeLeft = punishmentReload;
+    }
 
     private void Start()
     {
-        if (ExtraWeapon == true)   
-            weapon = new PistolHokage();    
-        else
-            weapon = new Pistol();
-        
         mainCamera = Camera.main;
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
-        shootSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -38,17 +36,39 @@ public class CharacterShooting : MonoBehaviour
         {
             reloadTimeLeft -= Time.deltaTime;
         }
-        else if(Input.GetButton("Fire1"))
+        else if (Input.GetButton("Fire1") && currentWeapon.reloadTimeLeft <= 0)
         {
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
-            weapon.Shoot(mousePos,screenPoint);
-            reloadTimeLeft = weapon.ReloadTime;
-            shotFrame = true;
+            var ammoNeeded = currentWeapon.logic.AmmoConsumption();
+            if (currentWeapon.ammoLeft >= ammoNeeded)
+            {
+                currentWeapon.ammoLeft -= ammoNeeded;
+                if (currentWeapon.ammoLeft == 0)
+                {
+                    StartReloadWeapon();
+                }
+                currentWeapon.logic.Attack(this, mousePos, screenPoint);
+                shotFrame = true;
+            }
+            reloadTimeLeft = currentWeapon.logic.timeBetweenAttacks;
+        }
+        if (Input.GetKeyDown(reloadButton))
+        {
+            StartReloadWeapon();
         }
     }
+
+    private void StartReloadWeapon()
+    {
+        if (currentWeapon.reloadTimeLeft == 0)
+        {
+            currentWeapon.reloadTimeLeft = currentWeapon.logic.reloadTime;
+        }
+    }
+
     private float reloadTimeLeft = 0;
     private Camera mainCamera;
-    private AudioSource shootSound;
-    private WeaponSkill weapon;
+    private KeyCode reloadButton = KeyCode.R;
+    public SkillManager.EquippedWeapon currentWeapon;
 }

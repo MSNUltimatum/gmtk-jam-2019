@@ -5005,6 +5005,7 @@ MonoBehaviour:
   timeToDestruction: 1.2
   particlesEmitter: {fileID: 4364573488591142210}
   sprite: {fileID: 6191924689547157748}
+  PursueBulletAngle: 45
 --- !u!114 &-2087822992900434161
 MonoBehaviour:
   m_ObjectHideFlags: 0

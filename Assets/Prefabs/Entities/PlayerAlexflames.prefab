@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 8124210527876159285}
   - component: {fileID: 4620249736018191623}
   - component: {fileID: 578118701}
+  - component: {fileID: 7523444530638043168}
   m_Layer: 0
   m_Name: PlayerAlexflames
   m_TagString: Player
@@ -391,7 +392,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseCursorObj: {fileID: 8267320113450945890, guid: 011dba4647a268540bdff308c46fe50b,
     type: 3}
-  ExtraWeapon: 0
+  shotFrame: 0
+  currentWeapon:
+    logic: {fileID: 0}
+    ammoLeft: 0
+    reloadTimeLeft: 0
+    weaponIndex: 0
+    attackSound: []
 --- !u!82 &8124210527876159285
 AudioSource:
   m_ObjectHideFlags: 0
@@ -509,3 +516,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShadowObject: {fileID: 51824688}
+--- !u!114 &7523444530638043168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305704709854959933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce5652f307d17d4f9335dd3b9d161af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedWeapon:
+    logic: {fileID: 0}
+    ammoLeft: 0
+    reloadTimeLeft: 0
+    weaponIndex: 0
+    attackSound: []
+  forceSkillRewrite: 0
+  prefabSkillLoader: {fileID: 218089639845207119, guid: e370b22612c01224f82b01ad8c874bf6,
+    type: 3}
+  skills:
+  - {fileID: 11400000, guid: 9c7f83ae5537bbf448f224351df4abf3, type: 2}
+  - {fileID: 11400000, guid: f0fe970116203044e875a369e68e8610, type: 2}
+  - {fileID: 11400000, guid: 9928273a409763a48b8e67fad61de033, type: 2}

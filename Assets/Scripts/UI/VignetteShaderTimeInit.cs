@@ -9,6 +9,7 @@ public class VignetteShaderTimeInit : MonoBehaviour
     void Awake()
     {
         var image = GetComponent<Image>();
+        image.material = new Material(image.material);
         image.color = Color.black;
         image.material.SetFloat("_TimeSpawn", Time.time);
     }
