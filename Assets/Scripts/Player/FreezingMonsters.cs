@@ -11,9 +11,7 @@ public class FreezingMonsters : MonoBehaviour
     private void Start()
     {
         freezingDurationTime = freezingDuration;
-        GetComponent<MonsterLife>().enabled = false;
-        GetComponent<AIAgent>().enabled = false;
-        GetComponentInChildren<Animator>().enabled = false;
+        Active_Deactivate();
     }
 
     private void Update()
@@ -21,10 +19,20 @@ public class FreezingMonsters : MonoBehaviour
         freezingDurationTime -= Time.deltaTime;
         if(freezingDurationTime <= 0)
         {
-            GetComponent<MonsterLife>().enabled = true;
-            GetComponent<AIAgent>().enabled = true;
-            GetComponentInChildren<Animator>().enabled = true;
+            Active_Deactivate();
             Destroy(this);
+        }
+    }
+
+    private void Active_Deactivate()
+    {
+        GetComponent<MonsterLife>().enabled = !GetComponent<MonsterLife>().enabled;
+        GetComponent<AIAgent>().enabled = !GetComponent<AIAgent>().enabled;
+        foreach (Transform child in transform)
+        {
+            var tmp = child.GetComponent<Animator>();
+            if (tmp)
+                tmp.enabled = !tmp.enabled;
         }
     }
 

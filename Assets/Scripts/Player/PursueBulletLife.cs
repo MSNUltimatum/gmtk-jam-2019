@@ -6,10 +6,16 @@ using System.Linq;
 public class PursueBulletLife : BulletLife
 {
     [SerializeField]
-    private float PursueBulletAngle = 360f;
+    private float factorRotationSpeed = 4f;
+
+    [SerializeField]
+    private float pursueBulletAngle = 360f;
+
+    [SerializeField]
+    private float radius = 8f;
     protected override void Move()
     {
-        if (targ == null)
+        if (monsterTargetGameObj == null)
         {
             base.Move();
             Targeting();
@@ -17,22 +23,7 @@ public class PursueBulletLife : BulletLife
         else
         {
             transform.Translate(Vector2.right * Speed * Time.deltaTime, Space.Self);
-            RotateToTarget(targ);
-            /*if (Vector2.Angle(transform.position, targ.transform.position) % 180 < 10f)
-            {
-                transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
-            }
-            else
-            {
-                if (timeBeforePursue <= 0)
-                {
-                    transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
-                }
-                else
-                {
-                    timeBeforePursue -= Time.fixedDeltaTime;
-                }
-            }*/
+            RotateToTarget(monsterTargetGameObj);
             TTDLeft -= Time.fixedDeltaTime;
         }
     }
@@ -49,7 +40,7 @@ public class PursueBulletLife : BulletLife
             if (dis < minDistance)
             {
                 minDistance = dis;
-                targ = i.gameObject;
+                monsterTargetGameObj = i.gameObject;
             }
         }
     }
@@ -67,22 +58,20 @@ public class PursueBulletLife : BulletLife
         else return angle;
     }
 
-    private void RotateToTarget(GameObject target)
+    private void RotateToTarget(GameObject monsterTarget)
     {
-        var targetPos = target.transform.position;
+        var targetPos = monsterTarget.transform.position;
         var offset = new Vector2(targetPos.x - transform.position.x, targetPos.y - transform.position.y);
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         var currentAngle = gameObject.transform.rotation.eulerAngles.z;
         var difference = angle180fix(angle - currentAngle);
-        if (Mathf.Abs(difference) < Mathf.Abs(PursueBulletAngle))
+        if (Mathf.Abs(difference) < Mathf.Abs(pursueBulletAngle))
         {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + difference * 4 * Time.deltaTime);
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + difference * factorRotationSpeed * Time.deltaTime);
         }
     }
 
-    private float radius = 8f;
     private float timeBeforePursue = 0.5f;
-    private bool isFound = false;
     private float minDistance = float.MaxValue;
-    private GameObject targ = null;
+    private GameObject monsterTargetGameObj = null;
 }

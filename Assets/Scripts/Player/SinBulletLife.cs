@@ -6,8 +6,9 @@ public class SinBulletLife : BulletLife
 {
     [SerializeField]
     bool isCos = false;
+
     public float frequency = 10.0f; // Скорость виляния по синусоиде
-    public float magnitude = 1.5f; // Размер синусоиды (радиус, по сути..можно заменить на "R")
+    public float R = 1.5f; // Размер синусоиды (радиус, по сути..можно заменить на "R")
 
     private Vector3 axis;
     private Vector3 pos;
@@ -22,8 +23,8 @@ public class SinBulletLife : BulletLife
     {
         pos += transform.right * Time.fixedDeltaTime * Speed;
         if (!isCos)
-            transform.position = pos + axis * Mathf.Sin(Time.time * frequency) * magnitude;
+            transform.position = pos + axis * Mathf.Sin(Time.time * frequency) * R;
         else
-            transform.position = pos + axis * Mathf.Cos(Time.time * frequency) * magnitude;
+            transform.position = pos + axis * Mathf.Sin(Time.time * frequency + Mathf.PI) * R;
     }
 }
