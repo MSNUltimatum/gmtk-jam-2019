@@ -18,8 +18,8 @@ public class TriplePistol : Pistol
     {
         for (int i = 0; i < shotNumber; i++)
         {
-            var bullet = GameObject.Instantiate(bulletPrefab, Player.transform.position, new Quaternion());
-
+            var bullet = GameObject.Instantiate(currentBulletPrefab, Player.transform.position, new Quaternion());
+            BulletInit(bullet);
             var offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
             var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
             angle += Mathf.Lerp(-arcAngle / 2, arcAngle / 2, i / (shotNumber - 1.0f));

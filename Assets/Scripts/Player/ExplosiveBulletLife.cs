@@ -9,6 +9,12 @@ public class ExplosiveBulletLife : BulletLife
     private float radius = 2f;
     protected override void EnemyCollider(Collider2D coll)
     {
+        FindMonsters(coll);
+        DestroyBullet();
+    }
+
+    protected void FindMonsters(Collider2D coll)
+    {
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(coll.transform.position, radius);
         var enemys = (from t in collider2Ds
                       where t.transform.gameObject.tag == "Enemy"
@@ -16,28 +22,26 @@ public class ExplosiveBulletLife : BulletLife
         foreach (var i in enemys)
         {
             var monsterLife = i.gameObject.GetComponent<MonsterLife>();
-            var tmp = monsterLife.HP;
-            if(!isKilled)
-                monsterLife.Damage(gameObject);
+            if (monsterLife)
+            {
+                var tmp = monsterLife.HP;
+                if (!isKilled)
+                    monsterLife.Damage(gameObject);
 
-            if (!isKilled && monsterLife.HP < tmp)
-            {
-                Wave(i.GetComponent<Rigidbody2D>(), 8);
-                isKilled = true;
-            }
-            else if (!monsterLife)
-            {
-                base.EnemyCollider(coll);
-            }
-            else
-            {
-                Wave(i.GetComponent<Rigidbody2D>(), 8);
+                if (!isKilled && monsterLife.HP < tmp)
+                {
+                    Wave(i.GetComponent<Rigidbody2D>(), 8);
+                    isKilled = true;
+                }
+                else
+                {
+                    Wave(i.GetComponent<Rigidbody2D>(), 8);
+                }
             }
         }
-        DestroyBullet();
     }
 
-    private void Wave(Rigidbody2D Enemy, float thrust)
+    protected virtual void Wave(Rigidbody2D Enemy, float thrust)
     {
         Enemy.drag = 1;
         Vector2 direction = Enemy.transform.position - transform.position;

@@ -5,9 +5,10 @@ using UnityEngine;
 public class BulletLife : MonoBehaviour
 {
     // Logic
-    public float Speed = 18f;
-    [SerializeField]
-    private float timeToDestruction = 1.2f;
+    [System.NonSerialized]
+    public float Speed;
+    [System.NonSerialized]
+    public float timeToDestruction;
     protected float TTDLeft = 0;
 
     void Start()
@@ -20,8 +21,12 @@ public class BulletLife : MonoBehaviour
     void FixedUpdate()
     {
         if (Pause.Paused) return;
-
+        TTDLeft -= Time.fixedDeltaTime;
         Move();
+        if (TTDLeft < 0)
+        {
+            DestroyBullet();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -84,7 +89,7 @@ public class BulletLife : MonoBehaviour
         }
     }
 
-    public void DestroyBullet()
+    public virtual void DestroyBullet()
     {
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;

@@ -24,7 +24,6 @@ public class PursueBulletLife : BulletLife
         {
             transform.Translate(Vector2.right * Speed * Time.deltaTime, Space.Self);
             RotateToTarget(monsterTargetGameObj);
-            TTDLeft -= Time.fixedDeltaTime;
         }
     }
 
