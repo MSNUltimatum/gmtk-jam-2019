@@ -28,6 +28,9 @@ public class BulletLife : MonoBehaviour
             DestroyBullet();
         }
     }
+    
+    public float knockThrust = 10;
+    public float knockTime = 0.5f;
 
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -49,17 +52,33 @@ public class BulletLife : MonoBehaviour
 
     protected virtual void EnemyCollider(Collider2D coll)
     {
-        var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
-        if (monsterComp)
-        {
-            monsterComp.Damage(gameObject);
-        }
-        else
-        {
-            Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
-            Destroy(coll.gameObject);
-        }
-        DestroyBullet();
+          // KnockBack
+          Rigidbody2D Enemy = coll.GetComponent<Rigidbody2D>();
+          if (Enemy != null)
+          {
+              Enemy.drag = 1;
+              Vector2 direction = Enemy.transform.position - transform.position;
+              direction = direction.normalized * knockThrust;
+              Enemy.AddForce(direction, ForceMode2D.Impulse);
+
+              var moveComps = Enemy.GetComponentsInChildren<AIAgent>();
+              foreach (var moveComp in moveComps)
+              {
+                  moveComp.StopMovement(knockTime);
+              }
+          }
+
+          // Damage
+          var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
+          if (monsterComp)
+          {
+              monsterComp.Damage(gameObject);
+          }
+          else
+          {
+              Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
+          }
+          DestroyBullet();
     }
 
     protected virtual void EnvironmentCollider(Collider2D coll)

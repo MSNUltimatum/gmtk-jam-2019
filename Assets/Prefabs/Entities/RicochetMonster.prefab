@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &8957502524499687753
 MonoBehaviour:
@@ -81,6 +81,7 @@ MonoBehaviour:
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.5
+  evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
 --- !u!82 &6926122750179578018
 AudioSource:
   m_ObjectHideFlags: 0

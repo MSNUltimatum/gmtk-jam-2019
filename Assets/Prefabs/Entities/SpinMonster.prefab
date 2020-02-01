@@ -101,6 +101,8 @@ MonoBehaviour:
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
+  fadeInTime: 0.5
+  evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
 --- !u!114 &4485847341277127210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: 1.22, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &4485847340692571306
 GameObject:
   m_ObjectHideFlags: 0

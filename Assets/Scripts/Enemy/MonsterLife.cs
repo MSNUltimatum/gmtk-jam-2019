@@ -8,11 +8,6 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     public int HP = 1;
 
-    private bool THE_BOY = false;
-
-    [SerializeField]
-    private bool allowAutoSelection = true;
-
     [SerializeField]
     protected GameObject absorbPrefab = null;
     [SerializeField]
@@ -20,6 +15,9 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     private float fadeInTime = 0.5f;
     
+    [SerializeField]
+    private EvilDictionary evilDictionary = null;
+
     // Apply listeners on start!!
     public static UnityEvent OnEnemyDead = new UnityEvent();
 
@@ -32,6 +30,9 @@ public class MonsterLife : MonoBehaviour
     {
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
+        monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
+
+        ChooseMyName();
 
         if (absorbPrefab == null)
         {
@@ -56,7 +57,13 @@ public class MonsterLife : MonoBehaviour
             sprite.color = newColor;
         }
 
-        if (fadeInLeft == 0) GetComponent<Collider2D>().enabled = true;
+        //if (fadeInLeft == 0)
+        //{
+        //    foreach (var collider in GetComponentsInChildren<Collider2D>())
+        //    {
+        //        collider.enabled = true;
+        //    }
+        //}
     }
 
     protected virtual bool SpecialConditions(GameObject source)
@@ -98,12 +105,16 @@ public class MonsterLife : MonoBehaviour
 
     protected virtual void PreDestroyEffect()
     {
+        usedNames.Remove(monsterName.text);
         var enemyExplosion = Instantiate(enemyExplosionPrefab, transform.position, Quaternion.identity);
     }
 
     public void FadeIn(float _fadeInTime)
     {
-        GetComponent<Collider2D>().enabled = false;
+        //foreach (var collider in GetComponentsInChildren<Collider2D>())
+        //{
+        //    collider.enabled = false;
+        //}
         fadeInTime = _fadeInTime;
         fadeInLeft = _fadeInTime;
     }
@@ -144,7 +155,24 @@ public class MonsterLife : MonoBehaviour
     {
         return THE_BOY;
     }
+
+    private void ChooseMyName()
+    {
+        List<string> possibleNames = evilDictionary.EvilNames();
+        for (int i = 0; i < 200; i++) // Any ideas how to make this better?
+        {
+            var possibleName = possibleNames[Random.Range(0, possibleNames.Count)];
+            if (!usedNames.Contains(possibleName))
+            {
+                possibleNames.Add(possibleName);
+                monsterName.text = possibleName;
+            }
+        }
+    }
     
     private float fadeInLeft;
     private SpriteRenderer[] sprites;
+    private bool THE_BOY = false;
+    private TMPro.TextMeshPro monsterName;
+    private static List<string> usedNames = new List<string>();
 }

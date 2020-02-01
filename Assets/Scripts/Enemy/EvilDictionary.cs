@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvilDictionary : MonoBehaviour
+[CreateAssetMenu(fileName = "EvilName", menuName = "ScriptableObject/EnemyName/EvilEnemyNames")]
+public class EvilDictionary : ScriptableObject
 {
-    public virtual string[] EvilNames()
+    public virtual List<string> EvilNames()
     {
         return evilNames;
     }
 
-    private string[] evilNames = {
+    public List<string> evilNames = new List<string> {
         "Abomination", "Abuse", "Aggression", "Agony",
         "Bereavement", "Blame", "Betrayal", "Breakdown",
         "Catastrophe", "Chaos", "Conceit", "Conflict", "Crime", "Corruption", "Cheerless",
