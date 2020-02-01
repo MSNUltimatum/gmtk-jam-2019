@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.Events;
 
 public class RelodScene : MonoBehaviour
 {
@@ -19,11 +20,12 @@ public class RelodScene : MonoBehaviour
     public int TotalValue = 0;
     private float maxvalue = 0;
 
-    protected static GameObject Canvas;
+    protected GameObject Canvas;
+
+    public static UnityEvent OnSceneChange = new UnityEvent();
 
     protected virtual void Awake()
     {
-        ArenaEnemySpawner spawn = GetComponent<ArenaEnemySpawner>();
         CharacterLife.isDeath = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         var arena = GetComponent<ArenaEnemySpawner>();
@@ -34,61 +36,68 @@ public class RelodScene : MonoBehaviour
         PlayerPrefs.SetInt("CurrentScene", SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void CurrentCount(int val)
+    protected virtual void Start()
     {
-        TotalValue = TotalValue + val;
+        MonsterLife.OnEnemyDead.AddListener(UpdateScoreByOne);
     }
 
-    private void Update()
+    private void UpdateScoreByOne()
     {
-        Victory();
-        Reload();
+        UpdateScore(1);
+    }
+
+    public virtual void UpdateScore(int val = 1)
+    {
+        TotalValue = TotalValue + val;
+        CheckVictoryCondition();
+    }
+
+    protected virtual void Update()
+    {
+        if (CharacterLife.isDeath) PressR();
+        if (isVictory) ProcessVictory();
+
+        if (Input.GetKeyDown(KeyCode.R) && (Input.GetKey(KeyCode.LeftControl) || CharacterLife.isDeath))
+        {
+            Reload();
+            Metrics.OnDeath();
+        }            
     }
 
     protected virtual void ProcessVictory()
     {
-        CurrentEnemy.SetCurrentEnemyName(" ");
+        CurrentEnemyUI.SetCurrentEnemy(" ");
         isVictory = true;
         Canvas.transform.GetChild(0).gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.F) && !CharacterLife.isDeath)
         {
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(NextSceneName);
+            Metrics.OnWin();
+            OnSceneChange?.Invoke();
         }
     }
 
-    protected virtual void Victory()
+    /// <summary>
+    /// Updates isVictory field and returns it
+    /// </summary>
+    /// <returns></returns>
+    protected virtual bool CheckVictoryCondition()
     {
-        if (isPointVictory)
-        {
-            if (TotalValue >= pointsToVictory)
-            {
-                ProcessVictory();
-            }
-        }
-        else
-        {
-            if (TotalValue >= maxvalue)
-            {
-                ProcessVictory();
-            }
-        }
+        var pointToVictory = isPointVictory ? pointsToVictory : maxvalue;
+        isVictory = TotalValue >= pointToVictory;
+        return isVictory;
     }
 
     protected virtual void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && (!isVictory || CharacterLife.isDeath))
-        {
-            TotalValue = 0;
-            Time.timeScale = 1;
-            Canvas.transform.GetChild(1).gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        TotalValue = 0;
+        Canvas.transform.GetChild(1).gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public static void PressR()
+    public void PressR()
     {
-        if (isVictory && !CharacterLife.isDeath) return;
         Canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
