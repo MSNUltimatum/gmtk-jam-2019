@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   registeredSkillNames:
-  - 'ActiveSpeedSkill:'
-  - 'Pistol:'
-  - Pistol:Glock-17
-  - 'TriplePistol:'
+  - ActiveSpeedSkill:ActiveSpeedSkill
+  - Pistol:Pistol
+  - Pistol:Pistol-Glock
+  - TriplePistol:TriplePistol
   registeredSkills:
   - {fileID: 11400000, guid: f0fe970116203044e875a369e68e8610, type: 2}
   - {fileID: 11400000, guid: e341703b3e0de8040a445e142f93c96e, type: 2}

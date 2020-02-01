@@ -10,9 +10,8 @@ public abstract class SkillBase : ScriptableObject
     [Multiline]
     public string description;
     public Sprite pickupSprite;
-    public string itemIndividualName = "";
 
-    public string SkillName() => $"{GetType()}:{itemIndividualName}";
+    public string SkillName() => $"{GetType()}:{this.name}";
 
     public abstract void InitializeSkill();
 
