@@ -119,9 +119,14 @@ public class ArenaEnemySpawner : MonoBehaviour
         for (int i = 0; i < enemiesInWave; i++)
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
+            var behaviours = enemy.GetComponentsInChildren<EnemyBehavior>();
+            foreach (var behaviour in behaviours)
+            {
+                behaviour.Activate();
+            }
             // Set random enemy name from the dictionary
             //enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
-            
+
             boysList.Add(enemy);
             boysCount++;
 

@@ -31,6 +31,11 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        isActive = true;
+    }
+
     public virtual EnemySteering GetSteering() {
         return new EnemySteering();
     }
