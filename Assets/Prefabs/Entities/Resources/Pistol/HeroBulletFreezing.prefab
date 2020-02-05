@@ -4769,7 +4769,6 @@ GameObject:
   - component: {fileID: 5222526939029659214}
   - component: {fileID: 7428312078269145082}
   - component: {fileID: 3453875300183505322}
-  - component: {fileID: -6046798499793473574}
   m_Layer: 2
   m_Name: HeroBulletFreezing
   m_TagString: Untagged
@@ -5002,8 +5001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4bda4ebe4f4ed45b514d3690867755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 18
-  timeToDestruction: 1.2
+  knockThrust: 0
+  knockTime: 0
   particlesEmitter: {fileID: 4364573488591142210}
   sprite: {fileID: 6191924689547157748}
 --- !u!114 &3453875300183505322
@@ -5018,20 +5017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4e03c513b4ea441bafd219c2c87368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-6046798499793473574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191924688321695861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06257caebfc23849a199b8e58a60e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 0
-  knockTime: 0
+  freezingDuration: 3
 --- !u!1 &6191924689547157642
 GameObject:
   m_ObjectHideFlags: 0

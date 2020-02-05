@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Freezing : MonoBehaviour
 {
+    [SerializeField]
+    private float freezingDuration = 3f;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -12,6 +14,7 @@ public class Freezing : MonoBehaviour
             if(!fr)
             {
                 other.gameObject.AddComponent<FreezingMonsters>();
+                other.gameObject.GetComponent<FreezingMonsters>().MyStart(freezingDuration);
             }
             else
             {

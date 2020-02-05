@@ -30,8 +30,15 @@ public abstract class ShootingWeapon : WeaponSkill
     protected void BulletInit(GameObject bullet)
     {
         BulletLife bulletLife = bullet.GetComponent<BulletLife>();
-        bulletLife.Speed = bulletSpeed;
-        bulletLife.timeToDestruction = timeToBulletDestruction;
+        if (bulletLife)
+        {
+            bulletLife.Speed = bulletSpeed;
+            bulletLife.timeToDestruction = timeToBulletDestruction;
+        }
+        for(int i = 0; i < bullet.transform.childCount; i++)
+        {
+            BulletInit(bullet.transform.GetChild(i).gameObject);
+        }
     }
 
     protected GameObject Player;

@@ -7,20 +7,25 @@ public class FreezingMonsters : MonoBehaviour
     [SerializeField]
     private float freezingDuration = 3f;
     private float freezingDurationTime;
-
-    private void Start()
+    public bool start = false;
+    public void MyStart(float time)
     {
+        freezingDuration = time;
         freezingDurationTime = freezingDuration;
         Active_Deactivate();
+        start = true;
     }
 
     private void Update()
     {
-        freezingDurationTime -= Time.deltaTime;
-        if(freezingDurationTime <= 0)
+        if (start)
         {
-            Active_Deactivate();
-            Destroy(this);
+            freezingDurationTime -= Time.deltaTime;
+            if (freezingDurationTime <= 0)
+            {
+                Active_Deactivate();
+                Destroy(this);
+            }
         }
     }
 
