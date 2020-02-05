@@ -128,7 +128,7 @@ public class MonsterLife : MonoBehaviour
     {
         if (fadeInLeft == 0 && coll.gameObject.tag == "Player")
         {
-            coll.gameObject.GetComponent<CharacterLife>().Death();
+            coll.gameObject.GetComponent<CharacterLife>().Damage();
         }
     }
 
@@ -166,6 +166,7 @@ public class MonsterLife : MonoBehaviour
             {
                 usedNames.Add(possibleName);
                 monsterName.text = possibleName;
+                break;
             }
         }
     }
