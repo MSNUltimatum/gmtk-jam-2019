@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class Container : MonoBehaviour
 {
@@ -49,7 +51,7 @@ public class Container : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+#if UNITY_EDITOR
     public static void Table(Container container) // for inspecrot UI
     {
         GUILayout.BeginHorizontal(); // table headline
@@ -97,4 +99,5 @@ public class Container : MonoBehaviour
             GUILayout.EndHorizontal();
         }
     }
+#endif
 }
