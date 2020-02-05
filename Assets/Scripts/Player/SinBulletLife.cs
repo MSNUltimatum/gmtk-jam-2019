@@ -13,8 +13,9 @@ public class SinBulletLife : BulletLife
     private Vector3 axis;
     private Vector3 pos;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         pos = transform.position;
         axis = transform.up;
     }

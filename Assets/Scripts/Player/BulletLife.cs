@@ -11,7 +11,7 @@ public class BulletLife : MonoBehaviour
     public float timeToDestruction;
     protected float TTDLeft = 0;
 
-    void Start()
+    protected virtual void Start()
     {
         var audio = GetComponent<AudioSource>();
         AudioManager.Play("WeaponShot", audio);
@@ -47,7 +47,6 @@ public class BulletLife : MonoBehaviour
     protected virtual void Move()
     {
         transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
-        TTDLeft -= Time.fixedDeltaTime;
     }
 
     protected virtual void EnemyCollider(Collider2D coll)
