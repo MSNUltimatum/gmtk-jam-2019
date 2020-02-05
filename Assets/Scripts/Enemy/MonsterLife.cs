@@ -164,7 +164,7 @@ public class MonsterLife : MonoBehaviour
             var possibleName = possibleNames[Random.Range(0, possibleNames.Count)];
             if (!usedNames.Contains(possibleName))
             {
-                possibleNames.Add(possibleName);
+                usedNames.Add(possibleName);
                 monsterName.text = possibleName;
             }
         }
