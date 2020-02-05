@@ -12,7 +12,6 @@ public class AIAgent : MonoBehaviour
     public Vector2 velocity;
     protected EnemySteering steering;
 
-
     private void Start()
     {
         velocity = Vector2.zero;
