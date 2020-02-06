@@ -13,8 +13,4 @@ public class Pistol : ShootingWeapon
         timeBetweenAttacks = 0.5f;
     }
 
-    public override void InitializeSkill()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player");
-    }
 }

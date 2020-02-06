@@ -20,5 +20,7 @@ MonoBehaviour:
   reloadTime: 3
   timeBetweenAttacks: 0.2
   ammoMagazine: 17
-  bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
+  bulletPrefab: {fileID: 6191924688321695861, guid: 593a9a15e433b804dad73dc9b652c033,
     type: 3}
+  bulletSpeed: 18
+  timeToBulletDestruction: 10

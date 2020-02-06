@@ -5,12 +5,13 @@ using UnityEngine;
 public class BulletLife : MonoBehaviour
 {
     // Logic
-    public float Speed = 18f;
-    [SerializeField]
-    private float timeToDestruction = 1.2f;
-    private float TTDLeft = 0;
+    [System.NonSerialized]
+    public float Speed;
+    [System.NonSerialized]
+    public float timeToDestruction;
+    protected float TTDLeft = 0;
 
-    void Start()
+    protected virtual void Start()
     {
         var audio = GetComponent<AudioSource>();
         AudioManager.Play("WeaponShot", audio);
@@ -20,9 +21,12 @@ public class BulletLife : MonoBehaviour
     void FixedUpdate()
     {
         if (Pause.Paused) return;
-
-        transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
         TTDLeft -= Time.fixedDeltaTime;
+        Move();
+        if (TTDLeft < 0)
+        {
+            DestroyBullet();
+        }
     }
     
     public float knockThrust = 10;
@@ -32,63 +36,78 @@ public class BulletLife : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            // KnockBack
-            Rigidbody2D Enemy = coll.GetComponent<Rigidbody2D>();
-            if (Enemy != null)
-            {
-                Enemy.drag = 1;
-                Vector2 direction = Enemy.transform.position - transform.position;
-                direction = direction.normalized * knockThrust;
-                Enemy.AddForce(direction, ForceMode2D.Impulse);
-
-                var moveComps = Enemy.GetComponentsInChildren<AIAgent>();
-                foreach (var moveComp in moveComps)
-                {
-                    moveComp.StopMovement(knockTime);
-                }
-            }
-
-            // Damage
-            var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
-            if (monsterComp)
-            {
-                monsterComp.Damage(gameObject);
-            }
-            else
-            {
-                Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
-            }
-            DestroyBullet();
+            EnemyCollider(coll);
         }
         else if (coll.gameObject.tag == "Environment")
         {
-            if (coll.gameObject.GetComponent<DestructibleWall>() != null)
+            EnvironmentCollider(coll);
+        }
+    }
+
+    protected virtual void Move()
+    {
+        transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
+    }
+
+    protected virtual void EnemyCollider(Collider2D coll)
+    {
+          // KnockBack
+          Rigidbody2D Enemy = coll.GetComponent<Rigidbody2D>();
+          if (Enemy != null)
+          {
+              Enemy.drag = 1;
+              Vector2 direction = Enemy.transform.position - transform.position;
+              direction = direction.normalized * knockThrust;
+              Enemy.AddForce(direction, ForceMode2D.Impulse);
+
+              var moveComps = Enemy.GetComponentsInChildren<AIAgent>();
+              foreach (var moveComp in moveComps)
+              {
+                  moveComp.StopMovement(knockTime);
+              }
+          }
+
+          // Damage
+          var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
+          if (monsterComp)
+          {
+              monsterComp.Damage(gameObject);
+          }
+          else
+          {
+              Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
+          }
+          DestroyBullet();
+    }
+
+    protected virtual void EnvironmentCollider(Collider2D coll)
+    {
+        if (coll.gameObject.GetComponent<DestructibleWall>() != null)
+        {
+            DestroyBullet();
+        }
+        if (coll.gameObject.GetComponent<MirrorWall>() != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right,
+                float.PositiveInfinity, LayerMask.GetMask("Default"));
+            if (hit)
             {
-                DestroyBullet();
-            }
-            if (coll.gameObject.GetComponent<MirrorWall>() != null)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right,
-                    float.PositiveInfinity, LayerMask.GetMask("Default"));
-                if (hit)
-                {
-                    Vector2 reflectDir = Vector2.Reflect(transform.right, hit.normal);
-                    float rot = Mathf.Atan2(reflectDir.y, reflectDir.x) * Mathf.Rad2Deg;
-                    transform.eulerAngles = new Vector3(0, 0, rot);
-                }
-            }
-            else
-            {
-                DestroyBullet();
+                Vector2 reflectDir = Vector2.Reflect(transform.right, hit.normal);
+                float rot = Mathf.Atan2(reflectDir.y, reflectDir.x) * Mathf.Rad2Deg;
+                transform.eulerAngles = new Vector3(0, 0, rot);
             }
         }
-        else if (coll.gameObject.GetComponent<Box>()) {
+        else if (coll.gameObject.GetComponent<Box>())
+        {
             coll.gameObject.GetComponent<Box>().OnBullenHit();
+        }
+        else
+        {
             DestroyBullet();
         }
     }
 
-    public void DestroyBullet()
+    public virtual void DestroyBullet()
     {
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;

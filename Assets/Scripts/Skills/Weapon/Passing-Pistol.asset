@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5ffda35c1496424d8bb08821d0e6de2, type: 3}
-  m_Name: Pistol
+  m_Name: Passing-Pistol
   m_EditorClassIdentifier: 
   description: Your first gun
   pickupSprite: {fileID: 21300000, guid: f32fc59e10e8aaf4581d2e0458d58383, type: 3}
   itemIndividualName: 
-  attackSound:
-  - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
+  attackSound: []
   reloadTime: 1
-  timeBetweenAttacks: 0.45
+  timeBetweenAttacks: 0.5
   ammoMagazine: 6
-  bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
+  bulletPrefab: {fileID: 6191924688321695861, guid: cd3ad564f56c58a439173bfb94fcc2b6,
     type: 3}
   bulletSpeed: 18
   timeToBulletDestruction: 10
