@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1477662211619849784}
   - component: {fileID: 4234874990481623240}
   - component: {fileID: 4234874990401503661}
-  - component: {fileID: 3272261465364844934}
   - component: {fileID: 4234874990393468039}
   m_Layer: 0
   m_Name: Game Manager(lv5) 1
@@ -47,13 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomBounds: {x: 19, y: 12}
   timeToEachSpawn: 5
   timeToNextSpawn: 0
   enemyWaves:
   - {fileID: 2656027671443589482, guid: c0788a57d047ecb43aebd14be3a84563, type: 3}
-  RoomBounds: {x: 19, y: 12}
-  evilDictionary: {fileID: 8527695028770105575, guid: acc809f1467ba824ea648372c89afe35,
-    type: 3}
+  SpawnZone: {fileID: 0}
+  AllowEarlySpawns: 1
+  isInfSpawn: 0
 --- !u!114 &4234874990481623240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,18 +83,9 @@ MonoBehaviour:
   swampMatPrefab: {fileID: 2100000, guid: 996168049758bae4d8e65a05eff3fb12, type: 2}
   swampPrefab: {fileID: 6481534978391547033, guid: 6c7cec5c104f2f14a99506dc6676f3f9,
     type: 3}
---- !u!114 &3272261465364844934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477662211619849790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05ff95a30fbdc3448bd28384ed1dd4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  StandartLightIncrease: 1
+  maxvalue: 0
+  DefaultLight: 0.13
 --- !u!114 &4234874990393468039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextSceneName: Final
+  SceneNumber: 0
+  isPointVictory: 0
+  pointsToVictory: 0
+  monsterAdditionLimit: 12
+  TotalValue: 0

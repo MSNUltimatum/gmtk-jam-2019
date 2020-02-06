@@ -7,6 +7,9 @@ public abstract class ShootingWeapon : WeaponSkill
     public GameObject bulletPrefab;
     public float bulletSpeed = 18f;
     public float timeToBulletDestruction = 1.2f;
+    public float maxRndShootingAngle = 0;
+    public float rndShootingAngleAmplifier = 0.15f;
+    public float rndShootingAngleRelease = 0.5f;
     [System.NonSerialized]
     public GameObject currentBulletPrefab;
 
@@ -14,6 +17,7 @@ public abstract class ShootingWeapon : WeaponSkill
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         currentBulletPrefab = bulletPrefab;
+        randomShootingAngle = 0;
     }
 
     public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 screenPoint)
@@ -25,6 +29,13 @@ public abstract class ShootingWeapon : WeaponSkill
         angle += Random.Range(-randomShootingAngle, randomShootingAngle);
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         bullet.transform.Translate(Vector2.right * 0.5f);
+        randomShootingAngle = Mathf.Min(maxRndShootingAngle, randomShootingAngle + rndShootingAngleAmplifier * maxRndShootingAngle);
+    }
+
+    public override void UpdateEffect()
+    {
+        base.UpdateEffect();
+        randomShootingAngle = Mathf.Max(0, randomShootingAngle - maxRndShootingAngle * rndShootingAngleRelease * Time.deltaTime);
     }
 
     protected void BulletInit(GameObject bullet)
