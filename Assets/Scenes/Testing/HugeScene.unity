@@ -1308,6 +1308,14 @@ PrefabInstance:
       propertyPath: pointsToVictory
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 83602702, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
+      propertyPath: DefaultLight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 83602702, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3334064150391581338, guid: 0fca9824f899de543a831d6c0c51144e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1437,14 +1445,6 @@ PrefabInstance:
       propertyPath: SceneNumber
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 83602702, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
-      propertyPath: DefaultLight
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 83602702, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fca9824f899de543a831d6c0c51144e, type: 3}
 --- !u!1001 &844145141
@@ -1553,6 +1553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883519890804895018, guid: d6e2914de56be79419753d224ac4fcf4,
+        type: 3}
+      propertyPath: maxRotation
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 35442255869831044, guid: d6e2914de56be79419753d224ac4fcf4,
         type: 3}
@@ -2036,6 +2041,11 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2883519890804895018, guid: d6e2914de56be79419753d224ac4fcf4,
+        type: 3}
+      propertyPath: maxRotation
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 35442255869831044, guid: d6e2914de56be79419753d224ac4fcf4,
         type: 3}
       propertyPath: HP
@@ -2300,6 +2310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883519890804895018, guid: d6e2914de56be79419753d224ac4fcf4,
+        type: 3}
+      propertyPath: maxRotation
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 35442255869831044, guid: d6e2914de56be79419753d224ac4fcf4,
         type: 3}
