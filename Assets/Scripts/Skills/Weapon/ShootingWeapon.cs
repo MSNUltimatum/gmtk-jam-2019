@@ -26,10 +26,20 @@ public abstract class ShootingWeapon : WeaponSkill
         BulletInit(bullet);
         var offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        angle += Random.Range(-randomShootingAngle, randomShootingAngle);
+        //angle += Random.Range(-randomShootingAngle, randomShootingAngle);
+        angle += GaussianRandom(0, Mathf.Pow(randomShootingAngle, 0.7f));
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         bullet.transform.Translate(Vector2.right * 0.5f);
         randomShootingAngle = Mathf.Min(maxRndShootingAngle, randomShootingAngle + rndShootingAngleAmplifier * maxRndShootingAngle);
+    }
+
+    private float GaussianRandom(float mean, float deviation)
+    {
+        float u1 = 1f - Random.Range(0, 1f); //uniform(0,1] random doubles
+        float u2 = 1f - Random.Range(0, 1f);
+        float randStdNormal = Mathf.Sqrt(-2f * Mathf.Log(u1)) *
+                     Mathf.Sin(2f * Mathf.PI * u2); //random normal(0,1)
+        return mean + deviation * randStdNormal; //random normal(mean,stdDev^2)
     }
 
     public override void UpdateEffect()
