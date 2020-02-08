@@ -26,14 +26,18 @@ public class MonsterLife : MonoBehaviour
         return isBoy();
     }
 
+    private void Awake()
+    {
+        monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
+
+        ChooseMyName();
+    }
+
     private void Start()
     {
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
-        monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
-
-        ChooseMyName();
-
+        
         if (absorbPrefab == null)
         {
             absorbPrefab = Resources.Load<GameObject>("AbsorbBubble.prefab");

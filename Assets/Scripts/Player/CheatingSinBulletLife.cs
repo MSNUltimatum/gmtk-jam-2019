@@ -10,7 +10,7 @@ public class CheatingSinBulletLife : BulletLife
         { 
             for(int i = 0;i < gameObject.transform.childCount; i++)
             {
-                gameObject.transform.GetChild(i).GetComponent<BulletLife>().Speed = value;
+                gameObject.transform.GetChild(i).GetComponent<BulletLife>().speed = value;
             }
         }
     }

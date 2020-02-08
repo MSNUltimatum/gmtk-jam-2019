@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class ShootingWeapon : WeaponSkill
 {
     public GameObject bulletPrefab;
+    public int bulletDamage = 5;
+    public float knockPower = 20f;
     public float bulletSpeed = 18f;
     public float timeToBulletDestruction = 1.2f;
     public float maxRndShootingAngle = 0;
@@ -20,16 +22,47 @@ public abstract class ShootingWeapon : WeaponSkill
         randomShootingAngle = 0;
     }
 
-    public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 screenPoint)
+    public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
+    {
+        ShootingWeaponAttack(attackManager, mousePos, shotFrom);
+        AddToRandomAngle();
+    }
+
+    public virtual void ShootingWeaponAttack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
+    {
+        SpawnBulletTowardsCursor(mousePos, shotFrom, GetRandomAngle(RandomAngleMode.GAUSSIAN));
+    }
+
+    public void SpawnBulletTowardsCursor(Vector3 mousePos, Vector3 shotFrom, float RandomAngle, float additionalAngleOffset = 0)
     {
         var bullet = GameObject.Instantiate(currentBulletPrefab, Player.transform.position + Player.transform.right * 0.15f, new Quaternion());
         BulletInit(bullet);
-        var offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
+        var offset = new Vector2(mousePos.x - shotFrom.x, mousePos.y - shotFrom.y);
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         //angle += Random.Range(-randomShootingAngle, randomShootingAngle);
         angle += GaussianRandom(0, Mathf.Pow(randomShootingAngle, 0.7f));
+        angle += additionalAngleOffset;
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         bullet.transform.Translate(Vector2.right * 0.5f);
+    }
+
+    public enum RandomAngleMode {
+        GAUSSIAN,
+    }
+
+    private float GetRandomAngle(RandomAngleMode mode = RandomAngleMode.GAUSSIAN)
+    {
+        switch (mode)
+        {
+            case RandomAngleMode.GAUSSIAN:
+                return GaussianRandom(0, Mathf.Pow(randomShootingAngle, 0.7f));
+            default:
+                return 0;
+        }
+    }
+
+    private void AddToRandomAngle()
+    {
         randomShootingAngle = Mathf.Min(maxRndShootingAngle, randomShootingAngle + rndShootingAngleAmplifier * maxRndShootingAngle);
     }
 
@@ -53,7 +86,9 @@ public abstract class ShootingWeapon : WeaponSkill
         BulletLife bulletLife = bullet.GetComponent<BulletLife>();
         if (bulletLife)
         {
-            bulletLife.Speed = bulletSpeed;
+            bulletLife.knockThrust = knockPower;
+            bulletLife.damage = bulletDamage;
+            bulletLife.speed = bulletSpeed;
             bulletLife.timeToDestruction = timeToBulletDestruction;
         }
         for(int i = 0; i < bullet.transform.childCount; i++)
