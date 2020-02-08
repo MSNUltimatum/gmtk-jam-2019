@@ -8,6 +8,8 @@ public class PeriodicEnemySpawner : MonoBehaviour
     private GameObject enemyToSpawn = null;
     [SerializeField]
     private Vector2 timeToEachEnemyFromTo = new Vector2(5f, 15f);
+    [SerializeField]
+    private Vector2 spawnDistanceBoundaries = new Vector2(5, 20f);
 
     // Start is called before the first frame update
     private void Start()
@@ -19,7 +21,10 @@ public class PeriodicEnemySpawner : MonoBehaviour
     private void Update()
     {
         nextEnemyTL = Mathf.Max(0, nextEnemyTL - Time.deltaTime);
-        if (nextEnemyTL <= 0 && spawnedEnemy == null)
+        var distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (nextEnemyTL <= 0 && spawnedEnemy == null 
+            && distanceToPlayer > spawnDistanceBoundaries.x
+            && distanceToPlayer < spawnDistanceBoundaries.y)
         {
             spawnedEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
             nextEnemyTL = GenerateRandomTime();

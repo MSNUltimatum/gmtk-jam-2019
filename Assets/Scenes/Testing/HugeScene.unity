@@ -2801,6 +2801,7 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
     type: 3}
   timeToEachEnemyFromTo: {x: 5, y: 15}
+  spawnDistanceBoundaries: {x: 5, y: 20}
 --- !u!1001 &1267528239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4311,6 +4312,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ca6336debda3304e8da442e446ea02f, type: 3}
+--- !u!1 &2123711516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9143993848955577248, guid: 7a982d24c58b9b640a2d7811faace7e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1076764413607070714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2123711520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123711516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45e2c92cb47dfd45902406d1be4cabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 2611012751803154452, guid: e008d69018ee3cf46a35061dfdf8de46,
+    type: 3}
+  timeToEachEnemyFromTo: {x: 5, y: 15}
+  spawnDistanceBoundaries: {x: 5, y: 20}
 --- !u!1001 &2147164297
 PrefabInstance:
   m_ObjectHideFlags: 0
