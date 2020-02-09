@@ -26,5 +26,7 @@ public class TriplePistol : Pistol
             bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
             bullet.transform.Translate(Vector2.right * 0.5f);
         }
+
+        shootingEvents?.Invoke();
     }
 }
