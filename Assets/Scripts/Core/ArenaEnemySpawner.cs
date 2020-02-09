@@ -28,16 +28,23 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     public static int boysCount = 0;
 
+    public bool labirintMode = false;
+
     void Awake()
     {
+        if (Labirint.instance != null)  // for room in labirint variation
+            labirintMode = true;
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();
         isPointVictory = scenesController.isPointVictory;
 
-        GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
-        if (SpawnSquare)
+        if (!labirintMode)
         {
-            SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
+            GameObject SpawnSquare = GameObject.FindGameObjectWithTag("SpawnZone");
+            if (SpawnSquare)
+            {
+                SpawnZone = SpawnSquare.GetComponent<SpawnZoneScript>();
+            }
         }
     }
 
@@ -102,6 +109,10 @@ public class ArenaEnemySpawner : MonoBehaviour
                 spawnPosition.y = Random.Range(-RoomBounds.y, RoomBounds.y);
                 break;
         }
+        if (labirintMode)
+        {
+            spawnPosition += (Vector2)gameObject.transform.position; // shift to room position
+        }
         return spawnPosition;
     }
 
@@ -155,7 +166,7 @@ public class ArenaEnemySpawner : MonoBehaviour
         }
     }
 
-    protected void KillThemAll()
+    public void KillThemAll()
     {
         var iToKill = 0;
         while (iToKill < boysList.Count)

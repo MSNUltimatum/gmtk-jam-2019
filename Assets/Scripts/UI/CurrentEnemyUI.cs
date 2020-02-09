@@ -11,6 +11,9 @@ public class CurrentEnemyUI : MonoBehaviour
     void Awake()
     {
         var canvasEnemyName = Instantiate(CanvasPrefab);
+        if (GameObject.FindGameObjectWithTag("Room") != null) {  // in labirint mode, to delete with parent
+            canvasEnemyName.transform.SetParent(transform); // отключить!!!!!
+        }
         var canvasScript = canvasEnemyName.GetComponent<Canvas>();
         canvasScript.worldCamera = Camera.main;
         canvasScript.sortingLayerName = "OnEffect";
