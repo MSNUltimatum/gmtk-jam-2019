@@ -70,7 +70,6 @@ public class PursueBulletLife : BulletLife
         }
     }
 
-    private float timeBeforePursue = 0.5f;
     private float minDistance = float.MaxValue;
     private GameObject monsterTargetGameObj = null;
 }

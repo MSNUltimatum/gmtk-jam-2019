@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ShootingWeapon : WeaponSkill
 {
@@ -12,11 +13,13 @@ public abstract class ShootingWeapon : WeaponSkill
     public float rndShootingAngleRelease = 0.5f;
     [System.NonSerialized]
     public GameObject currentBulletPrefab;
+    public static UnityEvent shootingEvents;
 
     public override void InitializeSkill()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         currentBulletPrefab = bulletPrefab;
+        shootingEvents = new UnityEvent();
         randomShootingAngle = 0;
     }
 
@@ -29,6 +32,7 @@ public abstract class ShootingWeapon : WeaponSkill
         angle += Random.Range(-randomShootingAngle, randomShootingAngle);
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         bullet.transform.Translate(Vector2.right * 0.5f);
+        shootingEvents?.Invoke();
         randomShootingAngle = Mathf.Min(maxRndShootingAngle, randomShootingAngle + rndShootingAngleAmplifier * maxRndShootingAngle);
     }
 
