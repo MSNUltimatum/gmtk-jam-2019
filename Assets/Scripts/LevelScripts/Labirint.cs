@@ -38,8 +38,8 @@ public class Labirint : MonoBehaviour
 
     private void InitBlueprints()
     {
-        blueprints = new RoomBlueprint[3];
-        for (int i = 0; i<3; i++) { 
+        blueprints = new RoomBlueprint[4];
+        for (int i = 0; i<4; i++) { 
             blueprints[i] = new RoomBlueprint();
             blueprints[i].prefab = RoomPrefabs[i];
         }
@@ -50,6 +50,11 @@ public class Labirint : MonoBehaviour
         blueprints[1].RightRoom = 2;
         blueprints[2].LeftRoom = 1;
 
+        blueprints[1].UpRoom = 3;
+        blueprints[3].DownRoom = 1;
+
+        //         [3]
+        //          |
         //map: [0]-[1]-[2]- -> bossScene
     }
 
@@ -62,13 +67,13 @@ public class Labirint : MonoBehaviour
         }
         else { // for start from choisen room, add prefab, set roomID, and connected room will be spawned
             Room startingRoom = GameObject.FindGameObjectWithTag("Room").GetComponent<Room>();
-            if (startingRoom.roomID > -1 && startingRoom.roomID < blueprints.Length)
+            if (startingRoom.roomID > -1 && startingRoom.roomID < blueprints.Length+1)
             { // only if room id was set                
                 activeRooms.Add(startingRoom.roomID);
                 blueprints[startingRoom.roomID].instance = startingRoom.gameObject;
                 blueprints[startingRoom.roomID].instance.GetComponent<Room>().ArenaInitCheck();
                 OnRoomChanged(startingRoom.roomID);
-                Camera.main.GetComponent<CameraForLabirint>().ChangeRoom(startingRoom.gameObject);
+                GetComponent<CameraForLabirint>().ChangeRoom(startingRoom.gameObject);
                 GameObject.FindWithTag("Player").transform.position = startingRoom.transform.position;
             }
         }
@@ -87,6 +92,7 @@ public class Labirint : MonoBehaviour
         if (blueprints[currentRoomID].RightRoom != -1)
             roomsToActivate.Add(blueprints[currentRoomID].RightRoom);
 
+        //destroy rooms who are not neighbirs
         List<int> toDestroy = new List<int>();  
         foreach (int roomID in activeRooms) {
             if (!roomsToActivate.Contains(roomID)) 
@@ -100,8 +106,9 @@ public class Labirint : MonoBehaviour
             activeRooms.Remove(roomID);
         }
 
+        // add rooms who neighbors and not spawned earlier
         foreach (int roomID in roomsToActivate) {
-            if (!activeRooms.Contains(roomID)) // if was not spawned earlier
+            if (!activeRooms.Contains(roomID))
             {
                 SpawnRoom(roomID);
                 Room currentRoom = blueprints[currentRoomID].instance.GetComponent<Room>();

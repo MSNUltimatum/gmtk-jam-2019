@@ -37,20 +37,20 @@ public class Room : MonoBehaviour
         foreach (Door door in doors)
         {
             if (door.sceneName == "") {
-                if (door.dirrection == Door.Dirrection.notSet)
-                    door.dirrectionAutoset();
+                if (door.dirrection == Door.Direction.notSet)
+                    door.directionAutoset();
                 switch (door.dirrection)
                 {
-                    case Door.Dirrection.left:
+                    case Door.Direction.left:
                         leftDoor = door;
                         break;
-                    case Door.Dirrection.right:
+                    case Door.Direction.right:
                         rightDoor = door;
                         break;
-                    case Door.Dirrection.up:
+                    case Door.Direction.up:
                         upDoor = door;
                         break;
-                    case Door.Dirrection.down:
+                    case Door.Direction.down:
                         downDoor = door;
                         break;
                     default:
@@ -66,15 +66,15 @@ public class Room : MonoBehaviour
         wayInDoor.connectedDoor.room.LeaveRoom();
         CameraForLabirint.instance.ChangeRoom(wayInDoor.room.gameObject);
         GameObject.FindGameObjectWithTag("Player").transform.position = wayInDoor.transform.position;
-        labirint.OnRoomChanged(roomID);
+        Labirint.instance.OnRoomChanged(roomID);
         ArenaInitCheck();
     }
 
     public void ArenaInitCheck()
     {
         if (roomType == RoomType.arena)
-        {
-            if (!labirint.blueprints[roomID].visited) 
+        {            
+            if (!Labirint.instance.blueprints[roomID].visited) 
             {
                 GetComponent<ArenaEnemySpawner>().enabled = true;
                 LockRoom();
@@ -125,6 +125,6 @@ public class Room : MonoBehaviour
         {
             GetComponent<ArenaEnemySpawner>().KillThemAll();
         }
-        labirint.blueprints[roomID].visited = true;
+        Labirint.instance.blueprints[roomID].visited = true;
     }
 }

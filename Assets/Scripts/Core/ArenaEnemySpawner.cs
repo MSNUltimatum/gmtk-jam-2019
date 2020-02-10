@@ -32,7 +32,7 @@ public class ArenaEnemySpawner : MonoBehaviour
 
     void Awake()
     {
-        if (Labirint.instance != null)  // for room in labirint variation
+        if (GameObject.FindGameObjectWithTag("Room") != null)  // for room in labirint variation
             labirintMode = true;
         roomLighting = GetComponent<RoomLighting>();
         scenesController = GetComponent<RelodScene>();
