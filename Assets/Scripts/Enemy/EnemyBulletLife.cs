@@ -30,7 +30,7 @@ public class EnemyBulletLife : MonoBehaviour
         else if (coll.gameObject.tag == "Player")
         {
             CharacterLife life = coll.gameObject.GetComponent<CharacterLife>();
-            life.Death();
+            life.Damage();
         }
     }
 }

@@ -9,12 +9,37 @@ public class CharacterLife : MonoBehaviour
     [SerializeField]
     private GameObject ShadowObject = null;
     new private AudioSource audio;
-    public void Death()
-    {
-        if (isDeath) return; // Already died
 
-        LogicDeathBlock();
-        VisualDeathBlock();
+    public void Damage(int damage = 1)
+    {
+        if (isDeath || invulTimeLeft > 0) return; // Already died
+
+        hp -= damage;
+        
+
+        if (hp <= 0)
+        {
+            LogicDeathBlock();
+            VisualDeathBlock();
+        }
+        else
+        {
+            // visualise invulnururability ?
+            invulTimeLeft = invulTime;
+            GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        }
+    }
+
+    private void Update()
+    {
+        if (invulTimeLeft > 0)
+        {
+            invulTimeLeft -= Time.deltaTime;
+            if (invulTimeLeft <= 0)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            }
+        }
     }
 
     private void LogicDeathBlock()
@@ -89,10 +114,16 @@ public class CharacterLife : MonoBehaviour
         isDeath = false;
     }
 
+    private int hp = 3;
+    private float invulTime = 0.5f;
+    private float invulTimeLeft = 0;
+
+    private CircleCollider2D circleCollider;
+
+    // Light
     private Light2D lighter;
     private float glowIntense;
     private float glowFadeTime = 3;
-    private CircleCollider2D circleCollider;
 
     //Camera
     private Camera mainCam;

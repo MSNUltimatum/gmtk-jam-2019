@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Your first gun
   pickupSprite: {fileID: 21300000, guid: 10c3096c2a2a0e84db5e37330fa65644, type: 3}
-  itemIndividualName: Glock-17
   attackSound:
   - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
   reloadTime: 3
   timeBetweenAttacks: 0.2
   ammoMagazine: 17
-  bulletPrefab: {fileID: 6191924688321695861, guid: 593a9a15e433b804dad73dc9b652c033,
+  bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
   bulletSpeed: 18
-  timeToBulletDestruction: 10
+  timeToBulletDestruction: 1.2
+  maxRndShootingAngle: 30
+  rndShootingAngleAmplifier: 0.45
+  rndShootingAngleRelease: 1.25

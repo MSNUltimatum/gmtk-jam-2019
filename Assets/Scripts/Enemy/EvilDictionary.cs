@@ -27,7 +27,7 @@ public class EvilDictionary : ScriptableObject
         "Mad", "Malaise", "Malign", "Manipulate", "Marginal", "Misery",
         "Mistake", "Madness", "Mirthless",
         "Negation", "Nervous", "Niggles", "Nonsense", "Not for me",
-        "Objection", "Obuse", "Obscene", "Obstruct", "Omission",
+        "Objection", "Abuse", "Obscene", "Obstruct", "Omission",
         "Pain", "Panic", "Paranoia", "Peeve", "Pollution", "Prejudice",
         "Qualm", "Quandary", "Quarrel", "Questionable", "Quitter",
         "Rabid", "Racism", "Rage", "Rascal", "Repugnant",

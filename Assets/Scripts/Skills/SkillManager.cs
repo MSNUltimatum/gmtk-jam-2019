@@ -33,7 +33,7 @@ public class SkillManager : MonoBehaviour
             {
                 foreach (var skill in skillContainer.LoadSkills().Values)
                 {
-                    registeredSkills.Add(skill.SkillName(), skill);
+                    registeredSkills.Add(skill.SkillName(), Instantiate(skill));
                 }
             }
             else
@@ -114,6 +114,16 @@ public class SkillManager : MonoBehaviour
         else
         {
             SaveSkills();
+            if (!File.Exists(Application.persistentDataPath + fileName))
+            {
+                Debug.LogError("Critical error: save file was not created");
+            }
+            else
+            {
+                // Warning: Possible infinite loop here!!!
+                forceSkillRewrite = false;
+                LoadSkills();
+            }
         }
     }
 

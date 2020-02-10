@@ -14,11 +14,14 @@ public abstract class Attack : EnemyBehavior
     public override void CalledUpdate()
     {
         base.CalledUpdate();
-        cooldownLeft = Mathf.Max(cooldownLeft - Time.deltaTime, 0);
-        if (cooldownLeft <= 0)
+        if (isActive)
         {
-            DoAttack();
-            cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
+            cooldownLeft = Mathf.Max(cooldownLeft - Time.deltaTime, 0);
+            if (cooldownLeft <= 0)
+            {
+                DoAttack();
+                cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
+            }
         }
     }
 
