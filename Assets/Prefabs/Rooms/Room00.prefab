@@ -96,10 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d596aace1162b1a44a4e93c702d75d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftDoor: {fileID: 0}
-  rightDoor: {fileID: 0}
-  upDoor: {fileID: 0}
-  downDoor: {fileID: 0}
   roomID: 0
   roomType: 1
 --- !u!114 &38190813
@@ -4714,6 +4710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050682563061131976, guid: 56439627d3d88804ea3ac30cb12a7ec4,
+        type: 3}
+      propertyPath: direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2050682563061131977, guid: 56439627d3d88804ea3ac30cb12a7ec4,
         type: 3}

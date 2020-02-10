@@ -17,9 +17,9 @@ public class Door : MonoBehaviour
     [HideInInspector]
     public bool unlockOnTimer = false;
     private float timer = 1f;
-
-    public enum Direction {notSet,up,down,left,right};
-    public Direction dirrection;
+    
+    [SerializeField]
+    public Direction.Side direction;
 
     public string sceneName=""; // name of scene to change on enter this door
 
@@ -67,27 +67,33 @@ public class Door : MonoBehaviour
         timer = 1f;
     }
 
-    public void directionAutoset() {
+    public bool directionAutoset() {
         if (sceneName == "")
         {
             if (transform.localPosition.x / (Mathf.Abs(transform.localPosition.y) + 0.001f) > 2)    // эврестическая оценка направления от центра на дверь, оверрайдится из инспектора
             {                                                                                       // если дверь на правой стене x/|y|>2 в локальных координатах то дверь правая, и т.п.
-                dirrection = Direction.right;
+                direction = Direction.Side.RIGHT;
             }
             else if (transform.localPosition.x / (Mathf.Abs(transform.localPosition.y) + 0.001f) < -2) // + 0.001f - защита от деления на ноль
             {
-                dirrection = Direction.left;
+                direction = Direction.Side.LEFT;
             }
             else if (transform.localPosition.y / (Mathf.Abs(transform.localPosition.x) + 0.001f) > 2)
             {
-                dirrection = Direction.up;
+                direction = Direction.Side.UP;
             }
             else if (transform.localPosition.y / (Mathf.Abs(transform.localPosition.x) + 0.001f) < -2)
             {
-                dirrection = Direction.down;
+                direction = Direction.Side.DOWN;
             }
-            else Debug.Log("Cant get door dirrection automaticaly. Need to set it in inspector manually.");
+            else
+            {
+                Debug.LogWarning("Cant get door dirrection automaticaly. Need to set it in inspector manually.");
+                return false;
+            }
+            return true;
         }
+        return false;
     }
     
     private void OnDrawGizmos()
