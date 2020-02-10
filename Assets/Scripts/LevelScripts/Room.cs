@@ -6,14 +6,7 @@ public class Room : MonoBehaviour
 {
     private Door[] doors;
 
-    [HideInInspector]
-    public Door leftDoor = null;
-    [HideInInspector]
-    public Door rightDoor = null;
-    [HideInInspector]
-    public Door upDoor = null;
-    [HideInInspector]
-    public Door downDoor = null;
+    public Dictionary<Direction.Side, Door> doorsSided = new Dictionary<Direction.Side, Door>();
 
     [HideInInspector]
     private Labirint labirint = null;
@@ -37,26 +30,9 @@ public class Room : MonoBehaviour
         foreach (Door door in doors)
         {
             if (door.sceneName == "") {
-                if (door.dirrection == Door.Direction.notSet)
-                    door.directionAutoset();
-                switch (door.dirrection)
-                {
-                    case Door.Direction.left:
-                        leftDoor = door;
-                        break;
-                    case Door.Direction.right:
-                        rightDoor = door;
-                        break;
-                    case Door.Direction.up:
-                        upDoor = door;
-                        break;
-                    case Door.Direction.down:
-                        downDoor = door;
-                        break;
-                    default:
-                        Debug.Log("error. Door direction was not set");
-                        break;
-                }
+                if (door.direction == Direction.Side.UNSET && door.directionAutoset())
+                     Debug.LogError("Door direction was not set");
+                else doorsSided[door.direction] = door;
                 if (door.room == null) door.room = this;
             }
         }

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class RoomBlueprint
 {
-    public int UpRoom = -1; // index for array
-    public int DownRoom = -1;// -1 for no room, to prevent auto link to room #0
-    public int LeftRoom = -1;
-    public int RightRoom = -1;
+    public Dictionary<Direction.Side, int> rooms = new Dictionary<Direction.Side, int>();
 
     public GameObject instance; // link to room if it is spawned
     public GameObject prefab;
@@ -44,14 +41,14 @@ public class Labirint : MonoBehaviour
             blueprints[i].prefab = RoomPrefabs[i];
         }
 
-        blueprints[0].RightRoom = 1; // хардкод для связей между комнатами
-        blueprints[1].LeftRoom = 0;
+        blueprints[0].rooms[Direction.Side.RIGHT] = 1; // хардкод для связей между комнатами
+        blueprints[1].rooms[Direction.Side.LEFT] = 0;
 
-        blueprints[1].RightRoom = 2;
-        blueprints[2].LeftRoom = 1;
+        blueprints[1].rooms[Direction.Side.RIGHT] = 2;
+        blueprints[2].rooms[Direction.Side.LEFT] = 1;
 
-        blueprints[1].UpRoom = 3;
-        blueprints[3].DownRoom = 1;
+        blueprints[1].rooms[Direction.Side.UP] = 3;
+        blueprints[3].rooms[Direction.Side.DOWN] = 1;
 
         //         [3]
         //          |
@@ -83,14 +80,11 @@ public class Labirint : MonoBehaviour
         currentRoomID = roomIndex;
         List<int> roomsToActivate = new List<int>(); // list of rooms wich should be present after this method 
         roomsToActivate.Add(currentRoomID);
-        if (blueprints[currentRoomID].UpRoom != -1)        
-            roomsToActivate.Add(blueprints[currentRoomID].UpRoom);
-        if (blueprints[currentRoomID].DownRoom != -1)
-            roomsToActivate.Add(blueprints[currentRoomID].DownRoom);
-        if (blueprints[currentRoomID].LeftRoom != -1)
-            roomsToActivate.Add(blueprints[currentRoomID].LeftRoom);
-        if (blueprints[currentRoomID].RightRoom != -1)
-            roomsToActivate.Add(blueprints[currentRoomID].RightRoom);
+        foreach (var side in Direction.sides)
+        {
+            if (blueprints[currentRoomID].rooms.ContainsKey(side))
+                roomsToActivate.Add(blueprints[currentRoomID].rooms[side]);
+        }
 
         //destroy rooms who are not neighbirs
         List<int> toDestroy = new List<int>();  
@@ -116,22 +110,14 @@ public class Labirint : MonoBehaviour
                 Door oldDoor = null;
                 Door newDoor = null;
                 Vector3 offset = Vector3.zero;
-                if (blueprints[currentRoomID].UpRoom == roomID) {
-                    oldDoor = currentRoom.upDoor;
-                    newDoor = newRoom.downDoor;
-                    offset = Vector3.up * distanceToNewDoor; // vector between doors;
-                } else if (blueprints[currentRoomID].DownRoom == roomID){
-                    oldDoor = currentRoom.downDoor;
-                    newDoor = newRoom.upDoor;
-                    offset = Vector3.down * distanceToNewDoor;
-                } else if (blueprints[currentRoomID].LeftRoom == roomID) {
-                    oldDoor = currentRoom.leftDoor;
-                    newDoor = newRoom.rightDoor;
-                    offset = Vector3.left * distanceToNewDoor;
-                } else if (blueprints[currentRoomID].RightRoom == roomID){
-                    oldDoor = currentRoom.rightDoor;
-                    newDoor = newRoom.leftDoor;
-                    offset = Vector3.right * distanceToNewDoor;
+                foreach (var side in Direction.sides)
+                {
+                    if (blueprints[currentRoomID].rooms.ContainsKey(side) && blueprints[currentRoomID].rooms[side] == roomID)
+                    {
+                        oldDoor = currentRoom.doorsSided[side];
+                        newDoor = newRoom.doorsSided[Direction.InvertSide(side)];
+                        offset = Direction.SideToVector3(side) * distanceToNewDoor;
+                    }
                 }
                 ConnectDoors(oldDoor, newDoor);
                 offset = oldDoor.transform.localPosition + offset - newDoor.transform.localPosition; // between rooms
@@ -166,17 +152,12 @@ public class Labirint : MonoBehaviour
         SpawnRoom(currentRoomID);
         blueprints[currentRoomID].instance.transform.position = savedPosition;
 
-        if (blueprints[currentRoomID].UpRoom > -1) {
-            ConnectDoors(blueprints[currentRoomID].instance.GetComponent<Room>().upDoor, blueprints[blueprints[currentRoomID].UpRoom].instance.GetComponent<Room>().downDoor);
-        }
-        if (blueprints[currentRoomID].DownRoom > -1) {
-            ConnectDoors(blueprints[currentRoomID].instance.GetComponent<Room>().downDoor, blueprints[blueprints[currentRoomID].DownRoom].instance.GetComponent<Room>().upDoor);
-        }
-        if (blueprints[currentRoomID].LeftRoom > -1) { 
-            ConnectDoors(blueprints[currentRoomID].instance.GetComponent<Room>().leftDoor, blueprints[blueprints[currentRoomID].LeftRoom].instance.GetComponent<Room>().rightDoor);
-        }
-        if (blueprints[currentRoomID].RightRoom > -1) {
-            ConnectDoors(blueprints[currentRoomID].instance.GetComponent<Room>().rightDoor, blueprints[blueprints[currentRoomID].RightRoom].instance.GetComponent<Room>().leftDoor);
+        foreach (var side in Direction.sides)
+        {
+            if (blueprints[currentRoomID].rooms[side] > -1)
+                ConnectDoors(
+                    blueprints[currentRoomID].instance.GetComponent<Room>().doorsSided[side], 
+                    blueprints[blueprints[currentRoomID].rooms[side]].instance.GetComponent<Room>().doorsSided[Direction.InvertSide(side)]);
         }
         
         GameObject player = GameObject.FindWithTag("Player");
