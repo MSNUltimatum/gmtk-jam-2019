@@ -116,7 +116,7 @@ public class Labirint : MonoBehaviour
                     {
                         oldDoor = currentRoom.doorsSided[side];
                         newDoor = newRoom.doorsSided[Direction.InvertSide(side)];
-                        offset = Direction.SideToVector3(side);
+                        offset = Direction.SideToVector3(side) * distanceToNewDoor;
                     }
                 }
                 ConnectDoors(oldDoor, newDoor);
