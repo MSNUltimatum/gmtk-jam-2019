@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class CameraForLabirint : MonoBehaviour
 {
-    private GameObject cam;
+    private GameObject cameraObj;
     private GameObject currentRoom;
     private GameObject player;
     private bool followCamera = true;
@@ -16,27 +16,25 @@ public class CameraForLabirint : MonoBehaviour
 
     public static CameraForLabirint instance;
 
+    private Camera cameraComponent;
+
     private void Start()
     {
         instance = this;
-        cam = Camera.main.gameObject;
+        cameraObj = Camera.main.gameObject;
         player = GameObject.FindWithTag("Player");
-    }
-
-    private void Awake()
-    {
+        cameraComponent = cameraObj.GetComponent<Camera>();
     }
 
     private void Update()
     {
         if (followCamera) 
-            CameraFollowUpdate();
-        
+            CameraFollowUpdate();        
     }
 
     public void ChangeRoom(GameObject room) {
         if (!followCamera)
-            cam.transform.position = room.transform.position + 20 * Vector3.back;
+            cameraObj.transform.position = room.transform.position + 20 * Vector3.back;
         else 
             CameraFollowSetup(room);
     }
@@ -44,7 +42,7 @@ public class CameraForLabirint : MonoBehaviour
     void CameraFollowSetup(GameObject room) 
     {
         Tilemap[] tilemaps = room.GetComponentsInChildren<Tilemap>();
-        float left; float right; float up; float down;
+        float left, right, up, down;
         foreach (Tilemap tilemap in tilemaps) {
             if (tilemap.tag == "Environment") { // to separete layer with walls
                 Vector3Int tilePosition;
@@ -75,14 +73,14 @@ public class CameraForLabirint : MonoBehaviour
     }
 
     void CameraFollowUpdate(){
-        cam.transform.position = player.transform.position - 20 * Vector3.forward;
-        if (cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.zero).x < cameraBoundsLeft)
-            cam.transform.position += Vector3.right * (cameraBoundsLeft - cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.zero).x);
-        if (cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.one).x > cameraBoundsRight)
-            cam.transform.position += Vector3.right * (cameraBoundsRight - cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.one).x);
-        if (cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.one).y > cameraBoundsUp)
-            cam.transform.position += Vector3.up * ( cameraBoundsUp - cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.one).y);
-        if (cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.zero).y < cameraBoundsDown)
-            cam.transform.position += Vector3.up * (cameraBoundsDown - cam.GetComponent<Camera>().ViewportToWorldPoint(Vector3.zero).y);
+        cameraObj.transform.position = player.transform.position - 20 * Vector3.forward;
+        if (cameraComponent.ViewportToWorldPoint(Vector3.zero).x < cameraBoundsLeft)
+            cameraObj.transform.position += Vector3.right * (cameraBoundsLeft - cameraComponent.ViewportToWorldPoint(Vector3.zero).x);
+        if (cameraComponent.ViewportToWorldPoint(Vector3.one).x > cameraBoundsRight)
+            cameraObj.transform.position += Vector3.right * (cameraBoundsRight - cameraComponent.ViewportToWorldPoint(Vector3.one).x);
+        if (cameraComponent.ViewportToWorldPoint(Vector3.one).y > cameraBoundsUp)
+            cameraObj.transform.position += Vector3.up * ( cameraBoundsUp - cameraComponent.ViewportToWorldPoint(Vector3.one).y);
+        if (cameraComponent.ViewportToWorldPoint(Vector3.zero).y < cameraBoundsDown)
+            cameraObj.transform.position += Vector3.up * (cameraBoundsDown - cameraComponent.ViewportToWorldPoint(Vector3.zero).y);
     }
 }
