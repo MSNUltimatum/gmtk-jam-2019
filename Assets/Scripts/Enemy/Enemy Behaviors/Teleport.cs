@@ -10,8 +10,13 @@ public class Teleport : TimedAttack
     protected override void Awake() 
     {
         base.Awake();
-        arena = GameObject.FindGameObjectWithTag("GameController")?
+        if(Labirint.instance == null) { 
+            arena = GameObject.FindGameObjectWithTag("GameController")
             .GetComponent<ArenaEnemySpawner>();
+        }
+        else {
+            arena = Labirint.instance.blueprints[Labirint.instance.currentRoomID].instance.GetComponent<ArenaEnemySpawner>();
+        }
         maxspeedSaved = agent.maxSpeed;
     }
 

@@ -35,8 +35,9 @@ public class Labirint : MonoBehaviour
 
     private void InitBlueprints()
     {
-        blueprints = new RoomBlueprint[4];
-        for (int i = 0; i<4; i++) { 
+        int arraySize = RoomPrefabs.Length;
+        blueprints = new RoomBlueprint[arraySize];
+        for (int i = 0; i< arraySize; i++) { 
             blueprints[i] = new RoomBlueprint();
             blueprints[i].prefab = RoomPrefabs[i];
         }
@@ -56,8 +57,7 @@ public class Labirint : MonoBehaviour
     }
 
     void StartingRoomSpawn() {
-        if (GameObject.FindGameObjectWithTag("Room") == null)
-        {
+        if (GameObject.FindGameObjectWithTag("Room") == null) {
             SpawnRoom(0);
             OnRoomChanged(0);
             blueprints[0].instance.GetComponent<Room>().ArenaInitCheck();
@@ -66,12 +66,21 @@ public class Labirint : MonoBehaviour
             Room startingRoom = GameObject.FindGameObjectWithTag("Room").GetComponent<Room>();
             if (startingRoom.roomID > -1 && startingRoom.roomID < blueprints.Length+1)
             { // only if room id was set                
-                activeRooms.Add(startingRoom.roomID);
-                blueprints[startingRoom.roomID].instance = startingRoom.gameObject;
-                blueprints[startingRoom.roomID].instance.GetComponent<Room>().ArenaInitCheck();
-                OnRoomChanged(startingRoom.roomID);
-                GetComponent<CameraForLabirint>().ChangeRoom(startingRoom.gameObject);
-                GameObject.FindWithTag("Player").transform.position = startingRoom.transform.position;
+                if (startingRoom.name == blueprints[startingRoom.roomID].prefab.name) {
+                    activeRooms.Add(startingRoom.roomID);
+                    startingRoom.DoorsInit();
+                    blueprints[startingRoom.roomID].instance = startingRoom.gameObject;
+                    blueprints[startingRoom.roomID].instance.GetComponent<Room>().ArenaInitCheck();
+                    OnRoomChanged(startingRoom.roomID);
+                    GetComponent<CameraForLabirint>().ChangeRoom(startingRoom.gameObject);
+                    GameObject.FindWithTag("Player").transform.position = startingRoom.transform.position;
+                }
+                else
+                {
+                    Debug.Log("Starting room ID mismatch");
+                    GameObject.FindWithTag("Player").transform.position = startingRoom.transform.position;
+                    GetComponent<CameraForLabirint>().ChangeRoom(startingRoom.gameObject);
+                }
             }
         }
     }
