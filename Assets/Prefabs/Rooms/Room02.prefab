@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 5480786308018601882}
   - component: {fileID: 5480786308018601883}
   - component: {fileID: 5480786308018601880}
-  - component: {fileID: 5480786308018601886}
   m_Layer: 0
   m_Name: Room02
   m_TagString: Room
@@ -170,19 +169,6 @@ MonoBehaviour:
   StandartLightIncrease: 1
   maxvalue: 0
   DefaultLight: 0.13
---- !u!114 &5480786308018601886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468587428815444035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22474ed8f28ae7e49834dd5df34a5c89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableScanning: 1
 --- !u!1 &8572094893831334828
 GameObject:
   m_ObjectHideFlags: 0

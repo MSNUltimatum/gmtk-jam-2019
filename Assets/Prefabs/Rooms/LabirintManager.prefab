@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3387014766477757504}
   - component: {fileID: 3387014766477757519}
   - component: {fileID: 1265481833}
+  - component: {fileID: 7263133522426991205}
   m_Layer: 0
   m_Name: LabirintManager
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   - {fileID: 3146444567738145081, guid: 3d32cac3ae6465640b521f0080c36b98, type: 3}
   - {fileID: 7565249538646017459, guid: 77d132abd73810140a18e778831dbadd, type: 3}
   - {fileID: 7468587428815444035, guid: d399a25c2895607438626ecb0e5da14b, type: 3}
+  - {fileID: 3823071593393842718, guid: bb5c81b31f9ed6642b92933fbd87a2e3, type: 3}
   currentRoomID: 0
 --- !u!114 &3387014766477757505
 MonoBehaviour:
@@ -107,6 +109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa01e1e56c4548840a0525d15b73667d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7263133522426991205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387014766477757508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22474ed8f28ae7e49834dd5df34a5c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableScanning: 1
 --- !u!1 &4194236523386335293
 GameObject:
   m_ObjectHideFlags: 0
