@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
+    public int maxHP = 1;
+    [System.NonSerialized]
     public int HP = 1;
 
     [SerializeField]
@@ -28,6 +30,8 @@ public class MonsterLife : MonoBehaviour
 
     private void Start()
     {
+        HP = maxHP;
+        healthBar = GetComponentInChildren<MonsterHealthBar>();
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
         monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
@@ -79,6 +83,10 @@ public class MonsterLife : MonoBehaviour
         if ((THE_BOY && Vulnurable() || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;
+            if(healthBar)
+            {
+                healthBar.healthBarEvents.Invoke();
+            }
             if (HP <= 0)
             {
                 // Trigger an event for those who listen to it (if any)
@@ -176,4 +184,5 @@ public class MonsterLife : MonoBehaviour
     private bool THE_BOY = false;
     private TMPro.TextMeshPro monsterName;
     private static List<string> usedNames = new List<string>();
+    private MonsterHealthBar healthBar;
 }
