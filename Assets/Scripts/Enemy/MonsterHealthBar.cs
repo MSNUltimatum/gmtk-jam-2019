@@ -7,16 +7,14 @@ using UnityEngine.UI;
 public class MonsterHealthBar : MonoBehaviour
 {
     public float timeToOff = 1.2f;
-    public UnityEvent healthBarEvents;
     public Image activeHealthBar;
     private void Start()
     {
-        healthBarEvents = new UnityEvent();
         originalScale = activeHealthBar.transform.localScale.y;
         Deactive();
         monsterLife = GetComponentInParent<MonsterLife>();
         maxHP = monsterLife.maxHP;
-        healthBarEvents.AddListener(HealthBarChange);
+        monsterLife.healthBar.AddListener(HealthBarChange);
     }
 
     private void Update()

@@ -22,6 +22,8 @@ public class MonsterLife : MonoBehaviour
 
     // Apply listeners on start!!
     public static UnityEvent OnEnemyDead = new UnityEvent();
+    public UnityEvent healthBar = new UnityEvent();
+
 
     protected virtual bool Vulnurable()
     {
@@ -31,11 +33,9 @@ public class MonsterLife : MonoBehaviour
     private void Start()
     {
         HP = maxHP;
-        healthBar = GetComponentInChildren<MonsterHealthBar>();
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
         monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
-
         ChooseMyName();
 
         if (absorbPrefab == null)
@@ -83,10 +83,8 @@ public class MonsterLife : MonoBehaviour
         if ((THE_BOY && Vulnurable() || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;
-            if(healthBar)
-            {
-                healthBar.healthBarEvents.Invoke();
-            }
+            healthBar?.Invoke();
+
             if (HP <= 0)
             {
                 // Trigger an event for those who listen to it (if any)
@@ -184,5 +182,4 @@ public class MonsterLife : MonoBehaviour
     private bool THE_BOY = false;
     private TMPro.TextMeshPro monsterName;
     private static List<string> usedNames = new List<string>();
-    private MonsterHealthBar healthBar;
 }
