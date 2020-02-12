@@ -14,7 +14,7 @@ public class MonsterHealthBar : MonoBehaviour
         Deactive();
         monsterLife = GetComponentInParent<MonsterLife>();
         maxHP = monsterLife.maxHP;
-        monsterLife.healthBar.AddListener(HealthBarChange);
+        monsterLife.hpChangedEvent.AddListener(HealthBarChange);
     }
 
     private void Update()

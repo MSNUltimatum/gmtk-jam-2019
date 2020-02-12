@@ -22,7 +22,7 @@ public class MonsterLife : MonoBehaviour
 
     // Apply listeners on start!!
     public static UnityEvent OnEnemyDead = new UnityEvent();
-    public UnityEvent healthBar = new UnityEvent();
+    public UnityEvent hpChangedEvent = new UnityEvent();
 
 
     protected virtual bool Vulnurable()
@@ -83,7 +83,7 @@ public class MonsterLife : MonoBehaviour
         if ((THE_BOY && Vulnurable() || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;
-            healthBar?.Invoke();
+            hpChangedEvent?.Invoke();
 
             if (HP <= 0)
             {
