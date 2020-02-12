@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
+    public int maxHP = 1;
+    [System.NonSerialized]
     public int HP = 1;
 
     [SerializeField]
@@ -20,6 +22,8 @@ public class MonsterLife : MonoBehaviour
 
     // Apply listeners on start!!
     public static UnityEvent OnEnemyDead = new UnityEvent();
+    public UnityEvent hpChangedEvent = new UnityEvent();
+
 
     protected virtual bool Vulnurable()
     {
@@ -28,10 +32,10 @@ public class MonsterLife : MonoBehaviour
 
     private void Start()
     {
+        HP = maxHP;
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
         monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
-
         ChooseMyName();
 
         if (absorbPrefab == null)
@@ -79,6 +83,8 @@ public class MonsterLife : MonoBehaviour
         if ((THE_BOY && Vulnurable() || ignoreInvulurability) && SpecialConditions(source))
         {
             HP -= damage;
+            hpChangedEvent?.Invoke();
+
             if (HP <= 0)
             {
                 // Trigger an event for those who listen to it (if any)
