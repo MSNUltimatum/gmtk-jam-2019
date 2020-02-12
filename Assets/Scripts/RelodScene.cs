@@ -52,15 +52,25 @@ public class RelodScene : MonoBehaviour
         CheckVictoryCondition();
     }
 
+    private bool experimentalReloadRoom = false; 
+
     protected virtual void Update()
     {
         if (CharacterLife.isDeath) PressR();
-        if (isVictory) ProcessVictory();
+
+        ArenaEnemySpawner arena = GetComponent<ArenaEnemySpawner>();
+        if (isVictory) {
+            if (!arena.labirintMode) { ProcessVictory(); }
+            else { ProcessRoomVictory(); }
+        }
 
         if (Input.GetKeyDown(KeyCode.R) && (Input.GetKey(KeyCode.LeftControl) || CharacterLife.isDeath))
         {
-            Reload();
             Metrics.OnDeath();
+            if (experimentalReloadRoom)
+                Labirint.instance.ReloadRoom();
+            else
+                Reload();
         }            
     }
 
@@ -76,6 +86,14 @@ public class RelodScene : MonoBehaviour
             Metrics.OnWin();
             OnSceneChange?.Invoke();
         }
+    }
+
+    protected virtual void ProcessRoomVictory()
+    {
+        CurrentEnemyUI.SetCurrentEnemy(" ");
+        isVictory = true;
+        //Metrics.OnWin();
+        GetComponent<Room>().UnlockRoom();
     }
 
     /// <summary>
