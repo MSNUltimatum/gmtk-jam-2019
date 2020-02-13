@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using System.Linq;
 
 public abstract class EnemyBehavior : MonoBehaviour
@@ -10,13 +11,18 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected AIAgent agent;
 
     [Header("Behaviour activation condition")]
-    public ProximityCheckOption proximityCheckOption = ProximityCheckOption.Distance;
+    public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
     public float proximityCheckDistance = 19f;
 
     protected virtual void Awake()
     {
         agent = gameObject.GetComponent<AIAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
+
+        if (proximityCheckOption.Count == 0)
+        {
+            proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+        }
     }
 
     public virtual void CalledUpdate()
@@ -53,6 +59,18 @@ public abstract class EnemyBehavior : MonoBehaviour
         return rotation;
     }
 
+    private Camera currentCamera = null;
+    protected virtual bool TargetOnScreen(GameObject target)
+    {
+        if (target == null) return false;
+        if (currentCamera == null)
+        {
+            currentCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        }
+        var enemyInScreenSpace = currentCamera.WorldToViewportPoint(target.transform.position);
+        return enemyInScreenSpace.x >= 0 && enemyInScreenSpace.x <= 1 && enemyInScreenSpace.y >= 0 && enemyInScreenSpace.y <= 1;
+    }
+
     protected void RotateInstantlyTowardsTarget() {
         Vector2 direction = target.transform.position - transform.position;
         if (direction.magnitude > 0.0f)
@@ -69,7 +87,7 @@ public abstract class EnemyBehavior : MonoBehaviour
         timeToProximityCheck = Mathf.Max(0, timeToProximityCheck - Time.deltaTime);
         if (timeToProximityCheck > 0) return false;
         timeToProximityCheck = proximityCheckPeriod;
-        switch (proximityCheckOption)
+        switch (proximityCheckOption[0])
         {
             case ProximityCheckOption.Distance:
                 return Vector3.Distance(target.transform.position, transform.position) <= proximityCheckDistance;
@@ -80,8 +98,10 @@ public abstract class EnemyBehavior : MonoBehaviour
                            select t).ToArray();
                 if (hits.Length == 0) return false;
                 return hits[0].transform.CompareTag("Player");
-            case ProximityCheckOption.None:
+            case ProximityCheckOption.Always:
                 return true;
+            case ProximityCheckOption.OnScreen:
+                return TargetOnScreen(gameObject);
             default:
                 Debug.LogError("Proximity check undefined condition");
                 return false;
@@ -91,8 +111,9 @@ public abstract class EnemyBehavior : MonoBehaviour
     public enum ProximityCheckOption
     {
         Distance,
+        OnScreen,
         DirectSight,
-        None
+        Always
     }
 
     private float proximityCheckPeriod = 0.5f;
