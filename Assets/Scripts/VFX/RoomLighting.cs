@@ -20,9 +20,16 @@ public class RoomLighting : MonoBehaviour
 
     private void Start()
     {
-        sceneLight = GetComponentInChildren<Light2D>();
-        Light = DefaultLight;
         var arena = GetComponent<ArenaEnemySpawner>();
+        if (arena.labirintMode)
+        {
+            sceneLight =  Labirint.instance.GetComponentInChildren<Light2D>();
+        }
+        else
+        {
+            sceneLight = GetComponentInChildren<Light2D>();
+        }
+        Light = DefaultLight;
         if (arena && StandartLightIncrease)
         {
             maxvalue = arena.EnemyCount();
@@ -109,6 +116,10 @@ public class RoomLighting : MonoBehaviour
     {
         swampMat = new Material(swampMatPrefab);
         swampInstance = Instantiate(swampPrefab);
+        if (Labirint.instance != null) { // in labirint mode, to delete with parent
+            swampInstance.transform.parent = transform;
+            swampInstance.transform.localPosition = Vector3.zero;
+        }
         var sprites = swampInstance.GetComponentsInChildren<SpriteRenderer>();
         foreach (var sprite in sprites)
         {

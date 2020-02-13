@@ -29,15 +29,15 @@ public class ActiveMouseBullet : ActiveSkill
                 ((ShootingWeapon)i).currentBulletPrefab = bulletPrefab;
             }
         }
-    }
-
-    public override void UpdateEffect()
-    {
-        if (Input.GetMouseButtonDown(0))
-            EndOfSkill();
+        ShootingWeapon.shootingEvents.AddListener(ReturnNormalBullets);
     }
 
     public override void EndOfSkill()
+    {
+        ReturnNormalBullets();
+    }
+
+    private void ReturnNormalBullets()
     {
         var skillsWeapon = skillManager.skills;
         foreach (var i in skillsWeapon)
@@ -47,5 +47,6 @@ public class ActiveMouseBullet : ActiveSkill
                 ((ShootingWeapon)i).currentBulletPrefab = ((ShootingWeapon)i).bulletPrefab;
             }
         }
+        ShootingWeapon.shootingEvents.RemoveListener(ReturnNormalBullets);
     }
 }

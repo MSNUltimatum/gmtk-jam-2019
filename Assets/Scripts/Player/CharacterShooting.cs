@@ -8,7 +8,6 @@ public class CharacterShooting : MonoBehaviour
     private GameObject mouseCursorObj = null;
 
     public bool shotFrame = false; //flag for reactions on shot
-    
     public void LoadNewWeapon(SkillManager.EquippedWeapon weapon, float punishmentReload)
     {
         currentWeapon = weapon;
