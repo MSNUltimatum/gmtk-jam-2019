@@ -87,25 +87,32 @@ public abstract class EnemyBehavior : MonoBehaviour
         timeToProximityCheck = Mathf.Max(0, timeToProximityCheck - Time.deltaTime);
         if (timeToProximityCheck > 0) return false;
         timeToProximityCheck = proximityCheckPeriod;
-        switch (proximityCheckOption[0])
+        foreach (var proximityCheckOpt in proximityCheckOption)
         {
-            case ProximityCheckOption.Distance:
-                return Vector3.Distance(target.transform.position, transform.position) <= proximityCheckDistance;
-            case ProximityCheckOption.DirectSight:
-                // Check if raycast towards player hits player first and not environment
-                var hits = (from t in Physics2D.RaycastAll(transform.position, target.transform.position - transform.position, proximityCheckDistance)
-                           where t.transform.gameObject.tag == "Environment" || t.transform.gameObject.tag == "Player"
-                           select t).ToArray();
-                if (hits.Length == 0) return false;
-                return hits[0].transform.CompareTag("Player");
-            case ProximityCheckOption.Always:
-                return true;
-            case ProximityCheckOption.OnScreen:
-                return TargetOnScreen(gameObject);
-            default:
-                Debug.LogError("Proximity check undefined condition");
-                return false;
+            switch (proximityCheckOpt)
+            {
+                case ProximityCheckOption.Distance:
+                    if (Vector3.Distance(target.transform.position, transform.position) <= proximityCheckDistance) return true;
+                    continue;
+                case ProximityCheckOption.DirectSight:
+                    // Check if raycast towards player hits player first and not environment
+                    var hits = (from t in Physics2D.RaycastAll(transform.position, target.transform.position - transform.position, proximityCheckDistance)
+                                where t.transform.gameObject.tag == "Environment" || t.transform.gameObject.tag == "Player"
+                                select t).ToArray();
+                    if (hits.Length == 0) continue;
+                    if (hits[0].transform.CompareTag("Player")) return true;
+                    else continue;
+                case ProximityCheckOption.Always:
+                    return true;
+                case ProximityCheckOption.OnScreen:
+                    if (TargetOnScreen(gameObject)) return true;
+                    else continue;
+                default:
+                    Debug.LogError("Proximity check undefined condition");
+                    return false;
+            }
         }
+        return false;
     }
 
     public enum ProximityCheckOption
