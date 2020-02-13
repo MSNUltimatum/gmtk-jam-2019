@@ -10,6 +10,7 @@ TagManager:
   - Canvas
   - SpawnZone
   - SkillsManager
+  - Room
   layers:
   - Default
   - TransparentFX
