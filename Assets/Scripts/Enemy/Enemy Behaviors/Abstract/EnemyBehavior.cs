@@ -10,9 +10,14 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected bool isActive = false;
     protected AIAgent agent;
 
-    [Header("Behaviour activation condition")]
-    public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+    [Header("Override behaviour activation condition")]
+    public List<AIAgent.ProximityCheckOption> proximityCheckOption = new List<AIAgent.ProximityCheckOption>();
     public float proximityCheckDistance = 19f;
+    public bool invertProximityCheck = false;
+
+    [Tooltip("Don't let it be lower than 2 * proximityCheckPeriod. Exception is -1 which means: NEVER")]
+    public float timeToLoseAggro = -1;
+    private float timeSinceProximityFail = 0;
 
     protected virtual void Awake()
     {
@@ -21,7 +26,7 @@ public abstract class EnemyBehavior : MonoBehaviour
 
         if (proximityCheckOption.Count == 0)
         {
-            proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+            proximityCheckOption = GetComponent<AIAgent>().proximityCheckOption;
         }
     }
 
@@ -30,16 +35,36 @@ public abstract class EnemyBehavior : MonoBehaviour
         if (!isActive && ProximityCheck())
         {
             isActive = true;
+            timeSinceProximityFail = 0;
         }
         else if (isActive)
         {
+            if (timeToLoseAggro != -1)
+            {
+                timeSinceProximityFail = ProximityCheck() ? 0 : timeSinceProximityFail + Time.deltaTime;
+                isActive = timeSinceProximityFail < timeToLoseAggro;
+            }
             agent.SetSteering(GetSteering(), weight);
         }
+        else
+        {
+            agent.SetSteering(ZeroSteering(), weight);
+        }
+    }
+
+    public bool IsActive()
+    {
+        return isActive;
     }
 
     public void Activate()
     {
         isActive = true;
+    }
+
+    protected EnemySteering ZeroSteering()
+    {
+        return new EnemySteering();
     }
 
     public virtual EnemySteering GetSteering() {
@@ -89,38 +114,34 @@ public abstract class EnemyBehavior : MonoBehaviour
         timeToProximityCheck = proximityCheckPeriod;
         foreach (var proximityCheckOpt in proximityCheckOption)
         {
-            switch (proximityCheckOpt)
-            {
-                case ProximityCheckOption.Distance:
-                    if (Vector3.Distance(target.transform.position, transform.position) <= proximityCheckDistance) return true;
-                    continue;
-                case ProximityCheckOption.DirectSight:
-                    // Check if raycast towards player hits player first and not environment
-                    var hits = (from t in Physics2D.RaycastAll(transform.position, target.transform.position - transform.position, proximityCheckDistance)
-                                where t.transform.gameObject.tag == "Environment" || t.transform.gameObject.tag == "Player"
-                                select t).ToArray();
-                    if (hits.Length == 0) continue;
-                    if (hits[0].transform.CompareTag("Player")) return true;
-                    else continue;
-                case ProximityCheckOption.Always:
-                    return true;
-                case ProximityCheckOption.OnScreen:
-                    if (TargetOnScreen(gameObject)) return true;
-                    else continue;
-                default:
-                    Debug.LogError("Proximity check undefined condition");
-                    return false;
-            }
+            var proximityResult = ProximityCheckBody(proximityCheckOpt);
+            if (proximityResult == true  && !invertProximityCheck) return true;
+            if (proximityResult == false &&  invertProximityCheck) return true;
         }
         return false;
     }
 
-    public enum ProximityCheckOption
+    private bool ProximityCheckBody(AIAgent.ProximityCheckOption proximityCheckOpt)
     {
-        Distance,
-        OnScreen,
-        DirectSight,
-        Always
+        switch (proximityCheckOpt)
+        {
+            case AIAgent.ProximityCheckOption.Distance:
+                return Vector3.Distance(target.transform.position, transform.position) <= proximityCheckDistance;
+            case AIAgent.ProximityCheckOption.DirectSight:
+                // Check if raycast towards player hits player first and not environment
+                var hits = (from t in Physics2D.RaycastAll(transform.position, target.transform.position - transform.position, proximityCheckDistance)
+                            where t.transform.gameObject.tag == "Environment" || t.transform.gameObject.tag == "Player"
+                            select t).ToArray();
+                if (hits.Length == 0) return false;
+                return (hits[0].transform.CompareTag("Player"));
+            case AIAgent.ProximityCheckOption.Always:
+                return true;
+            case AIAgent.ProximityCheckOption.OnScreen:
+                return TargetOnScreen(gameObject);
+            default:
+                Debug.LogError("Proximity check undefined condition");
+                return false;
+        }
     }
 
     private float proximityCheckPeriod = 0.5f;

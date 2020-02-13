@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Your second gun
   pickupSprite: {fileID: 21300000, guid: 64640054fafc527428616d678da94459, type: 3}
-  itemIndividualName: 
   attackSound: []
   reloadTime: 1
   timeBetweenAttacks: 0.5
   ammoMagazine: 6
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
+  bulletDamage: 4
+  knockPower: 20
   bulletSpeed: 18
   timeToBulletDestruction: 10
+  maxRndShootingAngle: 0
+  rndShootingAngleAmplifier: 0.15
+  rndShootingAngleRelease: 0.5
