@@ -182,6 +182,11 @@ public class MonsterLife : MonoBehaviour
             }
         }
     }
+
+    public static void ClearUsedNames()
+    {
+        usedNames = new List<string>();
+    }
     
     private float fadeInLeft;
     private SpriteRenderer[] sprites;

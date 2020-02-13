@@ -84,6 +84,7 @@ public class RelodScene : MonoBehaviour
             Canvas.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(NextSceneName);
             Metrics.OnWin();
+            MonsterLife.ClearUsedNames();
             OnSceneChange?.Invoke();
         }
     }
@@ -111,6 +112,7 @@ public class RelodScene : MonoBehaviour
     {
         TotalValue = 0;
         Canvas.transform.GetChild(1).gameObject.SetActive(false);
+        MonsterLife.ClearUsedNames();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
