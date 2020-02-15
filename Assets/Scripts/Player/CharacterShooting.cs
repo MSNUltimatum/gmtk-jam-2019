@@ -19,6 +19,7 @@ public class CharacterShooting : MonoBehaviour
         mainCamera = Camera.main;
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
+        skillManager = GetComponent<SkillManager>();
     }
 
     private void Update()
@@ -35,39 +36,34 @@ public class CharacterShooting : MonoBehaviour
         {
             reloadTimeLeft -= Time.deltaTime;
         }
-        else if (Input.GetButton("Fire1") && currentWeapon.reloadTimeLeft <= 0)
+        else if (Input.GetButton("Fire1"))
         {
+            currentWeapon.reloadTimeLeft = 0;
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
             var ammoNeeded = currentWeapon.logic.AmmoConsumption();
             if (currentWeapon.ammoLeft >= ammoNeeded)
             {
                 currentWeapon.ammoLeft -= ammoNeeded;
-                if (currentWeapon.ammoLeft == 0)
-                {
-                    StartReloadWeapon();
-                }
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
                 shotFrame = true;
             }
             reloadTimeLeft = currentWeapon.logic.timeBetweenAttacks;
+            if (currentWeapon.ammoLeft == 0)
+            {
+                skillManager.ReloadWeaponIfNeeded();
+                reloadTimeLeft = 1f; // WARNING: MAGIC CONSTANT TO PREVENT PLAYER FROM SHOOTING WHEN HE STARTED RELOADING
+            }
         }
         if (Input.GetKeyDown(reloadButton))
         {
-            StartReloadWeapon();
-        }
-    }
-
-    private void StartReloadWeapon()
-    {
-        if (currentWeapon.reloadTimeLeft == 0)
-        {
-            currentWeapon.reloadTimeLeft = currentWeapon.logic.reloadTime;
+            skillManager.ReloadWeaponIfNeeded();
         }
     }
 
     private float reloadTimeLeft = 0;
     private Camera mainCamera;
     private KeyCode reloadButton = KeyCode.R;
+    private SkillManager skillManager;
     public SkillManager.EquippedWeapon currentWeapon;
 }

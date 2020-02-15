@@ -150,6 +150,7 @@ public class SkillManager : MonoBehaviour
         public WeaponSkill logic;
         public int ammoLeft;
         public float reloadTimeLeft;
+        public float lastTimeEquipped;
         public int weaponIndex;
         public AudioClip[] attackSound;
 
@@ -160,6 +161,7 @@ public class SkillManager : MonoBehaviour
             reloadTimeLeft = 0;
             this.weaponIndex = weaponIndex;
             attackSound = weapon.attackSound;
+            lastTimeEquipped = Time.time;
         }
     }
 
@@ -271,7 +273,12 @@ public class SkillManager : MonoBehaviour
                 newWeaponIndex = (equippedWeapon.weaponIndex + equippedWeapons.Count - 1) % equippedWeapons.Count;
             else if (Input.GetKeyDown(rotateWeaponRight))
                 newWeaponIndex = (equippedWeapon.weaponIndex + 1) % equippedWeapons.Count;
+            if (equippedWeapon.ammoLeft < equippedWeapon.logic.ammoMagazine)
+            {
+                ReloadWeaponIfNeeded();
+            }
             equippedWeapon = equippedWeapons[newWeaponIndex];
+            foreach (var weapon in equippedWeapons)
             attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
             ApplyWeaponSprites();
         }
@@ -285,10 +292,7 @@ public class SkillManager : MonoBehaviour
             if (weapon.reloadTimeLeft != 0)
             {
                 weapon.reloadTimeLeft = Mathf.Max(0, weapon.reloadTimeLeft - Time.deltaTime);
-                if (weapon.reloadTimeLeft == 0)
-                {
-                    weapon.ammoLeft = weapon.logic.ammoMagazine;
-                }
+                weapon.ammoLeft = Mathf.Max(weapon.ammoLeft, (int)Mathf.Floor(Mathf.Lerp(weapon.logic.ammoMagazine, 0, (weapon.reloadTimeLeft - 0.01f) / weapon.logic.reloadTime)));
             }
             weaponCooldownsProportion[j] = weapon.reloadTimeLeft / weapon.logic.reloadTime;
 
@@ -309,6 +313,15 @@ public class SkillManager : MonoBehaviour
             {
                 s.UpdateEffect();
             }
+        }
+    }
+
+    public void ReloadWeaponIfNeeded()
+    {
+        if (equippedWeapon.reloadTimeLeft == 0)
+        {
+            equippedWeapon.reloadTimeLeft = equippedWeapon.logic.reloadTime *
+                    Mathf.Lerp(1, 0.5f, (float)equippedWeapon.ammoLeft / equippedWeapon.logic.ammoMagazine); // more bullets = faster reload
         }
     }
 
