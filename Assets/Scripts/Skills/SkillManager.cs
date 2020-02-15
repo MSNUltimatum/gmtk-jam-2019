@@ -79,7 +79,6 @@ public class SkillManager : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + fileName);
         var skillsSavedInfo = new SkillsRecord(skills);
         foreach (var skill in skillsSavedInfo.weapons)
-
             binaryformatter.Serialize(file, skillsSavedInfo);
 
         file.Close();
@@ -321,7 +320,7 @@ public class SkillManager : MonoBehaviour
         if (equippedWeapon.reloadTimeLeft == 0)
         {
             equippedWeapon.reloadTimeLeft = equippedWeapon.logic.reloadTime *
-                    Mathf.Lerp(1, 0.5f, (float)equippedWeapon.ammoLeft / equippedWeapon.logic.ammoMagazine); // more bullets = faster reload
+                Mathf.Lerp(1, 0.5f, (float)equippedWeapon.ammoLeft / equippedWeapon.logic.ammoMagazine); // more bullets = faster reload
         }
     }
 

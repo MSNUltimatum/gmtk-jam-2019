@@ -11,7 +11,7 @@ public class CharacterShooting : MonoBehaviour
     public void LoadNewWeapon(SkillManager.EquippedWeapon weapon, float punishmentReload)
     {
         currentWeapon = weapon;
-        reloadTimeLeft = punishmentReload;
+        timeBetweenAttacks = punishmentReload;
     }
 
     private void Start()
@@ -32,9 +32,9 @@ public class CharacterShooting : MonoBehaviour
         Cursor.visible = false;
 
         shotFrame = false;
-        if (reloadTimeLeft > 0)
+        if (timeBetweenAttacks > 0)
         {
-            reloadTimeLeft -= Time.deltaTime;
+            timeBetweenAttacks -= Time.deltaTime;
         }
         else if (Input.GetButton("Fire1"))
         {
@@ -48,11 +48,11 @@ public class CharacterShooting : MonoBehaviour
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
                 shotFrame = true;
             }
-            reloadTimeLeft = currentWeapon.logic.timeBetweenAttacks;
+            timeBetweenAttacks = currentWeapon.logic.timeBetweenAttacks;
             if (currentWeapon.ammoLeft == 0)
             {
                 skillManager.ReloadWeaponIfNeeded();
-                reloadTimeLeft = 1f; // WARNING: MAGIC CONSTANT TO PREVENT PLAYER FROM SHOOTING WHEN HE STARTED RELOADING
+                timeBetweenAttacks = 1f; // WARNING: MAGIC CONSTANT TO PREVENT PLAYER FROM FIRING WHEN HE STARTED RELOADING
             }
         }
         if (Input.GetKeyDown(reloadButton))
@@ -61,7 +61,7 @@ public class CharacterShooting : MonoBehaviour
         }
     }
 
-    private float reloadTimeLeft = 0;
+    private float timeBetweenAttacks = 0;
     private Camera mainCamera;
     private KeyCode reloadButton = KeyCode.R;
     private SkillManager skillManager;
