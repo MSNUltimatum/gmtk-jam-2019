@@ -245,6 +245,11 @@ MonoBehaviour:
     type: 3}
   fadeInTime: 0.5
   evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &7978445005060429644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +341,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.5, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &5157507254286848553
 Rigidbody2D:
@@ -495,7 +500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3820591866232078491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.481, y: 0.859, z: 0}
+  m_LocalPosition: {x: -0.452, y: 0.859, z: 0}
   m_LocalScale: {x: 0.101963535, y: 0.101963535, z: 0.101963535}
   m_Children: []
   m_Father: {fileID: 967802899671317922}

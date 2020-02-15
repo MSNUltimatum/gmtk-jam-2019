@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012066977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.007, y: 0.234, z: 0}
+  m_LocalPosition: {x: 0.007, y: -0.032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6066653572966047847}
@@ -477,13 +477,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  maxHP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.5
   evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &7337340545462130261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 0
+  proximityCheckDistance: 19
 --- !u!114 &5825017680835124173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,6 +536,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 0
+  proximityCheckDistance: 19
   cooldownRange: {x: 1, y: 1}
   castTime: 0.3
   randomShotAngle: 15
@@ -561,7 +570,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!50 &210368622
 Rigidbody2D:
@@ -694,6 +703,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 0
+  proximityCheckDistance: 19
   shiftAmp: 3
 --- !u!1001 &2787561769962904610
 PrefabInstance:

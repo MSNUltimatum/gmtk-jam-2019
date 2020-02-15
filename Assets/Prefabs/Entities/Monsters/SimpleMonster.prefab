@@ -167,7 +167,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1, y: 1.15}
   m_EdgeRadius: 0
 --- !u!50 &2873645921850147137
 Rigidbody2D:
@@ -209,6 +209,11 @@ MonoBehaviour:
     type: 3}
   fadeInTime: 0.75
   evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &4170874774547565885
 MonoBehaviour:
   m_ObjectHideFlags: 0
