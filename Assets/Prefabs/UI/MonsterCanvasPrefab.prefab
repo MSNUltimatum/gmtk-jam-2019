@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9196971933642235979
 RectTransform:
   m_ObjectHideFlags: 0
@@ -126,11 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToOff: 1.2
-  healthBarEvents:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   activeHealthBar: {fileID: 4766751244532051703}
 --- !u!1 &6640788202129163617
 GameObject:
@@ -263,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8301423602048588380
 RectTransform:
   m_ObjectHideFlags: 0

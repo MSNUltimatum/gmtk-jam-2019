@@ -90,7 +90,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 420
+  spritePixelsToUnits: 59
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,9 +147,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2460
-        width: 1200
-        height: 1230
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aede0ed05aa8f34b9ab48d9d3fe5268
+      spriteID: e8849d534c193a1449dc6ac5e7f4f12a
       internalID: 7786596974469789398
       vertices: []
       indices: 
@@ -167,10 +167,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_1
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 2460
-        width: 1200
-        height: 1230
+        x: 160
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,7 +178,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cb9173056ac73f4f826db551cb1cc04
+      spriteID: fbcea8fbe27db7c4793bd61202d575e9
       internalID: -3983661131696024882
       vertices: []
       indices: 
@@ -188,10 +188,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_2
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 2460
-        width: 1200
-        height: 1230
+        x: 320
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a23c01823b11d74f8989288cda45266
+      spriteID: 78d7c591c4e4f624dab496554efdf688
       internalID: -6767754603656798197
       vertices: []
       indices: 
@@ -209,10 +209,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_3
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 2460
-        width: 1200
-        height: 1230
+        x: 480
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,7 +220,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e70047f79dc524e863e80592b4d36d
+      spriteID: 6bba9f8d8788c8c42a3027925fb4be9e
       internalID: -2040818763871877498
       vertices: []
       indices: 
@@ -230,10 +230,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_4
       rect:
         serializedVersion: 2
-        x: 4800
-        y: 2460
-        width: 1200
-        height: 1230
+        x: 640
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83d167c3588bb9b49a2b5ded432a4f77
+      spriteID: 9ad93a1602d8afa43816c722eb782698
       internalID: -2613725188845511535
       vertices: []
       indices: 
@@ -251,10 +251,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1230
-        width: 1200
-        height: 1230
+        x: 800
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,7 +262,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e84cdae477e327488fefdae8ed2e8fd
+      spriteID: 4fffa7deba5c04540969a0d42c01d89c
       internalID: 4770404755860158348
       vertices: []
       indices: 
@@ -272,10 +272,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_6
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 1230
-        width: 1200
-        height: 1230
+        x: 960
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,7 +283,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f537bfb1f7858664b916f719d3128095
+      spriteID: e659fac6bf7e82343a69f8af985e0d8c
       internalID: 8238169038471945123
       vertices: []
       indices: 
@@ -293,10 +293,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_7
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 1230
-        width: 1200
-        height: 1230
+        x: 1120
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,7 +304,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2a9909df27521f44b646f448e28f9dc
+      spriteID: 73bfddc69511f2e41ab002e5a6db5aa2
       internalID: -6272341204782923642
       vertices: []
       indices: 
@@ -314,10 +314,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_8
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 1230
-        width: 1200
-        height: 1230
+        x: 1280
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,7 +325,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80638a52c55e0f04388c5b6315441c95
+      spriteID: a859a2013d601ce4b881c28ce8874409
       internalID: -3896350309551792545
       vertices: []
       indices: 
@@ -335,10 +335,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_9
       rect:
         serializedVersion: 2
-        x: 4800
-        y: 1230
-        width: 1200
-        height: 1230
+        x: 1440
+        y: 0
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,7 +346,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77cbe36f6e99dc449a7114f4c671c19d
+      spriteID: 63b4bb60f5821fc4d98ff0f261ffde8b
       internalID: -1400624218998785971
       vertices: []
       indices: 
@@ -356,10 +356,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_10
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1600
         y: 0
-        width: 1200
-        height: 1230
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,7 +367,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 332587daccf08704faa8527123456f4e
+      spriteID: f7c5e02df2755424db86543fe9895ddc
       internalID: 7449407784647125110
       vertices: []
       indices: 
@@ -377,10 +377,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_11
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1760
         y: 0
-        width: 1200
-        height: 1230
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -388,7 +388,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03b22fc9a0abe45409eb7cbcf9a0d4a3
+      spriteID: 6abcadb19e275d045b3417c9a8348eda
       internalID: -2025170665506974154
       vertices: []
       indices: 
@@ -398,10 +398,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_12
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 1920
         y: 0
-        width: 1200
-        height: 1230
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,7 +409,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02d697f1817e95546b5a32901e54b497
+      spriteID: f4e9e9ad52a2f1f4aa49a50e78c075cf
       internalID: -5520619025575491110
       vertices: []
       indices: 
@@ -419,10 +419,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_13
       rect:
         serializedVersion: 2
-        x: 3600
+        x: 2080
         y: 0
-        width: 1200
-        height: 1230
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,7 +430,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b3a3d4b76a3c0c4da0fbae0f31558c2
+      spriteID: adde603596ac5a2468c808191d8b3ebb
       internalID: -5006939014400362297
       vertices: []
       indices: 
@@ -440,10 +440,10 @@ TextureImporter:
       name: Zhuk-pauk_animatsia1_raskadrovka_14
       rect:
         serializedVersion: 2
-        x: 4800
+        x: 2240
         y: 0
-        width: 1200
-        height: 1230
+        width: 160
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,7 +451,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e57f5f4f0d57ddf4fa637800beb3fe9d
+      spriteID: 4e6a6f1d25262e94397abc776ee854ca
       internalID: -6029365043141477867
       vertices: []
       indices: 

@@ -18,9 +18,10 @@ public class CharacterMovement : MonoBehaviour
         anim = anims[0];
         shadowAnim = anims[1];
         mainCamera = Camera.main;
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Pause.Paused) return;
 
@@ -43,8 +44,8 @@ public class CharacterMovement : MonoBehaviour
         {
             direction.Normalize();
         }
-        var previousPosition = transform.position;
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+
+        rigidbody.velocity = direction * speed * Time.fixedDeltaTime * 50;
         if (anim != null)
         {
             if (CharacterLife.isDeath) return;
@@ -62,8 +63,10 @@ public class CharacterMovement : MonoBehaviour
                 shadowAnim.Play("HeroShadow");
             }        
         }
+        previousPosition = transform.position;
     }
 
     private Camera mainCamera = null;
-
+    private Vector3 previousPosition = new Vector3();
+    new private Rigidbody2D rigidbody;
 }

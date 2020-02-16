@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 840
+  spritePixelsToUnits: 34
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -150,9 +150,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1100
-        width: 1050
-        height: 1100
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4531ff0a7dec4ba43acccc54a79d6834
+      spriteID: b2f922a5be55f0448a68447ad6b0df8e
       internalID: -6617880080247477084
       vertices: []
       indices: 
@@ -170,10 +170,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_1
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 42
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,7 +181,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3611767cb11e9344baec2ce616d09ef1
+      spriteID: c8ba9daf1348862419ff658f451f1040
       internalID: 5494696550398652669
       vertices: []
       indices: 
@@ -191,10 +191,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_2
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 84
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92f42ae2ad4666b4db66db13657d3c8d
+      spriteID: 5571a73d76211bc4e8ada3026a2a1aa2
       internalID: -8358693114829569365
       vertices: []
       indices: 
@@ -212,10 +212,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_3
       rect:
         serializedVersion: 2
-        x: 3150
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 126
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +223,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa9187eea09c7f74aa9a8208d7166a62
+      spriteID: 438ea9354cd68f542a4d15995e3a662d
       internalID: 7062863323659826411
       vertices: []
       indices: 
@@ -233,10 +233,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_4
       rect:
         serializedVersion: 2
-        x: 4200
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 168
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,7 +244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da44c31c29e981841bdd24b69aed174e
+      spriteID: a25082361f132584a8a1283c86a8f86d
       internalID: -5057425820589651325
       vertices: []
       indices: 
@@ -254,10 +254,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_5
       rect:
         serializedVersion: 2
-        x: 5250
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 210
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,7 +265,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f44df2ac7a470d48b8add0833254b8c
+      spriteID: 853515c909d5b5449bbe1b72c3293e9c
       internalID: -1481219609337695674
       vertices: []
       indices: 
@@ -275,10 +275,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_6
       rect:
         serializedVersion: 2
-        x: 6300
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 252
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,7 +286,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fc57b8ae98b4944390ff64ca4ea0f58
+      spriteID: d64a14bf3b846194b8450dc8b13d2e61
       internalID: -7186305521037752318
       vertices: []
       indices: 
@@ -296,10 +296,10 @@ TextureImporter:
       name: Schupaltsa_animatsia1_raskadrovka_7
       rect:
         serializedVersion: 2
-        x: 7350
-        y: 1100
-        width: 1050
-        height: 1100
+        x: 294
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,176 +307,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dfbb5a708836f74c8a315e2d69a838b
+      spriteID: 72e03b55b62e7534aae3b16246ac6820
       internalID: -1545276790256666013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5693d39da70fe8248aba13875c948c9b
-      internalID: -7119532334501246466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_9
-      rect:
-        serializedVersion: 2
-        x: 1050
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecae0368b627d484795c063da0c97b59
-      internalID: -7864920143259732020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_10
-      rect:
-        serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88223ecf32d067d46bdd1ca8c234fc29
-      internalID: 8384287660403916349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_11
-      rect:
-        serializedVersion: 2
-        x: 3150
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecbba4db629fdc04d8ae613cc48d907a
-      internalID: 4983976176065327148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_12
-      rect:
-        serializedVersion: 2
-        x: 4200
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4af6d002fd64f524ab32ff1ea099d9a5
-      internalID: -6631137542716993159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_13
-      rect:
-        serializedVersion: 2
-        x: 5250
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec7268a4e6159634b925c1bfa177b370
-      internalID: 7601174480920800579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_14
-      rect:
-        serializedVersion: 2
-        x: 6300
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 416a61618c5bcce48a1992eaea71aba6
-      internalID: 982367046185537666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Schupaltsa_animatsia1_raskadrovka_15
-      rect:
-        serializedVersion: 2
-        x: 7350
-        y: 0
-        width: 1050
-        height: 1100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1559a268201d9f5408b1c62972fef9aa
-      internalID: -7029334278629699733
       vertices: []
       indices: 
       edges: []

@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,8 +139,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,7 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6adbfc5d4c8fc44795f3032dd67a01f
+      spriteID: 4e4710468df207648bdf50afb254ce51
       internalID: -5141226925490750610
       vertices: []
       indices: 
@@ -158,10 +158,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_1
       rect:
         serializedVersion: 2
-        x: 60
+        x: 128
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db9414096d12e6641a64fe6407d1abeb
+      spriteID: 232d095019ee52e45a3e7b121c7976b5
       internalID: 3511839403643052035
       vertices: []
       indices: 
@@ -179,10 +179,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_2
       rect:
         serializedVersion: 2
-        x: 120
+        x: 257
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8a7f1cba80bc2f4bac8baac5cca8927
+      spriteID: 619248d0d0669b64e90a461fb7cd5f5b
       internalID: -394639994430188040
       vertices: []
       indices: 
@@ -200,10 +200,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_3
       rect:
         serializedVersion: 2
-        x: 180
+        x: 384
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,7 +211,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d34dd3efa8de15e4a9a9276912c021bf
+      spriteID: f5fcd2326defe364393177d15104d3b7
       internalID: -8949556764398708970
       vertices: []
       indices: 
@@ -221,10 +221,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_4
       rect:
         serializedVersion: 2
-        x: 240
+        x: 512
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,7 +232,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97c55f5daf69ccc4e9d5c8fb304c07f1
+      spriteID: 31d81537e1bfdc446a25e8bec7caf64c
       internalID: 7665667461398456861
       vertices: []
       indices: 
@@ -242,10 +242,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_5
       rect:
         serializedVersion: 2
-        x: 300
+        x: 640
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,7 +253,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e291fe0670321914d8e30ce86ab83553
+      spriteID: 379b88c530157914ba1d6fda6a2d1da8
       internalID: 3834904564182893185
       vertices: []
       indices: 
@@ -263,10 +263,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_6
       rect:
         serializedVersion: 2
-        x: 360
+        x: 768
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,7 +274,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d0886dd7ccd4c54d950b162bfe3771b
+      spriteID: c1be623ab96256a4c98a6d3ab85857cb
       internalID: -4325336628254864436
       vertices: []
       indices: 
@@ -284,10 +284,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_7
       rect:
         serializedVersion: 2
-        x: 420
+        x: 896
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,7 +295,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a5352d54e397494b993c17232c33885
+      spriteID: ccb95002f634c4146b990ea54109d907
       internalID: 8290630807264114474
       vertices: []
       indices: 
@@ -305,10 +305,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_8
       rect:
         serializedVersion: 2
-        x: 480
+        x: 1024
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,7 +316,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1493cb33e1b2e84bae19caedf6846f3
+      spriteID: e32743c9fb910ec4f8deaa36ef1e29a9
       internalID: -8544733842934647319
       vertices: []
       indices: 
@@ -326,10 +326,10 @@ TextureImporter:
       name: Pulya_tyomn1_raskadr_9
       rect:
         serializedVersion: 2
-        x: 540
+        x: 1152
         y: 0
-        width: 60
-        height: 115
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,50 +337,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 962dd3784b3368045b53e4d43e85a3f0
+      spriteID: da62f2a265fc0a247ac63af264a3b7de
       internalID: -4308471066220776311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pulya_tyomn1_raskadr_10
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 60
-        height: 115
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1bfce2d512ebb7c438cfdeb7a91d4cf4
-      internalID: 4458375640301168717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pulya_tyomn1_raskadr_11
-      rect:
-        serializedVersion: 2
-        x: 660
-        y: 0
-        width: 60
-        height: 115
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 282d7e78c2ed3a542b39a4d55b8772e5
-      internalID: 6220721594199321549
       vertices: []
       indices: 
       edges: []

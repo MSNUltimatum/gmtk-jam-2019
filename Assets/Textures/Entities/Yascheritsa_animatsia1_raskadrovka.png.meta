@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 840
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,8 +121,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 950
-        height: 1450
+        width: 38
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fd5dc77ed4f2da4cbd4c662317e7348
+      spriteID: a3fa7a7d69a2adf4b9f13135e0590345
       internalID: 7686187740946266990
       vertices: []
       indices: 
@@ -140,10 +140,10 @@ TextureImporter:
       name: Yascheritsa_animatsia1_raskadrovka_1
       rect:
         serializedVersion: 2
-        x: 950
+        x: 38
         y: 0
-        width: 950
-        height: 1450
+        width: 38
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ae328b0f34ae184999d657507a01eba
+      spriteID: cd044f874e59848478db89fdb010dd2a
       internalID: 2656359322357215289
       vertices: []
       indices: 
@@ -161,10 +161,10 @@ TextureImporter:
       name: Yascheritsa_animatsia1_raskadrovka_2
       rect:
         serializedVersion: 2
-        x: 1900
+        x: 76
         y: 0
-        width: 950
-        height: 1450
+        width: 38
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83f7afed5bda4774191631e82ddaf485
+      spriteID: c3a56b9ba7eebb441931651b9c97e7bc
       internalID: -6539194265427341340
       vertices: []
       indices: 
@@ -182,10 +182,10 @@ TextureImporter:
       name: Yascheritsa_animatsia1_raskadrovka_3
       rect:
         serializedVersion: 2
-        x: 2850
+        x: 114
         y: 0
-        width: 950
-        height: 1450
+        width: 38
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd419f09f16db884aae318e904883df1
+      spriteID: f23b8e36753e62a45bbf021680dd22fc
       internalID: -2366243673451867108
       vertices: []
       indices: 
@@ -203,10 +203,10 @@ TextureImporter:
       name: Yascheritsa_animatsia1_raskadrovka_4
       rect:
         serializedVersion: 2
-        x: 3800
+        x: 152
         y: 0
-        width: 950
-        height: 1450
+        width: 38
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b04acde0bde78db4d89ec904a7a2191b
+      spriteID: ff6898ecfe1607c4d9ba5942c2f77b67
       internalID: -5300896975600751577
       vertices: []
       indices: 
@@ -224,10 +224,10 @@ TextureImporter:
       name: Yascheritsa_animatsia1_raskadrovka_5
       rect:
         serializedVersion: 2
-        x: 4750
+        x: 190
         y: 0
-        width: 950
-        height: 1450
+        width: 38
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98caad6d389fd714081b4ecc2020c86b
+      spriteID: c910201e86d7f3745af8b0f27cab945f
       internalID: -7698895791025858139
       vertices: []
       indices: 

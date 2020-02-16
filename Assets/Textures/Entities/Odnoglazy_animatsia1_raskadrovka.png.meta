@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 420
+  spritePixelsToUnits: 28
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,9 +126,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1260
-        width: 1230
-        height: 1260
+        y: 0
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 986adf44bf57eea44928462d7c9c56d4
+      spriteID: 3146b94277085e4419e2941b88c61518
       internalID: -1458479867593550323
       vertices: []
       indices: 
@@ -146,10 +146,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_1
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 1260
-        width: 1230
-        height: 1260
+        x: 82
+        y: 0
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce6f27528f32a6748a41012c977faa65
+      spriteID: 96ac7569ed85b9f4a8c17c84e9e54f11
       internalID: 1655838556270482215
       vertices: []
       indices: 
@@ -167,10 +167,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_2
       rect:
         serializedVersion: 2
-        x: 2460
-        y: 1260
-        width: 1230
-        height: 1260
+        x: 164
+        y: 0
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,7 +178,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a112683ef2377c848b5c633990e2516a
+      spriteID: dff4f6fd41e0146459ac90a2679dbb5f
       internalID: 3660979222155914106
       vertices: []
       indices: 
@@ -188,10 +188,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_3
       rect:
         serializedVersion: 2
-        x: 3690
-        y: 1260
-        width: 1230
-        height: 1260
+        x: 246
+        y: 0
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88faacf9bec083642904732e32bd478a
+      spriteID: 817891ea16ead594f92a537ec030b422
       internalID: 7614355038683769879
       vertices: []
       indices: 
@@ -209,10 +209,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 328
         y: 0
-        width: 1230
-        height: 1260
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,7 +220,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5194bf856154cc3428cda94033a60a01
+      spriteID: 3e486775d4910a547bf4aa7820213d57
       internalID: 4951797280476596423
       vertices: []
       indices: 
@@ -230,10 +230,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_5
       rect:
         serializedVersion: 2
-        x: 1230
+        x: 410
         y: 0
-        width: 1230
-        height: 1260
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec8fae2d2b3d87f4d9cb1c67f1172403
+      spriteID: ee8a081c3c8986c48a977bc1d81682d7
       internalID: 4674724725217867362
       vertices: []
       indices: 
@@ -251,10 +251,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_6
       rect:
         serializedVersion: 2
-        x: 2460
+        x: 492
         y: 0
-        width: 1230
-        height: 1260
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,7 +262,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02cde51b58e447149a16b0f8d9b9a0b3
+      spriteID: 71e785a5e28a84e4c95001657ed0148f
       internalID: 3626878729012631532
       vertices: []
       indices: 
@@ -272,10 +272,10 @@ TextureImporter:
       name: Odnoglazy_animatsia1_raskadrovka_7
       rect:
         serializedVersion: 2
-        x: 3690
+        x: 574
         y: 0
-        width: 1230
-        height: 1260
+        width: 82
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,7 +283,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc2988631f2b84545b88bf30b63ceb65
+      spriteID: bbd873cac5786564e90770c866cf3e2e
       internalID: 8773325141273635901
       vertices: []
       indices: 

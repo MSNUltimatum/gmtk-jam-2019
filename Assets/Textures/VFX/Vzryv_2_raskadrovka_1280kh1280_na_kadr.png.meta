@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 420
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,8 +121,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31811207752c23843bb663a57b14ab1b
+      spriteID: 723b95c72d48c6145936b6d9ca4b6968
       internalID: 2072279420401714881
       vertices: []
       indices: 
@@ -140,10 +140,10 @@ TextureImporter:
       name: Vzryv_2_raskadrovka_1280kh1280_na_kadr_1
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 128
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4623f42cbf5e0841af589045414aca7
+      spriteID: 50eeba075467fc94aa825fa3e28f4534
       internalID: 2318986086676925642
       vertices: []
       indices: 
@@ -161,10 +161,10 @@ TextureImporter:
       name: Vzryv_2_raskadrovka_1280kh1280_na_kadr_2
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 256
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f2c7f5afe32cbc4697692f5ca093df4
+      spriteID: cb7a120e15d87f24182789e76ebbd00b
       internalID: -6459943541920952460
       vertices: []
       indices: 
@@ -182,10 +182,10 @@ TextureImporter:
       name: Vzryv_2_raskadrovka_1280kh1280_na_kadr_3
       rect:
         serializedVersion: 2
-        x: 3840
+        x: 384
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58ce8aa519de8814ca3c00775675dcfe
+      spriteID: d5640612fa65dbe4aad2793e8b896785
       internalID: -2757364001063618820
       vertices: []
       indices: 
@@ -203,10 +203,10 @@ TextureImporter:
       name: Vzryv_2_raskadrovka_1280kh1280_na_kadr_4
       rect:
         serializedVersion: 2
-        x: 5120
+        x: 512
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e13692fdfa9fa640b272e1cbefee52f
+      spriteID: f1c00fd457523914ba84dbd701db7ac6
       internalID: -3551342317278978546
       vertices: []
       indices: 
@@ -224,10 +224,10 @@ TextureImporter:
       name: Vzryv_2_raskadrovka_1280kh1280_na_kadr_5
       rect:
         serializedVersion: 2
-        x: 6400
+        x: 640
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8433bef4a14b1fb4d92f31c182169f97
+      spriteID: 85071c03669cc6147a43cb117d5b7b1b
       internalID: 9038678137993134470
       vertices: []
       indices: 
