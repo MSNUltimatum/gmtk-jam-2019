@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class AIAgent : MonoBehaviour
@@ -7,10 +8,22 @@ public class AIAgent : MonoBehaviour
     public float maxAccel = 100;
     public float maxRotation = 200f;
     public float maxAngularAccel = 10000f;
+    public float velocityFallBackPower = 3f;
     public float orientation;
     public float rotation;
     public Vector2 velocity;
     protected EnemySteering steering;
+
+    [Header("All Behaviours activation condition")]
+    public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+
+    public enum ProximityCheckOption
+    {
+        Distance,
+        OnScreen,
+        DirectSight,
+        Always
+    }
 
     private void Start()
     {
@@ -48,9 +61,11 @@ public class AIAgent : MonoBehaviour
         {
             i.CalledUpdate();
         }
-
-        velocity += steering.linear * Time.deltaTime;
-        rotation += steering.angular * Time.deltaTime;
+        Vector2 velocityFallBack = 
+            velocity.normalized * 
+            new Vector2(velocityFallBackPower * Time.deltaTime, velocityFallBackPower * Time.deltaTime);
+        velocity += steering.linear * Time.deltaTime - velocityFallBack;
+        rotation += Mathf.Max(steering.angular * Time.deltaTime);
         if (velocity.magnitude > maxSpeed)
         {
             velocity.Normalize();

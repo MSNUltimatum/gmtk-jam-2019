@@ -7,7 +7,7 @@ public class MouseBulletLife : BulletLife
     protected override void Move()
     {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
+        transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
 
         Vector3 difference = mousePosition - transform.position;
         difference.Normalize();

@@ -22,7 +22,7 @@ public class PursueBulletLife : BulletLife
         }
         else
         {
-            transform.Translate(Vector2.right * Speed * Time.deltaTime, Space.Self);
+            transform.Translate(Vector2.right * speed * Time.deltaTime, Space.Self);
             RotateToTarget(monsterTargetGameObj);
         }
     }

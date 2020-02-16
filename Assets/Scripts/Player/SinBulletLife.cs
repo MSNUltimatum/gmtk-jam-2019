@@ -22,7 +22,7 @@ public class SinBulletLife : BulletLife
 
     protected override void Move()
     {
-        pos += transform.right * Time.fixedDeltaTime * Speed;
+        pos += transform.right * Time.fixedDeltaTime * speed;
         if (!isCos)
             transform.position = pos + axis * Mathf.Sin(Time.time * frequency) * R;
         else

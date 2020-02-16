@@ -35,7 +35,8 @@ public class CurrentEnemySelector : MonoBehaviour
     {
         if (currentBoy != null)
         {
-            currentBoy.GetComponent<MonsterLife>().MakeNoBoy();
+            GameObject copyReferenceOfCurrentEnemy = currentBoy;
+            StartCoroutine(DeactivateMonsterOverTime(0.4f, copyReferenceOfCurrentEnemy));
             currentBoy = null;
         }
 
@@ -46,6 +47,15 @@ public class CurrentEnemySelector : MonoBehaviour
             SelectEnemy(theEnemy);
         }
         else CurrentEnemyUI.SetCurrentEnemy("");
+    }
+
+    private IEnumerator DeactivateMonsterOverTime(float time, GameObject monster)
+    {
+        yield return new WaitForSeconds(time);
+        if (monster != null)
+        {
+            monster.GetComponent<MonsterLife>().MakeNoBoy();
+        }
     }
 
     public void SelectEnemy(GameObject theEnemy)

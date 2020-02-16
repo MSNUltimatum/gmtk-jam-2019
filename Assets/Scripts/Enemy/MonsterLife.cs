@@ -30,14 +30,20 @@ public class MonsterLife : MonoBehaviour
         return isBoy();
     }
 
-    private void Start()
+    private void Awake()
     {
         HP = maxHP;
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
         monsterName = GetComponentInChildren<TMPro.TextMeshPro>();
         ChooseMyName();
+    }
 
+    private void Start()
+    {
+        FadeIn(fadeInTime);
+        sprites = GetComponentsInChildren<SpriteRenderer>();
+        
         if (absorbPrefab == null)
         {
             absorbPrefab = Resources.Load<GameObject>("AbsorbBubble.prefab");
@@ -175,6 +181,11 @@ public class MonsterLife : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public static void ClearUsedNames()
+    {
+        usedNames = new List<string>();
     }
     
     private float fadeInLeft;
