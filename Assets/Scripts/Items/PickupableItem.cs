@@ -8,10 +8,16 @@ public class PickupableItem : MonoBehaviour
     public float destanceToPickup = 1f;
     public float inactiveTime = 0.5f;
     private bool active = false;
+    public enum ItemType { skill, temporary };
+    public ItemType type;
+    public SkillBase skill;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (type == ItemType.skill) {
+            GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
+        }
     }
 
     void Update()
@@ -30,7 +36,13 @@ public class PickupableItem : MonoBehaviour
     }
 
     void PickUp() {
-        player.GetComponentInChildren<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color; // effect for test, replace it when needed
+        if (type == ItemType.skill) {
+            var skillInstance = Instantiate(skill);
+            player.GetComponent<SkillManager>().AddSkill(skillInstance);
+        }
+        else if (type == ItemType.temporary) {
+            //do nothing for now, under construction
+        }
         Destroy(gameObject);
     }
 }

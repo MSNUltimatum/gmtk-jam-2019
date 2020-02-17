@@ -23,8 +23,6 @@ public class Door : MonoBehaviour
 
     public string sceneName=""; // name of scene to change on enter this door
 
-    public static UnityEvent OnSceneChange = new UnityEvent();
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -46,8 +44,8 @@ public class Door : MonoBehaviour
             if (sceneName == "") {
                 connectedDoor.room.MoveToRoom(connectedDoor);
             } else {
+                RelodScene.OnSceneChange?.Invoke();
                 SceneManager.LoadScene(sceneName);
-                OnSceneChange?.Invoke(); 
             }
         }
     }
@@ -124,7 +122,6 @@ public class Door : MonoBehaviour
         {
             Gizmos.color = Color.green; // green circle for unlocked door, and spawn position
             Gizmos.DrawWireSphere(transform.position, 1);
-
         }
     }
 }

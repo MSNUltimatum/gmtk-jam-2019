@@ -169,18 +169,37 @@ public class SkillManager : MonoBehaviour
         skillsUI = GameObject.FindGameObjectWithTag("Canvas").GetComponent<SkillsUI>();
     }
 
+    List<WeaponSkill> inventoryWeaponSkills = new List<WeaponSkill>();
+    List<ActiveSkill> inventoryActiveSkills = new List<ActiveSkill>();
+
     public void AddSkill(SkillBase skill)
     {
         skills.Add(skill);
+        skill.InitializeSkill();
         if (skill is ActiveSkill)
         {
-            activeSkills.Add(new EquippedActiveSkill(skill as ActiveSkill));
+            if (activeSkills.Count >= 5)
+            {
+                inventoryActiveSkills.Add(skill as ActiveSkill);
+            }
+            else
+            {
+                activeSkills.Add(new EquippedActiveSkill(skill as ActiveSkill));
+            }
         }
         else
         {
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! index?
-            equippedWeapons.Add(new EquippedWeapon(skill as WeaponSkill, equippedWeapon.weaponIndex + 1));
+            if (equippedWeapons.Count >= 3)
+            {
+                inventoryWeaponSkills.Add(skill as WeaponSkill);
+            }
+            else
+            {
+                equippedWeapons.Add(new EquippedWeapon(skill as WeaponSkill, equippedWeapons.Count));
+            }
+
         }
+        InitializeUI();
     }
 
     private void Start()
@@ -198,18 +217,30 @@ public class SkillManager : MonoBehaviour
     }
 
     private void InitializeSkills()
-    {
-        var weaponIndex = 0;
+    {        
         foreach (var s in skills)
         {
             if (s is ActiveSkill)
             {
-                activeSkills.Add(new EquippedActiveSkill(s as ActiveSkill));
+                if (activeSkills.Count >= 5)
+                {
+                    inventoryActiveSkills.Add(s as ActiveSkill);
+                }
+                else
+                {
+                    activeSkills.Add(new EquippedActiveSkill(s as ActiveSkill));
+                }
             }
-            else if (s is WeaponSkill)
+            else
             {
-                equippedWeapons.Add(new EquippedWeapon(s as WeaponSkill, weaponIndex));
-                weaponIndex++;
+                if (equippedWeapons.Count >= 3)
+                {
+                    inventoryWeaponSkills.Add(s as WeaponSkill);
+                }
+                else
+                {
+                    equippedWeapons.Add(new EquippedWeapon(s as WeaponSkill, equippedWeapons.Count));
+                }
             }
             s.InitializeSkill();
         }

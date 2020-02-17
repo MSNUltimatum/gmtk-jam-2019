@@ -53,7 +53,7 @@ public class SkillsUI : MonoBehaviour
 
     public void UpdateSkillRecoverVisualCooldown(float[] proportionOfTimeLeft)
     {
-        for (int i = 0; i < weaponsCount; i++)
+        for (int i = 0; i < skillCount; i++)
         {
             skillCooldownEffectCells[i].SetFloat("_CooldownProgress", proportionOfTimeLeft[i]);
         }
@@ -61,7 +61,7 @@ public class SkillsUI : MonoBehaviour
 
     public void SetSkillSprites(Sprite[] skillSprites)
     {
-        for (int i = 0; i < weaponsCount; i++)
+        for (int i = 0; i < skillCount; i++)
         {
             if (skillSprites[i] != null)
             {
