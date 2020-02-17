@@ -6,9 +6,11 @@ public class BulletLife : MonoBehaviour
 {
     // Logic
     [System.NonSerialized]
-    public float Speed;
+    public float speed;
     [System.NonSerialized]
     public float timeToDestruction;
+    [System.NonSerialized]
+    public int damage;
     protected float TTDLeft = 0;
 
     protected virtual void Start()
@@ -29,7 +31,9 @@ public class BulletLife : MonoBehaviour
         }
     }
     
+    [System.NonSerialized]
     public float knockThrust = 10;
+    [System.NonSerialized]
     public float knockTime = 0.5f;
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -46,7 +50,7 @@ public class BulletLife : MonoBehaviour
 
     protected virtual void Move()
     {
-        transform.Translate(Vector2.right * Speed * Time.fixedDeltaTime);
+        transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
     }
 
     protected virtual void EnemyCollider(Collider2D coll)
@@ -63,7 +67,7 @@ public class BulletLife : MonoBehaviour
               var moveComps = Enemy.GetComponentsInChildren<AIAgent>();
               foreach (var moveComp in moveComps)
               {
-                  moveComp.StopMovement(knockTime);
+                  //moveComp.StopMovement(knockTime);
               }
           }
 
@@ -71,7 +75,7 @@ public class BulletLife : MonoBehaviour
           var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
           if (monsterComp)
           {
-              monsterComp.Damage(gameObject);
+              monsterComp.Damage(gameObject, damage);
           }
           else
           {
