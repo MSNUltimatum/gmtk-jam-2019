@@ -45,4 +45,14 @@ public class PickupableItem : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (skill.pickupSprite != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
+        }
+    }
+#endif
 }
