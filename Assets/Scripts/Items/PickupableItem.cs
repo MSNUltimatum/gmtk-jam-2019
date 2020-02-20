@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class PickupableItem : MonoBehaviour
 {
     private GameObject player = null;
@@ -11,6 +12,7 @@ public class PickupableItem : MonoBehaviour
     public enum ItemType { skill, temporary };
     public ItemType type;
     public SkillBase skill;
+    private Sprite sprite;
 
     void Awake()
     {
@@ -18,14 +20,20 @@ public class PickupableItem : MonoBehaviour
         if (type == ItemType.skill) {
             GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
         }
+        sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     void Update()
     {
-        if (!active)
-        {
-            inactiveTime -= Time.deltaTime;
-            if (inactiveTime <= 0) active = true;
+        if (Application.IsPlaying(gameObject)) {
+            if (!active) {
+                inactiveTime -= Time.deltaTime;
+                if (inactiveTime <= 0) active = true;
+                
+            }
+        } else {
+            if (sprite != skill.pickupSprite)
+                sprite = skill.pickupSprite;
         }
     }
 
@@ -45,14 +53,4 @@ public class PickupableItem : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (skill.pickupSprite != null)
-        {
-            GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
-        }
-    }
-#endif
 }
