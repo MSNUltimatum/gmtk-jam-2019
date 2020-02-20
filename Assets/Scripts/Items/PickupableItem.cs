@@ -5,7 +5,6 @@ using UnityEngine;
 [ExecuteAlways]
 public class PickupableItem : MonoBehaviour
 {
-    private GameObject player = null;
     public float destanceToPickup = 1f;
     public float inactiveTime = 0.5f;
     private bool active = false;
@@ -14,36 +13,28 @@ public class PickupableItem : MonoBehaviour
     public SkillBase skill;
     private Sprite sprite;
 
-    void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        if (type == ItemType.skill) {
-            GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
-        }
-        sprite = GetComponent<SpriteRenderer>().sprite;
-    }
-
     void Update()
     {
         if (Application.IsPlaying(gameObject)) {
             if (!active) {
                 inactiveTime -= Time.deltaTime;
                 if (inactiveTime <= 0) active = true;
-                
             }
-        } else {
-            if (sprite != skill.pickupSprite)
-                sprite = skill.pickupSprite;
+        } 
+        if (type == ItemType.skill && sprite != skill.pickupSprite)
+        {
+            GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
+            sprite = skill.pickupSprite;
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (active && collision.gameObject == player)
-            PickUp();
+        if (active && collision.CompareTag("Player"))
+            PickUp(collision);
     }
 
-    void PickUp() {
+    void PickUp(Collider2D player) {
         if (type == ItemType.skill) {
             var skillInstance = Instantiate(skill);
             player.GetComponent<SkillManager>().AddSkill(skillInstance);
