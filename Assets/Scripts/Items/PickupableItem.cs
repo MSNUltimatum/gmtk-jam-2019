@@ -8,7 +8,7 @@ public class PickupableItem : MonoBehaviour
     public float destanceToPickup = 1f;
     public float inactiveTime = 0.5f;
     private bool active = false;
-    public enum ItemType { skill, temporary };
+    public enum ItemType { skill, temporary, heal };
     public ItemType type;
     public SkillBase skill;
     private Sprite sprite;
@@ -38,9 +38,8 @@ public class PickupableItem : MonoBehaviour
         if (type == ItemType.skill) {
             var skillInstance = Instantiate(skill);
             player.GetComponent<SkillManager>().AddSkill(skillInstance);
-        }
-        else if (type == ItemType.temporary) {
-            //do nothing for now, under construction
+        }else if (type == ItemType.heal) {
+            player.GetComponent<CharacterLife>().Heal(1);
         }
         Destroy(gameObject);
     }

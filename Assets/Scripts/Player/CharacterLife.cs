@@ -114,7 +114,15 @@ public class CharacterLife : MonoBehaviour
         isDeath = false;
     }
 
+    public void Heal(int healAmmount) {
+        if (!isDeath) { 
+            hp += healAmmount;
+            if (hp > maxHp) hp = maxHp;
+        }
+    }
+
     private int hp = 3;
+    private int maxHp=3;
     private float invulTime = 0.5f;
     private float invulTimeLeft = 0;
 
