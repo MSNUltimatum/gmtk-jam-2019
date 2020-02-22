@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class ShootingWeapon : WeaponSkill
+[CreateAssetMenu(fileName = "Simple Shooting Weapon", menuName = "ScriptableObject/Weapon/Simple Shooting Weapon", order = 1)]
+public class ShootingWeapon : WeaponSkill
 {
     public GameObject bulletPrefab;
     public int bulletDamage = 5;

@@ -38,12 +38,13 @@ public class CharacterShooting : MonoBehaviour
         }
         else if (Input.GetButton("Fire1"))
         {
-            currentWeapon.reloadTimeLeft = 0;
+            
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
             var ammoNeeded = currentWeapon.logic.AmmoConsumption();
             if (currentWeapon.ammoLeft >= ammoNeeded)
             {
+                currentWeapon.reloadTimeLeft = 0;
                 currentWeapon.ammoLeft -= ammoNeeded;
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
                 shotFrame = true;

@@ -47,6 +47,7 @@ MonoBehaviour:
   - ActiveMouseBullet:ActiveMouseBulletDkill
   - ActivePursueBulletSkill:ActivePursueBulletSkill
   - ActiveSpeedSkill:ActiveSpeedSkill
+  - ShootingWeapon:BigExplosiveRifle
   - Pistol:Explosive-Pistol
   - Pistol:ExtraFreezingExplosivePistol
   - Pistol:Freezing-Pistol
@@ -59,6 +60,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df6ea92976338684e957044a2c786dd2, type: 2}
   - {fileID: 11400000, guid: d37267932cec60543a7dace5e65ef121, type: 2}
   - {fileID: 11400000, guid: f0fe970116203044e875a369e68e8610, type: 2}
+  - {fileID: 11400000, guid: 6925cfe1bcf89134aa915f9a07f3e225, type: 2}
   - {fileID: 11400000, guid: 58074f79bcf764543837a5888fb06849, type: 2}
   - {fileID: 11400000, guid: cdefae2fad0b91a458c1ccee25edaed4, type: 2}
   - {fileID: 11400000, guid: 5e95b9a25a9df1a4cb2c63799d0adc2d, type: 2}

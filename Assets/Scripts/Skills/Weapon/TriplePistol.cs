@@ -7,8 +7,7 @@ public class TriplePistol : Pistol
 {
     private float arcAngle = 45;
     private int shotNumber = 3;
-
-    // этот скрипт поломан, не смотреть
+    
     protected TriplePistol() : base()
     {
         description = "Your second gun";
