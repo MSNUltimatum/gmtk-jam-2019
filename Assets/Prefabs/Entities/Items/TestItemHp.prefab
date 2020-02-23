@@ -91,13 +91,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2175323628933259560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb1ea5d627826d44a93ba24b74c5133, type: 3}
+  m_Script: {fileID: 11500000, guid: c1da48366553e984ebf2fb22cc3644ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destanceToPickup: 1
   inactiveTime: 0.5
-  type: 2
-  skill: {fileID: 0}
+  healAmount: 1
 --- !u!61 &4476362180137201774
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -145,8 +145,8 @@ MonoBehaviour:
   itemListSize: 3
   itemList:
   - {fileID: 6597430504151711603, guid: a36ca10aeedd9804b97ff59294a85592, type: 3}
-  - {fileID: 6597430504151711603, guid: 5a03b8b12cfe3b645b38a63a8c61d33b, type: 3}
-  - {fileID: 6597430504151711603, guid: 173234e57878226479a35a0ec9061d0c, type: 3}
+  - {fileID: 2175323628933259560, guid: 21c21dd7cf7e5c34cabe6a7b25936d89, type: 3}
+  - {fileID: 4909608437727437222, guid: a8fda284181c65145a3c2468f330726e, type: 3}
   itemChances:
   - 1
   - 2
