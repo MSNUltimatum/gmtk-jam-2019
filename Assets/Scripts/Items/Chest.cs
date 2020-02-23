@@ -18,6 +18,7 @@ public class Chest : Container
         if (collision.gameObject == player) {
             //VFX/SFX?
             Open();
+            Destroy(gameObject);
         }
     }
 }

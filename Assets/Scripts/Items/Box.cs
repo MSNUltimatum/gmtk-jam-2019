@@ -8,5 +8,6 @@ public class Box : Container
     public void OnBullenHit() {
         //SFX/VFX? 
         Open();
+        Destroy(gameObject);
     }
 }
