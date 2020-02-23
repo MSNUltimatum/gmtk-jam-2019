@@ -54,9 +54,10 @@ public class AIAgent : MonoBehaviour
         {
             orientation += 360.0f;
         }
-        rigidbody.velocity = velocity;
+        //rigidbody.velocity = velocity;
+        transform.Translate(displacement, Space.World);
         transform.rotation = Quaternion.Euler(0, 0, -orientation);
-        
+
         var behaviors = GetComponents<EnemyBehavior>();
         foreach (var i in behaviors)
         {

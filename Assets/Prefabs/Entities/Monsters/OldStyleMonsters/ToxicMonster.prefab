@@ -53,12 +53,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 4
+  maxHP: 1
   absorbPrefab: {fileID: 5902167019511450196, guid: 020984a1d5cb01647bdf04f79e42e9a8,
     type: 3}
   enemyExplosionPrefab: {fileID: 4315148799679399590, guid: 5e92d0f32688a8e4d80e5d03cb03a7bd,
     type: 3}
   fadeInTime: 0.5
+  evilDictionary: {fileID: 0}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!61 &8883467259405946828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97,8 +103,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -219,9 +225,11 @@ MonoBehaviour:
   maxAccel: 100
   maxRotation: 200
   maxAngularAccel: 10000
+  velocityFallBackPower: 3
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  proximityCheckOption: 01000000
 --- !u!114 &3256055474307122107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
 --- !u!114 &6928284819307007496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,10 +260,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
   rotateAtStart: 1
+  bypassAngleAccumulationSpeed: 0
 --- !u!114 &933350302460264204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   cooldownRange: {x: 1, y: 1}
   randomShotAngle: 15
   bullet: {fileID: 2619945096730714068, guid: 1a1f5dee9ba6d4c4ca4d10c552e99d18, type: 3}
@@ -495,6 +516,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1615133650873618881}
     m_Modifications:
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_Name
+      value: Text
+      objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -599,11 +625,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_Name
-      value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}

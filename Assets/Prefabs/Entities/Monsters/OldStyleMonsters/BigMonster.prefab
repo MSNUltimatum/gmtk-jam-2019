@@ -279,9 +279,11 @@ MonoBehaviour:
   maxAccel: 320
   maxRotation: 200
   maxAngularAccel: 10000
+  velocityFallBackPower: 3
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  proximityCheckOption: 01000000
 --- !u!114 &3437470801224674135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,8 +297,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 0
+  proximityCheckOption: 
   proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
 --- !u!114 &8092562377161318156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,8 +314,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 0
+  proximityCheckOption: 
   proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
@@ -355,8 +361,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

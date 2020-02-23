@@ -54,14 +54,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &8957502524499687753
 MonoBehaviour:
@@ -75,13 +75,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  maxHP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.5
   evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!82 &6926122750179578018
 AudioSource:
   m_ObjectHideFlags: 0
@@ -194,9 +199,11 @@ MonoBehaviour:
   maxAccel: 100
   maxRotation: 6000
   maxAngularAccel: 10000
+  velocityFallBackPower: 3
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  proximityCheckOption: 01000000
 --- !u!114 &-216397280895006072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +217,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
 --- !u!58 &-9204190189280656107
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -345,7 +356,7 @@ SpriteRenderer:
   m_Size: {x: 1.3095237, y: 1.4290946}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7484717462505791468

@@ -506,9 +506,11 @@ MonoBehaviour:
   maxAccel: 200
   maxRotation: 200
   maxAngularAccel: 10000
+  velocityFallBackPower: 3
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  proximityCheckOption: 01000000
 --- !u!114 &1057457538494757011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,8 +524,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 0
+  proximityCheckOption: 
   proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
 --- !u!114 &5825017680835124173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,8 +541,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 0
+  proximityCheckOption: 
   proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   cooldownRange: {x: 1, y: 1}
   castTime: 0.3
   randomShotAngle: 15
@@ -585,8 +591,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -704,8 +710,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 0
+  proximityCheckOption: 
   proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   shiftAmp: 3
 --- !u!1001 &506991460195653906
 PrefabInstance:

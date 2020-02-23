@@ -158,8 +158,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -179,11 +179,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  maxHP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
+  fadeInTime: 0.5
+  evilDictionary: {fileID: 0}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!82 &3828465985078143502
 AudioSource:
   m_ObjectHideFlags: 0
@@ -512,6 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: 1.22, z: 0}
+  baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &3666203421234266203
 GameObject:
   m_ObjectHideFlags: 0

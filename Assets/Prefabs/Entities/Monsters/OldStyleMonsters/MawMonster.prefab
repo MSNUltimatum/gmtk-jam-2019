@@ -260,8 +260,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -377,12 +377,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d54843796411c248b2c9a1c9452b4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  maxHP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.5
+  evilDictionary: {fileID: 0}
+  hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   Opened: 0
 --- !u!114 &5338092387312809706
 MonoBehaviour:
@@ -397,6 +403,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
 --- !u!114 &8733009754373814606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,9 +423,11 @@ MonoBehaviour:
   maxAccel: 100
   maxRotation: 200
   maxAngularAccel: 10000
+  velocityFallBackPower: 3
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  proximityCheckOption: 01000000
 --- !u!114 &5347490303717420499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,10 +441,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
   rotateAtStart: 1
+  bypassAngleAccumulationSpeed: 0
 --- !u!114 &3331315612611451878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +463,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
   DistanceToActivate: 5
   TimeToActivate: 0.5
   mainSprite: {fileID: 6199093597622709486}
