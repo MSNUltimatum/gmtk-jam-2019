@@ -9,6 +9,6 @@ public class EnableCanvasOnStart : MonoBehaviour
     {
         var canvas = GetComponent<Canvas>();
         canvas.enabled = true;
-        canvas.worldCamera = Camera.main;
+        canvas.worldCamera = Camera.main.transform.GetChild(0).GetComponent<Camera>();
     }
 }

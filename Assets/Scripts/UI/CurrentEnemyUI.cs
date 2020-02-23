@@ -15,7 +15,7 @@ public class CurrentEnemyUI : MonoBehaviour
             canvasEnemyName.transform.SetParent(transform); // отключить!!!!!
         }
         var canvasScript = canvasEnemyName.GetComponent<Canvas>();
-        canvasScript.worldCamera = Camera.main;
+        canvasScript.worldCamera = Camera.main.transform.GetChild(0).GetComponent<Camera>();
         canvasScript.sortingLayerName = "OnEffect";
         EnemyName = canvasEnemyName.GetComponentInChildren<TMPro.TextMeshProUGUI>();
         EnemyName.GetComponent<Canvas>().sortingLayerName = "OnEffect";
