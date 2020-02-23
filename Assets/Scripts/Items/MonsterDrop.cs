@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class MonsterDrop : Container
 {
+    private MonsterLife monsterLife;
+
     protected override void Awake()
     {
-        MonsterLife.OnEnemyDead.AddListener(DeathCheck);
+        monsterLife = GetComponent<MonsterLife>();
+        monsterLife.hpChangedEvent.AddListener(DeathCheck);
         base.Awake(); 
     }
 
     private void DeathCheck() {
-        if (GetComponent<MonsterLife>().HP <= 0) { 
+        if (monsterLife.HP <= 0) { 
             //animation?
             Open();
         }

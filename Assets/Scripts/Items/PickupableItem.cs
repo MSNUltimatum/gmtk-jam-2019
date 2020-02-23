@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
 public abstract class PickupableItem : MonoBehaviour
 {
     public float destanceToPickup = 1f;
