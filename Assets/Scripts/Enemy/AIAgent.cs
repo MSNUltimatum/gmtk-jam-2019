@@ -27,6 +27,7 @@ public class AIAgent : MonoBehaviour
 
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
         velocity = Vector2.zero;
         steering = new EnemySteering();
         
@@ -53,7 +54,7 @@ public class AIAgent : MonoBehaviour
         {
             orientation += 360.0f;
         }
-        transform.Translate(displacement, Space.World);
+        rigidbody.velocity = velocity;
         transform.rotation = Quaternion.Euler(0, 0, -orientation);
         
         var behaviors = GetComponents<EnemyBehavior>();
@@ -122,6 +123,8 @@ public class AIAgent : MonoBehaviour
     Vector3 savedVelocity = new Vector3();
     private bool wasPausedLastFrame = false;
     private bool allowMovement = true;
+
+    new private Rigidbody2D rigidbody;
 
     // private Dictionary<int, List<EnemySteering>> groups;
 }
