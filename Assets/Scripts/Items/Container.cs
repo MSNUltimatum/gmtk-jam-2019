@@ -46,9 +46,10 @@ public class Container : MonoBehaviour
     {
         if (itemToDrop != null)
             Instantiate(itemToDrop, transform.position, transform.rotation);
-        else
-            Debug.Log("Error on container open. Empty drop list");
-        Destroy(gameObject);
+        else { 
+            //Debug.Log("Error on container open. Empty drop list");
+            //null drop is possible now, for not 100% mob drop, so not a error now
+        }
     }
 
 #if UNITY_EDITOR
