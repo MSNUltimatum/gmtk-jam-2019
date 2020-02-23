@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1871348090b8fc4428efb443b1b8d0d8, type: 3}
+  m_Name: BigExplosiveRifle
+  m_EditorClassIdentifier: 
+  description: 
+  pickupSprite: {fileID: -7265022084743252039, guid: 96fb73bedc0f19a47b50b3eb545a57cc,
+    type: 3}
+  attackSound: []
+  reloadTime: 5
+  timeBetweenAttacks: 1
+  ammoMagazine: 3
+  bulletPrefab: {fileID: 3442845905344324036, guid: 06122136d1e277f4d8e43601abb668d4,
+    type: 3}
+  bulletDamage: 5
+  knockPower: 20
+  bulletSpeed: 18
+  timeToBulletDestruction: 2.5
+  maxRndShootingAngle: 0
+  rndShootingAngleAmplifier: 0.15
+  rndShootingAngleRelease: 0.5

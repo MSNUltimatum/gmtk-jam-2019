@@ -84,6 +84,11 @@ public class BulletLife : MonoBehaviour
           DestroyBullet();
     }
 
+    protected void DamageMonster(MonsterLife monster)
+    {
+        monster.Damage(gameObject, damage);
+    }
+
     protected virtual void EnvironmentCollider(Collider2D coll)
     {
         if (coll.gameObject.GetComponent<DestructibleWall>() != null)
