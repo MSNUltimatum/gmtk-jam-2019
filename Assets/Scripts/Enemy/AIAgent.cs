@@ -41,6 +41,11 @@ public class AIAgent : MonoBehaviour
         this.steering.angular += steering.angular * weight;
     }
 
+    protected void FixedUpdate()
+    {
+        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
+    }
+
     protected virtual void Update()
     {
         ProceedPauseUnpause();
@@ -55,7 +60,7 @@ public class AIAgent : MonoBehaviour
             orientation += 360.0f;
         }
         //rigidbody.velocity = velocity;
-        transform.Translate(displacement, Space.World);
+        //rigidbody.MovePosition(rigidbody.position + displacement);
         transform.rotation = Quaternion.Euler(0, 0, -orientation);
 
         var behaviors = GetComponents<EnemyBehavior>();

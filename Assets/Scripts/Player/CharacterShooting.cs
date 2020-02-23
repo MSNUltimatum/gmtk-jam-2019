@@ -17,6 +17,7 @@ public class CharacterShooting : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        cameraShaker = mainCamera.GetComponent<CameraShaker>();
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
         skillManager = GetComponent<SkillManager>();
@@ -47,6 +48,7 @@ public class CharacterShooting : MonoBehaviour
                 currentWeapon.reloadTimeLeft = 0;
                 currentWeapon.ammoLeft -= ammoNeeded;
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
+                cameraShaker.ShakeCamera(0.25f);
                 shotFrame = true;
             }
             timeBetweenAttacks = currentWeapon.logic.timeBetweenAttacks;
@@ -63,7 +65,10 @@ public class CharacterShooting : MonoBehaviour
     }
 
     private float timeBetweenAttacks = 0;
+
     private Camera mainCamera;
+    private CameraShaker cameraShaker;
+
     private KeyCode reloadButton = KeyCode.R;
     private SkillManager skillManager;
     public SkillManager.EquippedWeapon currentWeapon;
