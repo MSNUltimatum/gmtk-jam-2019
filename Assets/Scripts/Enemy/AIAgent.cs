@@ -49,7 +49,15 @@ public class AIAgent : MonoBehaviour
     protected virtual void Update()
     {
         ProceedPauseUnpause();
-        if (Pause.Paused || !allowMovement) return;
+        if (Pause.Paused) return;
+
+        Vector2 velocityFallBack =
+            velocity *
+            new Vector2(velocityFallBackPower * Time.deltaTime, velocityFallBackPower * Time.deltaTime);
+
+        velocity -= velocityFallBack;
+
+        if (!allowMovement) return;
 
         Vector2 displacement = velocity * Time.deltaTime;
         orientation += rotation * Time.deltaTime;
@@ -68,15 +76,15 @@ public class AIAgent : MonoBehaviour
         {
             i.CalledUpdate();
         }
-        Vector2 velocityFallBack = 
-            velocity.normalized * 
-            new Vector2(velocityFallBackPower * Time.deltaTime, velocityFallBackPower * Time.deltaTime);
-        velocity += steering.linear * Time.deltaTime - velocityFallBack;
+        
+
         rotation += Mathf.Max(steering.angular * Time.deltaTime);
-        if (velocity.magnitude > maxSpeed)
+
+        
+        var speedUp = steering.linear * Time.deltaTime;
+        if ((velocity + speedUp).magnitude < maxSpeed)
         {
-            velocity.Normalize();
-            velocity = velocity * maxSpeed;
+            velocity += speedUp;
         }
         steering = new EnemySteering();
     }

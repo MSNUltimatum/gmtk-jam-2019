@@ -9,15 +9,15 @@ public class ShiftAfterShoot : EnemyBehavior
     protected override void Awake()
     {
         base.Awake();
-        rigidB = gameObject.GetComponent<Rigidbody2D>();
+        moveAgent = gameObject.GetComponent<AIAgent>();
     }
 
     public void DoShift() {
         float angle = Random.Range(0f, 360f);
-        dodgeDirrection = new Vector2(shiftAmp * Mathf.Sin(angle * Mathf.PI / 180f), shiftAmp * Mathf.Cos(angle * Mathf.PI / 180f));
-        if (rigidB != null)
+        dodgeDirection = new Vector2(shiftAmp * Mathf.Sin(angle * Mathf.PI / 180f), shiftAmp * Mathf.Cos(angle * Mathf.PI / 180f));
+        if (moveAgent != null)
         {
-            rigidB.AddForce(dodgeDirrection, ForceMode2D.Impulse);
+            moveAgent.velocity += dodgeDirection;
         }
         else
         {
@@ -25,6 +25,6 @@ public class ShiftAfterShoot : EnemyBehavior
         }
     }
 
-    private Vector2 dodgeDirrection;
-    private Rigidbody2D rigidB;
+    private Vector2 dodgeDirection;
+    private AIAgent moveAgent;
 }

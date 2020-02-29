@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0.007, y: 0.234, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1997476023090138409
 GameObject:
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851423767a200cf4eaf5bea045e99598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1.35
+  maxSpeed: 2.5
   maxAccel: 200
   maxRotation: 200
   maxAngularAccel: 10000

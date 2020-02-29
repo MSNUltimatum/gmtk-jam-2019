@@ -55,33 +55,32 @@ public class BulletLife : MonoBehaviour
 
     protected virtual void EnemyCollider(Collider2D coll)
     {
-          // KnockBack
-          Rigidbody2D Enemy = coll.GetComponent<Rigidbody2D>();
-          if (Enemy != null)
-          {
-              Enemy.drag = 1;
-              Vector2 direction = Enemy.transform.position - transform.position;
-              direction = direction.normalized * knockThrust;
-              Enemy.AddForce(direction, ForceMode2D.Impulse);
+        // KnockBack
+        var enemy = coll.GetComponent<AIAgent>();
+        if (enemy != null)
+        {
+            Vector2 direction = enemy.transform.position - transform.position;
+            direction = direction.normalized * knockThrust * Time.fixedDeltaTime;
+            enemy.velocity += direction;
 
-              var moveComps = Enemy.GetComponentsInChildren<AIAgent>();
-              foreach (var moveComp in moveComps)
-              {
-                  //moveComp.StopMovement(knockTime);
-              }
-          }
+            var moveComps = enemy.GetComponentsInChildren<AIAgent>();
+            foreach (var moveComp in moveComps)
+            {
+                //moveComp.StopMovement(knockTime);
+            }
+        }
 
-          // Damage
-          var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
-          if (monsterComp)
-          {
-              monsterComp.Damage(gameObject, damage);
-          }
-          else
-          {
-              Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
-          }
-          DestroyBullet();
+        // Damage
+        var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
+        if (monsterComp)
+        {
+            monsterComp.Damage(gameObject, damage);
+        }
+        else
+        {
+            Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
+        }
+        DestroyBullet();
     }
 
     protected void DamageMonster(MonsterLife monster)
