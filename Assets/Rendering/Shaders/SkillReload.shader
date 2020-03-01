@@ -7,6 +7,8 @@ Shader "Unlit/WeaponReload"
         _MainTex("Texture", 2D) = "white" {}
         _CooldownProgress("CooldownLeft", Float) = 1
         _MainColor("Main Color", Color) = (1, 1, 1, 1)
+        _SkillActive("Is Skill Active", Float) = 0
+        _SkillActiveColor("Skill Active Color", Color) = (1, 0.7, 0.7, 1)
     }
     SubShader
     {
@@ -21,6 +23,7 @@ Shader "Unlit/WeaponReload"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma shader_feature SKILL_ACTIVE
 
             #include "UnityCG.cginc"
 
@@ -44,6 +47,8 @@ Shader "Unlit/WeaponReload"
             float _CooldownProgress;
             float4 _MainTex_TexelSize;
             float4 _MainColor;
+            float _SkillActive;
+            float4 _SkillActiveColor;
 
             v2f vert(appdata v)
             {
@@ -60,7 +65,13 @@ Shader "Unlit/WeaponReload"
                 fixed4 col = tex2D(_MainTex, i.uv);
 
                 col.a = i.uv[1] > _CooldownProgress ? 0 : col.a * 0.7;
-                return half4(i.color.rgb, col.a);
+                if (_SkillActive == 1) {
+                    return half4(_SkillActiveColor.rgb, col.a);
+                }
+                else {
+                    return half4(i.color.rgb, col.a);
+                }
+                    
             }
             ENDCG
         }
