@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ExtraFreezingExplosiveBullet : ExplosiveBulletLife
 {
-    protected override void Wave(Rigidbody2D Enemy, float thrust)
+    protected override void Wave(AIAgent enemy, float thrust)
     {
-        var fr = Enemy.gameObject.GetComponent<FreezingMonsters>();
+        var fr = enemy.gameObject.GetComponent<FreezingMonsters>();
         if (!fr)
         {
-            Enemy.gameObject.AddComponent<FreezingMonsters>();
+            enemy.gameObject.AddComponent<FreezingMonsters>();
         }
         else
         {

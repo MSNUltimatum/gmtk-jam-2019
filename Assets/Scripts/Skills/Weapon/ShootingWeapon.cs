@@ -17,6 +17,7 @@ public class ShootingWeapon : WeaponSkill
     [System.NonSerialized]
     public GameObject currentBulletPrefab;
     public static UnityEvent shootingEvents;
+    public BulletModifier[] bulletModifiers;
 
     public override void InitializeSkill()
     {
@@ -28,7 +29,7 @@ public class ShootingWeapon : WeaponSkill
 
     public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
     {
-				shootingEvents?.Invoke();
+        shootingEvents?.Invoke();
         ShootingWeaponAttack(attackManager, mousePos, shotFrom);
         AddToRandomAngle();
     }
@@ -95,6 +96,10 @@ public class ShootingWeapon : WeaponSkill
             bulletLife.damage = bulletDamage;
             bulletLife.speed = bulletSpeed;
             bulletLife.timeToDestruction = timeToBulletDestruction;
+            foreach (var mod in bulletModifiers)
+            {
+                bulletLife.AddMod(mod);
+            }
         }
         for(int i = 0; i < bullet.transform.childCount; i++)
         {

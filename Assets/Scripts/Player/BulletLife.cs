@@ -10,14 +10,20 @@ public class BulletLife : MonoBehaviour
     [System.NonSerialized]
     public float timeToDestruction;
     [System.NonSerialized]
-    public int damage;
+    public float damage;
     protected float TTDLeft = 0;
+
+    private List<BulletModifier> bulletMods = new List<BulletModifier>();
+
+    public bool piercing = false;
+    public bool phasing = false;
 
     protected virtual void Start()
     {
         var audio = GetComponent<AudioSource>();
         AudioManager.Play("WeaponShot", audio);
         TTDLeft = timeToDestruction;
+        ActivateSpawnMods();
     }
 
     void FixedUpdate()
@@ -50,11 +56,13 @@ public class BulletLife : MonoBehaviour
 
     protected virtual void Move()
     {
+        ActivateMoveMods();
         transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
     }
 
     protected virtual void EnemyCollider(Collider2D coll)
     {
+        ActivateHitEnemyMods(coll);
         // KnockBack
         var enemy = coll.GetComponent<AIAgent>();
         if (enemy != null)
@@ -63,37 +71,103 @@ public class BulletLife : MonoBehaviour
             direction = direction.normalized * knockThrust * Time.fixedDeltaTime;
             enemy.velocity += direction;
 
-            var moveComps = enemy.GetComponentsInChildren<AIAgent>();
-            foreach (var moveComp in moveComps)
-            {
-                //moveComp.StopMovement(knockTime);
-            }
+            //var moveComps = enemy.GetComponentsInChildren<AIAgent>();
+            //foreach (var moveComp in moveComps)
+            //{
+            //    //moveComp.StopMovement(knockTime);
+            //}
         }
 
         // Damage
         var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
         if (monsterComp)
         {
-            monsterComp.Damage(gameObject, damage);
+            DamageMonster(monsterComp);
         }
         else
         {
             Debug.LogError("ОШИБКА: УСТАНОВИТЕ МОНСТРУ " + coll.gameObject.name + " КОМПОНЕНТ MonsterLife");
         }
-        DestroyBullet();
+        if (!piercing) DestroyBullet();
     }
 
-    protected void DamageMonster(MonsterLife monster)
+    public void DamageMonster(MonsterLife monster, float damageMultiplier = 1, BulletModifier initiator = null)
     {
-        monster.Damage(gameObject, damage);
+        ActivateDamageEnemyMods(monster);
+        monster.Damage(gameObject, damage * damageMultiplier);
+        if (monster.HP <= 0)
+        {
+            ActivateKillMods(monster);
+        }
+    }
+
+    // Bullet mods
+
+    // Instantiates bullet mod and adds to mod list
+    public void AddMod(BulletModifier mod)
+    {
+        bulletMods.Add(Instantiate(mod));
+    }
+
+    private void UpdateMods()
+    {
+        for (int i = 0; i < bulletMods.Count; i++) 
+        {
+            bulletMods[i].UpdateMod(this);
+
+            if (bulletMods[i].modifierTime <= 0)
+            {
+                bulletMods.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
+    // WIP
+    private BulletModifier[] SortedMods() { return bulletMods.ToArray(); }
+
+    private void ActivateHitEnemyMods(Collider2D coll)
+    {
+        foreach (var mod in SortedMods()) mod.HitEnemyModifier(this, coll);
+    }
+
+    private void ActivateHitEnvironmentMods(Collider2D coll)
+    {
+        foreach (var mod in SortedMods()) mod.HitEnvironmentModifier(this, coll);
+    }
+
+    private void ActivateDamageEnemyMods(MonsterLife enemy, BulletModifier initiator = null)
+    {
+        foreach (var mod in SortedMods())
+        {
+            if (mod != initiator) mod.DamageEnemyModifier(this, enemy);
+        }
+    }
+
+    private void ActivateSpawnMods()
+    {
+        foreach (var mod in SortedMods()) mod.SpawnModifier(this);
+    }
+
+    private void ActivateKillMods(MonsterLife enemy)
+    {
+        foreach (var mod in SortedMods()) mod.KillModifier(this, enemy);
+    }
+
+    private void ActivateMoveMods()
+    {
+        foreach (var mod in SortedMods()) mod.MoveModifier(this);
     }
 
     protected virtual void EnvironmentCollider(Collider2D coll)
     {
-        if (coll.gameObject.GetComponent<DestructibleWall>() != null)
+        ActivateHitEnvironmentMods(coll);
+
+        if (coll.gameObject.GetComponent<Box>())
         {
-            DestroyBullet();
+            coll.gameObject.GetComponent<Box>().OnBullenHit();
         }
+
         if (coll.gameObject.GetComponent<MirrorWall>() != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right,
@@ -105,11 +179,7 @@ public class BulletLife : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, rot);
             }
         }
-        else if (coll.gameObject.GetComponent<Box>())
-        {
-            coll.gameObject.GetComponent<Box>().OnBullenHit();
-        }
-        else
+        else if (!phasing)
         {
             DestroyBullet();
         }

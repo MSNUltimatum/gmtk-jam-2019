@@ -30,33 +30,23 @@ public class ExplosiveBulletLife : BulletLife
 
                 if (!isKilled && monsterLife.HP < tmp)
                 {
-                    Wave(i.GetComponent<Rigidbody2D>(), 8);
+                    Wave(i.GetComponent<AIAgent>(), 8);
                     isKilled = true;
                 }
                 else
                 {
-                    Wave(i.GetComponent<Rigidbody2D>(), 8);
+                    Wave(i.GetComponent<AIAgent>(), 8);
                 }
             }
         }
     }
 
-    protected virtual void Wave(Rigidbody2D Enemy, float thrust)
+    protected virtual void Wave(AIAgent enemy, float thrust)
     {
-        Enemy.drag = 1;
-        Vector2 direction = Enemy.transform.position - transform.position;
+        Vector2 direction = enemy.transform.position - transform.position;
         direction = direction.normalized * thrust;
-        Enemy.AddForce(direction, ForceMode2D.Impulse);
-
-        var moveComp = Enemy.GetComponent<AIAgent>();
-        if (moveComp)
-        {
-            moveComp.StopMovement(0.7f);
-        }
-        else
-        {
-            Debug.LogWarning("No Move Component on enemy? Is it ok?");
-        }
+        enemy.velocity += direction * Time.deltaTime;
     }
+
     bool isKilled = false;
 }

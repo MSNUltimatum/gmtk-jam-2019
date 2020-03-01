@@ -28,3 +28,4 @@ MonoBehaviour:
   maxRndShootingAngle: 30
   rndShootingAngleAmplifier: 0.45
   rndShootingAngleRelease: 1.25
+  bulletModifiers: []
