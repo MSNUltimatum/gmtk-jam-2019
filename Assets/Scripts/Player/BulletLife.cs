@@ -63,20 +63,6 @@ public class BulletLife : MonoBehaviour
     protected virtual void EnemyCollider(Collider2D coll)
     {
         ActivateHitEnemyMods(coll);
-        // KnockBack
-        var enemy = coll.GetComponent<AIAgent>();
-        if (enemy != null)
-        {
-            Vector2 direction = enemy.transform.position - transform.position;
-            direction = direction.normalized * knockThrust * Time.fixedDeltaTime;
-            enemy.velocity += direction;
-
-            //var moveComps = enemy.GetComponentsInChildren<AIAgent>();
-            //foreach (var moveComp in moveComps)
-            //{
-            //    //moveComp.StopMovement(knockTime);
-            //}
-        }
 
         // Damage
         var monsterComp = coll.gameObject.GetComponent<MonsterLife>();
@@ -98,6 +84,17 @@ public class BulletLife : MonoBehaviour
         if (monster.HP <= 0)
         {
             ActivateKillMods(monster);
+        }
+        if (initiator == null) // if the cause of "damage" is not a mod
+        {
+            // KnockBack
+            var enemy = monster.GetComponent<AIAgent>();
+            if (enemy != null)
+            {
+                Vector2 direction = enemy.transform.position - transform.position;
+                direction = direction.normalized * knockThrust * Time.fixedDeltaTime;
+                enemy.velocity += direction;
+            }
         }
     }
 
