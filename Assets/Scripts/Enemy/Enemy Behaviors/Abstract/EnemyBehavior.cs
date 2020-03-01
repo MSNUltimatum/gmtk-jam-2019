@@ -15,7 +15,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     public float proximityCheckDistance = 19f;
     public bool invertProximityCheck = false;
 
-    [Tooltip("Don't let it be lower than 2 * proximityCheckPeriod. Exception is -1 which means: NEVER")]
+    [Tooltip("Don't let it be lower than 2 * proximityCheckPeriod. Exception is <0 which means: NEVER")]
     public float timeToLoseAggro = -1;
     private float timeSinceProximityFail = 0;
 
@@ -26,7 +26,11 @@ public abstract class EnemyBehavior : MonoBehaviour
 
         if (proximityCheckOption.Count == 0)
         {
-            proximityCheckOption = GetComponent<AIAgent>().proximityCheckOption;
+            proximityCheckOption = agent.proximityCheckOption;
+        }
+        if (timeToLoseAggro == -1)
+        {
+            timeToLoseAggro = agent.timeToLoseAggro;
         }
     }
 
@@ -39,7 +43,7 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
         else if (isActive)
         {
-            if (timeToLoseAggro != -1)
+            if (timeToLoseAggro > 0)
             {
                 timeSinceProximityFail = ProximityCheck() ? 0 : timeSinceProximityFail + Time.deltaTime;
                 isActive = timeSinceProximityFail < timeToLoseAggro;

@@ -184,7 +184,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -233,6 +233,7 @@ MonoBehaviour:
   rotation: 0
   velocity: {x: 0, y: 0}
   proximityCheckOption: 01000000
+  timeToLoseAggro: -1
 --- !u!114 &1731130980099116965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}

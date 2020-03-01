@@ -16,6 +16,7 @@ public class AIAgent : MonoBehaviour
 
     [Header("All Behaviours activation condition")]
     public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+    public float timeToLoseAggro = -1;
 
     public enum ProximityCheckOption
     {
@@ -43,6 +44,11 @@ public class AIAgent : MonoBehaviour
 
     protected void FixedUpdate()
     {
+        if (Pause.Paused) return;
+        Vector2 velocityFallBack =
+            velocity * velocityFallBackPower * Time.deltaTime;
+
+        velocity -= velocityFallBack;
         rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
     }
 
@@ -50,12 +56,6 @@ public class AIAgent : MonoBehaviour
     {
         ProceedPauseUnpause();
         if (Pause.Paused) return;
-
-        Vector2 velocityFallBack =
-            velocity *
-            new Vector2(velocityFallBackPower * Time.deltaTime, velocityFallBackPower * Time.deltaTime);
-
-        velocity -= velocityFallBack;
 
         if (!allowMovement) return;
 
@@ -76,10 +76,8 @@ public class AIAgent : MonoBehaviour
         {
             i.CalledUpdate();
         }
-        
 
         rotation += Mathf.Max(steering.angular * Time.deltaTime);
-
         
         var speedUp = steering.linear * Time.deltaTime;
         if ((velocity + speedUp).magnitude < maxSpeed)

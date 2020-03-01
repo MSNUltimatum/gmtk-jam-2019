@@ -9,7 +9,7 @@ public class RoomLighting : MonoBehaviour
     // Swamp = enemy spawner VFX
     [SerializeField]
     private Material swampMatPrefab = null;
-    [SerializeField]
+    [SerializeField, Tooltip("Leave empty if not needed")]
     private GameObject swampPrefab = null;
 
     [SerializeField]
@@ -37,7 +37,11 @@ public class RoomLighting : MonoBehaviour
         }
         NewLight(Light);
 
-        SetSwampMaterial();
+        if (swampPrefab)
+        {
+            SetSwampMaterial();
+        }
+        
 
         MonsterLife.OnEnemyDead.AddListener(AddOneToLight);
     }
@@ -93,7 +97,10 @@ public class RoomLighting : MonoBehaviour
             }
 
             NewLight(CurrentVal);
-            NewSwampLight();
+            if (swampPrefab)
+            {
+                NewSwampLight();
+            }
         }
         
         t += Time.deltaTime;
