@@ -8,8 +8,7 @@ public class ExplosiveBulletMod : BulletModifier
 {
     [SerializeField]
     private float explosionRadius = 2f;
-    [SerializeField]
-    private float explosionPower = 13;
+
     bool isKilled = false;
 
     public override void HitEnemyModifier(BulletLife bullet, Collider2D coll)

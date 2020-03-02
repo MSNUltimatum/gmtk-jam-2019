@@ -56,8 +56,9 @@ public class BulletLife : MonoBehaviour
 
     protected virtual void Move()
     {
-        ActivateMoveMods();
+        ActivateMoveModsBefore();
         transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
+        ActivateMoveModsAfter();
     }
 
     protected virtual void EnemyCollider(Collider2D coll)
@@ -151,9 +152,20 @@ public class BulletLife : MonoBehaviour
         foreach (var mod in SortedMods()) mod.KillModifier(this, enemy);
     }
 
-    private void ActivateMoveMods()
+    private void ActivateMoveModsBefore()
     {
-        foreach (var mod in SortedMods()) mod.MoveModifier(this);
+        foreach (var mod in SortedMods())
+        {
+            if (mod.moveTiming == BulletModifier.MoveTiming.Preparation) mod.MoveModifier(this);
+        }
+    }
+
+    private void ActivateMoveModsAfter()
+    {
+        foreach (var mod in SortedMods())
+        {
+            if (mod.moveTiming == BulletModifier.MoveTiming.Final) mod.MoveModifier(this);
+        }
     }
 
     protected virtual void EnvironmentCollider(Collider2D coll)

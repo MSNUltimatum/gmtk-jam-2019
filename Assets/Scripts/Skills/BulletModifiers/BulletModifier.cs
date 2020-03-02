@@ -26,6 +26,8 @@ public class BulletModifier : ScriptableObject
 
     public virtual void KillModifier(BulletLife bullet, MonsterLife enemy) { }
 
+    public enum MoveTiming { Unset, Preparation, Final }
+    public MoveTiming moveTiming = MoveTiming.Unset;
     public virtual void MoveModifier(BulletLife bullet) { }
 
     // WIP SEGMENT
