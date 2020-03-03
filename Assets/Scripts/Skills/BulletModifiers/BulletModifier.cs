@@ -8,13 +8,13 @@ public class BulletModifier : ScriptableObject
 
     public float modifierTime = float.PositiveInfinity;
 
-    public void UpdateMod(BulletLife bullet)
+    public void UpdateMod()
     {
         modifierTime -= Time.deltaTime;
-        UpdateModifier(bullet);
+        if (modifierTime < 0) Destroy(this);
     }
 
-    protected virtual void UpdateModifier(BulletLife bullet) { }
+    public virtual void ModifierUpdate(BulletLife bullet) { }
 
     public virtual void HitEnemyModifier(BulletLife bullet, Collider2D coll) { }
 
@@ -26,8 +26,8 @@ public class BulletModifier : ScriptableObject
 
     public virtual void KillModifier(BulletLife bullet, MonsterLife enemy) { }
 
-    public enum MoveTiming { Unset, Preparation, Final }
-    public MoveTiming moveTiming = MoveTiming.Unset;
+    public enum MoveTiming { Preparation, Final }
+    public MoveTiming moveTiming = MoveTiming.Preparation;
     public virtual void MoveModifier(BulletLife bullet) { }
 
     // WIP SEGMENT

@@ -29,9 +29,9 @@ public class ShootingWeapon : WeaponSkill
 
     public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
     {
-        shootingEvents?.Invoke();
         ShootingWeaponAttack(attackManager, mousePos, shotFrom);
         AddToRandomAngle();
+        shootingEvents?.Invoke();
     }
 
     public virtual void ShootingWeaponAttack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
@@ -97,6 +97,10 @@ public class ShootingWeapon : WeaponSkill
             bulletLife.speed = bulletSpeed;
             bulletLife.timeToDestruction = timeToBulletDestruction;
             foreach (var mod in bulletModifiers)
+            {
+                bulletLife.AddMod(mod);
+            }
+            foreach (var mod in SkillManager.temporaryBulletMods)
             {
                 bulletLife.AddMod(mod);
             }

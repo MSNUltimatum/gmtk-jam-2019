@@ -11,12 +11,13 @@ public class BulletLife : MonoBehaviour
     public float timeToDestruction;
     [System.NonSerialized]
     public float damage;
-    protected float TTDLeft = 0;
+    protected float TTDLeft = 0.5f;
 
-    private List<BulletModifier> bulletMods = new List<BulletModifier>();
+    public List<BulletModifier> bulletMods = new List<BulletModifier>();
 
     public bool piercing = false;
     public bool phasing = false;
+    public bool copiedBullet = false;
 
     protected virtual void Start()
     {
@@ -111,7 +112,7 @@ public class BulletLife : MonoBehaviour
     {
         for (int i = 0; i < bulletMods.Count; i++) 
         {
-            bulletMods[i].UpdateMod(this);
+            bulletMods[i].ModifierUpdate(this);
 
             if (bulletMods[i].modifierTime <= 0)
             {
@@ -194,8 +195,33 @@ public class BulletLife : MonoBehaviour
         }
     }
 
+    public GameObject BulletFullCopy()
+    {
+        var bullet = Instantiate(gameObject, transform.position, transform.rotation);
+        var bulletComp = bullet.GetComponent<BulletLife>();
+        bulletComp.SetTimeLeft(TTDLeft);
+        bulletComp.speed = speed;
+        bulletComp.damage = damage;
+        bulletComp.copiedBullet = true;
+        
+        bulletComp.bulletMods = new List<BulletModifier>();
+        foreach (var mod in bulletMods)
+        {
+            bulletComp.AddMod(mod);
+        }
+
+        return bullet;
+    }
+
+    public void SetTimeLeft(float timeLeft)
+    {
+        timeToDestruction = timeLeft;
+        TTDLeft = timeLeft;
+    }
+
     public virtual void DestroyBullet()
     {
+        print("heheheh" + TTDLeft);
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<DynamicLightInOut>().FadeOut();

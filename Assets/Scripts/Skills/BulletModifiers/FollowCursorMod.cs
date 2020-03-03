@@ -11,6 +11,12 @@ public class FollowCursorMod : BulletModifier
         priority = -6; 
     }
 
+    public override void SpawnModifier(BulletLife bullet)
+    {
+        base.SpawnModifier(bullet);
+        modifierTime = 0;
+    }
+
     public override void MoveModifier(BulletLife bullet)
     {
         base.MoveModifier(bullet);

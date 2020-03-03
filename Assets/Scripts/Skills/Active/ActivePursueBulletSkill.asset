@@ -15,8 +15,6 @@ MonoBehaviour:
   description: Bang
   pickupSprite: {fileID: 4945836708647946627, guid: 3d573d82d62517e40ae2af5d0fa34437,
     type: 3}
-  itemIndividualName: 
   activeDuration: 3
   cooldownDuration: 5
-  bulletPrefab: {fileID: 6191924688321695861, guid: 593a9a15e433b804dad73dc9b652c033,
-    type: 3}
+  bulletMod: {fileID: 11400000, guid: 5fcc4181fb87c4d48b5f164fac6ed91a, type: 2}

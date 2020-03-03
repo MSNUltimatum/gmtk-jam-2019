@@ -1744,6 +1744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
+      propertyPath: skills.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
       propertyPath: skills.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 9928273a409763a48b8e67fad61de033,
@@ -1757,8 +1762,20 @@ PrefabInstance:
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
       propertyPath: forceSkillRewrite
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: skills.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: df6ea92976338684e957044a2c786dd2,
+        type: 2}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: skills.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: d37267932cec60543a7dace5e65ef121,
+        type: 2}
     - target: {fileID: 4305704709854959934, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
       propertyPath: speed
