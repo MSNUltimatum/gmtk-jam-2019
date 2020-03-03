@@ -221,7 +221,6 @@ public class BulletLife : MonoBehaviour
 
     public virtual void DestroyBullet()
     {
-        print("heheheh" + TTDLeft);
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<DynamicLightInOut>().FadeOut();
