@@ -13,14 +13,11 @@ public class SinMovementMod : BulletModifier
     private Vector3 axis;
     private Vector3 pos;
 
-    static bool test = true;
-
     public override void SpawnModifier(BulletLife bullet)
     {
         base.SpawnModifier(bullet);
         if (!isCos && !bullet.copiedBullet)
         {
-            test = false;
             var newBullet = bullet.BulletFullCopy().GetComponent<BulletLife>();
             var sinMod = newBullet.bulletMods.Find(x => x.GetType() == typeof(SinMovementMod)) as SinMovementMod;
             sinMod.isCos = true;
