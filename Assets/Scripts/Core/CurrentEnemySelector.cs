@@ -52,7 +52,7 @@ public class CurrentEnemySelector : MonoBehaviour
     private IEnumerator DeactivateMonsterOverTime(float time, GameObject monster)
     {
         yield return new WaitForSeconds(time);
-        if (monster != null)
+        if (monster != null && monster != currentBoy)
         {
             monster.GetComponent<MonsterLife>().MakeNoBoy();
         }
