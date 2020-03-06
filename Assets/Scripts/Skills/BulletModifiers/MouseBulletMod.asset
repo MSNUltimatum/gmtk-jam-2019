@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: -6
   modifierTime: Infinity
-  moveTiming: 2
+  moveTiming: 1
   supportedBulletTypes: 00000000
