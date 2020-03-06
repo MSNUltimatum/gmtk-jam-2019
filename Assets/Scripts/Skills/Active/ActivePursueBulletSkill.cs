@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ActivePursueBulletSkill", menuName = "ScriptableObject/ActiveSkill/ActivePursueBulletSkill", order = 1)]
 public class ActivePursueBulletSkill : ActiveSkill
 {
-    public GameObject bulletPrefab;
-    private SkillManager skillManager;
+    public PursueBulletMod bulletMod;
     protected ActivePursueBulletSkill()
     {
         description = "Bang";
@@ -14,32 +13,21 @@ public class ActivePursueBulletSkill : ActiveSkill
         activeDuration = 3f;
     }
 
-    public override void InitializeSkill()
-    {
-        skillManager = GameObject.FindGameObjectWithTag("Player").GetComponent<SkillManager>();
-    }
-
     public override void ActivateSkill()
     {
-        var skillsWeapon = skillManager.skills;
-        foreach(var i in skillsWeapon)
-        {
-            if(i is ShootingWeapon)
-            {
-                ((ShootingWeapon)i).currentBulletPrefab = bulletPrefab;
-            }
-        }
+        SkillManager.temporaryBulletMods.Add(bulletMod);
     }
 
     public override void EndOfSkill()
     {
-        var skillsWeapon = skillManager.skills;
-        foreach (var i in skillsWeapon)
+        ReturnNormalBullets();
+    }
+
+    private void ReturnNormalBullets()
+    {
+        if (SkillManager.temporaryBulletMods.Contains(bulletMod))
         {
-            if (i is ShootingWeapon)
-            {
-                ((ShootingWeapon)i).currentBulletPrefab = ((ShootingWeapon)i).bulletPrefab;
-            }
+            SkillManager.temporaryBulletMods.Remove(bulletMod);
         }
     }
 }

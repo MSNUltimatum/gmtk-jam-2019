@@ -7,6 +7,7 @@ using System.IO;
 
 public class SkillManager : MonoBehaviour
 {
+    public static List<BulletModifier> temporaryBulletMods = new List<BulletModifier>();
     public EquippedWeapon equippedWeapon = null;
 
     [SerializeField, Header("Important")]
@@ -205,6 +206,7 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
+        temporaryBulletMods = new List<BulletModifier>();
         FillRegisteredSkills();
         //PrintRegisteredSkills();
 
@@ -345,6 +347,17 @@ public class SkillManager : MonoBehaviour
             if (s is PassiveSkill)
             {
                 s.UpdateEffect();
+            }
+        }
+
+        // Update temporary weapon mods
+        for (int i = 0; i < temporaryBulletMods.Count; i++)
+        {
+            temporaryBulletMods[i].modifierTime -= Time.deltaTime;
+            if (temporaryBulletMods[i].modifierTime <= 0)
+            {
+                temporaryBulletMods.RemoveAt(i);
+                i--;
             }
         }
     }

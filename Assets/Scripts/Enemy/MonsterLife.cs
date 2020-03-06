@@ -8,7 +8,7 @@ public class MonsterLife : MonoBehaviour
     [SerializeField]
     public int maxHP = 1;
     [System.NonSerialized]
-    public int HP = 1;
+    public float HP = 1;
 
     [SerializeField]
     protected GameObject absorbPrefab = null;
@@ -83,7 +83,7 @@ public class MonsterLife : MonoBehaviour
 
     protected virtual void HitEffect() { }
 
-    public void Damage(GameObject source, int damage = 1, bool ignoreInvulurability = false)
+    public void Damage(GameObject source, float damage = 1, bool ignoreInvulurability = false)
     {
         if (HP <= 0) return; // Already dead
         if ((THE_BOY && Vulnurable() || ignoreInvulurability) && SpecialConditions(source))

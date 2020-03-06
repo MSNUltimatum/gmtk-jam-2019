@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ActiveMouseBulletDkill", menuName = "ScriptableObject/ActiveSkill/ActiveMouseBulletSkill", order = 1)]
+[CreateAssetMenu(fileName = "ActiveMouseBulletSkill", menuName = "ScriptableObject/ActiveSkill/ActiveMouseBulletSkill", order = 1)]
 public class ActiveMouseBullet : ActiveSkill
 {
-    public GameObject bulletPrefab;
-    private SkillManager skillManager;
+    public FollowCursorMod bulletMod;
     protected ActiveMouseBullet()
     {
         description = "Bang";
@@ -14,21 +13,9 @@ public class ActiveMouseBullet : ActiveSkill
         activeDuration = 3f;
     }
 
-    public override void InitializeSkill()
-    {
-        skillManager = GameObject.FindGameObjectWithTag("Player").GetComponent<SkillManager>();
-    }
-
     public override void ActivateSkill()
     {
-        var skillsWeapon = skillManager.skills;
-        foreach (var i in skillsWeapon)
-        {
-            if (i is ShootingWeapon)
-            {
-                ((ShootingWeapon)i).currentBulletPrefab = bulletPrefab;
-            }
-        }
+        SkillManager.temporaryBulletMods.Add(bulletMod);
         ShootingWeapon.shootingEvents.AddListener(ReturnNormalBullets);
     }
 
@@ -39,14 +26,11 @@ public class ActiveMouseBullet : ActiveSkill
 
     private void ReturnNormalBullets()
     {
-        var skillsWeapon = skillManager.skills;
-        foreach (var i in skillsWeapon)
+        if (SkillManager.temporaryBulletMods.Contains(bulletMod))
         {
-            if (i is ShootingWeapon)
-            {
-                ((ShootingWeapon)i).currentBulletPrefab = ((ShootingWeapon)i).bulletPrefab;
-            }
+            SkillManager.temporaryBulletMods.Remove(bulletMod);
         }
+
         ShootingWeapon.shootingEvents.RemoveListener(ReturnNormalBullets);
     }
 }

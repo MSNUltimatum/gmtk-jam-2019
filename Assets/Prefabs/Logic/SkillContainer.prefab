@@ -54,7 +54,6 @@ MonoBehaviour:
   - Pistol:Passing-Pistol
   - Pistol:Pistol
   - Pistol:Pistol-Glock
-  - Pistol:Sin-Pistol
   - TriplePistol:TriplePistol
   registeredSkills:
   - {fileID: 11400000, guid: df6ea92976338684e957044a2c786dd2, type: 2}
@@ -67,5 +66,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db66262821ff2a3499495d36cbe01297, type: 2}
   - {fileID: 11400000, guid: e341703b3e0de8040a445e142f93c96e, type: 2}
   - {fileID: 11400000, guid: 9c7f83ae5537bbf448f224351df4abf3, type: 2}
-  - {fileID: 11400000, guid: 746b0af4e823d4644bc2eedeab6e9b98, type: 2}
   - {fileID: 11400000, guid: 9928273a409763a48b8e67fad61de033, type: 2}
