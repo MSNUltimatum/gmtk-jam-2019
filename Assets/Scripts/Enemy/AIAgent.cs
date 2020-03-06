@@ -23,7 +23,8 @@ public class AIAgent : MonoBehaviour
         OnScreen,
         DirectSight,
         Always,
-        GroupAggroable
+        GroupAggroable,
+        ShootingAgroble
     }
 
     private void Start()

@@ -24,6 +24,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     public float timeBeforeGroupeAggroOff = 3f;
 
     public float agroBlockTime = 2f;
+
     protected virtual void Awake()
     {
         agent = gameObject.GetComponent<AIAgent>();
@@ -69,6 +70,17 @@ public abstract class EnemyBehavior : MonoBehaviour
         {
             currentTimeBeforeGroupeAgroOff = timeBeforeGroupeAggroOff;
             agent.SetSteering(ZeroSteering(), weight);
+        }
+
+        if(!isActive && proximityCheckOption.Contains(AIAgent.ProximityCheckOption.ShootingAgroble))
+        {
+            ShootingWeapon.shootingEvents.AddListener(Activate);
+            if (!isGroupeAggroed)
+                SetAggroedInvite();
+        }
+        else if(isActive)
+        {
+            isGroupeAggroed = currentTimeBeforeGroupeAgroOff > 0;
         }
     }
 
@@ -182,6 +194,8 @@ public abstract class EnemyBehavior : MonoBehaviour
                 return TargetOnScreen(gameObject);
             case AIAgent.ProximityCheckOption.GroupAggroable:
                 return isGroupeAggroed;
+            case AIAgent.ProximityCheckOption.ShootingAgroble:
+                return false;
             default:
                 Debug.LogError("Proximity check undefined condition");
                 return false;

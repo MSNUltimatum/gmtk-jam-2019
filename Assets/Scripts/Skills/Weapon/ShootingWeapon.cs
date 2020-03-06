@@ -27,7 +27,7 @@ public abstract class ShootingWeapon : WeaponSkill
 
     public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
     {
-				shootingEvents?.Invoke();
+		shootingEvents?.Invoke();
         ShootingWeaponAttack(attackManager, mousePos, shotFrom);
         AddToRandomAngle();
     }

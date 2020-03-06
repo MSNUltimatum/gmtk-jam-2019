@@ -195,12 +195,12 @@ PrefabInstance:
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.data[0]
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -474,6 +474,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2611012751803154452, guid: e008d69018ee3cf46a35061dfdf8de46,
+        type: 3}
+      propertyPath: m_Name
+      value: GhostMonster
+      objectReference: {fileID: 0}
     - target: {fileID: 3258448360597376789, guid: e008d69018ee3cf46a35061dfdf8de46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,11 +534,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2611012751803154452, guid: e008d69018ee3cf46a35061dfdf8de46,
-        type: 3}
-      propertyPath: m_Name
-      value: GhostMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 6499421595224703870, guid: e008d69018ee3cf46a35061dfdf8de46,
         type: 3}
       propertyPath: proximityCheckOption.Array.size
@@ -554,16 +554,6 @@ PrefabInstance:
       propertyPath: proximityCheckDistance
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3130938310820312409, guid: e008d69018ee3cf46a35061dfdf8de46,
-        type: 3}
-      propertyPath: maxInviteLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3130938310820312409, guid: e008d69018ee3cf46a35061dfdf8de46,
-        type: 3}
-      propertyPath: invertProximityCheck
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1091892299975544832, guid: e008d69018ee3cf46a35061dfdf8de46,
         type: 3}
       propertyPath: moveInviteRadius
@@ -578,6 +568,21 @@ PrefabInstance:
         type: 3}
       propertyPath: proximityCheckDistance
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130938310820312409, guid: e008d69018ee3cf46a35061dfdf8de46,
+        type: 3}
+      propertyPath: maxInviteLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130938310820312409, guid: e008d69018ee3cf46a35061dfdf8de46,
+        type: 3}
+      propertyPath: invertProximityCheck
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103435485076250997, guid: e008d69018ee3cf46a35061dfdf8de46,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3103435485076250995, guid: e008d69018ee3cf46a35061dfdf8de46,
         type: 3}
@@ -598,11 +603,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3103435485076250997, guid: e008d69018ee3cf46a35061dfdf8de46,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e008d69018ee3cf46a35061dfdf8de46, type: 3}
@@ -1109,7 +1109,12 @@ PrefabInstance:
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.data[1]
-      value: 4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: proximityCheckOption.Array.data[2]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7938150299196942965, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -1242,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.22
+      value: -18.45
       objectReference: {fileID: 0}
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -1302,17 +1307,22 @@ PrefabInstance:
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.data[0]
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.data[1]
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: proximityCheckOption.Array.data[2]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7938150299196942965, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -1614,12 +1624,12 @@ PrefabInstance:
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.31
+      value: -18.37
       objectReference: {fileID: 0}
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.67
+      value: 4.73
       objectReference: {fileID: 0}
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -1674,7 +1684,7 @@ PrefabInstance:
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: proximityCheckOption.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -1685,6 +1695,11 @@ PrefabInstance:
         type: 3}
       propertyPath: proximityCheckOption.Array.data[1]
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170874774547565885, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: proximityCheckOption.Array.data[2]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7938150299196942965, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
