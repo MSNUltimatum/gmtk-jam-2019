@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 840
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,7 +93,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -105,7 +105,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -117,7 +117,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -127,8 +127,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe52682bf5c862a43a9f3a3c06812458
+      spriteID: ce24973003811e54a9e47b540d86d3bd
       internalID: -7394790180325526034
       vertices: []
       indices: 
@@ -146,10 +146,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_1
       rect:
         serializedVersion: 2
-        x: 1360
+        x: 128
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbbb293ede1407f4fbf78cf230b122fe
+      spriteID: c84ae2b386557c240aec7131e752c3e6
       internalID: 6552471681476709009
       vertices: []
       indices: 
@@ -167,10 +167,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_2
       rect:
         serializedVersion: 2
-        x: 2720
+        x: 256
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,7 +178,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b62e0e5a542b494693242823ad7480a
+      spriteID: 273944a87246dd645bce23e6cee3296e
       internalID: -8550471498994150032
       vertices: []
       indices: 
@@ -188,10 +188,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_3
       rect:
         serializedVersion: 2
-        x: 4080
+        x: 384
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b646150aec44cd4ab6ebdae32329340
+      spriteID: a5094401bfab4d445bf3a7d8f2fd0101
       internalID: -1876023942197378604
       vertices: []
       indices: 
@@ -209,10 +209,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_4
       rect:
         serializedVersion: 2
-        x: 5440
+        x: 512
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,7 +220,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08ab2b55bde28c94d84b338570535dfc
+      spriteID: 6daf70f40ca456e4f8a3ded1859fd63b
       internalID: 5939827134276363451
       vertices: []
       indices: 
@@ -230,10 +230,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_5
       rect:
         serializedVersion: 2
-        x: 6800
+        x: 640
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cb04ea374d2cb5439a90ffa501e3029
+      spriteID: 6b7c5501116de4548853b1cc2c2ce2c2
       internalID: -5979667925220533381
       vertices: []
       indices: 
@@ -251,10 +251,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_6
       rect:
         serializedVersion: 2
-        x: 8160
+        x: 768
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,7 +262,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1411e5c793223554b86a72cda422c705
+      spriteID: 16b27f0abb9783f438a0607343656880
       internalID: -7043898356357578228
       vertices: []
       indices: 
@@ -272,10 +272,10 @@ TextureImporter:
       name: Puzyr_2_raskadrovka_1360kh1360_na_kadr_7
       rect:
         serializedVersion: 2
-        x: 9520
+        x: 896
         y: 0
-        width: 1360
-        height: 1360
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,7 +283,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e804212665aebe943abf4da4895d2533
+      spriteID: 337d04623d8711e428ef1251c32dbaae
       internalID: -2716113761396766638
       vertices: []
       indices: 

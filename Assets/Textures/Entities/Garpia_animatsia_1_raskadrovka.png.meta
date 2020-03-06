@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 52
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,8 +121,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 375
-        height: 250
+        width: 100
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 603376cdc25541b4ea02018ac8c6c66a
+      spriteID: 4d315eba6c2b6b14c89f65f55aa00a48
       internalID: -9219427548023085501
       vertices: []
       indices: 
@@ -140,10 +140,10 @@ TextureImporter:
       name: Garpia_animatsia_1_raskadrovka_1
       rect:
         serializedVersion: 2
-        x: 375
+        x: 100
         y: 0
-        width: 375
-        height: 250
+        width: 100
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 451caaef1a38b04469b03a0204d021d5
+      spriteID: 602d9ccfae4dde346947306b0af83e37
       internalID: -5681298493696529410
       vertices: []
       indices: 
@@ -161,10 +161,10 @@ TextureImporter:
       name: Garpia_animatsia_1_raskadrovka_2
       rect:
         serializedVersion: 2
-        x: 750
+        x: 200
         y: 0
-        width: 375
-        height: 250
+        width: 100
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef04a43f1b536bd4184b7a5807ba2951
+      spriteID: 6646e506f826dc246b4b23597b9c38e1
       internalID: 250886123307455369
       vertices: []
       indices: 
@@ -182,10 +182,10 @@ TextureImporter:
       name: Garpia_animatsia_1_raskadrovka_3
       rect:
         serializedVersion: 2
-        x: 1125
+        x: 300
         y: 0
-        width: 375
-        height: 250
+        width: 100
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d200eeb656134845b2a48150e04fd01
+      spriteID: 0a0e2a902a60a29428a02dc2f4df6dd8
       internalID: -8625416532039795135
       vertices: []
       indices: 
@@ -203,10 +203,10 @@ TextureImporter:
       name: Garpia_animatsia_1_raskadrovka_4
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 400
         y: 0
-        width: 375
-        height: 250
+        width: 100
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 070d9fb10eff7964487cdadb20a7301d
+      spriteID: f1e88db89f96e2d40a98761ff7138aa9
       internalID: -5978313030924523316
       vertices: []
       indices: 
@@ -224,10 +224,10 @@ TextureImporter:
       name: Garpia_animatsia_1_raskadrovka_5
       rect:
         serializedVersion: 2
-        x: 1875
+        x: 500
         y: 0
-        width: 375
-        height: 250
+        width: 100
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83125af00c2bcd645a6b277c9c65ae92
+      spriteID: 589d8bfe74cec3e4aba70eee41fc2d5d
       internalID: -1963867624362864045
       vertices: []
       indices: 

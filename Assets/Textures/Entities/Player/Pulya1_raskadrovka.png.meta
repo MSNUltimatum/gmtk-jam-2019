@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 840
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -105,10 +105,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -117,10 +117,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -129,7 +129,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -139,8 +139,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,7 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ae62f6d1456c8345b5905cd0e631a4b
+      spriteID: 2755507920ea1864f99592dbe4b06fba
       internalID: -6170221053679830223
       vertices: []
       indices: 
@@ -158,10 +158,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_1
       rect:
         serializedVersion: 2
-        x: 840
+        x: 32
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c41cfd885bcf8e43940ad12dc16ea65
+      spriteID: 96bc3e3b87c556e4090f21b3325b5b54
       internalID: 7529637985048222907
       vertices: []
       indices: 
@@ -179,10 +179,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_2
       rect:
         serializedVersion: 2
-        x: 1680
+        x: 64
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e913fd851af2a74fa8644053ffafa50
+      spriteID: 9c6aa26ba9741cb408d2e928274421e7
       internalID: -3982657268993166281
       vertices: []
       indices: 
@@ -200,10 +200,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_3
       rect:
         serializedVersion: 2
-        x: 2520
+        x: 96
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,7 +211,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 079df9ab392e2c948af45b1e9a244c35
+      spriteID: a21969489d6bbaf4599febec271376f6
       internalID: -8405645834943540100
       vertices: []
       indices: 
@@ -221,10 +221,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_4
       rect:
         serializedVersion: 2
-        x: 3360
+        x: 128
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,7 +232,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3901bc78432d2842ae31af6f534a245
+      spriteID: b2c7c37996890804ba79ba9c6f313181
       internalID: -5471827321848935574
       vertices: []
       indices: 
@@ -242,10 +242,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_5
       rect:
         serializedVersion: 2
-        x: 4200
+        x: 160
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,7 +253,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 622aa5acaf4d3c641bac0b95100c8d77
+      spriteID: 3b8c9e78da47473478d1ea04dfac9be7
       internalID: 8336830781858270039
       vertices: []
       indices: 
@@ -263,10 +263,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_6
       rect:
         serializedVersion: 2
-        x: 5040
+        x: 192
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,7 +274,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5f1a7e00252dd64bb974d31cefe3425
+      spriteID: dac16313a2109f44e8ecd9a7505de388
       internalID: -1189321892736020598
       vertices: []
       indices: 
@@ -284,10 +284,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_7
       rect:
         serializedVersion: 2
-        x: 5880
+        x: 224
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,7 +295,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5418d32dc80882c429b649fdd8f10282
+      spriteID: 0a17586423dfb0e43943a0c094a83a99
       internalID: 7657153259520828244
       vertices: []
       indices: 
@@ -305,10 +305,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_8
       rect:
         serializedVersion: 2
-        x: 6720
+        x: 256
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,7 +316,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1838c3bcc2cad9b46ade10d40776e134
+      spriteID: 4ddc905317437d94fbc8c01d65c2dc58
       internalID: 208175988227632453
       vertices: []
       indices: 
@@ -326,10 +326,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_9
       rect:
         serializedVersion: 2
-        x: 7560
+        x: 288
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,7 +337,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1008e475a0927364cb1ea1d4add8e516
+      spriteID: ced09635e3936e247a25ee5e82ff2253
       internalID: -3736801539244497825
       vertices: []
       indices: 
@@ -347,10 +347,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_10
       rect:
         serializedVersion: 2
-        x: 8400
+        x: 320
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -358,7 +358,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e22d3ffd9be80c4459acaca7b2917590
+      spriteID: cdd5c1e597334544882df4e0e49e83c3
       internalID: 1307025500257662699
       vertices: []
       indices: 
@@ -368,10 +368,10 @@ TextureImporter:
       name: Pulya1_raskadrovka_11
       rect:
         serializedVersion: 2
-        x: 9240
+        x: 352
         y: 0
-        width: 840
-        height: 1610
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -379,7 +379,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a497fc97213d45f489dd796537272c02
+      spriteID: 8ac53c1d51e66d94eb1e9603686d675e
       internalID: -7714298171193066596
       vertices: []
       indices: 
