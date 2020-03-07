@@ -7,6 +7,7 @@ using System.IO;
 
 public class SkillManager : MonoBehaviour
 {
+    public static List<BulletModifier> temporaryBulletMods = new List<BulletModifier>();
     public EquippedWeapon equippedWeapon = null;
 
     [SerializeField, Header("Important")]
@@ -205,6 +206,7 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
+        temporaryBulletMods = new List<BulletModifier>();
         FillRegisteredSkills();
         //PrintRegisteredSkills();
 
@@ -278,6 +280,7 @@ public class SkillManager : MonoBehaviour
 
         // Update effect, cooldown and active time left for active skill
         float[] skillCooldownsProportion = new float[SkillsUI.skillCount];
+        bool[] isActiveSkill = new bool[SkillsUI.skillCount];
         for (int i = 0; i < activeSkills.Count; i++)
         {
             activeSkills[i].cooldown = Mathf.Max(0, activeSkills[i].cooldown - Time.deltaTime);
@@ -292,8 +295,10 @@ public class SkillManager : MonoBehaviour
                 }
             }
             skillCooldownsProportion[i] = activeSkills[i].cooldown / activeSkills[i].skill.cooldownDuration;
+
+            isActiveSkill[i] = activeSkills[i].activeTimeLeft > 0;
         }
-        skillsUI.UpdateSkillRecoverVisualCooldown(skillCooldownsProportion);
+        skillsUI.UpdateSkillRecoverVisualCooldown(skillCooldownsProportion, isActiveSkill);
 
         // Switch weapon
         if (Input.GetKeyDown(rotateWeaponLeft) || Input.GetKeyDown(rotateWeaponRight))
@@ -342,6 +347,17 @@ public class SkillManager : MonoBehaviour
             if (s is PassiveSkill)
             {
                 s.UpdateEffect();
+            }
+        }
+
+        // Update temporary weapon mods
+        for (int i = 0; i < temporaryBulletMods.Count; i++)
+        {
+            temporaryBulletMods[i].modifierTime -= Time.deltaTime;
+            if (temporaryBulletMods[i].modifierTime <= 0)
+            {
+                temporaryBulletMods.RemoveAt(i);
+                i--;
             }
         }
     }

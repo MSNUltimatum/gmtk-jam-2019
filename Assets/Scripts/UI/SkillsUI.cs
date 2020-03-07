@@ -51,10 +51,11 @@ public class SkillsUI : MonoBehaviour
         }
     }
 
-    public void UpdateSkillRecoverVisualCooldown(float[] proportionOfTimeLeft)
+    public void UpdateSkillRecoverVisualCooldown(float[] proportionOfTimeLeft, bool[] isActiveSkill)
     {
         for (int i = 0; i < skillCount; i++)
         {
+            skillCooldownEffectCells[i].SetFloat("_SkillActive", isActiveSkill[i] ? 1 : 0);
             skillCooldownEffectCells[i].SetFloat("_CooldownProgress", proportionOfTimeLeft[i]);
         }
     }

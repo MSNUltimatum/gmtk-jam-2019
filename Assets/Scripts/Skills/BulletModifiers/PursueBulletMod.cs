@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PursueBulletLife : BulletLife
+[CreateAssetMenu(fileName = "PursueBulletMod", menuName = "ScriptableObject/BulletModifier/PursueBulletMod", order = 1)]
+public class PursueBulletMod : BulletModifier
 {
     [SerializeField]
     private float factorRotationSpeed = 4f;
@@ -13,29 +14,29 @@ public class PursueBulletLife : BulletLife
 
     [SerializeField]
     private float radius = 8f;
-    protected override void Move()
+
+    public override void MoveModifier(BulletLife bullet)
     {
+        base.MoveModifier(bullet);
         if (monsterTargetGameObj == null)
         {
-            base.Move();
-            Targeting();
+            Targeting(bullet);
         }
         else
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime, Space.Self);
-            RotateToTarget(monsterTargetGameObj);
+            RotateToTarget(monsterTargetGameObj, bullet);
         }
     }
 
-    private void Targeting()
+    private void Targeting(BulletLife bullet)
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, radius);
+        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(bullet.transform.position, radius);
         var enemys = (from t in collider2Ds
                       where t.transform.gameObject.tag == "Enemy"
                       select t).ToArray();
-        foreach(var i in enemys)
+        foreach (var i in enemys)
         {
-            float dis = Vector2.Distance(transform.position, i.transform.position);
+            float dis = Vector2.Distance(bullet.transform.position, i.transform.position);
             if (dis < minDistance)
             {
                 minDistance = dis;
@@ -57,16 +58,16 @@ public class PursueBulletLife : BulletLife
         else return angle;
     }
 
-    private void RotateToTarget(GameObject monsterTarget)
+    private void RotateToTarget(GameObject monsterTarget, BulletLife bullet)
     {
         var targetPos = monsterTarget.transform.position;
-        var offset = new Vector2(targetPos.x - transform.position.x, targetPos.y - transform.position.y);
+        var offset = new Vector2(targetPos.x - bullet.transform.position.x, targetPos.y - bullet.transform.position.y);
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        var currentAngle = gameObject.transform.rotation.eulerAngles.z;
+        var currentAngle = bullet.transform.rotation.eulerAngles.z;
         var difference = angle180fix(angle - currentAngle);
         if (Mathf.Abs(difference) < Mathf.Abs(pursueBulletAngle))
         {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + difference * factorRotationSpeed * Time.deltaTime);
+            bullet.transform.rotation = Quaternion.Euler(0, 0, currentAngle + difference * factorRotationSpeed * Time.deltaTime);
         }
     }
 

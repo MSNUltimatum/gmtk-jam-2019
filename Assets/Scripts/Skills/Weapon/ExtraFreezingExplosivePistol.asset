@@ -18,7 +18,7 @@ MonoBehaviour:
   reloadTime: 30
   timeBetweenAttacks: 0.1
   ammoMagazine: 1
-  bulletPrefab: {fileID: 6191924688321695861, guid: 99446d1129f87ca41a902021ff3f0bdc,
+  bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
   bulletDamage: 5
   knockPower: 200
@@ -27,3 +27,4 @@ MonoBehaviour:
   maxRndShootingAngle: 0
   rndShootingAngleAmplifier: 0.15
   rndShootingAngleRelease: 0.5
+  bulletModifiers: []

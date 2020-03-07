@@ -115,7 +115,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     {
         timeToProximityCheck = Mathf.Max(0, timeToProximityCheck - Time.deltaTime);
         if (timeToProximityCheck > 0) return false;
-        timeToProximityCheck = proximityCheckPeriod;
+        timeToProximityCheck = Random.Range(proximityCheckPeriod - 0.05f, proximityCheckPeriod + 0.05f);
         foreach (var proximityCheckOpt in proximityCheckOption)
         {
             var proximityResult = ProximityCheckBody(proximityCheckOpt);

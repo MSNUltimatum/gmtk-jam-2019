@@ -32,7 +32,7 @@ public class MonsterHealthBar : MonoBehaviour
     public void HealthBarChange()
     {
         Active();
-        int tmpHP = monsterLife.HP;
+        float tmpHP = monsterLife.HP;
         Vector3 tmpScale = activeHealthBar.transform.localScale;
         tmpScale.y = (float)tmpHP / maxHP * originalScale;
         if(tmpScale.y / originalScale * 100 < 50.0f)

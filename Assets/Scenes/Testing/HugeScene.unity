@@ -1749,6 +1749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
+      propertyPath: skills.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
       propertyPath: skills.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 9928273a409763a48b8e67fad61de033,
@@ -1762,7 +1767,24 @@ PrefabInstance:
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
       propertyPath: forceSkillRewrite
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: skills.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: df6ea92976338684e957044a2c786dd2,
+        type: 2}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: skills.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: d37267932cec60543a7dace5e65ef121,
+        type: 2}
+    - target: {fileID: 4305704709854959934, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: speed
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}
@@ -3869,7 +3891,7 @@ CompositeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_ColliderPaths:
   - m_Collider: {fileID: 5653132063630340157}
     m_ColliderPaths:
@@ -4543,7 +4565,7 @@ CompositeCollider2D:
       - {x: -36.564514, y: -29.533047}
       - {x: -35.934338, y: -31.43153}
   m_VertexDistance: 0.1
-  m_OffsetDistance: 1
+  m_OffsetDistance: 0.5
 --- !u!483693784 &5653132063630340154
 TilemapRenderer:
   m_ObjectHideFlags: 0
