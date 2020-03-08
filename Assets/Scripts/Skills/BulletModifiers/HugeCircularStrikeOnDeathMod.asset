@@ -16,5 +16,5 @@ MonoBehaviour:
   modifierTime: Infinity
   moveTiming: 0
   supportedBulletTypes: 00000000
-  bulletCount: 4
-  angleOffset: 45
+  bulletCount: 32
+  angleOffset: 0

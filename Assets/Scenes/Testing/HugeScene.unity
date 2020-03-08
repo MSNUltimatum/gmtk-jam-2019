@@ -821,6 +821,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7008990872234128437, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.03668
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008990872234128437, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008990872234128437, guid: 4fc24a6bf72ff344196c67178f97cf36,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.04408445
+      objectReference: {fileID: 0}
     - target: {fileID: 5464025633678528480, guid: 4fc24a6bf72ff344196c67178f97cf36,
         type: 3}
       propertyPath: CameraMoveBound.x
@@ -840,21 +855,6 @@ PrefabInstance:
         type: 3}
       propertyPath: CameraMoveBound.w
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008990872234128437, guid: 4fc24a6bf72ff344196c67178f97cf36,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.03668
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008990872234128437, guid: 4fc24a6bf72ff344196c67178f97cf36,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008990872234128437, guid: 4fc24a6bf72ff344196c67178f97cf36,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.04408445
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fc24a6bf72ff344196c67178f97cf36, type: 3}
@@ -1745,7 +1745,7 @@ PrefabInstance:
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
       propertyPath: skills.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
@@ -1775,6 +1775,12 @@ PrefabInstance:
       propertyPath: skills.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: d37267932cec60543a7dace5e65ef121,
+        type: 2}
+    - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
+        type: 3}
+      propertyPath: skills.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c6a4e05a7eb9df4a849a4a4b888bf29,
         type: 2}
     - target: {fileID: 4305704709854959934, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}

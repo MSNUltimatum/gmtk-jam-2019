@@ -189,7 +189,7 @@ public class SkillManager : MonoBehaviour
                 activeSkills.Add(new EquippedActiveSkill(skill as ActiveSkill));
             }
         }
-        else
+        else if (skill is WeaponSkill)
         {
             if (equippedWeapons.Count >= 3)
             {
@@ -234,7 +234,7 @@ public class SkillManager : MonoBehaviour
                     activeSkills.Add(new EquippedActiveSkill(s as ActiveSkill));
                 }
             }
-            else
+            else if (s is WeaponSkill)
             {
                 if (equippedWeapons.Count >= 3)
                 {
