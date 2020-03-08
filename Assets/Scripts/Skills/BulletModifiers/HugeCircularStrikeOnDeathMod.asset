@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1d1036074ec6c4885c2e747eaf3032, type: 3}
+  m_Name: HugeCircularStrikeOnDeathMod
+  m_EditorClassIdentifier: 
+  priority: 0
+  modifierTime: Infinity
+  moveTiming: 0
+  supportedBulletTypes: 00000000
+  bulletCount: 4
+  angleOffset: 45
