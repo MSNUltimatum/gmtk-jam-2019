@@ -199,7 +199,7 @@ public class BulletLife : MonoBehaviour
     {
         var bullet = Instantiate(gameObject, transform.position, transform.rotation);
         var bulletComp = bullet.GetComponent<BulletLife>();
-        bulletComp.SetTimeLeft(TTDLeft);
+        bulletComp.SetTimeLeft(timeToDestruction);
         bulletComp.speed = speed;
         bulletComp.damage = damage;
         bulletComp.copiedBullet = true;

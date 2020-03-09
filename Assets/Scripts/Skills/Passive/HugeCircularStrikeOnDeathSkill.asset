@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773f0c6c493a8c24ab417472b82b76e7, type: 3}
+  m_Name: HugeCircularStrikeOnDeathSkill
+  m_EditorClassIdentifier: 
+  description: 
+  pickupSprite: {fileID: -3724889264531100421, guid: 7d59a9d32790d8244b9dcdf8f54a8e78,
+    type: 3}
+  circularStrikeMod: {fileID: 11400000, guid: 57df758a5157bb74b974d334abfbff5d, type: 2}
