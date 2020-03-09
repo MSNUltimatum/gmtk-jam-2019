@@ -258,6 +258,9 @@ MonoBehaviour:
   FlickerValueRange: {x: -0.02, y: 0.04}
   FlickerPeriodRange: {x: 0.1, y: 0.25}
   SinFactor: 0.1
+  sinSpeed: 1
+  lightFlicker: 1
+  spriteFlicker: 0
 --- !u!1 &347606919
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,16 +586,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1614993486991907795, guid: c9688ec54b2975941a61f98cde33f11a,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7606398713360245119, guid: c9688ec54b2975941a61f98cde33f11a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1624060494579274912, guid: c9688ec54b2975941a61f98cde33f11a,
         type: 3}
       propertyPath: looping
@@ -627,6 +620,16 @@ PrefabInstance:
         type: 3}
       propertyPath: VelocityModule.orbitalZ.minScalar
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614993486991907795, guid: c9688ec54b2975941a61f98cde33f11a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606398713360245119, guid: c9688ec54b2975941a61f98cde33f11a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7606398713360245119, guid: c9688ec54b2975941a61f98cde33f11a, type: 3}
@@ -723,6 +726,30 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b38f5738ea76fc47bbc9479eb38ab82, type: 3}
+--- !u!1 &1256750375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2857746212550083303, guid: ead2ec60ee8e35340ba9231ae3427844,
+    type: 3}
+  m_PrefabInstance: {fileID: 2857746213594603714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1256750376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256750375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb0e913c00601d4bb7d8ac1d2ef564c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlickerValueRange: {x: -0.02, y: 0.02}
+  FlickerPeriodRange: {x: 0.15, y: 0.25}
+  SinFactor: 0.3
+  sinSpeed: 2
+  lightFlicker: 0
+  spriteFlicker: 1
 --- !u!1 &1319755536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1060,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 947171897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1875380130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3438206382253768560, guid: d78f019a2bcfe0047a2c4d8827d4f92b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3438206381017499683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1875380131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875380130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb0e913c00601d4bb7d8ac1d2ef564c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlickerValueRange: {x: -0.02, y: 0.02}
+  FlickerPeriodRange: {x: 0.15, y: 0.25}
+  SinFactor: 0.3
+  sinSpeed: 2
+  lightFlicker: 0
+  spriteFlicker: 1
 --- !u!1001 &1949730424
 PrefabInstance:
   m_ObjectHideFlags: 0
