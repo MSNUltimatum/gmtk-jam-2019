@@ -22,15 +22,21 @@ public class Door : MonoBehaviour
     public Direction.Side direction;
 
     public string sceneName=""; // name of scene to change on enter this door
+    public SpriteRenderer spriteRenderer;
+    public Sprite openSprite;
+    public Sprite closedSprite;
+
+    private bool isSpawned = false;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        //spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        if (unlockOnTimer && locked) {
+        if (isSpawned && unlockOnTimer && locked) {
             timer -= Time.deltaTime;
             if (timer <= 0) {
                 Unlock();
@@ -40,7 +46,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision) // "Stay" needed to make door work if player was on trigger in moment of unlock
     {
-        if (!locked && collision.gameObject == player) {
+        if (isSpawned && !locked && collision.gameObject == player) {
             if (sceneName == "") {
                 connectedDoor.room.MoveToRoom(connectedDoor);
             } else {
@@ -51,18 +57,36 @@ public class Door : MonoBehaviour
     }
 
     public void Unlock() {
-        if (locked)
+        if (locked && isSpawned)
         {
             locked = false;
+            if (spriteRenderer.sprite != null && openSprite !=null)
+                spriteRenderer.sprite = openSprite;
             //animation?
         }
     }
 
     public void Lock()
     {
-        locked = true;
-        //animation?
-        timer = 1f;
+        if (isSpawned)
+        {
+            locked = true;
+            if (spriteRenderer.sprite != null && closedSprite != null)
+                spriteRenderer.sprite = closedSprite;
+            //animation?
+            timer = 1f;
+        }
+    }
+
+    public void SpawnDoor() {
+        if (!isSpawned)
+        {
+            isSpawned = true;
+            if (locked)
+                spriteRenderer.sprite = closedSprite;
+            else
+                spriteRenderer.sprite = openSprite;
+        }
     }
 
     public bool directionAutoset() {
@@ -96,32 +120,38 @@ public class Door : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green; // green box for trigger
-        Gizmos.DrawWireCube(transform.position + (Vector3)GetComponent<BoxCollider2D>().offset, GetComponent<BoxCollider2D>().size);
-
-        BoxCollider2D blocker = null; // red box for blocker
-        foreach (BoxCollider2D coll in GetComponentsInChildren<BoxCollider2D>()){
-            if (coll.gameObject != gameObject) blocker = coll;
-        }
-        if (blocker != null) {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(blocker.transform.position + (Vector3)blocker.offset, blocker.size);
-        }
-
-        if (connectedDoor != null) { // blue line for connection between doors
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, connectedDoor.transform.position);
-        }
-
-        if (locked)
+        if (isSpawned)
         {
-            Gizmos.color = Color.red; // red circle for locked door
-            Gizmos.DrawWireSphere(transform.position, 1);
-        }
-        else
-        {
-            Gizmos.color = Color.green; // green circle for unlocked door, and spawn position
-            Gizmos.DrawWireSphere(transform.position, 1);
+            Gizmos.color = Color.green; // green box for trigger
+            Gizmos.DrawWireCube(transform.position + (Vector3)GetComponent<BoxCollider2D>().offset, GetComponent<BoxCollider2D>().size);
+
+            BoxCollider2D blocker = null; // red box for blocker
+            foreach (BoxCollider2D coll in GetComponentsInChildren<BoxCollider2D>())
+            {
+                if (coll.gameObject != gameObject) blocker = coll;
+            }
+            if (blocker != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireCube(blocker.transform.position + (Vector3)blocker.offset, blocker.size);
+            }
+
+            if (connectedDoor != null)
+            { // blue line for connection between doors
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(transform.position, connectedDoor.transform.position);
+            }
+
+            if (locked)
+            {
+                Gizmos.color = Color.red; // red circle for locked door
+                Gizmos.DrawWireSphere(transform.position, 1);
+            }
+            else
+            {
+                Gizmos.color = Color.green; // green circle for unlocked door, and spawn position
+                Gizmos.DrawWireSphere(transform.position, 1);
+            }
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     private Door[] doors;
-
     public Dictionary<Direction.Side, Door> doorsSided = new Dictionary<Direction.Side, Door>();
 
     [HideInInspector]

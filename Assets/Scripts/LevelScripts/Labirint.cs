@@ -10,6 +10,7 @@ public class RoomBlueprint
     public GameObject prefab;
 
     public bool visited = false;
+    public string exitSceneName = ""; // not empty only for exit room
 }
 
 public class Labirint : MonoBehaviour
@@ -29,18 +30,40 @@ public class Labirint : MonoBehaviour
 
     void Start()
     {
-        InitBlueprints();
-        StartingRoomSpawn();        
+        instance = this;
+        LabirintBuilder builder = GetComponent<LabirintBuilder>();
+        if (builder == null)
+        {
+            InitBlueprints();
+            StartingRoomSpawn();
+        } else {
+            builder.BuildLabirint(this);
+            StartingRoomSpawn();
+        }
     }
 
     private void InitBlueprints()
     {
         int arraySize = RoomPrefabs.Length;
         blueprints = new RoomBlueprint[arraySize];
-        for (int i = 0; i< arraySize; i++) { 
+        for (int i = 0; i < arraySize; i++)
+        {
             blueprints[i] = new RoomBlueprint();
             blueprints[i].prefab = RoomPrefabs[i];
+        }        
+        HardcodeLabirintConstruction();
+    }
+
+    public void InitBlueprintsFromBuilder() {
+        for (int i = 0; i < blueprints.Length; i++)
+        {
+            //Debug.Log(blueprints.Length.ToString() + " " + i.ToString());
+            blueprints[i] = new RoomBlueprint();
         }
+    }
+
+    private void HardcodeLabirintConstruction()
+    {
 
         blueprints[0].rooms[Direction.Side.RIGHT] = 1; // хардкод для связей между комнатами
         blueprints[1].rooms[Direction.Side.LEFT] = 0;
@@ -125,6 +148,8 @@ public class Labirint : MonoBehaviour
                     {
                         oldDoor = currentRoom.doorsSided[side];
                         newDoor = newRoom.doorsSided[Direction.InvertSide(side)];
+                        oldDoor.SpawnDoor();
+                        newDoor.SpawnDoor();
                         offset = Direction.SideToVector3(side) * distanceToNewDoor;
                     }
                 }
