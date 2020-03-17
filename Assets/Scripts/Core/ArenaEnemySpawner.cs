@@ -165,10 +165,11 @@ public class ArenaEnemySpawner : MonoBehaviour
         if (Pause.Paused) return;
 
         EnemySpawnUpdate();
-        if (RelodScene.isVictory)
-        {
-            KillThemAll();
-        }
+        if (Labirint.instance == null)
+            if (RelodScene.isVictory)
+            {
+                KillThemAll();
+            }
     }
 
     public void KillThemAll()

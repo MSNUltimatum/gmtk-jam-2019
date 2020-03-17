@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3387014766477757519}
   - component: {fileID: 1265481833}
   - component: {fileID: 7263133522426991205}
+  - component: {fileID: 1687432345}
   m_Layer: 0
   m_Name: LabirintManager
   m_TagString: Untagged
@@ -122,6 +123,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableScanning: 1
+--- !u!114 &1687432345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387014766477757508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e341988441dda4380d87592d284fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRooms: 5
+  correctPathLength: 3
+  combatRoomPrefabs:
+  - {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b, type: 3}
+  - {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b, type: 3}
+  - {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b, type: 3}
+  - {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b, type: 3}
+  - {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b, type: 3}
+  peacefulRoomPrefabs:
+  - {fileID: 7557523555709609451, guid: c181f6f94fad9734cb70ce8fd2f59a55, type: 3}
+  - {fileID: 7557523555709609451, guid: c181f6f94fad9734cb70ce8fd2f59a55, type: 3}
+  exitSceneName: Chapter1levelboss
+  containersPrefabs:
+  - {fileID: 7707546310412048069, guid: 8af54454003590b44a5ef12609e9741f, type: 3}
+  - {fileID: 7707546310412048069, guid: 8af54454003590b44a5ef12609e9741f, type: 3}
 --- !u!1 &4194236523386335293
 GameObject:
   m_ObjectHideFlags: 0
