@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class ShootingWeapon : WeaponSkill
+[CreateAssetMenu(fileName = "Simple Shooting Weapon", menuName = "ScriptableObject/Weapon/Simple Shooting Weapon", order = 1)]
+public class ShootingWeapon : WeaponSkill
 {
     public GameObject bulletPrefab;
     public int bulletDamage = 5;
@@ -16,6 +17,7 @@ public abstract class ShootingWeapon : WeaponSkill
     [System.NonSerialized]
     public GameObject currentBulletPrefab;
     public static UnityEvent shootingEvents;
+    public BulletModifier[] bulletModifiers;
 
     public override void InitializeSkill()
     {
@@ -27,9 +29,9 @@ public abstract class ShootingWeapon : WeaponSkill
 
     public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
     {
-				shootingEvents?.Invoke();
         ShootingWeaponAttack(attackManager, mousePos, shotFrom);
         AddToRandomAngle();
+        shootingEvents?.Invoke();
     }
 
     public virtual void ShootingWeaponAttack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
@@ -94,6 +96,14 @@ public abstract class ShootingWeapon : WeaponSkill
             bulletLife.damage = bulletDamage;
             bulletLife.speed = bulletSpeed;
             bulletLife.timeToDestruction = timeToBulletDestruction;
+            foreach (var mod in bulletModifiers)
+            {
+                bulletLife.AddMod(mod);
+            }
+            foreach (var mod in SkillManager.temporaryBulletMods)
+            {
+                bulletLife.AddMod(mod);
+            }
         }
         for(int i = 0; i < bullet.transform.childCount; i++)
         {

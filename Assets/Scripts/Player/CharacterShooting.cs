@@ -17,6 +17,7 @@ public class CharacterShooting : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        cameraShaker = mainCamera.GetComponent<CameraShaker>();
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
         skillManager = GetComponent<SkillManager>();
@@ -38,14 +39,16 @@ public class CharacterShooting : MonoBehaviour
         }
         else if (Input.GetButton("Fire1"))
         {
-            currentWeapon.reloadTimeLeft = 0;
+            
             Vector3 mousePos = Input.mousePosition;
             var screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
             var ammoNeeded = currentWeapon.logic.AmmoConsumption();
             if (currentWeapon.ammoLeft >= ammoNeeded)
             {
+                currentWeapon.reloadTimeLeft = 0;
                 currentWeapon.ammoLeft -= ammoNeeded;
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
+                cameraShaker.ShakeCamera(0.25f);
                 shotFrame = true;
             }
             timeBetweenAttacks = currentWeapon.logic.timeBetweenAttacks;
@@ -62,7 +65,10 @@ public class CharacterShooting : MonoBehaviour
     }
 
     private float timeBetweenAttacks = 0;
+
     private Camera mainCamera;
+    private CameraShaker cameraShaker;
+
     private KeyCode reloadButton = KeyCode.R;
     private SkillManager skillManager;
     public SkillManager.EquippedWeapon currentWeapon;

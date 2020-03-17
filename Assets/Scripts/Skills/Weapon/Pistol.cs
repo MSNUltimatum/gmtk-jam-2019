@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Pistol", menuName = "ScriptableObject/Weapon/Pistol", order = 1)]
 public class Pistol : ShootingWeapon
 {
     protected Pistol()

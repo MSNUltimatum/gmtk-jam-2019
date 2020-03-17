@@ -16,6 +16,7 @@ public class AIAgent : MonoBehaviour
 
     [Header("All Behaviours activation condition")]
     public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+    public float timeToLoseAggro = -1;
 
     public enum ProximityCheckOption
     {
@@ -27,6 +28,7 @@ public class AIAgent : MonoBehaviour
 
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
         velocity = Vector2.zero;
         steering = new EnemySteering();
         
@@ -40,10 +42,22 @@ public class AIAgent : MonoBehaviour
         this.steering.angular += steering.angular * weight;
     }
 
+    protected void FixedUpdate()
+    {
+        if (Pause.Paused) return;
+        Vector2 velocityFallBack =
+            velocity * velocityFallBackPower * Time.deltaTime;
+
+        velocity -= velocityFallBack;
+        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
+    }
+
     protected virtual void Update()
     {
         ProceedPauseUnpause();
-        if (Pause.Paused || !allowMovement) return;
+        if (Pause.Paused) return;
+
+        if (!allowMovement) return;
 
         Vector2 displacement = velocity * Time.deltaTime;
         orientation += rotation * Time.deltaTime;
@@ -53,23 +67,22 @@ public class AIAgent : MonoBehaviour
         {
             orientation += 360.0f;
         }
-        transform.Translate(displacement, Space.World);
+        //rigidbody.velocity = velocity;
+        //rigidbody.MovePosition(rigidbody.position + displacement);
         transform.rotation = Quaternion.Euler(0, 0, -orientation);
-        
+
         var behaviors = GetComponents<EnemyBehavior>();
         foreach (var i in behaviors)
         {
             i.CalledUpdate();
         }
-        Vector2 velocityFallBack = 
-            velocity.normalized * 
-            new Vector2(velocityFallBackPower * Time.deltaTime, velocityFallBackPower * Time.deltaTime);
-        velocity += steering.linear * Time.deltaTime - velocityFallBack;
+
         rotation += Mathf.Max(steering.angular * Time.deltaTime);
-        if (velocity.magnitude > maxSpeed)
+        
+        var speedUp = steering.linear * Time.deltaTime;
+        if ((velocity + speedUp).magnitude < maxSpeed)
         {
-            velocity.Normalize();
-            velocity = velocity * maxSpeed;
+            velocity += speedUp;
         }
         steering = new EnemySteering();
     }
@@ -122,6 +135,8 @@ public class AIAgent : MonoBehaviour
     Vector3 savedVelocity = new Vector3();
     private bool wasPausedLastFrame = false;
     private bool allowMovement = true;
+
+    new private Rigidbody2D rigidbody;
 
     // private Dictionary<int, List<EnemySteering>> groups;
 }

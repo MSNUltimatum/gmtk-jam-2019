@@ -58,7 +58,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!114 &2892025730329295083
 MonoBehaviour:
@@ -106,11 +106,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2892025730329295085}
     m_Modifications:
-    - target: {fileID: 1490246243530073565, guid: 490e98db0a2fc8643b4920ef9ebbaafd,
-        type: 3}
-      propertyPath: m_Name
-      value: Pause Menu
-      objectReference: {fileID: 0}
     - target: {fileID: 4012053607473556469, guid: 490e98db0a2fc8643b4920ef9ebbaafd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,6 +225,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.58098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490246243530073565, guid: 490e98db0a2fc8643b4920ef9ebbaafd,
+        type: 3}
+      propertyPath: m_Name
+      value: Pause Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5597952508886789479, guid: 490e98db0a2fc8643b4920ef9ebbaafd,
         type: 3}

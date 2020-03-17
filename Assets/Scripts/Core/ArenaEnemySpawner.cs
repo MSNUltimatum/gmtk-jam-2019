@@ -131,9 +131,14 @@ public class ArenaEnemySpawner : MonoBehaviour
         {
             var enemy = enemyWave.transform.GetChild(i).gameObject;
             var behaviours = enemy.GetComponentsInChildren<EnemyBehavior>();
+            // Make enemies move towards player always
             foreach (var behaviour in behaviours)
             {
-                behaviour.Activate();
+                if (!(behaviour is Attack))
+                {
+                    behaviour.Activate();
+                    behaviour.timeToLoseAggro = -1; // never stop moving
+                }
             }
             // Set random enemy name from the dictionary
             //enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];

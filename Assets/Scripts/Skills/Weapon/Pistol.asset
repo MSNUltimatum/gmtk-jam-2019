@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Your first gun
   pickupSprite: {fileID: 21300000, guid: f32fc59e10e8aaf4581d2e0458d58383, type: 3}
-  itemIndividualName: 
   attackSound:
   - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
   reloadTime: 1
@@ -22,5 +21,11 @@ MonoBehaviour:
   ammoMagazine: 6
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
+  bulletDamage: 5
+  knockPower: 200
   bulletSpeed: 18
   timeToBulletDestruction: 10
+  maxRndShootingAngle: 0
+  rndShootingAngleAmplifier: 0.15
+  rndShootingAngleRelease: 0.5
+  bulletModifiers: []

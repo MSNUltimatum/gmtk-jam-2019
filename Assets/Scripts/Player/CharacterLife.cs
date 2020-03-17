@@ -64,6 +64,7 @@ public class CharacterLife : MonoBehaviour
         glowIntense = lighter.intensity;
 
         mainCam = Camera.main;
+        mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
         cameraScale = mainCam.orthographicSize;
         cameraStartPosition = mainCam.gameObject.transform.position;
         cameraMovePosition = gameObject.transform.position + new Vector3(0, 0, -20);
@@ -76,10 +77,11 @@ public class CharacterLife : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, 180);
         
         circleCollider.radius = 1.35f;
-        GetComponent<Rigidbody2D>().mass = 10000;
+        GetComponent<Rigidbody2D>().drag = 10;
+        GetComponent<Rigidbody2D>().mass = 100;
 
         var CameraFollow = Camera.main.GetComponent<CameraFollowScript>();
-        if (CameraFollow) CameraFollow.enabled = false;
+        if (!CameraFollow) Camera.main.gameObject.AddComponent<CameraFollowScript>();
     }
 
     private IEnumerator StopGlow()
@@ -91,13 +93,13 @@ public class CharacterLife : MonoBehaviour
             
             // Also move camera "forward" together with glow fadeout
             mainCam.orthographicSize = Mathf.Lerp(cameraScale / 2, cameraScale, glowFadeTime);
-            mainCam.gameObject.transform.position = Vector3.Lerp(cameraMovePosition, cameraStartPosition, glowFadeTime);
+            //mainCam.gameObject.transform.position = Vector3.Lerp(cameraMovePosition, cameraStartPosition, glowFadeTime);
 
             //ShadowObject.transform.localEulerAngles = 
 
             yield return new WaitForFixedUpdate();
         }
-        circleCollider.radius = 0.2f;
+        circleCollider.radius = 0.4f;
     }
 
     public void Alive()
