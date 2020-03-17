@@ -13,10 +13,13 @@ public class Room : MonoBehaviour
 
     public enum RoomType {empty,arena }
     public RoomType roomType;
+
+    public Transform possibleContainerPosition;
     
     private void Awake()
     {
         labirint = Labirint.instance;
+        if (possibleContainerPosition == null) possibleContainerPosition = transform; // if forgot to set, center of room
     }
 
     private void Start()
