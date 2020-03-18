@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563274b0906e19408a9dc9f419cf6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0.007, y: 0.234, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1997476023090138409
 GameObject:
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe00fb3cd49cce4badad8a8c9048f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
@@ -502,15 +502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851423767a200cf4eaf5bea045e99598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2.5
+  maxSpeed: 1.35
   maxAccel: 200
   maxRotation: 200
   maxAngularAccel: 10000
-  velocityFallBackPower: 3
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
-  proximityCheckOption: 01000000
 --- !u!114 &1057457538494757011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,10 +522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 
+  proximityCheckOption: 0
   proximityCheckDistance: 19
-  invertProximityCheck: 0
-  timeToLoseAggro: -1
 --- !u!114 &5825017680835124173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,10 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 
+  proximityCheckOption: 0
   proximityCheckDistance: 19
-  invertProximityCheck: 0
-  timeToLoseAggro: -1
   cooldownRange: {x: 1, y: 1}
   castTime: 0.3
   randomShotAngle: 15
@@ -591,8 +585,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 40
-  m_LinearDrag: 10
+  m_Mass: 1
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -710,10 +704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  proximityCheckOption: 
+  proximityCheckOption: 0
   proximityCheckDistance: 19
-  invertProximityCheck: 0
-  timeToLoseAggro: -1
   shiftAmp: 3
 --- !u!1001 &506991460195653906
 PrefabInstance:
@@ -916,6 +908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}

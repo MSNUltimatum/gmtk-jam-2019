@@ -15,7 +15,7 @@ public class AIAgent : MonoBehaviour
     protected EnemySteering steering;
 
     [Header("All Behaviours activation condition")]
-    public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen };
+    public List<ProximityCheckOption> proximityCheckOption = new List<ProximityCheckOption> { ProximityCheckOption.OnScreen, ProximityCheckOption.GroupAggroable };
     public float timeToLoseAggro = -1;
 
     public enum ProximityCheckOption
@@ -23,7 +23,9 @@ public class AIAgent : MonoBehaviour
         Distance,
         OnScreen,
         DirectSight,
-        Always
+        Always,
+        GroupAggroable,
+        ShootingAgroble
     }
 
     private void Start()

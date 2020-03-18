@@ -19,6 +19,12 @@ public abstract class EnemyBehavior : MonoBehaviour
     public float timeToLoseAggro = -1;
     private float timeSinceProximityFail = 0;
 
+    public float moveInviteRadius = 2f;
+    public int maxInviteLevel = 1;
+    public float timeBeforeGroupeAggroOff = 3f;
+
+    public float agroBlockTime = 2f;
+
     protected virtual void Awake()
     {
         agent = gameObject.GetComponent<AIAgent>();
@@ -32,14 +38,26 @@ public abstract class EnemyBehavior : MonoBehaviour
         {
             timeToLoseAggro = agent.timeToLoseAggro;
         }
+        isGroupeAggroed = false;
+        currentTimeBeforeGroupeAgroOff = timeBeforeGroupeAggroOff;
     }
 
     public virtual void CalledUpdate()
     {
         if (!isActive && ProximityCheck())
         {
-            isActive = true;
-            timeSinceProximityFail = 0;
+            if (currentAgroBlockTime < 0)
+            {
+                isActive = true;
+                timeSinceProximityFail = 0;
+                if (!isGroupeAggroed)
+                    SetAggroedInvite();
+            }
+            else
+            {
+                currentAgroBlockTime -= Time.deltaTime;
+                agent.SetSteering(ZeroSteering(), weight);
+            }
         }
         else if (isActive)
         {
@@ -48,11 +66,25 @@ public abstract class EnemyBehavior : MonoBehaviour
                 timeSinceProximityFail = ProximityCheck() ? 0 : timeSinceProximityFail + Time.deltaTime;
                 isActive = timeSinceProximityFail < timeToLoseAggro;
             }
+            currentTimeBeforeGroupeAgroOff = Mathf.Max(0, currentTimeBeforeGroupeAgroOff - Time.deltaTime);
+            isGroupeAggroed = currentTimeBeforeGroupeAgroOff > 0;
             agent.SetSteering(GetSteering(), weight);
         }
         else
         {
+            currentTimeBeforeGroupeAgroOff = timeBeforeGroupeAggroOff;
             agent.SetSteering(ZeroSteering(), weight);
+        }
+
+        if(!isActive && proximityCheckOption.Contains(AIAgent.ProximityCheckOption.ShootingAgroble))
+        {
+            ShootingWeapon.shootingEvents.AddListener(Activate);
+            if (!isGroupeAggroed)
+                SetAggroedInvite();
+        }
+        else if(isActive)
+        {
+            isGroupeAggroed = currentTimeBeforeGroupeAgroOff > 0;
         }
     }
 
@@ -64,6 +96,28 @@ public abstract class EnemyBehavior : MonoBehaviour
     public void Activate()
     {
         isActive = true;
+    }
+
+    public void SetAggroedInvite()
+    {
+            Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, moveInviteRadius);
+            var enemys = (from t in collider2Ds
+                          where t.transform.gameObject.tag == "Enemy"
+                          where t.gameObject != this.gameObject
+                          select t).ToArray();
+            foreach(var enemy in enemys)
+            {
+                var behaviors = enemy.GetComponents<EnemyBehavior>();
+                foreach (var behavior in behaviors)
+                {
+                    if(!behavior.isGroupeAggroed)
+                        behavior.GetAggroedInvite();
+                }
+            }
+    }
+    public void GetAggroedInvite()
+    {
+        isGroupeAggroed = true;
     }
 
     protected EnemySteering ZeroSteering()
@@ -142,12 +196,26 @@ public abstract class EnemyBehavior : MonoBehaviour
                 return true;
             case AIAgent.ProximityCheckOption.OnScreen:
                 return TargetOnScreen(gameObject);
+            case AIAgent.ProximityCheckOption.GroupAggroable:
+                return isGroupeAggroed;
+            case AIAgent.ProximityCheckOption.ShootingAgroble:
+                return false;
             default:
                 Debug.LogError("Proximity check undefined condition");
                 return false;
         }
     }
 
+    public void AgroBlock()
+    {
+        isActive = false;
+        currentAgroBlockTime = agroBlockTime;
+    }
+
     private float proximityCheckPeriod = 0.5f;
     private float timeToProximityCheck = 0.5f;
+    [System.NonSerialized]
+    public bool isGroupeAggroed;
+    private float currentTimeBeforeGroupeAgroOff;
+    private float currentAgroBlockTime  = 0;
 }
