@@ -78,7 +78,7 @@ public class LabirintBuilder : MonoBehaviour
             }
             else
             {
-                Direction.Side stepDirrection = availableSides.ToArray()[Random.Range(0, availableSides.Count)]; // random available side
+                Direction.Side stepDirrection = availableSides[Random.Range(0, availableSides.Count)]; // random available side
                 newPosition = currentPosition + Direction.SideToVector2Int(stepDirrection);
                 lastRoomID++;
                 map[newPosition.x, newPosition.y] = lastRoomID;
@@ -208,7 +208,6 @@ public class LabirintBuilder : MonoBehaviour
             Debug.LogError("Not enough room prefabs to fill rooms to labirintBuilder");
             return null;
         }
-        GameObject[] array = prefabList.ToArray();
-        return array[Random.Range(0, array.Length)]; 
+        return prefabList[Random.Range(0, prefabList.Count)]; 
     }
 }
