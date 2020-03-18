@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class LabirintBuilder : MonoBehaviour
 {
-    Labirint labirint;
-    public int numberOfRooms = 10;
-    public int correctPathLength = 3;
-    public GameObject[] combatRoomPrefabs;
-    public GameObject[] peacefulRoomPrefabs;
-    public string exitSceneName = "";
-    public GameObject[] containersPrefabs;
+    [SerializeField]
+    private int numberOfRooms = 10;
+    [SerializeField]
+    private int correctPathLength = 3;
+    [SerializeField]
+    private GameObject[] combatRoomPrefabs = null;
+    [SerializeField]
+    private GameObject[] peacefulRoomPrefabs = null;
+    [SerializeField]
+    private string exitSceneName = "";
+    [SerializeField]
+    private GameObject[] containersPrefabs = null;
+    [SerializeField]
+    private bool roomRepeatAllowed = false;
 
-    Dictionary<int, Vector2Int> allRoomsPositions;
-    List<Vector2Int> correctPathRoomsPositions;
-    private int[,] map;
-    Vector2Int startPosition;
-    Vector2Int endPosition;
-    Vector2Int currentPosition;
-    int lastRoomID;    
+    private Labirint labirint;
+    private int[,] map; //room position to room id
+    private Dictionary<int, Vector2Int> allRoomsPositions; // room id to room position
+    private List<Vector2Int> correctPathRoomsPositions;
+    private Vector2Int startPosition;
+    private Vector2Int endPosition;
+    private Vector2Int currentPosition;
+    private int lastRoomID;    
 
     private void Init()
     {
@@ -32,7 +40,7 @@ public class LabirintBuilder : MonoBehaviour
     public void BuildLabirint(Labirint labirintScript) {
         labirint = labirintScript;
         Init();
-        labirint.blueprints = new RoomBlueprint[numberOfRooms+1];
+        labirint.blueprints = new RoomBlueprint[numberOfRooms];
         labirint.InitBlueprintsFromBuilder();
         startPosition = new Vector2Int(numberOfRooms, numberOfRooms); // середина
         currentPosition = startPosition;
@@ -45,7 +53,7 @@ public class LabirintBuilder : MonoBehaviour
 
         MakeCorrectPath();
         MakeDeadEnds();
-        //DrawMap(); 
+        DrawMap(); 
         FillRoomPrefabs();
         FillContainers();
     }
@@ -54,7 +62,7 @@ public class LabirintBuilder : MonoBehaviour
         Vector2Int newPosition;
         Vector2Int positionToMove;
         List<Direction.Side> availableSides;
-        while (lastRoomID < correctPathLength)
+        while (lastRoomID < correctPathLength-1)
         {
             availableSides = new List<Direction.Side>();
             foreach (Direction.Side side in Direction.sides)
@@ -100,38 +108,34 @@ public class LabirintBuilder : MonoBehaviour
     }
 
     void MakeDeadEnds() {
-        int randomRoomID;
-        int backupExit = 0; // это костыль. Есть не нулевая вероятность что лабиринт будет продолжать генериться неограниченно долго.
-                            // В таком случае лучше недоделанный лабиринт чем зависший цикл
+        Vector2Int randomRoomPosition;
         List<Direction.Side> availableSides;
+        List<Vector2Int> roomsWithPossibleExitPositions = new List<Vector2Int>(correctPathRoomsPositions);        
+        roomsWithPossibleExitPositions.Remove(endPosition);
         Vector2Int newPosition;
         Vector2Int positionToMove;
-        while (lastRoomID < numberOfRooms && backupExit < 1000)
+        while (lastRoomID < numberOfRooms - 1)
         {
-            backupExit++;
-            randomRoomID = Random.Range(0, allRoomsPositions.Count);
-            if (allRoomsPositions[randomRoomID] != endPosition) // end room must not be a crossroad, only correct way enter and exit to another scene
+            randomRoomPosition = roomsWithPossibleExitPositions[Random.Range(0, roomsWithPossibleExitPositions.Count)];            
+            availableSides = new List<Direction.Side>();
+            foreach (Direction.Side side in Direction.sides)
             {
-                availableSides = new List<Direction.Side>();
-                foreach (Direction.Side side in Direction.sides)
-                {
-                    positionToMove = allRoomsPositions[randomRoomID] + Direction.SideToVector2Int(side);
-                    if (map[positionToMove.x, positionToMove.y] == -1)
-                        availableSides.Add(side);
-                }
-
-                if (availableSides.Count != 0)
-                {
-                    Direction.Side randomSide = availableSides.ToArray()[Random.Range(0, availableSides.Count)];
-                    newPosition = allRoomsPositions[randomRoomID] + Direction.SideToVector2Int(randomSide);
-                    if (map[newPosition.x, newPosition.y] == -1)
-                    {
-                        lastRoomID++;
-                        map[newPosition.x, newPosition.y] = lastRoomID;
-                        ConnectRoomBlueprints(randomRoomID, lastRoomID, randomSide);
-                        allRoomsPositions.Add(lastRoomID, newPosition);
-                    }
-                }
+                positionToMove = randomRoomPosition + Direction.SideToVector2Int(side);
+                if (map[positionToMove.x, positionToMove.y] == -1)
+                    availableSides.Add(side);
+            }
+            if (availableSides.Count != 0)
+            {
+                Direction.Side randomSide = availableSides[Random.Range(0, availableSides.Count)];
+                newPosition = randomRoomPosition + Direction.SideToVector2Int(randomSide);
+                lastRoomID++;
+                map[newPosition.x, newPosition.y] = lastRoomID;
+                ConnectRoomBlueprints(map[randomRoomPosition.x, randomRoomPosition.y], lastRoomID, randomSide);
+                allRoomsPositions.Add(lastRoomID, newPosition);
+                roomsWithPossibleExitPositions.Add(newPosition);
+            }
+            else {
+                roomsWithPossibleExitPositions.Remove(randomRoomPosition);
             }
         }
     }
@@ -148,7 +152,8 @@ public class LabirintBuilder : MonoBehaviour
                 if (Labirint.instance.blueprints[i].rooms.ContainsKey(side))
                     if (Labirint.instance.blueprints[i].rooms[side] != -1)
                     {
-                        Debug.DrawRay(new Vector3(allRoomsPositions[i].x, allRoomsPositions[i].y, 0), Direction.SideToVector3(side), lineColor,9999f);
+                        Debug.DrawRay(new Vector3(allRoomsPositions[i].x - numberOfRooms+0.5f, allRoomsPositions[i].y - numberOfRooms + 0.5f, 0), 
+                            Direction.SideToVector3(side), lineColor,9999f);
                     }
             }
         }
@@ -160,22 +165,21 @@ public class LabirintBuilder : MonoBehaviour
     }
 
     void FillRoomPrefabs() {
-        const bool norepeat = true; // hardcode flag for testing of big labirint, while we dont have many room prefabs
         List<GameObject> emptyRoomsList = new List<GameObject>(peacefulRoomPrefabs);
         List<GameObject> combatRoomsList = new List<GameObject>(combatRoomPrefabs);
         labirint.blueprints[0].prefab = RandomGameObjectFromList(emptyRoomsList); // 0 index is for starting room, always empty
-        if (norepeat) emptyRoomsList.Remove(labirint.blueprints[0].prefab);
-        for (int i = 1; i <= numberOfRooms; i++)
+        if (!roomRepeatAllowed) emptyRoomsList.Remove(labirint.blueprints[0].prefab);
+        for (int i = 1; i < numberOfRooms; i++)
         {
             if (allRoomsPositions[i] != endPosition)
             {
                 labirint.blueprints[i].prefab = RandomGameObjectFromList(combatRoomsList);
-                if (norepeat) combatRoomsList.Remove(labirint.blueprints[i].prefab);
+                if (!roomRepeatAllowed) combatRoomsList.Remove(labirint.blueprints[i].prefab);
             }
             else
             {
                 labirint.blueprints[i].prefab = RandomGameObjectFromList(emptyRoomsList);
-                if (norepeat) emptyRoomsList.Remove(labirint.blueprints[i].prefab);
+                if (!roomRepeatAllowed) emptyRoomsList.Remove(labirint.blueprints[i].prefab);
                 labirint.blueprints[i].exitSceneName = exitSceneName;
             }
         }
@@ -192,7 +196,7 @@ public class LabirintBuilder : MonoBehaviour
         else
             foreach (GameObject containerPrefab in containersPrefabs)
             {
-                int roomForContainerID = containerAvailableRooms.ToArray()[Random.Range(0, containerAvailableRooms.ToArray().Length - 1)];
+                int roomForContainerID = containerAvailableRooms[Random.Range(0, containerAvailableRooms.Count - 1)]; 
                 labirint.blueprints[roomForContainerID].contanerPrefab = containerPrefab;
                 containerAvailableRooms.Remove(roomForContainerID);
             }

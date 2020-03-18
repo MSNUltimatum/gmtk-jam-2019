@@ -13,6 +13,8 @@ public class Container : MonoBehaviour
     [HideInInspector]
     public float[] itemChances;
     private GameObject itemToDrop = null;
+    [HideInInspector]
+    public RoomBlueprint blueprint;
 
     protected virtual void Awake()
     {
@@ -49,6 +51,9 @@ public class Container : MonoBehaviour
         else { 
             //Debug.Log("Error on container open. Empty drop list");
             //null drop is possible now, for not 100% mob drop, so not a error now
+        }
+        if (blueprint != null) {
+            blueprint.containerWasOpened = true;
         }
     }
 

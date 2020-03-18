@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destanceToPickup: 1
   inactiveTime: 0.5
-  skill: {fileID: 11400000, guid: 746b0af4e823d4644bc2eedeab6e9b98, type: 2}
+  skill: {fileID: 11400000, guid: 5e95b9a25a9df1a4cb2c63799d0adc2d, type: 2}
 --- !u!61 &7209445119945584864
 BoxCollider2D:
   m_ObjectHideFlags: 0
