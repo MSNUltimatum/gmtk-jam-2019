@@ -14,12 +14,11 @@ public class RoomBlueprint
 
     public GameObject contanerPrefab = null;
     public bool containerWasOpened = false;
-    //надо обсудить ситуацию когда игрок контейнер открыл но не подобрал итем, ушел-вернулся. Пока итем просто пропадет и контейнер не вернется.
 }
 
 public class Labirint : MonoBehaviour
 {
-    public GameObject[] RoomPrefabs;//from inspector 
+    //public GameObject[] RoomPrefabs;//from inspector 
     public RoomBlueprint[] blueprints; 
     private List<int> activeRooms = new List<int>();
     public int currentRoomID = 0;
@@ -38,24 +37,25 @@ public class Labirint : MonoBehaviour
         LabirintBuilder builder = GetComponent<LabirintBuilder>();
         if (builder == null)
         {
-            InitBlueprints();
+            //InitBlueprints();
+            Debug.LogError("Cant find labirint builder script");
         } else {
             builder.BuildLabirint(this);
         }
         StartingRoomSpawn();
     }
 
-    private void InitBlueprints()
-    {
-        int arraySize = RoomPrefabs.Length;
-        blueprints = new RoomBlueprint[arraySize];
-        for (int i = 0; i < arraySize; i++)
-        {
-            blueprints[i] = new RoomBlueprint();
-            blueprints[i].prefab = RoomPrefabs[i];
-        }        
-        HardcodeLabirintConstruction();
-    }
+//    private void InitBlueprints()
+//    {
+//        int arraySize = RoomPrefabs.Length;
+//        blueprints = new RoomBlueprint[arraySize];
+//        for (int i = 0; i < arraySize; i++)
+//        {
+//            blueprints[i] = new RoomBlueprint();
+//            blueprints[i].prefab = RoomPrefabs[i];
+//        }        
+//        HardcodeLabirintConstruction();
+//    }
 
     public void InitBlueprintsFromBuilder() {
         for (int i = 0; i < blueprints.Length; i++)
@@ -224,8 +224,10 @@ public class Labirint : MonoBehaviour
 
     void ContainerCheck() {
         if (blueprints[currentRoomID].contanerPrefab != null && !blueprints[currentRoomID].containerWasOpened) {
-            Instantiate(blueprints[currentRoomID].contanerPrefab, 
+            GameObject container = Instantiate(blueprints[currentRoomID].contanerPrefab, 
                 blueprints[currentRoomID].instance.GetComponent<Room>().possibleContainerPosition.position, Quaternion.identity);
+            container.transform.parent = blueprints[currentRoomID].instance.transform;
+            container.GetComponent<Container>().blueprint = blueprints[currentRoomID];
         }
     }
 }
