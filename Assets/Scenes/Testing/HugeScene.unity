@@ -131,8 +131,9 @@ GameObject:
   - component: {fileID: 108281592}
   - component: {fileID: 108281591}
   - component: {fileID: 108281590}
+  - component: {fileID: 108281593}
   m_Layer: 0
-  m_Name: Butterfly_6-Sheet_228x38_0
+  m_Name: Butterfly_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,6 +221,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108281593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108281589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e78a262968b8e14ebe87440e335dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightZoneRadius: 3
 --- !u!1001 &179511001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1385,8 +1399,9 @@ GameObject:
   - component: {fileID: 825695571}
   - component: {fileID: 825695570}
   - component: {fileID: 825695569}
+  - component: {fileID: 825695572}
   m_Layer: 0
-  m_Name: Butterfly_2_-Sheet_204x34_0
+  m_Name: Butterfly_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1475,6 +1490,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825695572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825695568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e78a262968b8e14ebe87440e335dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightZoneRadius: 3
 --- !u!1001 &836283955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1941,8 +1969,9 @@ GameObject:
   - component: {fileID: 922606113}
   - component: {fileID: 922606112}
   - component: {fileID: 922606111}
+  - component: {fileID: 922606114}
   m_Layer: 0
-  m_Name: Butterfly-Sheet_228x32_0
+  m_Name: Butterfly_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2030,6 +2059,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &922606114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922606110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e78a262968b8e14ebe87440e335dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightZoneRadius: 3
 --- !u!1001 &950267371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3118,8 +3160,9 @@ GameObject:
   - component: {fileID: 1486083225}
   - component: {fileID: 1486083224}
   - component: {fileID: 1486083223}
+  - component: {fileID: 1486083226}
   m_Layer: 0
-  m_Name: Butterfly_4-Sheet_88x22_0
+  m_Name: Butterfly_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3208,6 +3251,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1486083226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486083222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e78a262968b8e14ebe87440e335dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightZoneRadius: 3
 --- !u!1001 &1598805919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3456,8 +3512,9 @@ GameObject:
   - component: {fileID: 1665239332}
   - component: {fileID: 1665239331}
   - component: {fileID: 1665239330}
+  - component: {fileID: 1665239333}
   m_Layer: 0
-  m_Name: Dragonfly-Sheet_150x34_0
+  m_Name: Dragonfly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3546,6 +3603,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665239333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665239329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e78a262968b8e14ebe87440e335dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightZoneRadius: 3
 --- !u!1001 &1698502547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3626,8 +3696,9 @@ GameObject:
   - component: {fileID: 1706273419}
   - component: {fileID: 1706273418}
   - component: {fileID: 1706273417}
+  - component: {fileID: 1706273420}
   m_Layer: 0
-  m_Name: Butterfly_3_-Sheet_276x38_0
+  m_Name: Butterfly_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3716,6 +3787,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706273420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706273416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e78a262968b8e14ebe87440e335dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightZoneRadius: 3
 --- !u!1001 &1714272261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19239,7 +19323,7 @@ PrefabInstance:
     - target: {fileID: 8435594574638218104, guid: 8276eb8a9fae19545a36a477410189b5,
         type: 3}
       propertyPath: m_Name
-      value: Butterfly_5-Sheet_88x22_0
+      value: Butterfly_5
       objectReference: {fileID: 0}
     - target: {fileID: 8435594574638218107, guid: 8276eb8a9fae19545a36a477410189b5,
         type: 3}
