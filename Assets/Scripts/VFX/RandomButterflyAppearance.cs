@@ -6,8 +6,6 @@ public class RandomButterflyAppearance : MonoBehaviour
 {
     [SerializeField]
     private List<Sprite> butterflyAppearances = null;
-    [SerializeField]
-    private List<Animation> correspondingAnimations = null;
 
     void Start()
     {
