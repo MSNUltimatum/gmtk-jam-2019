@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BurrowStrike : Attack
 {
@@ -18,6 +19,8 @@ public class BurrowStrike : Attack
     private float unburrowTime = 0.5f;
     [SerializeField]
     private float diggingTime = 2f;
+    [SerializeField]
+    private GameObject clawAttack = null;
 
     // TODO: No hardcoded colors, please!
     
@@ -73,6 +76,11 @@ public class BurrowStrike : Attack
 
                 if (timeToNextState <= 0)
                 {
+                    if (CheckWallAhead())
+                    {
+                        Unburrow();
+                        return;
+                    }
                     aiAgent.maxSpeed = burrowedSpeed;
                     GetComponent<Collider2D>().enabled = false;
                     foreach (var particle in rockDigEffect.GetComponentsInChildren<ParticleSystem>())
@@ -90,7 +98,7 @@ public class BurrowStrike : Attack
                 if (timeToScan <= 0)
                 {
                     timeToScan = timeToEachScan;
-                    if (CheckEnemyNearby()) Unburrow();
+                    if (CheckWallAhead() || CheckEnemyNearby()) Unburrow();
                 }
 
                 if (timeToNextState <= 0)
@@ -122,15 +130,19 @@ public class BurrowStrike : Attack
         foreach (var particle in rockDigEffect.GetComponentsInChildren<ParticleSystem>())
         {
             var particleEmission = particle.emission;
-            particleEmission.rateOverTime = new ParticleSystem.MinMaxCurve(particleEmission.rateOverTime.constant * 2);
+            particleEmission.rateOverTime = new ParticleSystem.MinMaxCurve(particleEmission.rateOverTime.constant * 2.5f);
             var particleShape = particle.shape;
-            particleShape.angle = particleShape.angle * 3f;
+            particleShape.angle = particleShape.angle * 4f;
         }
     }
 
     protected void CompleteAttack()
     {
         currentState = BurrowState.None;
+        var clawInstance = Instantiate(clawAttack, transform.position + transform.up * 2f, Quaternion.identity);
+        var offset = new Vector2(clawInstance.transform.position.x - transform.position.x, clawInstance.transform.position.y - transform.position.y);
+        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+        clawInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         rockDigEffect.GetComponent<DetachDestroyParticleEmitter>().TimeToDestroy = -0;
         for (int i = 0; i < spritesToFade.Count; i++)
@@ -144,15 +156,25 @@ public class BurrowStrike : Attack
 
     private bool CheckEnemyNearby()
     {
-        objectsNearby = Physics2D.OverlapCircleAll(transform.position, attackRadius);
-        foreach (var obj in objectsNearby)
-        {
-            if (obj.transform.CompareTag("Player"))
-            {
-                return true;
-            }
-        }
-        return false;
+        //objectsNearby = Physics2D.OverlapCircleAll(transform.position, attackRadius);
+        //foreach (var obj in objectsNearby)
+        //{
+        //    if (obj.transform.CompareTag("Player"))
+        //    {
+        //        return true;
+        //    }
+        //}
+        //return false;
+        return Vector3.Distance(target.transform.position, transform.position) <= attackRadius;
+    }
+
+    private bool CheckWallAhead()
+    {
+        //Debug.DrawRay(transform.position, transform.up * attackRadius);
+        var hits = (from t in Physics2D.RaycastAll(transform.position, transform.up, attackRadius + 1)
+                    where t.transform.gameObject.tag == "Environment"
+                    select t).ToArray();
+        return (hits.Length != 0);
     }
 
     private float timeToNextState = Mathf.Infinity;
@@ -160,7 +182,7 @@ public class BurrowStrike : Attack
     
     private GameObject rockDigEffect = null;
     private Collider2D[] objectsNearby;
-    private float timeToScan = 0.25f;
+    private float timeToScan = 0f;
     private float timeToEachScan = 0.25f;
 
     private List<Vector4> startingColor;
