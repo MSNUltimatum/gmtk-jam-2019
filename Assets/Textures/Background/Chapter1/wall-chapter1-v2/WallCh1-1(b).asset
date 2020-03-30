@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09695de3414fa554cb0cd3775980d1fc, type: 3}
-  m_Name: WallCh1-1(a)
+  m_Name: WallCh1-1(b)
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 21300000, guid: a8b852132510adc40a52e4269d1f2643, type: 3}
+  m_DefaultSprite: {fileID: 21300000, guid: f4596b2f1db8a3d42ad61974afdef8b4, type: 3}
   m_DefaultColliderType: 1
   RuleNames:
   - v1
@@ -38,8 +38,8 @@ MonoBehaviour:
   DefaultNumOfNotThese: 1
   NotTheseNumberOfTiles: 040000000000
   t1:
+  - {fileID: 11400000, guid: bf5113bd1a73a114d885e6370f32958d, type: 2}
   - {fileID: 11400000}
-  - {fileID: 11400000, guid: 5ecc66cda23b5ef4f9bda4b108f753d5, type: 2}
   - {fileID: 11400000, guid: fde7868705d94de46bdda13f01b734bf, type: 2}
   - {fileID: 11400000, guid: 1dbb8b41e37211441863963273ac1d8e, type: 2}
   t2:
@@ -51,8 +51,8 @@ MonoBehaviour:
   t6: []
   t7: []
   n1:
+  - {fileID: 11400000, guid: bf5113bd1a73a114d885e6370f32958d, type: 2}
   - {fileID: 11400000}
-  - {fileID: 11400000, guid: 5ecc66cda23b5ef4f9bda4b108f753d5, type: 2}
   - {fileID: 11400000, guid: fde7868705d94de46bdda13f01b734bf, type: 2}
   - {fileID: 11400000, guid: 1dbb8b41e37211441863963273ac1d8e, type: 2}
   n2: []
@@ -169,9 +169,9 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-  - m_Neighbors: 0000000003000000000000000300000003000000000000000300000000000000
+  - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
     m_Sprites:
-    - {fileID: 102674592299160025, guid: e4771515f6d091e4b96a30669b329b85, type: 3}
+    - {fileID: 3316983823799862429, guid: de741e651dae6d04fa669d397c306c4c, type: 3}
     m_AnimationSpeed: 1
     m_PerlinScale: 0.5
     m_RuleTransform: 0
