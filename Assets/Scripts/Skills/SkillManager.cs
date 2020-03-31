@@ -233,6 +233,7 @@ public class SkillManager : MonoBehaviour
                 if(equippedWeapon == null)
                 {
                     equippedWeapon = equippedWeapons[0];
+                    attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
                 }
             }
 
@@ -421,7 +422,6 @@ public class SkillManager : MonoBehaviour
         {
             weaponIcons[i] = equippedWeapons[i].logic.pickupSprite;
         }
-        Debug.Log(equippedWeapon);
         skillsUI.SetWeaponSprites(weaponIcons, equippedWeapon.weaponIndex);
     }
 
