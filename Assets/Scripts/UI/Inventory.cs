@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
                     MakeFrame.Frame(empCell.gameObject, ActiveFrame);
                 var inst = Instantiate(cell, empCell);
                 inst.GetComponent<InventoryItemPresenter>().Init(DraggingParent);
-                inst.GetComponent<InventoryItemPresenter>().Render(items[k]);
+                inst.GetComponent<InventoryItemPresenter>().Render(items[k], this);
                 k++;
             }
         }

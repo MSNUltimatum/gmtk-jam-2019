@@ -2242,6 +2242,7 @@ MonoBehaviour:
   DraggingParent: {fileID: 217038122}
   cell: {fileID: 1601648343120544096, guid: c626e35e89c03a9418b84dae0cae71f5, type: 3}
   ActiveFrame: {fileID: 21300000, guid: 5665bf6512f9e8f4ab9a0598136dbb7e, type: 3}
+  BaseFrame: {fileID: 21300000, guid: 9fef7fc9136cb4e4b90756ef4b6d960c, type: 3}
   equipedSkills: []
 --- !u!114 &1074468495
 MonoBehaviour:

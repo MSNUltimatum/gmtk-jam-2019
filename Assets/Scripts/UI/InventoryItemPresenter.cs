@@ -78,13 +78,13 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
         onDrag = false;
     }
 
-    public void Render(SkillBase item)
+    public void Render(SkillBase item, Inventory inventory)
     {
         itemImage.sprite = item.pickupSprite;
         Image img = GetComponent<Image>();
         var tmp = img.color;
         currentSkill = item;
-        inventory = transform.parent.parent.parent.parent.parent.gameObject.GetComponent<Inventory>();
+        this.inventory = inventory;
     }
 
     private void Reboot()
