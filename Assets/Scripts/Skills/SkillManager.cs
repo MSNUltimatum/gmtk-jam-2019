@@ -130,7 +130,7 @@ public class SkillManager : MonoBehaviour
     #endregion
 
     [Serializable]
-    private class EquippedActiveSkill
+    public class EquippedActiveSkill
     {
         public ActiveSkill skill;
         public float cooldown;
@@ -174,13 +174,45 @@ public class SkillManager : MonoBehaviour
     List<WeaponSkill> inventoryWeaponSkills = new List<WeaponSkill>();
     List<ActiveSkill> inventoryActiveSkills = new List<ActiveSkill>();
 
+    public List<WeaponSkill> InventoryWeaponSkill 
+    { 
+      get { return inventoryWeaponSkills; } 
+      set { inventoryWeaponSkills = value; }
+    }
+    
+    public List<ActiveSkill> InventoryActiveSkills
+    {
+        get { return inventoryActiveSkills; }
+        set { inventoryActiveSkills = value; }
+    }
+
+    public List<EquippedWeapon> EquippedWeapons
+    {
+        get { return equippedWeapons; }
+        set { equippedWeapons = value; }
+    }
+
+    public List<EquippedActiveSkill> ActiveSkills
+    {
+        get { return activeSkills; }
+        set { activeSkills = value; }
+    }
+
+    public void ClearWeapons()
+    {
+        equippedWeapons.ForEach(weapon => skills.Remove(weapon.logic));
+        equippedWeapon = null;
+        equippedWeapons.Clear();
+        equippedWeapons = new List<EquippedWeapon>();
+    }
+
     public void AddSkill(SkillBase skill)
     {
         skills.Add(skill);
         skill.InitializeSkill();
         if (skill is ActiveSkill)
         {
-            if (activeSkills.Count >= 5)
+            if (activeSkills.Count >= equippedActiveCount)
             {
                 inventoryActiveSkills.Add(skill as ActiveSkill);
             }
@@ -191,13 +223,18 @@ public class SkillManager : MonoBehaviour
         }
         else if (skill is WeaponSkill)
         {
-            if (equippedWeapons.Count >= 3)
+            if (equippedWeapons.Count >= equippedWeaponCount)
             {
                 inventoryWeaponSkills.Add(skill as WeaponSkill);
             }
             else
             {
                 equippedWeapons.Add(new EquippedWeapon(skill as WeaponSkill, equippedWeapons.Count));
+                if(equippedWeapon == null)
+                {
+                    equippedWeapon = equippedWeapons[0];
+                    attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
+                }
             }
 
         }
@@ -378,7 +415,7 @@ public class SkillManager : MonoBehaviour
         ApplySkillSprites();
     }
 
-    private void ApplyWeaponSprites()
+    public void ApplyWeaponSprites()
     {
         var weaponIcons = new Sprite[SkillsUI.weaponsCount];
         for (int i = 0; i < equippedWeapons.Count; i++)
@@ -388,7 +425,7 @@ public class SkillManager : MonoBehaviour
         skillsUI.SetWeaponSprites(weaponIcons, equippedWeapon.weaponIndex);
     }
 
-    private void ApplySkillSprites()
+    public void ApplySkillSprites()
     {
         var skillIcons = new Sprite[SkillsUI.skillCount];
         for (int i = 0; i < activeSkills.Count; i++)
@@ -401,6 +438,9 @@ public class SkillManager : MonoBehaviour
         skillsUI.SetSkillSprites(skillIcons);
     }
     #endregion
+
+    public int equippedActiveCount = 5;
+    public int equippedWeaponCount = 3;
 
     public List<SkillBase> skills = new List<SkillBase>();
 
