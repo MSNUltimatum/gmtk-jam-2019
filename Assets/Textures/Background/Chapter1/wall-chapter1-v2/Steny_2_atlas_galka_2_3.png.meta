@@ -1,0 +1,499 @@
+fileFormatVersion: 2
+guid: 4fd57a89bba9b1148b0ccebd3df928ce
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1622993682237015971
+    second: Steny_2_atlas_galka_2_3_0
+  - first:
+      213: -9128652322300576723
+    second: Steny_2_atlas_galka_2_3_1
+  - first:
+      213: -4240199657322330257
+    second: Steny_2_atlas_galka_2_3_2
+  - first:
+      213: -1654411141215505731
+    second: Steny_2_atlas_galka_2_3_3
+  - first:
+      213: 6169156511989754135
+    second: Steny_2_atlas_galka_2_3_4
+  - first:
+      213: 979287498293365886
+    second: Steny_2_atlas_galka_2_3_5
+  - first:
+      213: -1415067151948400847
+    second: Steny_2_atlas_galka_2_3_6
+  - first:
+      213: -5967203818438102754
+    second: Steny_2_atlas_galka_2_3_7
+  - first:
+      213: -8460235853822694396
+    second: Steny_2_atlas_galka_2_3_8
+  - first:
+      213: 6304726316001083020
+    second: Steny_2_atlas_galka_2_3_9
+  - first:
+      213: 8745351080485096798
+    second: Steny_2_atlas_galka_2_3_10
+  - first:
+      213: 5372558301666509
+    second: Steny_2_atlas_galka_2_3_11
+  - first:
+      213: -2326270450516675761
+    second: Steny_2_atlas_galka_2_3_12
+  - first:
+      213: -5735622542697225221
+    second: Steny_2_atlas_galka_2_3_13
+  - first:
+      213: -5664612662228762664
+    second: Steny_2_atlas_galka_2_3_14
+  - first:
+      213: 5112646556490536356
+    second: Steny_2_atlas_galka_2_3_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_0
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61704079dbf4344ba7beef0a0bf2f2a
+      internalID: -1622993682237015971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729f8b8691fa18c499631377449dfd45
+      internalID: -9128652322300576723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16f5bb7a44c1c1643ac39b61d23e8545
+      internalID: -4240199657322330257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cfc2245e32fc047b4051582b4ec170
+      internalID: -1654411141215505731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55bcf0dcbb2e66146bf84b8af76c914c
+      internalID: 6169156511989754135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd1ae0326b9b324d978cf6c86e888b3
+      internalID: 979287498293365886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe06735fbc571748aacf9364a3be96f
+      internalID: -1415067151948400847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57576f1a354c15947856fe17a80bf60b
+      internalID: -5967203818438102754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eacf60b3464d3aa4caccd84e306b11cd
+      internalID: -8460235853822694396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74a427096a9cbb4c80855812f6e0f23
+      internalID: 6304726316001083020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c61662b466f6334a82775e731494e5c
+      internalID: 8745351080485096798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7427ca8198417164e8ea289eb86ec1aa
+      internalID: 5372558301666509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_12
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95665d1bad243443b81ed54d518ec67
+      internalID: -2326270450516675761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_13
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118d4a1037307684dad49dab7a1c7adc
+      internalID: -5735622542697225221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6605fd0848a606f4a9d702d5ec688a6e
+      internalID: -5664612662228762664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steny_2_atlas_galka_2_3_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256.16666
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14839de4b6f331e4fb40099ee4852270
+      internalID: 5112646556490536356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
