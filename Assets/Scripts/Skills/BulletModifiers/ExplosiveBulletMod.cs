@@ -19,19 +19,20 @@ public class ExplosiveBulletMod : BulletModifier
 
     public override void HitEnvironmentModifier(BulletLife bullet, Collider2D coll)
     {
+        Debug.Log("ya");
         base.HitEnvironmentModifier(bullet, coll);
         ModEffect(bullet, coll);
     }
 
     protected void ModEffect(BulletLife bullet, Collider2D coll)
     {
-        var monsters = FindMonsters(coll);
+        var monsters = FindMonsters(coll, bullet);
         ExplosiveWave(monsters, bullet);
     }
 
-    protected Collider2D[] FindMonsters(Collider2D coll)
+    protected Collider2D[] FindMonsters(Collider2D coll, BulletLife bullet)
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(coll.transform.position, explosionRadius);
+        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(coll.ClosestPoint(bullet.transform.position), explosionRadius);
         var enemys = (from t in collider2Ds
                       where t.transform.gameObject.tag == "Enemy"
                       select t).ToArray();
