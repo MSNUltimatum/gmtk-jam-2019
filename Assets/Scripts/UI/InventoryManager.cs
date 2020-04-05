@@ -6,9 +6,11 @@ public class InventoryManager : MonoBehaviour
 {
     private CharacterShooting shooting;
     private bool isActive;
+    [SerializeField]
+    private GameObject inventory;
     public void Start()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
+        inventory.SetActive(false);
         var player = GameObject.FindGameObjectWithTag("Player");
         shooting = player.GetComponent<CharacterShooting>();
         isActive = false;
@@ -19,7 +21,7 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I))
         {
             shooting.enabled = !shooting.enabled;
-            transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
+            inventory.SetActive(!inventory.activeSelf);
             Cursor.visible = !Cursor.visible;
         }
     }

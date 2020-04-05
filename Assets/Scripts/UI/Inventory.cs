@@ -3,58 +3,51 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    private List<SkillBase> Items = null;
+    private Transform itemsContainer = null;
+    [SerializeField]
+    private Transform draggingParent = null;
 
     [SerializeField]
-    private Transform ItemsContainer = null;
-
-    [SerializeField]
-    private Transform DraggingParent = null;
-
-    [SerializeField]
-    private GameObject cell = null;
+    private GameObject cellPrefab = null;
 
     [SerializeField]
     private Sprite ActiveFrame = null;
-
     [SerializeField]
     public Sprite BaseFrame = null;
 
-    [SerializeField]
-    private List<SkillBase> equipedSkills = null;
-
-    private SkillManager skills = null;
-
     public void Start()
     {
-        Items.Clear();
+        nonEquippedSkills.Clear();
+        equippedSkills.Clear();
         var player = GameObject.FindGameObjectWithTag("Player");
         skills = player.GetComponent<SkillManager>();
-        skills.InventoryActiveSkills.ForEach(skill => Items.Add(skill));
-        skills.InventoryWeaponSkill.ForEach(skill => Items.Add(skill));
-        skills.ActiveSkills.ForEach(skill => equipedSkills.Add(skill.skill));
-        skills.EquippedWeapons.ForEach(weapon => equipedSkills.Add(weapon.logic));
-        Render(Items, ItemsContainer, false);
-        Render(equipedSkills, ItemsContainer, true);
+        skills.InventoryActiveSkills.ForEach(skill => nonEquippedSkills.Add(skill));
+        skills.InventoryWeaponSkill.ForEach(skill => nonEquippedSkills.Add(skill));
+        skills.ActiveSkills.ForEach(skill => equippedSkills.Add(skill.skill));
+        skills.EquippedWeapons.ForEach(weapon => equippedSkills.Add(weapon.logic));
+        Render(equippedSkills, itemsContainer, true);
+        Render(nonEquippedSkills, itemsContainer, false);
     }
 
-    private void Render(List<SkillBase> items, Transform conteiner, bool isActive)
+    private void Render(List<SkillBase> items, Transform container, bool isActive)
     {
         int k = 0;
-        for(int i = 0;i < conteiner.childCount; i++)
+        for(int i = 0;i < container.childCount; i++)
         {
-            var empCell = conteiner.GetChild(i);
+            var empCell = container.GetChild(i);
             if (k < items.Count && empCell.childCount == 0)
             {
                 if (isActive)
-                    MakeFrame.Frame(empCell.gameObject, ActiveFrame);
-                var inst = Instantiate(cell, empCell);
-                inst.GetComponent<InventoryItemPresenter>().Init(DraggingParent);
-                inst.GetComponent<InventoryItemPresenter>().Render(items[k], this);
+                    MakeFrame(empCell.gameObject, ActiveFrame);
+                var inst = Instantiate(cellPrefab, empCell);
+                var skillImage = inst.GetComponent<InventoryItemPresenter>();
+                skillImage.Init(draggingParent);
+                skillImage.Render(items[k], this);
                 k++;
             }
         }
@@ -62,20 +55,33 @@ public class Inventory : MonoBehaviour
 
     public void OnCellClick(SkillBase currentSkill, Transform cell)
     {
-        if (currentSkill is ActiveSkill && skills.ActiveSkills.Where(skill => skill.skill == currentSkill).ToArray().Length > 0)
+        //если скил активный и он экипирован
+        if (currentSkill is ActiveSkill) 
         {
-            var activeList = skills.ActiveSkills;
-            if (activeList.FindAll(skill => skill.skill == currentSkill)[0].cooldown == 0)
+            var equippedActiveSkill = skills.ActiveSkills.FindAll(skill => skill.skill == currentSkill)[0];
+            if (equippedActiveSkill != null)
             {
-                activeList.RemoveAll(skill => skill.skill == currentSkill);
+                if (equippedActiveSkill.cooldown == 0)
+                {
+                    skills.ActiveSkills.RemoveAll(skill => skill.skill == currentSkill);
+                    var nonActiveList = skills.InventoryActiveSkills;
+                    nonActiveList.Add(currentSkill as ActiveSkill);
+                    MakeFrame(cell.parent.gameObject, BaseFrame);
+                    skills.ApplySkillSprites();
+                }
+            }
+            else if (skills.ActiveSkills.Count < skills.equippedActiveCount)
+            {
+                var activeList = skills.ActiveSkills;
+                activeList.Add(new SkillManager.EquippedActiveSkill(currentSkill as ActiveSkill));
                 skills.ActiveSkills = activeList;
                 var nonActiveList = skills.InventoryActiveSkills;
-                nonActiveList.Add(currentSkill as ActiveSkill);
-                MakeFrame.Frame(cell.parent.gameObject, BaseFrame);
+                nonActiveList.Remove(currentSkill as ActiveSkill);
+                MakeFrame(cell.parent.gameObject, ActiveFrame);
                 skills.ApplySkillSprites();
             }
         }
-        else if (currentSkill is WeaponSkill && skills.EquippedWeapons.Where(weapon => weapon.logic == currentSkill).ToArray().Length > 0)
+        else if (currentSkill is WeaponSkill && skills.EquippedWeapons.Where(weapon => weapon.logic == currentSkill).Count() > 0)
         {
             var activeList = skills.EquippedWeapons;
             List<SkillManager.EquippedWeapon> tmpList = new List<SkillManager.EquippedWeapon>();
@@ -88,18 +94,8 @@ public class Inventory : MonoBehaviour
                     tmpList.ForEach(skill => skills.AddSkill(skill.logic));
                 var nonActiveList = skills.InventoryWeaponSkill;
                 nonActiveList.Add(currentSkill as WeaponSkill);
-                MakeFrame.Frame(cell.parent.gameObject, BaseFrame);
+                MakeFrame(cell.parent.gameObject, BaseFrame);
             }
-        }
-        else if (currentSkill is ActiveSkill && skills.ActiveSkills.Count < skills.equippedActiveCount)
-        {
-            var activeList = skills.ActiveSkills;
-            activeList.Add(new SkillManager.EquippedActiveSkill(currentSkill as ActiveSkill));
-            skills.ActiveSkills = activeList;
-            var nonActiveList = skills.InventoryActiveSkills;
-            nonActiveList.Remove(currentSkill as ActiveSkill);
-            MakeFrame.Frame(cell.parent.gameObject, ActiveFrame);
-            skills.ApplySkillSprites();
         }
         else if (currentSkill is WeaponSkill && skills.EquippedWeapons.Count < skills.equippedWeaponCount)
         {
@@ -108,8 +104,17 @@ public class Inventory : MonoBehaviour
             skills.EquippedWeapons = activeList;
             var nonActiveList = skills.InventoryWeaponSkill;
             nonActiveList.Remove(currentSkill as WeaponSkill);
-            MakeFrame.Frame(cell.parent.gameObject, ActiveFrame);
+            MakeFrame(cell.parent.gameObject, ActiveFrame);
             skills.ApplyWeaponSprites();
         }
     }
+
+    public static void MakeFrame(GameObject cell, Sprite frame)
+    {
+        cell.GetComponent<Image>().sprite = frame;
+    }
+
+    private List<SkillBase> nonEquippedSkills = null;
+    private List<SkillBase> equippedSkills = null;
+    private SkillManager skills = null;
 }
