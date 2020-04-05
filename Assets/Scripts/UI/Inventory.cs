@@ -70,15 +70,14 @@ public class Inventory : MonoBehaviour
                     skills.ApplySkillSprites();
                 }
             }
-            else if (skills.ActiveSkills.Count < skills.equippedActiveCount)
+            else if (skills.ActiveSkills.Count < skills.maxEquippedActiveCount)
             {
                 var activeList = skills.ActiveSkills;
-                activeList.Add(new SkillManager.EquippedActiveSkill(currentSkill as ActiveSkill));
+                skills.AddSkill(currentSkill);
                 skills.ActiveSkills = activeList;
                 var nonActiveList = skills.InventoryActiveSkills;
                 nonActiveList.Remove(currentSkill as ActiveSkill);
                 MakeFrame(cell.parent.gameObject, ActiveFrame);
-                skills.ApplySkillSprites();
             }
         }
         else if (currentSkill is WeaponSkill && skills.EquippedWeapons.Where(weapon => weapon.logic == currentSkill).Count() > 0)
@@ -90,22 +89,22 @@ public class Inventory : MonoBehaviour
                 activeList.RemoveAll(skill => skill.logic == currentSkill);
                 activeList.ForEach(skill => tmpList.Add(skill));
                 skills.ClearWeapons();
-                if (tmpList.Count > 0)
-                    tmpList.ForEach(skill => skills.AddSkill(skill.logic));
+
+                if (tmpList.Count > 0) tmpList.ForEach(skill => skills.AddSkill(skill.logic));
+                else                   skills.RefreshUI();
                 var nonActiveList = skills.InventoryWeaponSkill;
                 nonActiveList.Add(currentSkill as WeaponSkill);
                 MakeFrame(cell.parent.gameObject, BaseFrame);
             }
         }
-        else if (currentSkill is WeaponSkill && skills.EquippedWeapons.Count < skills.equippedWeaponCount)
+        else if (currentSkill is WeaponSkill && skills.EquippedWeapons.Count < skills.maxEquippedWeaponCount)
         {
             var activeList = skills.EquippedWeapons;
-            activeList.Add(new SkillManager.EquippedWeapon(currentSkill as WeaponSkill, activeList.Count));
+            skills.AddSkill(currentSkill);
             skills.EquippedWeapons = activeList;
             var nonActiveList = skills.InventoryWeaponSkill;
             nonActiveList.Remove(currentSkill as WeaponSkill);
             MakeFrame(cell.parent.gameObject, ActiveFrame);
-            skills.ApplyWeaponSprites();
         }
     }
 

@@ -52,4 +52,21 @@ public static class Direction
                 return Vector3.zero;
         }
     }
+
+    public static Vector2Int SideToVector2Int(Side side)
+    {
+        switch (side)
+        {
+            case Side.UP:
+                return Vector2Int.up;
+            case Side.RIGHT:
+                return Vector2Int.right;
+            case Side.DOWN:
+                return Vector2Int.down;
+            case Side.LEFT:
+                return Vector2Int.left;
+            default:
+                return Vector2Int.zero;
+        }
+    }
 }

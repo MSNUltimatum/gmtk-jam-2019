@@ -33,10 +33,13 @@ public class CharacterShooting : MonoBehaviour
         Cursor.visible = false;
 
         shotFrame = false;
+        
         if (timeBetweenAttacks > 0)
         {
             timeBetweenAttacks -= Time.deltaTime;
         }
+
+        if (currentWeapon == null) return;
         else if (Input.GetButton("Fire1"))
         {
             

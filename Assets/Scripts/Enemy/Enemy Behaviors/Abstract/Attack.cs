@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Attack : EnemyBehavior
 {
-    [SerializeField]
+    [SerializeField, Header("Attack Block")]
     protected Vector2 cooldownRange = new Vector2(1f, 1f);
 
     protected override void Awake()
@@ -19,16 +19,16 @@ public abstract class Attack : EnemyBehavior
             cooldownLeft = Mathf.Max(cooldownLeft - Time.deltaTime, 0);
             if (cooldownLeft <= 0)
             {
-                DoAttack();
                 cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
+                DoAttack();
             }
         }
     }
 
     public void ForceAttack()
     {
-        DoAttack();
         cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
+        DoAttack();
     }
 
     protected abstract void DoAttack();

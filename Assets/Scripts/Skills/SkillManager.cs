@@ -202,6 +202,7 @@ public class SkillManager : MonoBehaviour
     {
         equippedWeapons.ForEach(weapon => skills.Remove(weapon.logic));
         equippedWeapon = null;
+        attackManager.currentWeapon = null;
         equippedWeapons.Clear();
         equippedWeapons = new List<EquippedWeapon>();
     }
@@ -212,7 +213,7 @@ public class SkillManager : MonoBehaviour
         skill.InitializeSkill();
         if (skill is ActiveSkill)
         {
-            if (activeSkills.Count >= equippedActiveCount)
+            if (activeSkills.Count >= maxEquippedActiveCount)
             {
                 inventoryActiveSkills.Add(skill as ActiveSkill);
             }
@@ -223,7 +224,7 @@ public class SkillManager : MonoBehaviour
         }
         else if (skill is WeaponSkill)
         {
-            if (equippedWeapons.Count >= equippedWeaponCount)
+            if (equippedWeapons.Count >= maxEquippedWeaponCount)
             {
                 inventoryWeaponSkills.Add(skill as WeaponSkill);
             }
@@ -238,7 +239,7 @@ public class SkillManager : MonoBehaviour
             }
 
         }
-        InitializeUI();
+        RefreshUI();
     }
 
     private void Start()
@@ -286,7 +287,7 @@ public class SkillManager : MonoBehaviour
         }
         equippedWeapon = equippedWeapons[0];
 
-        InitializeUI();
+        RefreshUI();
     }
 
     private List<KeyCode> keys = new List<KeyCode>() {
@@ -338,7 +339,7 @@ public class SkillManager : MonoBehaviour
         skillsUI.UpdateSkillRecoverVisualCooldown(skillCooldownsProportion, isActiveSkill);
 
         // Switch weapon
-        if (Input.GetKeyDown(rotateWeaponLeft) || Input.GetKeyDown(rotateWeaponRight))
+        if ((Input.GetKeyDown(rotateWeaponLeft) || Input.GetKeyDown(rotateWeaponRight)) && equippedWeapon != null)
         {
             var newWeaponIndex = 0;
             if (Input.GetKeyDown(rotateWeaponLeft))
@@ -371,10 +372,9 @@ public class SkillManager : MonoBehaviour
             weapon.logic.UpdateEffect();
             j++;
         }
-        skillsUI.UpdateWeaponReloadVisualCooldown(weaponCooldownsProportion, equippedWeapon.weaponIndex);
-
-        if (equippedWeapon.logic != null)
+        if (equippedWeapon != null)
         {
+            skillsUI.UpdateWeaponReloadVisualCooldown(weaponCooldownsProportion, equippedWeapon.weaponIndex);
             equippedWeapon.logic.UpdateEquippedEffect();
         }
 
@@ -409,7 +409,7 @@ public class SkillManager : MonoBehaviour
     }
 
     #region UI block
-    private void InitializeUI()
+    public void RefreshUI()
     {
         ApplyWeaponSprites();
         ApplySkillSprites();
@@ -422,7 +422,7 @@ public class SkillManager : MonoBehaviour
         {
             weaponIcons[i] = equippedWeapons[i].logic.pickupSprite;
         }
-        skillsUI.SetWeaponSprites(weaponIcons, equippedWeapon.weaponIndex);
+        skillsUI.SetWeaponSprites(weaponIcons, equippedWeapon != null ? equippedWeapon.weaponIndex : 0);
     }
 
     public void ApplySkillSprites()
@@ -439,8 +439,8 @@ public class SkillManager : MonoBehaviour
     }
     #endregion
 
-    public int equippedActiveCount = 5;
-    public int equippedWeaponCount = 3;
+    public int maxEquippedActiveCount = 5;
+    public int maxEquippedWeaponCount = 3;
 
     public List<SkillBase> skills = new List<SkillBase>();
 

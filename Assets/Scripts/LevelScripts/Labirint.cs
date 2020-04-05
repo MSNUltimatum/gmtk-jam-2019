@@ -10,11 +10,15 @@ public class RoomBlueprint
     public GameObject prefab;
 
     public bool visited = false;
+    public string exitSceneName = ""; // not empty only for exit room
+
+    public GameObject contanerPrefab = null;
+    public bool containerWasOpened = false;
 }
 
 public class Labirint : MonoBehaviour
 {
-    public GameObject[] RoomPrefabs;//from inspector 
+    //public GameObject[] RoomPrefabs;//from inspector 
     public RoomBlueprint[] blueprints; 
     private List<int> activeRooms = new List<int>();
     public int currentRoomID = 0;
@@ -29,18 +33,39 @@ public class Labirint : MonoBehaviour
 
     void Start()
     {
-        InitBlueprints();
-        StartingRoomSpawn();        
+        instance = this;
+        LabirintBuilder builder = GetComponent<LabirintBuilder>();
+        if (builder == null)
+        {
+            //InitBlueprints();
+            Debug.LogError("Cant find labirint builder script");
+        } else {
+            builder.BuildLabirint(this);
+        }
+        StartingRoomSpawn();
     }
 
-    private void InitBlueprints()
-    {
-        int arraySize = RoomPrefabs.Length;
-        blueprints = new RoomBlueprint[arraySize];
-        for (int i = 0; i< arraySize; i++) { 
+//    private void InitBlueprints()
+//    {
+//        int arraySize = RoomPrefabs.Length;
+//        blueprints = new RoomBlueprint[arraySize];
+//        for (int i = 0; i < arraySize; i++)
+//        {
+//            blueprints[i] = new RoomBlueprint();
+//            blueprints[i].prefab = RoomPrefabs[i];
+//        }        
+//        HardcodeLabirintConstruction();
+//    }
+
+    public void InitBlueprintsFromBuilder() {
+        for (int i = 0; i < blueprints.Length; i++)
+        {
             blueprints[i] = new RoomBlueprint();
-            blueprints[i].prefab = RoomPrefabs[i];
         }
+    }
+
+    private void HardcodeLabirintConstruction()
+    {
 
         blueprints[0].rooms[Direction.Side.RIGHT] = 1; // хардкод для связей между комнатами
         blueprints[1].rooms[Direction.Side.LEFT] = 0;
@@ -89,10 +114,13 @@ public class Labirint : MonoBehaviour
         currentRoomID = roomIndex;
         List<int> roomsToActivate = new List<int>(); // list of rooms wich should be present after this method 
         roomsToActivate.Add(currentRoomID);
+        
         foreach (var side in Direction.sides)
         {
             if (blueprints[currentRoomID].rooms.ContainsKey(side))
+            {
                 roomsToActivate.Add(blueprints[currentRoomID].rooms[side]);
+            }
         }
 
         //destroy rooms who are not neighbirs
@@ -125,6 +153,8 @@ public class Labirint : MonoBehaviour
                     {
                         oldDoor = currentRoom.doorsSided[side];
                         newDoor = newRoom.doorsSided[Direction.InvertSide(side)];
+                        oldDoor.SpawnDoor();
+                        newDoor.SpawnDoor();
                         offset = Direction.SideToVector3(side) * distanceToNewDoor;
                     }
                 }
@@ -132,13 +162,16 @@ public class Labirint : MonoBehaviour
                 offset = oldDoor.transform.localPosition + offset - newDoor.transform.localPosition; // between rooms
                 newRoom.transform.position = currentRoom.transform.position + offset;
 
-                if (blueprints[roomID].instance.GetComponent<ArenaEnemySpawner>() != null && roomID != currentRoomID) { //if room with arena, but we are not in it yet
+                if (blueprints[roomID].instance.GetComponent<ArenaEnemySpawner>() != null && roomID != currentRoomID) {
+                    //if room with arena, but we are not in it yet
                     blueprints[roomID].instance.GetComponent<ArenaEnemySpawner>().enabled = false;
                 }
             }
         }
         CameraForLabirint.instance.ChangeRoom(blueprints[currentRoomID].instance);
         respawnPoint = GameObject.FindWithTag("Player").transform.position;
+        ExitCheck();
+        ContainerCheck();
     }
 
     void ConnectDoors(Door door1, Door door2) {
@@ -171,5 +204,30 @@ public class Labirint : MonoBehaviour
         
         GameObject player = GameObject.FindWithTag("Player");
         player.transform.position = respawnPoint;
+    }
+
+    void ExitCheck() {
+        if (blueprints[currentRoomID].exitSceneName != "")
+        {
+            foreach (Direction.Side side in Direction.sides)
+            {
+                if (blueprints[currentRoomID].rooms.ContainsKey(side))
+                {
+                    Door exitDoor = blueprints[currentRoomID].instance.GetComponent<Room>().doorsSided[Direction.InvertSide(side)];
+                    exitDoor.SpawnDoor();
+                    exitDoor.sceneName = blueprints[currentRoomID].exitSceneName;
+                    //Debug.Log(exitDoor);
+                }
+            }
+        }
+    }
+
+    void ContainerCheck() {
+        if (blueprints[currentRoomID].contanerPrefab != null && !blueprints[currentRoomID].containerWasOpened) {
+            GameObject container = Instantiate(blueprints[currentRoomID].contanerPrefab, 
+                blueprints[currentRoomID].instance.GetComponent<Room>().possibleContainerPosition.position, Quaternion.identity);
+            container.transform.parent = blueprints[currentRoomID].instance.transform;
+            container.GetComponent<Container>().blueprint = blueprints[currentRoomID];
+        }
     }
 }
