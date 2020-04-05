@@ -699,6 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52360a90c55bfd54e91eb32ea997b922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 1074468492}
 --- !u!1001 &224364291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1179,6 +1180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InventoryCell (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444829132695356438, guid: f9cfea59ee497f14aa5a91452ba42274,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3444829132695356437, guid: f9cfea59ee497f14aa5a91452ba42274,
         type: 3}
@@ -2237,13 +2243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f58926e39d35843a3e66ce774f2d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
-  ItemsContainer: {fileID: 762062366}
-  DraggingParent: {fileID: 217038122}
-  cell: {fileID: 1601648343120544096, guid: c626e35e89c03a9418b84dae0cae71f5, type: 3}
+  itemsContainer: {fileID: 0}
+  draggingParent: {fileID: 0}
+  cellPrefab: {fileID: 0}
   ActiveFrame: {fileID: 21300000, guid: 5665bf6512f9e8f4ab9a0598136dbb7e, type: 3}
   BaseFrame: {fileID: 21300000, guid: 9fef7fc9136cb4e4b90756ef4b6d960c, type: 3}
-  equipedSkills: []
 --- !u!114 &1074468495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4123,6 +4127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InventoryCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444829132695356438, guid: f9cfea59ee497f14aa5a91452ba42274,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3444829132695356437, guid: f9cfea59ee497f14aa5a91452ba42274,
         type: 3}

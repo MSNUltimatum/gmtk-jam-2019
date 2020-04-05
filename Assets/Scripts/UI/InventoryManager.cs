@@ -5,15 +5,13 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     private CharacterShooting shooting;
-    private bool isActive;
     [SerializeField]
-    private GameObject inventory;
+    private GameObject inventory = null;
     public void Start()
     {
         inventory.SetActive(false);
         var player = GameObject.FindGameObjectWithTag("Player");
         shooting = player.GetComponent<CharacterShooting>();
-        isActive = false;
     }
 
     private void Update()

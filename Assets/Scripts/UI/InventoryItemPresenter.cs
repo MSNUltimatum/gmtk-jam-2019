@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Linq;
-using System.Collections.Generic;
 
 public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
 {
@@ -20,7 +18,7 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
 
     private Transform draggingParent;
     private Transform originalParent;
-    private Sprite origineFrame;
+    private Sprite originalFrame;
     bool onDrag = false;
 
 
@@ -34,8 +32,9 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
     public void OnBeginDrag(PointerEventData eventData)
     {
         onDrag = true;
-        origineFrame = transform.parent.GetComponent<Image>().sprite;
-        transform.parent.GetComponent<Image>().sprite = inventory.BaseFrame;
+        var cellFrameImage = transform.parent.GetComponent<Image>();
+        originalFrame = cellFrameImage.sprite;
+        cellFrameImage.sprite = inventory.BaseFrame;
         transform.SetParent(draggingParent);
     }
 
@@ -46,34 +45,34 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
-       int closestInex = 0;
-       for (int i = 0; i < originalParent.parent.transform.childCount; i++)
-       {
-           if (Vector3.Distance(transform.position, originalParent.parent.transform.GetChild(i).position) <
-               Vector3.Distance(transform.position, originalParent.parent.transform.GetChild(closestInex).position))
-           {
-               closestInex = i;
-           }
-       }
-       Transform cell = null;
-       if (originalParent.parent.GetChild(closestInex).childCount == 0)
-       {
-            transform.SetParent(originalParent.parent.GetChild(closestInex));
-            transform.parent.GetComponent<Image>().sprite = origineFrame;
+        int closestIndex = 0;
+        for (int i = 0; i < originalParent.parent.transform.childCount; i++)
+        {
+            if (Vector3.Distance(transform.position, originalParent.parent.transform.GetChild(i).position) <
+                Vector3.Distance(transform.position, originalParent.parent.transform.GetChild(closestIndex).position))
+            {
+                closestIndex = i;
+            }
+        }
+        var destinationCell = originalParent.parent.GetChild(closestIndex);
+        if (destinationCell.childCount == 0)
+        {
+            transform.SetParent(destinationCell);
             transform.localPosition = new Vector2(0, 0);
-       }
-       else
-       {
-           cell = originalParent.parent.GetChild(closestInex).GetChild(0);
-            var tmp = cell.parent.GetComponent<Image>().sprite; 
-           cell.SetParent(originalParent);
-           cell.transform.localPosition = new Vector2(0, 0);
-           cell.GetComponent<InventoryItemPresenter>().SetOriginalParent(originalParent);
-           transform.SetParent(originalParent.parent.GetChild(closestInex));
-           transform.parent.GetComponent<Image>().sprite = origineFrame;
-            cell.parent.GetComponent<Image>().sprite = tmp;
-           transform.localPosition = new Vector2(0, 0);
-       }
+            transform.parent.GetComponent<Image>().sprite = originalFrame;
+        }
+        else
+        {
+            var tmp = destinationCell.GetComponent<Image>().sprite;
+            Transform destinationSkillImage = destinationCell.GetChild(0);
+            destinationSkillImage.SetParent(originalParent);
+            destinationSkillImage.transform.localPosition = new Vector2(0, 0);
+            destinationSkillImage.GetComponent<InventoryItemPresenter>().SetOriginalParent(originalParent);
+            destinationSkillImage.parent.GetComponent<Image>().sprite = tmp;
+            transform.SetParent(destinationCell);
+            transform.parent.GetComponent<Image>().sprite = originalFrame;
+            transform.localPosition = new Vector2(0, 0);
+        }
         originalParent = transform.parent;
         onDrag = false;
     }
@@ -82,7 +81,6 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
     {
         itemImage.sprite = item.pickupSprite;
         Image img = GetComponent<Image>();
-        var tmp = img.color;
         currentSkill = item;
         this.inventory = inventory;
     }
