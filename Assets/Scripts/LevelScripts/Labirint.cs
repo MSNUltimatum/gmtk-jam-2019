@@ -86,6 +86,7 @@ public class Labirint : MonoBehaviour
             SpawnRoom(0);
             OnRoomChanged(0);
             blueprints[0].instance.GetComponent<Room>().ArenaInitCheck();
+            blueprints[0].instance.GetComponent<Room>().LightCheck();
         }
         else { // for start from choisen room, add prefab, set roomID, and connected room will be spawned
             Room startingRoom = GameObject.FindGameObjectWithTag("Room").GetComponent<Room>();
