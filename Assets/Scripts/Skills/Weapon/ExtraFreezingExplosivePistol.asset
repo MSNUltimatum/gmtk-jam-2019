@@ -27,4 +27,6 @@ MonoBehaviour:
   maxRndShootingAngle: 0
   rndShootingAngleAmplifier: 0.15
   rndShootingAngleRelease: 0.5
-  bulletModifiers: []
+  bulletModifiers:
+  - {fileID: 11400000, guid: cd1403261d8c0104c83086e826358e74, type: 2}
+  - {fileID: 11400000, guid: ce2bb1f432e2870429fd20ee463c41dc, type: 2}
