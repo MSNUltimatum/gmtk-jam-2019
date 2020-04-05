@@ -19,7 +19,6 @@ public class ExplosiveBulletMod : BulletModifier
 
     public override void HitEnvironmentModifier(BulletLife bullet, Collider2D coll)
     {
-        Debug.Log("ya");
         base.HitEnvironmentModifier(bullet, coll);
         ModEffect(bullet, coll);
     }
