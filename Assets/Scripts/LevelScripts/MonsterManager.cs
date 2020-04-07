@@ -164,7 +164,11 @@ public class MonsterManager : MonoBehaviour
         if (spawnAvailable)
             EnemySpawnUpdate();
         if (CharacterLife.isDeath)
-            GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+        {
+            GameObject pressFGUI = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).gameObject;
+            if (!pressFGUI.activeSelf)
+                pressFGUI.SetActive(true);
+        }
         //if (Labirint.instance == null)
         //  if (RelodScene.isVictory)
         //{
