@@ -582,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.size
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: correctPathLength
@@ -656,6 +656,19 @@ PrefabInstance:
       propertyPath: combatRoomPrefabs.Array.data[9]
       value: 
       objectReference: {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b,
+        type: 3}
+    - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
+      propertyPath: combatRoomPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
+      propertyPath: roomRepeatAllowed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
+      propertyPath: combatRoomPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7982246235811314717, guid: dda96c9701cebc4418f3f244bbb5703e,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
