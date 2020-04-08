@@ -8,9 +8,9 @@ public class MonsterManager : MonoBehaviour
     // перенести ArenaSpawner, монстры должны спавнится - done
     // перенести reloadScene, обработка победы - done
     // обработка смерти и перерождения - done
-    //todo:
-    // убедиться что свет работает
+    // убедиться что свет работает - done
     // добавить учет бродячих мобов
+    //todo:
     // отключать бродячих мобов при спавне комнаты до входа
     // включать бродячих мобов при входе
     // не включать мобов если комната уже завершена
@@ -202,5 +202,16 @@ public class MonsterManager : MonoBehaviour
             //    }
             //}
         }
+    }
+
+    public int baseEnemyCount()
+    {
+        int enemiesCount = 0;
+        foreach (var e in enemyWaves)
+        {
+            enemiesCount += e.transform.childCount;
+        }
+        enemiesCount += strayMonsters.Count;
+        return enemiesCount;
     }
 }

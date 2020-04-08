@@ -164,6 +164,7 @@ public class RoomLighting : MonoBehaviour
     public void labirintRoomEnterDark()
     {
         Light = DefaultLight;
+        maxvalue = Labirint.instance.blueprints[Labirint.instance.currentRoomID].instance.GetComponent<MonsterManager>().baseEnemyCount();
     }
 
     public void labirintRoomEnterBright() 
