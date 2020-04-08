@@ -4803,8 +4803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4bda4ebe4f4ed45b514d3690867755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletMods:
-  - {fileID: 11400000, guid: ce2bb1f432e2870429fd20ee463c41dc, type: 2}
+  bulletMods: []
+  piercing: 0
+  phasing: 0
+  copiedBullet: 0
   particlesEmitter: {fileID: 4364573488591142210}
   sprite: {fileID: 6191924689547157748}
 --- !u!50 &1804933526
@@ -4869,7 +4871,7 @@ MonoBehaviour:
   m_LightType: 0
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.7
-  m_Color: {r: 0.937, g: 0.79581165, b: 0.39336318, a: 1}
+  m_Color: {r: 1, g: 0.45942876, b: 0.13679248, a: 1}
   m_Intensity: 0.2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
@@ -5074,9 +5076,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4945836708647946627, guid: 3d573d82d62517e40ae2af5d0fa34437,
+  m_Sprite: {fileID: -3090865045987261952, guid: d830e87f0d53b044f9ec7b61e566691e,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.45942876, b: 0.13679248, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5096,7 +5098,7 @@ Animator:
   m_GameObject: {fileID: 6191924689547157642}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b919a602194642b4597cea3789a48d75, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0b2adacc62cc4c74ca3f7029a9345fce, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f827ae8e16c0d47b8f12212f3425c4, type: 3}
   m_Name: FreezingMod
   m_EditorClassIdentifier: 
-  priority: 0
+  bulletColor: {r: 0, g: 1, b: 0.9871795, a: 1}
+  shoodPaint: 1
+  bulletSprite: {fileID: 0}
+  bulletMaterial: {fileID: 0}
+  priority: 1
   modifierTime: Infinity
+  moveTiming: 0
   supportedBulletTypes: 00000000
   freezingDuration: 1

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccedd274dbb3544e834e53da08bca8c, type: 3}
   m_Name: MouseBulletMod
   m_EditorClassIdentifier: 
-  priority: -6
+  bulletColor: {r: 0.99208325, g: 1, b: 0.2971698, a: 1}
+  shoodPaint: 1
+  bulletSprite: {fileID: 0}
+  bulletMaterial: {fileID: 0}
+  priority: 0
   modifierTime: Infinity
   moveTiming: 1
   supportedBulletTypes: 00000000

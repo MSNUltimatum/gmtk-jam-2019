@@ -3883,11 +3883,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2892025730329295085}
     m_Modifications:
-    - target: {fileID: 1463643769930889649, guid: 8cf1d1cee5cd37f448b016a955f6e90f,
-        type: 3}
-      propertyPath: m_Name
-      value: GameVersion
-      objectReference: {fileID: 0}
     - target: {fileID: 3046562904198405484, guid: 8cf1d1cee5cd37f448b016a955f6e90f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3992,6 +3987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463643769930889649, guid: 8cf1d1cee5cd37f448b016a955f6e90f,
+        type: 3}
+      propertyPath: m_Name
+      value: GameVersion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf1d1cee5cd37f448b016a955f6e90f, type: 3}
