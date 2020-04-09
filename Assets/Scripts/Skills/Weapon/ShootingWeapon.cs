@@ -29,9 +29,20 @@ public class ShootingWeapon : WeaponSkill
 
     public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
     {
-        ShootingWeaponAttack(attackManager, mousePos, shotFrom);
+        ShootingWeaponAttack(attackManager, mousePos, attackManager.weaponTip);
         AddToRandomAngle();
         shootingEvents?.Invoke();
+    }
+
+    public virtual void ShootingWeaponAttack(CharacterShooting attackManager, Vector3 mousePos, Transform shotFrom)
+    {
+        SpawnBulletTowardsCursor(mousePos, shotFrom, GetRandomAngle(RandomAngleMode.GAUSSIAN));
+    }
+
+    public void SpawnBulletTowardsCursor(Vector3 mousePos, Transform shotFrom, float RandomAngle, float additionalAngleOffset = 0)
+    {
+        var bullet = GameObject.Instantiate(currentBulletPrefab, shotFrom.position, Quaternion.Euler(0, 0, shotFrom.rotation.eulerAngles.z + 90));
+        BulletInit(bullet);
     }
 
     public virtual void ShootingWeaponAttack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class CharacterShooting : MonoBehaviour
 {
+    public Transform weaponTip = null;
+
+    [HideInInspector]
+    public bool shotFrame = false; //flag for reactions on shot
+    [HideInInspector]
+    public SkillManager.EquippedWeapon currentWeapon;
+
     [SerializeField]
     private GameObject mouseCursorObj = null;
-
-    public bool shotFrame = false; //flag for reactions on shot
+    
     public void LoadNewWeapon(SkillManager.EquippedWeapon weapon, float punishmentReload)
     {
         currentWeapon = weapon;
@@ -18,6 +24,7 @@ public class CharacterShooting : MonoBehaviour
     {
         mainCamera = Camera.main;
         cameraShaker = mainCamera.GetComponent<CameraShaker>();
+        gunfireAnimator = GetComponentInChildren<GunfireAnimator>();
         Cursor.visible = false;
         GameObject.Instantiate(mouseCursorObj);
         skillManager = GetComponent<SkillManager>();
@@ -47,13 +54,15 @@ public class CharacterShooting : MonoBehaviour
             var ammoNeeded = currentWeapon.logic.AmmoConsumption();
             if (currentWeapon.ammoLeft >= ammoNeeded)
             {
+                timeBetweenAttacks = currentWeapon.logic.timeBetweenAttacks;
                 currentWeapon.reloadTimeLeft = 0;
                 currentWeapon.ammoLeft -= ammoNeeded;
                 currentWeapon.logic.Attack(this, mousePos, screenPoint);
                 cameraShaker.ShakeCamera(0.25f);
+                gunfireAnimator.LightenUp(0.07f);
                 shotFrame = true;
             }
-            timeBetweenAttacks = currentWeapon.logic.timeBetweenAttacks;
+            
             if (currentWeapon.ammoLeft == 0)
             {
                 skillManager.ReloadWeaponIfNeeded();
@@ -71,7 +80,8 @@ public class CharacterShooting : MonoBehaviour
     private Camera mainCamera;
     private CameraShaker cameraShaker;
 
+    private GunfireAnimator gunfireAnimator;
+
     private KeyCode reloadButton = KeyCode.R;
     private SkillManager skillManager;
-    public SkillManager.EquippedWeapon currentWeapon;
 }

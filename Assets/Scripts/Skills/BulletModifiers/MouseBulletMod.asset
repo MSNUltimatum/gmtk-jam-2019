@@ -16,7 +16,7 @@ MonoBehaviour:
   shoodPaint: 1
   bulletSprite: {fileID: 0}
   bulletMaterial: {fileID: 0}
-  priority: 0
+  priority: 6
   modifierTime: Infinity
   moveTiming: 1
   supportedBulletTypes: 00000000
