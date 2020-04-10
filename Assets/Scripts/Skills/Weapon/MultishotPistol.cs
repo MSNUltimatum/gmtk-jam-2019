@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TriplePistol", menuName = "ScriptableObject/Weapon/TriplePistol", order = 1)]
-public class TriplePistol : Pistol
+[CreateAssetMenu(fileName = "MultishotPistol", menuName = "ScriptableObject/Weapon/MultishotPistol", order = 1)]
+public class MultishotPistol : Pistol
 {
+    [SerializeField]
     private float arcAngle = 45;
+    [SerializeField]
     private int shotNumber = 3;
     
-    protected TriplePistol() : base()
+    protected MultishotPistol() : base()
     {
         description = "Your second gun";
     }
@@ -23,5 +25,11 @@ public class TriplePistol : Pistol
         }
 
         shootingEvents?.Invoke();
+    }
+
+    // because it spawns multiple bullets!
+    public override float GunfirePower()
+    {
+        return base.GunfirePower() * shotNumber; 
     }
 }

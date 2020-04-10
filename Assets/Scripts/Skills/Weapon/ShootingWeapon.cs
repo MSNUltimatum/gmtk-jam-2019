@@ -104,6 +104,16 @@ public class ShootingWeapon : WeaponSkill
         }
     }
 
+    public virtual float GunfirePower()
+    {
+        return bulletDamage / 5 + timeBetweenAttacks / 10 - bulletSpeed / 100 + knockPower / 300;
+    }
+
+    public virtual float GunfireDestructivePower()
+    {
+        return 1f;
+    }
+
     protected GameObject Player;
     protected float randomShootingAngle = 0;
 }

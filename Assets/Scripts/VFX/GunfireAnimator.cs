@@ -30,11 +30,11 @@ public class GunfireAnimator : MonoBehaviour
         }
     }
 
-    public void LightenUp(float time, float speed = 200, float maxPower = 3)
+    public void LightenUp(float time, float maxPower = 1, float speed = 10)
     {
         lightenTimeLeft = time;
-        lightenSpeed = speed;
-        lightenPower = maxPower;
+        lightenSpeed = 50 * speed;
+        lightenPower = 1 * maxPower;
     }
 
     private float lightenPower = 0;
