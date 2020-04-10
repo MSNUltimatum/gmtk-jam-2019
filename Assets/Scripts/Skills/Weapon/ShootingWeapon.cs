@@ -27,7 +27,7 @@ public class ShootingWeapon : WeaponSkill
         randomShootingAngle = 0;
     }
 
-    public override void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
+    public override void Attack(CharacterShooting attackManager, Vector3 mousePos)
     {
         ShootingWeaponAttack(attackManager, mousePos, attackManager.weaponTip);
         AddToRandomAngle();
@@ -43,24 +43,6 @@ public class ShootingWeapon : WeaponSkill
     {
         var bullet = GameObject.Instantiate(currentBulletPrefab, shotFrom.position, Quaternion.Euler(0, 0, shotFrom.rotation.eulerAngles.z + 90));
         BulletInit(bullet);
-    }
-
-    public virtual void ShootingWeaponAttack(CharacterShooting attackManager, Vector3 mousePos, Vector3 shotFrom)
-    {
-        SpawnBulletTowardsCursor(mousePos, shotFrom, GetRandomAngle(RandomAngleMode.GAUSSIAN));
-    }
-
-    public void SpawnBulletTowardsCursor(Vector3 mousePos, Vector3 shotFrom, float RandomAngle, float additionalAngleOffset = 0)
-    {
-        var bullet = GameObject.Instantiate(currentBulletPrefab, Player.transform.position + Player.transform.right * 0.15f, new Quaternion());
-        BulletInit(bullet);
-        var offset = new Vector2(mousePos.x - shotFrom.x, mousePos.y - shotFrom.y);
-        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        //angle += Random.Range(-randomShootingAngle, randomShootingAngle);
-        angle += GaussianRandom(0, Mathf.Pow(randomShootingAngle, 0.7f));
-        angle += additionalAngleOffset;
-        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
-        bullet.transform.Translate(Vector2.right * 0.5f);
     }
 
     public enum RandomAngleMode {

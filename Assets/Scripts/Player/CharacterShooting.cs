@@ -57,7 +57,7 @@ public class CharacterShooting : MonoBehaviour
                 timeBetweenAttacks = currentWeapon.logic.timeBetweenAttacks;
                 currentWeapon.reloadTimeLeft = 0;
                 currentWeapon.ammoLeft -= ammoNeeded;
-                currentWeapon.logic.Attack(this, mousePos, screenPoint);
+                currentWeapon.logic.Attack(this, mousePos);
                 cameraShaker.ShakeCamera(0.25f);
                 gunfireAnimator.LightenUp(0.07f);
                 shotFrame = true;

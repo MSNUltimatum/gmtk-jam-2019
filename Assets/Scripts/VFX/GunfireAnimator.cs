@@ -19,7 +19,7 @@ public class GunfireAnimator : MonoBehaviour
     {
         if (lightenTimeLeft > 0)
         {
-            light.pointLightInnerRadius = Mathf.Min(0.1f * lightenPower, light.pointLightInnerRadius + 0.1f * lightenSpeed * Time.deltaTime);
+            light.pointLightInnerRadius = Mathf.Min(0.05f * lightenPower, light.pointLightInnerRadius + 0.05f * lightenSpeed * Time.deltaTime);
             light.pointLightOuterRadius = Mathf.Min(lightenPower, light.pointLightOuterRadius + lightenSpeed * Time.deltaTime);
             lightenTimeLeft = Mathf.Max(0, lightenTimeLeft - Time.deltaTime);
         }
@@ -30,7 +30,7 @@ public class GunfireAnimator : MonoBehaviour
         }
     }
 
-    public void LightenUp(float time, float speed = 200, float maxPower = 20)
+    public void LightenUp(float time, float speed = 200, float maxPower = 3)
     {
         lightenTimeLeft = time;
         lightenSpeed = speed;
