@@ -15,7 +15,7 @@ public class Teleport : TimedAttack
             .GetComponent<ArenaEnemySpawner>();
         }
         else {
-            arena = Labirint.instance.blueprints[Labirint.instance.currentRoomID].instance.GetComponent<ArenaEnemySpawner>();
+            arena = Labirint.GetCurrentRoom().GetComponent<ArenaEnemySpawner>();
         }
         maxspeedSaved = agent.maxSpeed;
     }
@@ -33,10 +33,20 @@ public class Teleport : TimedAttack
             vect *= Scatter;
             Vector3 NVector = new Vector3(vect.x, vect.y);
             bool inbounds = false;
-            if (Labirint.instance != null) {
-                Transform roomTransform = Labirint.instance.blueprints[Labirint.instance.currentRoomID].instance.transform;
-                inbounds = (arena.RoomBounds.x + roomTransform.position.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
-                arena.RoomBounds.y + roomTransform.position.y > Mathf.Abs(target.transform.position.y + NVector.y));
+            if (Labirint.instance != null)
+            {
+                Transform roomTransform = Labirint.GetCurrentRoom().transform;
+                if (arena == null)
+                {
+                    MonsterManager monsterManager = Labirint.GetCurrentRoom().GetComponent<MonsterManager>();
+                    inbounds = (monsterManager.RoomBounds.x + roomTransform.position.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
+                    monsterManager.RoomBounds.y + roomTransform.position.y > Mathf.Abs(target.transform.position.y + NVector.y));
+                }
+                else
+                {
+                    inbounds = (arena.RoomBounds.x + roomTransform.position.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
+                    arena.RoomBounds.y + roomTransform.position.y > Mathf.Abs(target.transform.position.y + NVector.y));
+                }
             }
             else {
                 inbounds = (arena.RoomBounds.x > Mathf.Abs(target.transform.position.x + NVector.x) &&

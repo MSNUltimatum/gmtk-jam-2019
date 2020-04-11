@@ -231,4 +231,8 @@ public class Labirint : MonoBehaviour
             container.GetComponent<Container>().blueprint = blueprints[currentRoomID];
         }
     }
+
+    public static GameObject GetCurrentRoom() {
+        return instance.blueprints[instance.currentRoomID].instance;
+    }
 }

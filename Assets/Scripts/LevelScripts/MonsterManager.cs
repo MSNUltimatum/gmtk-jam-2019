@@ -9,13 +9,15 @@ public class MonsterManager : MonoBehaviour
     // перенести reloadScene, обработка победы - done
     // обработка смерти и перерождения - done
     // убедиться что свет работает - done
-    // добавить учет бродячих мобов
+    // добавить учет бродячих мобов - done
+    // отключать бродячих мобов при спавне комнаты до входа  - done
+    // включать бродячих мобов при входе - done
+    // не включать мобов если комната уже завершена - done
+    // починить гребаный свет еще раз - done
+
     //todo:
-    // отключать бродячих мобов при спавне комнаты до входа
-    // включать бродячих мобов при входе
-    // не включать мобов если комната уже завершена
+    // перепроверить светлячков - проверил - нихрена не работают
     // собрать несколько волн с новыми монстрами и затестить
-    // перепроверить светлячков
     // перепроверить паузу
 
     //to do or not to do?...
@@ -61,11 +63,12 @@ public class MonsterManager : MonoBehaviour
 
         foreach (GameObject monster in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            if (monster.transform.parent == transform)
-            {
+            if (monster.transform.IsChildOf(transform))
+            { 
                 strayMonsters.Add(monster);
-                if (Labirint.instance.blueprints[room.roomID].visited)
-                    monster.SetActive(false);
+                monsterList.Add(monster);
+                monster.SetActive(false);
+                monster.GetComponent<MonsterLife>().monsterManager = this;
             }
         }
     }
@@ -175,6 +178,7 @@ public class MonsterManager : MonoBehaviour
         //  KillThemAll();
         //}
     }
+
     public void KillThemAll()
     {
         foreach (GameObject monster in monsterList)
@@ -204,7 +208,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    public int baseEnemyCount()
+    public int EnemyCount()
     {
         int enemiesCount = 0;
         foreach (var e in enemyWaves)
@@ -213,5 +217,12 @@ public class MonsterManager : MonoBehaviour
         }
         enemiesCount += strayMonsters.Count;
         return enemiesCount;
+    }
+
+    public void UnfreezeMonsters() {
+        spawnAvailable = true;
+        foreach (GameObject monster in strayMonsters) {
+            monster.SetActive(true);
+        }
     }
 }
