@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class MonsterLife : MonoBehaviour
 {
     [SerializeField]
-    public int maxHP = 1;
+    public float maxHP = 1;
     [System.NonSerialized]
     public float HP = 1;
 

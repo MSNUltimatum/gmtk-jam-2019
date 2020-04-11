@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ShootingWeapon : WeaponSkill
 {
     public GameObject bulletPrefab;
-    public int bulletDamage = 5;
+    public float bulletDamage = 5;
     public float knockPower = 20f;
     public float bulletSpeed = 18f;
     public float timeToBulletDestruction = 1.2f;
@@ -111,7 +111,7 @@ public class ShootingWeapon : WeaponSkill
 
     public virtual float GunfireDestructivePower()
     {
-        return 1f;
+        return Mathf.Sqrt(bulletDamage * timeBetweenAttacks);
     }
 
     protected GameObject Player;

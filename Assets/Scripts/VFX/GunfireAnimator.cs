@@ -5,7 +5,7 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class GunfireAnimator : MonoBehaviour
 {
-    private const float fadeSpeed = 120;
+    
 
     new private Light2D light = null;
     
@@ -30,14 +30,16 @@ public class GunfireAnimator : MonoBehaviour
         }
     }
 
-    public void LightenUp(float time, float maxPower = 1, float speed = 10)
+    public void LightenUp(float time, float maxPower = 1)
     {
         lightenTimeLeft = time;
-        lightenSpeed = 50 * speed;
+        lightenSpeed = 500 * (maxPower / 10);
         lightenPower = 1 * maxPower;
+        fadeSpeed = lightenSpeed / 4;
     }
 
     private float lightenPower = 0;
     private float lightenSpeed = 0;
     private float lightenTimeLeft = 0;
+    private float fadeSpeed = 0;
 }

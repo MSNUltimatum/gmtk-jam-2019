@@ -61,8 +61,7 @@ public class CharacterShooting : MonoBehaviour
                 if (currentWeapon.logic is ShootingWeapon)
                 {
                     var shootingWeapon = currentWeapon.logic as ShootingWeapon;
-                    cameraShaker.ShakeCamera(0.25f);
-                    Debug.Log(shootingWeapon.GunfirePower());
+                    cameraShaker.ShakeCamera(shootingWeapon.GunfireDestructivePower());
                     gunfireAnimator.LightenUp(0.07f, maxPower: shootingWeapon.GunfirePower());
                 }
                 
