@@ -118,11 +118,11 @@ public class Room : MonoBehaviour
     public void LightCheck() {
         if (monsterManager != null)
             if (roomType == RoomType.arena && !labirint.blueprints[roomID].visited)
-                monsterManager.roomLighting.labirintRoomEnterDark(monsterManager.EnemyCount());
+                monsterManager.roomLighting.LabirintRoomEnterDark(monsterManager.EnemyCount());
             else
-                monsterManager.roomLighting.labirintRoomEnterBright();
+                monsterManager.roomLighting.LabirintRoomEnterBright();
         else
-            GetComponent<RoomLighting>().labirintRoomEnterBright(); // исключение для комнат без монстров
+            GetComponent<RoomLighting>().LabirintRoomEnterBright(); // exception for room without monsters
 
     }
 }

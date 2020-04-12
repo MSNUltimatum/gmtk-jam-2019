@@ -161,22 +161,21 @@ public class RoomLighting : MonoBehaviour
     float t = 0.0f;
     static float Light;
 
-    public void labirintRoomEnterDark(int enemyCount)
+    public void LabirintRoomEnterDark(int enemyCount)
     {
         t = 0.0f;
         Light = 0;
         maxvalue = enemyCount;
         TotalValue = 0;
         RecalculateLight();
-        //Light = DefaultLight;
     }
 
-    public void labirintRoomEnterBright() 
+    public void LabirintRoomEnterBright() 
     {
         Light = 1;
     }
 
-    public void labirintRoomAddLight()
+    public void LabirintRoomAddLight()
     {
         AddToLight(1);
     }

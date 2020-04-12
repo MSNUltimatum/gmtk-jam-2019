@@ -4,32 +4,7 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    //done:
-    // перенести ArenaSpawner, монстры должны спавнится - done
-    // перенести reloadScene, обработка победы - done
-    // обработка смерти и перерождения - done
-    // убедиться что свет работает - done
-    // добавить учет бродячих мобов - done
-    // отключать бродячих мобов при спавне комнаты до входа  - done
-    // включать бродячих мобов при входе - done
-    // не включать мобов если комната уже завершена - done
-    // починить гребаный свет еще раз - done
-
-    //todo:
-    // перепроверить светлячков - проверил - нихрена не работают
-    // собрать несколько волн с новыми монстрами и затестить
-    // перепроверить паузу
-
-    //to do or not to do?...
-    // spawnZone???? посмотреть можно ли их прикрутить
-    // переключатель условия выхода: надо убивать всех мобов, убить количество, открыто при входе
-    // проверить inf spawn
-
-    //cleanup:
-    // обновить префабы с монстер менеджером
-    // скрипты по папкам
-    // пересмотреть видимы-невидимые поля в инспекторе
-
+    [HideInInspector]
     public Vector2 RoomBounds = new Vector2(15, 10);
     [SerializeField]
     private float timeToEachSpawn = 5;
@@ -38,9 +13,13 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     protected GameObject[] enemyWaves = null;
 
+    [HideInInspector]
     public bool spawnAvailable = false;
+    [HideInInspector]
     public RoomLighting roomLighting;
+    [HideInInspector]
     public List<GameObject> strayMonsters;
+    [HideInInspector]
     public List<GameObject> monsterList;
 
     private Room room;
@@ -110,9 +89,9 @@ public class MonsterManager : MonoBehaviour
     private void SpawnMonsters(int waveNum)
     {
         var enemyWave = Instantiate(enemyWaves[waveNum], transform.position, Quaternion.identity);
-        enemyWave.transform.parent = room.transform; //чтобы удалять лишних вместе с комнатой
+        enemyWave.transform.parent = room.transform; //to delete extra mobs with room
 
-        int enemiesInWave = enemyWave.transform.childCount; //может пойти не так если есть чайлды которые не монстры, может добавить проверку...
+        int enemiesInWave = enemyWave.transform.childCount; 
 
         for (int i = 0; i < enemiesInWave; i++)
         {
@@ -127,27 +106,16 @@ public class MonsterManager : MonoBehaviour
                     behaviour.timeToLoseAggro = -1; // never stop moving
                 }
             }
-            // Set random enemy name from the dictionary
-            //enemy.GetComponentInChildren<TMPro.TextMeshPro>().text = currentEvilDictionary[sequenceIndex];
 
             monsterList.Add(enemy);
             enemy.GetComponent<MonsterLife>().monsterManager = this;
 
-            //if (!SpawnZone)
-            //{
-                SetMonsterPosition(enemy);
-            //}
-            //else
-            //{
-            //    enemy.transform.position = SpawnZone.SpawnPosition();
-            //}
-
-            //sequenceIndex++;
+            SetMonsterPosition(enemy);
         }
     }
 
     public void Death(GameObject monster) {        
-        roomLighting.labirintRoomAddLight();
+        roomLighting.LabirintRoomAddLight();
         monsterList.Remove(monster);
         if (strayMonsters.Contains(monster))
             strayMonsters.Remove(monster);
@@ -155,7 +123,6 @@ public class MonsterManager : MonoBehaviour
     }
 
     void WinCheck() {
-        //сюда возможно условие на режим комнаты
         if (monsterList.Count == 0 && spawnIndex == enemyWaves.GetLength(0)) {
             room.UnlockRoom();
         }
@@ -172,11 +139,6 @@ public class MonsterManager : MonoBehaviour
             if (!pressFGUI.activeSelf)
                 pressFGUI.SetActive(true);
         }
-        //if (Labirint.instance == null)
-        //  if (RelodScene.isVictory)
-        //{
-        //  KillThemAll();
-        //}
     }
 
     public void KillThemAll()
@@ -190,21 +152,11 @@ public class MonsterManager : MonoBehaviour
     protected void EnemySpawnUpdate()
     {
         timeToNextSpawn -= Time.deltaTime;
-        if ((timeToNextSpawn < 0 || monsterList.Count == 0 && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0) 
-            //&& sequenceIndex < scenesController.monsterAdditionLimit + enemiesCount
-            )
+        if ((timeToNextSpawn < 0 || monsterList.Count == 0 && AllowEarlySpawns) && spawnIndex < enemyWaves.GetLength(0))
         {
             timeToNextSpawn = timeToEachSpawn;
             SpawnMonsters(spawnIndex);
             spawnIndex++;
-
-            //if (spawnIndex >= enemyWaves.GetLength(0))
-            //{
-            //    if (isInfSpawn)
-            //    {
-            //        spawnIndex = 0;
-            //    }
-            //}
         }
     }
 

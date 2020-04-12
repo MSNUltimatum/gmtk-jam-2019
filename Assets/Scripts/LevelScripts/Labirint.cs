@@ -187,7 +187,7 @@ public class Labirint : MonoBehaviour
         blueprints[id].instance.GetComponent<Room>().DoorsInit();
     }
 
-    public void ReloadRoom() { // сейчас не используется. делалось для пперерождения игрока в этой же комнате
+    public void ReloadRoom() { // сейчас не используется. делалось для перерождения игрока в этой же комнате
         Vector3 savedPosition = blueprints[currentRoomID].instance.transform.position;
         blueprints[currentRoomID].instance.GetComponent<ArenaEnemySpawner>()?.KillThemAll();
         blueprints[currentRoomID].instance.GetComponent<Room>().DisconnectRoom();
@@ -217,7 +217,6 @@ public class Labirint : MonoBehaviour
                     Door exitDoor = blueprints[currentRoomID].instance.GetComponent<Room>().doorsSided[Direction.InvertSide(side)];
                     exitDoor.SpawnDoor();
                     exitDoor.sceneName = blueprints[currentRoomID].exitSceneName;
-                    //Debug.Log(exitDoor);
                 }
             }
         }
