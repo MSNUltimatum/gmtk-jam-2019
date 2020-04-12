@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe79739fba601249ad4f690c8acad06, type: 3}
   m_Name: ExplosiveBulletMod
   m_EditorClassIdentifier: 
+  bulletColor: {r: 1, g: 1, b: 1, a: 1}
+  shoodPaint: 1
+  bulletSprite: {fileID: 0}
+  bulletMaterial: {fileID: 0}
   priority: 0
   modifierTime: Infinity
+  moveTiming: 0
   supportedBulletTypes: 00000000
   explosionRadius: 2

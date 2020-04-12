@@ -10,6 +10,8 @@ public class SpriteFadePeriodic : MonoBehaviour
     private float fadeOutTime = 0.13f;
     [SerializeField, Range(0, 1)]
     private float fadeOffset = 0;
+    [SerializeField, Range(0, 1)]
+    private float fadeMedian = 0;
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class SpriteFadePeriodic : MonoBehaviour
     {
         accumulator += Time.deltaTime;
         var newColor = sprite.color;
-        newColor.a = Mathf.Clamp01(Mathf.Sin(accumulator / cycleLength * 2 * Mathf.PI) + (1 - fadeOutTime * 2 / cycleLength));
+        newColor.a = Mathf.Clamp01(Mathf.Sin(accumulator / cycleLength * 2 * Mathf.PI) + (1 - fadeOutTime * 2 / cycleLength) + fadeMedian);
         sprite.color = newColor;
     }
 

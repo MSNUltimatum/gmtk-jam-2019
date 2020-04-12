@@ -5,12 +5,13 @@ using UnityEngine;
 public abstract class TimedAttack : Attack
 {
     [SerializeField]
-    private float castTime = 0.5f;
+    protected float castTime = 0.5f;
 
     protected override void DoAttack()
     {
         AttackAnimation();
         castTimeLeft = castTime;
+        cooldownLeft += castTime;
     }
 
     public override void CalledUpdate()
@@ -19,14 +20,20 @@ public abstract class TimedAttack : Attack
         castTimeLeft = Mathf.Max(0, castTimeLeft - Time.deltaTime);
         if (castTimeLeft <= 0)
         {
-            castTimeLeft = int.MaxValue;
+            castTimeLeft = float.PositiveInfinity;
             CompleteAttack();
         }
+    }
+
+    protected void ForceCompleteAttack()
+    {
+        castTimeLeft = float.PositiveInfinity;
+        CompleteAttack();
     }
 
     protected abstract void AttackAnimation();
 
     protected abstract void CompleteAttack();
 
-    private float castTimeLeft = float.PositiveInfinity;
+    protected float castTimeLeft = float.PositiveInfinity;
 }

@@ -19,6 +19,8 @@ public class CameraShaker : MonoBehaviour
     void Update()
     {
         shaker.m_AmplitudeGain = shakeAccumulator;
+        // I don't understand why but it works, wow :)
+        transform.localEulerAngles = Vector3.zero;
     }
 
     public void ShakeCamera(float shakeIntensity = 0.5f, float shakeTiming = 0.2f)

@@ -20,10 +20,13 @@ MonoBehaviour:
   ammoMagazine: 6
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
-  bulletDamage: 4
-  knockPower: 20
+  bulletDamage: 20
+  knockPower: 200
   bulletSpeed: 18
   timeToBulletDestruction: 10
   maxRndShootingAngle: 0
   rndShootingAngleAmplifier: 0.15
   rndShootingAngleRelease: 0.5
+  bulletModifiers: []
+  arcAngle: 45
+  shotNumber: 3
