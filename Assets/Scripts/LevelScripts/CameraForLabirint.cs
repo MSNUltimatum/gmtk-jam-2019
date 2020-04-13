@@ -28,7 +28,7 @@ public class CameraForLabirint : MonoBehaviour
 
     private void Update()
     {
-        if (followCamera) 
+        if (followCamera && !CharacterLife.isDeath) 
             CameraFollowUpdate();        
     }
 

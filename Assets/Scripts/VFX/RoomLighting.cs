@@ -21,29 +21,33 @@ public class RoomLighting : MonoBehaviour
     private void Start()
     {
         var arena = GetComponent<ArenaEnemySpawner>();
-        if (arena.labirintMode)
+        if (Labirint.instance != null)
         {
-            sceneLight =  Labirint.instance.GetComponentInChildren<Light2D>();
+            sceneLight = Labirint.instance.GetComponentInChildren<Light2D>();
+            if (swampPrefab)
+            {
+                SetSwampMaterial();
+            }
         }
         else
         {
             sceneLight = GetComponentInChildren<Light2D>();
-        }
-        Light = DefaultLight;
-        if (arena && StandartLightIncrease)
-        {
-            maxvalue = arena.EnemyCount();
-            RecalculateLight();
-        }
-        NewLight(Light);
+            Light = DefaultLight;
+            if (arena && StandartLightIncrease)
+            {
+                maxvalue = arena.EnemyCount();
+                RecalculateLight();
+            }
+            NewLight(Light);
 
-        if (swampPrefab)
-        {
-            SetSwampMaterial();
-        }
-        
+            if (swampPrefab)
+            {
+                SetSwampMaterial();
+            }
 
-        MonsterLife.OnEnemyDead.AddListener(AddOneToLight);
+
+            MonsterLife.OnEnemyDead.AddListener(AddOneToLight);
+        }
     }
 
     /// <summary>
@@ -156,5 +160,24 @@ public class RoomLighting : MonoBehaviour
     private float CurrentVal;
     float t = 0.0f;
     static float Light;
-    
+
+    public void LabirintRoomEnterDark(int enemyCount)
+    {
+        t = 0.0f;
+        Light = 0;
+        maxvalue = enemyCount;
+        TotalValue = 0;
+        RecalculateLight();
+    }
+
+    public void LabirintRoomEnterBright() 
+    {
+        Light = 1;
+    }
+
+    public void LabirintRoomAddLight()
+    {
+        AddToLight(1);
+    }
+
 }
