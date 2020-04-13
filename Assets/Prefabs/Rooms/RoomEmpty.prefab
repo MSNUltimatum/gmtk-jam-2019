@@ -4555,6 +4555,7 @@ MonoBehaviour:
   roomID: 0
   roomType: 0
   possibleContainerPosition: {fileID: 2731258711519283367}
+  monsterManager: {fileID: 0}
 --- !u!114 &4849212450367341071
 MonoBehaviour:
   m_ObjectHideFlags: 0

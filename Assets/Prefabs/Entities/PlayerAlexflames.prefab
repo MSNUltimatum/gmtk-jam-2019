@@ -101,6 +101,89 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &367295898186468118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4419603741518390064}
+  - component: {fileID: 4581038335119462025}
+  - component: {fileID: 4352055835726811608}
+  m_Layer: 0
+  m_Name: FireAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4419603741518390064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367295898186468118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.108, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1567550026609961793}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4581038335119462025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367295898186468118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 0.972549, g: 0.8651946, b: 0.63215685, a: 1}
+  m_Intensity: 1.5
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_PointLightInnerAngle: 23.06
+  m_PointLightOuterAngle: 217
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 0
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 18
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &4352055835726811608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367295898186468118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2b80f7c63ea024ab91cc740685cf7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2117899312924847171
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +232,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.842
   m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7054557, a: 1}
-  m_Intensity: 0.55
+  m_Intensity: 0.45
   m_LightVolumeOpacity: 0.202
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -214,7 +297,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1567550026609961793}
   m_Father: {fileID: 4305704709854959873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -390,15 +474,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addd6874bff8c8a4987b438ff1450782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseCursorObj: {fileID: 8267320113450945890, guid: 011dba4647a268540bdff308c46fe50b,
-    type: 3}
+  weaponTip: {fileID: 1567550026609961793}
   shotFrame: 0
   currentWeapon:
     logic: {fileID: 0}
     ammoLeft: 0
     reloadTimeLeft: 0
+    lastTimeEquipped: 0
     weaponIndex: 0
     attackSound: []
+  mouseCursorObj: {fileID: 8267320113450945890, guid: 011dba4647a268540bdff308c46fe50b,
+    type: 3}
 --- !u!82 &8124210527876159285
 AudioSource:
   m_ObjectHideFlags: 0
@@ -532,12 +618,46 @@ MonoBehaviour:
     logic: {fileID: 0}
     ammoLeft: 0
     reloadTimeLeft: 0
+    lastTimeEquipped: 0
     weaponIndex: 0
     attackSound: []
   forceSkillRewrite: 0
   prefabSkillLoader: {fileID: 218089639845207119, guid: e370b22612c01224f82b01ad8c874bf6,
     type: 3}
+  maxEquippedActiveCount: 5
+  maxEquippedWeaponCount: 3
   skills:
   - {fileID: 11400000, guid: 9c7f83ae5537bbf448f224351df4abf3, type: 2}
   - {fileID: 11400000, guid: f0fe970116203044e875a369e68e8610, type: 2}
   - {fileID: 11400000, guid: 9928273a409763a48b8e67fad61de033, type: 2}
+--- !u!1 &6199985846643363209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567550026609961793}
+  m_Layer: 0
+  m_Name: GunTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1567550026609961793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199985846643363209}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.118, y: -0.541, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4419603741518390064}
+  m_Father: {fileID: 4305704709305310689}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}

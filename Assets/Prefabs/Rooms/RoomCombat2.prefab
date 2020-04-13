@@ -56,10 +56,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2144849724505643310}
   - component: {fileID: 2144849724505643311}
-  - component: {fileID: 4243532626014663802}
-  - component: {fileID: 3922182122214473461}
   - component: {fileID: 3922182122214473460}
   - component: {fileID: 3922182122214473463}
+  - component: {fileID: 3041483738957119820}
   m_Layer: 0
   m_Name: RoomCombat2
   m_TagString: Room
@@ -107,45 +106,6 @@ MonoBehaviour:
   roomType: 1
   possibleContainerPosition: {fileID: 1438214041234033744}
   monsterManager: {fileID: 0}
---- !u!114 &4243532626014663802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144849724505643308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c6788208ef862c43a0e469f4836e7d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RoomBounds: {x: 15, y: 10}
-  timeToEachSpawn: 5
-  timeToNextSpawn: 0
-  enemyWaves: []
-  SpawnZone: {fileID: 0}
-  AllowEarlySpawns: 1
-  isInfSpawn: 0
-  labirintMode: 0
-  strayMonsters: []
---- !u!114 &3922182122214473461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144849724505643308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c21b00ba01f4b4f8d759266cb1c236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneName: 
-  SceneNumber: 3
-  isPointVictory: 0
-  pointsToVictory: 0
-  monsterAdditionLimit: 12
-  TotalValue: 0
 --- !u!114 &3922182122214473460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +138,27 @@ MonoBehaviour:
   StandartLightIncrease: 1
   maxvalue: 0
   DefaultLight: 0.13
+--- !u!114 &3041483738957119820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144849724505643308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bf1d570aec33f489213f9aaf8577e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomBounds: {x: 15, y: 10}
+  timeToEachSpawn: 5
+  timeToNextSpawn: 0
+  enemyWaves: []
+  spawnAvailable: 0
+  roomLighting: {fileID: 3922182122214473463}
+  strayMonsters: []
+  monsterList: []
+  AllowEarlySpawns: 1
 --- !u!1 &6032568250003369726
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,11 +4984,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: direction
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518365, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_Offset.x
@@ -5027,6 +5003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 1.660965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: direction
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bf99529de11d894db8cd20d02720b2d, type: 3}
@@ -5103,11 +5084,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: direction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518365, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_Offset.x
@@ -5127,6 +5103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 1.7667656
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: direction
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bf99529de11d894db8cd20d02720b2d, type: 3}
@@ -5203,11 +5184,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: direction
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518365, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_Offset.x
@@ -5217,6 +5193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 2.372488
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: direction
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bf99529de11d894db8cd20d02720b2d, type: 3}

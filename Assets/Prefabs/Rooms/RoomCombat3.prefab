@@ -4603,8 +4603,10 @@ MonoBehaviour:
   timeToEachSpawn: 5
   timeToNextSpawn: 0
   enemyWaves:
-  - {fileID: 7065042896263695961, guid: fb7854c9ddbb37442a62fb4ee96ea4b2, type: 3}
-  - {fileID: 2656027671443589482, guid: c0788a57d047ecb43aebd14be3a84563, type: 3}
+  - {fileID: 3666621111775768851, guid: 26d080422c792e2479878a3d1be873af, type: 3}
+  - {fileID: 3659685990695435104, guid: d1fcbc484188b014386c58a335bed125, type: 3}
+  spawnAvailable: 0
+  roomLighting: {fileID: 0}
   strayMonsters: []
   monsterList: []
   AllowEarlySpawns: 0

@@ -31,7 +31,7 @@ public class ArenaFireflySpawner : MonoBehaviour
             }
             else
             {
-                MonsterManager monsterManager = Labirint.instance.blueprints[Labirint.instance.currentRoomID].instance.GetComponent<MonsterManager>();
+                MonsterManager monsterManager = Labirint.GetCurrentRoom().GetComponent<MonsterManager>();
                 if (monsterManager != null)
                 {
                     fireflyPos = new Vector2(

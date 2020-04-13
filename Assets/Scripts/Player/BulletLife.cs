@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class BulletLife : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class BulletLife : MonoBehaviour
     protected virtual void Start()
     {
         var audio = GetComponent<AudioSource>();
+        bulletLight = GetComponent<Light2D>();
         AudioManager.Play("WeaponShot", audio);
         TTDLeft = timeToDestruction;
         ActivateSpawnMods();
+        ApplyModsVFX();
     }
 
     void FixedUpdate()
@@ -106,6 +109,7 @@ public class BulletLife : MonoBehaviour
     public void AddMod(BulletModifier mod)
     {
         bulletMods.Add(Instantiate(mod));
+        listNotSorted = true;
     }
 
     private void UpdateMods()
@@ -118,12 +122,19 @@ public class BulletLife : MonoBehaviour
             {
                 bulletMods.RemoveAt(i);
                 i--;
+                listNotSorted = true;
             }
         }
     }
 
-    // WIP
-    private BulletModifier[] SortedMods() { return bulletMods.ToArray(); }
+    private List<BulletModifier> SortedMods() {
+        if (listNotSorted)
+        {
+            bulletMods.Sort((x, y) => x.priority.CompareTo(y.priority));
+            listNotSorted = false;
+        }
+        return bulletMods;
+    }
 
     private void ActivateHitEnemyMods(Collider2D coll)
     {
@@ -167,6 +178,12 @@ public class BulletLife : MonoBehaviour
         {
             if (mod.moveTiming == BulletModifier.MoveTiming.Final) mod.MoveModifier(this);
         }
+    }
+
+    private void ApplyModsVFX()
+    {
+        foreach (var mod in SortedMods()) mod.ApplyVFX(this);    
+        
     }
 
     protected virtual void EnvironmentCollider(Collider2D coll)
@@ -229,15 +246,26 @@ public class BulletLife : MonoBehaviour
         StopEmitter();
     }
 
-    // Non-logic
-    [SerializeField]
-    private ParticleSystem particlesEmitter = null;
-    [SerializeField]
-    private SpriteRenderer sprite = null;
-
     private void StopEmitter()
     {
         particlesEmitter.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         sprite.color = new Color(0, 0, 0, 0);
     }
+
+    public void BlendSecondColor(Color color)
+    {
+        Color newColor = color / 2 + sprite.color / 2;
+        sprite.color = newColor;
+        var emitterMain = particlesEmitter.main;
+        emitterMain.startColor = newColor;
+        bulletLight.color = newColor;
+    }
+
+    private bool listNotSorted = true;
+
+    // Non-logic
+    [SerializeField]
+    private ParticleSystem particlesEmitter = null;
+    private Light2D bulletLight;
+    public SpriteRenderer sprite = null;
 }

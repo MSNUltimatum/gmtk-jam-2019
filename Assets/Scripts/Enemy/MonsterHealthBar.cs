@@ -64,5 +64,5 @@ public class MonsterHealthBar : MonoBehaviour
 
     private float originalScale;
     private float currentTimeToOff;
-    private int maxHP;
+    private float maxHP;
 }

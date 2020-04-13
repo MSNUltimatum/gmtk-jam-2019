@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f766598589f364bbc70c5a4b65d5aa, type: 3}
   m_Name: PhasingMod
   m_EditorClassIdentifier: 
+  bulletColor: {r: 1, g: 1, b: 1, a: 0}
+  bulletSprite: {fileID: 0}
+  bulletMaterial: {fileID: 0}
   priority: 0
   modifierTime: Infinity
   moveTiming: 0

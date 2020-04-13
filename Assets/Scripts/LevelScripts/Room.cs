@@ -61,11 +61,10 @@ public class Room : MonoBehaviour
                 if(GetComponent<ArenaEnemySpawner>()!=null)
                     GetComponent<ArenaEnemySpawner>().enabled = true;
                 if (GetComponent<MonsterManager>() != null)
-                    GetComponent<MonsterManager>().spawnAvailable = true;
+                    GetComponent<MonsterManager>().UnfreezeMonsters();
                 LockRoom();
             }
             else {
-
                 if (GetComponent<ArenaEnemySpawner>() != null)
                     GetComponent<ArenaEnemySpawner>().KillThemAll();
                 TimerUnlockRoom();
@@ -119,11 +118,11 @@ public class Room : MonoBehaviour
     public void LightCheck() {
         if (monsterManager != null)
             if (roomType == RoomType.arena && !labirint.blueprints[roomID].visited)
-                monsterManager.roomLighting.labirintRoomEnterDark();
+                monsterManager.roomLighting.LabirintRoomEnterDark(monsterManager.EnemyCount());
             else
-                monsterManager.roomLighting.labirintRoomEnterBright();
+                monsterManager.roomLighting.LabirintRoomEnterBright();
         else
-            GetComponent<RoomLighting>().labirintRoomEnterBright(); // исключение для комнат баз монстров
+            GetComponent<RoomLighting>().LabirintRoomEnterBright(); // exception for room without monsters
 
     }
 }

@@ -46,6 +46,10 @@ public class SkillAssetLoader
                 PrefabUtility.SavePrefabAsset(skillContainer, out bool savedSuccess);
                 Debug.Log($"Registered skills successfully.? {savedSuccess}");
             }
+            else
+            {
+                Debug.Log("Skill loader did not capture new skills");
+            }
         }
     }
 }
