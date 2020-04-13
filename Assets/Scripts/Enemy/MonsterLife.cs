@@ -16,7 +16,7 @@ public class MonsterLife : MonoBehaviour
     private GameObject enemyExplosionPrefab = null;
     [SerializeField]
     private float fadeInTime = 0.5f;
-    
+
     [SerializeField]
     private EvilDictionary evilDictionary = null;
 
@@ -24,6 +24,8 @@ public class MonsterLife : MonoBehaviour
     public static UnityEvent OnEnemyDead = new UnityEvent();
     public UnityEvent hpChangedEvent = new UnityEvent();
 
+    [HideInInspector]
+    public MonsterManager monsterManager = null;
 
     protected virtual bool Vulnurable()
     {
@@ -93,6 +95,8 @@ public class MonsterLife : MonoBehaviour
 
             if (HP <= 0)
             {
+                if (monsterManager != null)
+                    monsterManager.Death(gameObject);
                 // Trigger an event for those who listen to it (if any)
                 OnEnemyDead?.Invoke();
                 PreDestroyEffect();
