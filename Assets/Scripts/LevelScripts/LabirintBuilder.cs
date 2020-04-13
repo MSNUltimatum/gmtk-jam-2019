@@ -18,6 +18,8 @@ public class LabirintBuilder : MonoBehaviour
     private GameObject[] containersPrefabs = null;
     [SerializeField]
     private bool roomRepeatAllowed = false;
+    [SerializeField]
+    private GameObject[] treasureRoomPrefabs = null;
 
     private Labirint labirint;
     private int[,] map; //room position to room id
@@ -55,7 +57,8 @@ public class LabirintBuilder : MonoBehaviour
         MakeDeadEnds();
         DrawMap(); 
         FillRoomPrefabs();
-        FillContainers();
+        //FillContainers();
+        FillTreasureRooms();
     }
 
     void MakeCorrectPath() {
@@ -209,5 +212,25 @@ public class LabirintBuilder : MonoBehaviour
             return null;
         }
         return prefabList[Random.Range(0, prefabList.Count)]; 
+    }
+
+    void FillTreasureRooms()
+    {
+        List<int> containerAvailableRooms = new List<int>(allRoomsPositions.Keys);
+        containerAvailableRooms.Remove(0);                                  // no containers in first room
+        containerAvailableRooms.Remove(map[endPosition.x, endPosition.y]);  // and last room
+        List<GameObject> containerList = new List<GameObject>(containersPrefabs);
+
+        if (containerAvailableRooms.Count < containerList.Count)
+            Debug.LogError("not enough rooms for containtes");
+        else
+            foreach (GameObject trsureRoomPrefab in treasureRoomPrefabs) {
+                int randomRoomID = containerAvailableRooms[Random.Range(0, containerAvailableRooms.Count - 1)];
+                GameObject randomContainer = containerList[Random.Range(0, containerList.Count - 1)];
+                labirint.blueprints[randomRoomID].prefab = trsureRoomPrefab;
+                labirint.blueprints[randomRoomID].contanerPrefab = randomContainer;
+                containerList.Remove(randomContainer);
+                containerAvailableRooms.Remove(randomRoomID);
+            }
     }
 }
