@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7807499217646107, guid: cd1b0312ce994734bb0fa0f780502358, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7807499217646107, guid: cd1b0312ce994734bb0fa0f780502358, type: 3}
       propertyPath: ShapeModule.radiusThickness

@@ -17,6 +17,6 @@ public abstract class WeaponSkill : SkillBase
     public override void UpdateEffect() { }
     public virtual void UpdateEquippedEffect() { }
 
-    public virtual void Attack(CharacterShooting attackManager, Vector3 mousePos, Vector3 screenPoint) { }
+    public virtual void Attack(CharacterShooting attackManager, Vector3 mousePos) { }
     public virtual int AmmoConsumption() { return 1; }
 }
