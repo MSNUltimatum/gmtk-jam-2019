@@ -18,7 +18,7 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
 
     private Transform draggingParent;
     private Transform originalParent;
-    private Sprite originalFrame;
+    private Color originalFrame;
     bool onDrag = false;
 
 
@@ -33,8 +33,8 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
     {
         onDrag = true;
         var cellFrameImage = transform.parent.GetComponent<Image>();
-        originalFrame = cellFrameImage.sprite;
-        cellFrameImage.sprite = inventory.BaseFrame;
+        originalFrame = cellFrameImage.color;
+        cellFrameImage.color = Color.clear;
         transform.SetParent(draggingParent);
     }
 
@@ -59,18 +59,18 @@ public class InventoryItemPresenter : MonoBehaviour, IDragHandler, IBeginDragHan
         {
             transform.SetParent(destinationCell);
             transform.localPosition = new Vector2(0, 0);
-            transform.parent.GetComponent<Image>().sprite = originalFrame;
+            transform.parent.GetComponent<Image>().color = originalFrame;
         }
         else
         {
-            var tmp = destinationCell.GetComponent<Image>().sprite;
+            var tmp = destinationCell.GetComponent<Image>().color;
             Transform destinationSkillImage = destinationCell.GetChild(0);
             destinationSkillImage.SetParent(originalParent);
             destinationSkillImage.transform.localPosition = new Vector2(0, 0);
             destinationSkillImage.GetComponent<InventoryItemPresenter>().SetOriginalParent(originalParent);
-            destinationSkillImage.parent.GetComponent<Image>().sprite = tmp;
+            destinationSkillImage.parent.GetComponent<Image>().color = tmp;
             transform.SetParent(destinationCell);
-            transform.parent.GetComponent<Image>().sprite = originalFrame;
+            transform.parent.GetComponent<Image>().color = originalFrame;
             transform.localPosition = new Vector2(0, 0);
         }
         originalParent = transform.parent;
