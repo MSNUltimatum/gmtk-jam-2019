@@ -25,6 +25,7 @@ public class Labirint : MonoBehaviour
     private const float distanceToNewDoor = 10f; // distance from old door no new door, defines distance between rooms
     static public Labirint instance;
     private Vector3 respawnPoint;
+    public int difficultySetting = 1;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class Labirint : MonoBehaviour
     void Start()
     {
         instance = this;
+        DifficultyLoad();
         LabirintBuilder builder = GetComponent<LabirintBuilder>();
         if (builder == null)
         {
@@ -44,6 +46,7 @@ public class Labirint : MonoBehaviour
         }
         StartingRoomSpawn();
     }
+
 
 //    private void InitBlueprints()
 //    {
@@ -233,5 +236,16 @@ public class Labirint : MonoBehaviour
 
     public static GameObject GetCurrentRoom() {
         return instance.blueprints[instance.currentRoomID].instance;
+    }
+
+    private void DifficultyLoad()
+    {
+        PlayerPrefs.GetInt("Difficulty", difficultySetting);
+        if (difficultySetting == 1) Debug.Log("Normal mode loaded");
+        else if (difficultySetting == 2) Debug.Log("Hard mode loaded");
+        else {
+            Debug.Log("Error on difficulty load, difficultySetting = " + difficultySetting.ToString());
+            difficultySetting = 1; // to avoid errors on user side, better to load wrong difficulty than to crash
+        }
     }
 }
