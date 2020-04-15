@@ -240,10 +240,17 @@ public class Labirint : MonoBehaviour
 
     private void DifficultyLoad()
     {
-        PlayerPrefs.GetInt("Difficulty", difficultySetting);
-        if (difficultySetting == 1) Debug.Log("Normal mode loaded");
-        else if (difficultySetting == 2) Debug.Log("Hard mode loaded");
-        else {
+        difficultySetting = PlayerPrefs.GetInt("Difficulty");
+        if (difficultySetting == 1)
+        {
+            //Debug.Log("Normal mode loaded");
+        }
+        else if (difficultySetting == 2)
+        {
+            //Debug.Log("Hard mode loaded");
+        }
+        else
+        {
             Debug.Log("Error on difficulty load, difficultySetting = " + difficultySetting.ToString());
             difficultySetting = 1; // to avoid errors on user side, better to load wrong difficulty than to crash
         }
