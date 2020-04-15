@@ -18,6 +18,10 @@ public class LabirintBuilder : MonoBehaviour
     private GameObject[] containersPrefabs = null;
     [SerializeField]
     private bool roomRepeatAllowed = false;
+    [SerializeField]
+    private int treasureRoomsNumber = 0;
+    [SerializeField]
+    private GameObject[] treasureRoomPrefabs = null;
 
     private Labirint labirint;
     private int[,] map; //room position to room id
@@ -53,9 +57,10 @@ public class LabirintBuilder : MonoBehaviour
 
         MakeCorrectPath();
         MakeDeadEnds();
-        DrawMap(); 
         FillRoomPrefabs();
-        FillContainers();
+        //FillContainers();
+        FillTreasureRooms();
+        DrawMap();
     }
 
     void MakeCorrectPath() {
@@ -145,7 +150,7 @@ public class LabirintBuilder : MonoBehaviour
         for (int i = 0; i < allRoomsPositions.Count; i++) {
             if (correctPathRoomsPositions.Contains(allRoomsPositions[i]))
                 lineColor = Color.green;
-            else
+            else                
                 lineColor = Color.red;
             foreach (Direction.Side side in Direction.sides)
             {
@@ -155,6 +160,12 @@ public class LabirintBuilder : MonoBehaviour
                         Debug.DrawRay(new Vector3(allRoomsPositions[i].x - numberOfRooms+0.5f, allRoomsPositions[i].y - numberOfRooms + 0.5f, 0), 
                             Direction.SideToVector3(side), lineColor,9999f);
                     }
+            }
+            if (Labirint.instance.blueprints[i].contanerPrefab != null) {
+                lineColor = Color.blue;
+                Vector3 point = new Vector3(allRoomsPositions[i].x - numberOfRooms + 0.5f, allRoomsPositions[i].y - numberOfRooms + 0.5f, 0);
+                Debug.DrawLine(point + 0.25f * Vector3.up + 0.25f * Vector3.left, point + 0.25f * Vector3.down + 0.25f * Vector3.right, lineColor, 9999f);
+                Debug.DrawLine(point + 0.25f * Vector3.down + 0.25f * Vector3.left, point + 0.25f * Vector3.up + 0.25f * Vector3.right, lineColor, 9999f);
             }
         }
     }
@@ -209,5 +220,32 @@ public class LabirintBuilder : MonoBehaviour
             return null;
         }
         return prefabList[Random.Range(0, prefabList.Count)]; 
+    }
+
+    void FillTreasureRooms()
+    {
+        List<int> containerAvailableRooms = new List<int>(allRoomsPositions.Keys);
+        containerAvailableRooms.Remove(0);                                  // no containers in first room
+        containerAvailableRooms.Remove(map[endPosition.x, endPosition.y]);  // and last room
+        List<GameObject> containerList = new List<GameObject>(containersPrefabs);
+        List<GameObject> trasureRoomPrefabsList = new List<GameObject>(treasureRoomPrefabs);
+        bool repeatTreasureRoomPrefabs = (trasureRoomPrefabsList.Count < treasureRoomsNumber);
+        bool repeatContainers = (containerList.Count < treasureRoomsNumber);
+                
+        for (int i = 0; i<treasureRoomsNumber; i++)
+            //foreach (GameObject trsureRoomPrefab in treasureRoomPrefabs) {
+            if (containerAvailableRooms.Count <= 0)
+                Debug.LogError("not enough rooms for containtes");
+            else
+            {
+                GameObject trsureRoomPrefab = trasureRoomPrefabsList[Random.Range(0, trasureRoomPrefabsList.Count)];
+                int randomRoomID = containerAvailableRooms[Random.Range(0, containerAvailableRooms.Count)];
+                GameObject randomContainer = containerList[Random.Range(0, containerList.Count)];
+                labirint.blueprints[randomRoomID].prefab = trsureRoomPrefab;
+                labirint.blueprints[randomRoomID].contanerPrefab = randomContainer;
+                if (!repeatContainers) containerList.Remove(randomContainer);
+                if (!repeatTreasureRoomPrefabs) trasureRoomPrefabsList.Remove(trsureRoomPrefab);
+                containerAvailableRooms.Remove(randomRoomID); // to prevent 2 treasure room placement in same room
+            }
     }
 }
