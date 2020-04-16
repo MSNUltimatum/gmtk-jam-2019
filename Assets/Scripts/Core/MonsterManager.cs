@@ -49,6 +49,10 @@ public class MonsterManager : MonoBehaviour
                 monster.SetActive(false);
                 monster.GetComponent<MonsterLife>().monsterManager = this;
             }
+            else
+            {
+                print("If this piece of code triggers, then the condition above is truly necessary");
+            }
         }
     }
 
