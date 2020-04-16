@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HomingEnemyBullet : EnemyBulletLife
 {
-    [SerializeField]
-    private float HomingEulerAnglesPerSecond = 45f;
+    [SerializeField] private float HomingEulerAnglesPerSecond = 45f;
+    [SerializeField, Range(0, 1)] private float minimumMagneticPower = 0.2f;
 
     private void Start()
     {
@@ -39,8 +39,13 @@ public class HomingEnemyBullet : EnemyBulletLife
         var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         var currentAngle = gameObject.transform.rotation.eulerAngles.z;
         var difference = angle180fix(angle - currentAngle);
-        var differenceClamped = Mathf.Clamp(difference, -HomingEulerAnglesPerSecond, HomingEulerAnglesPerSecond) * Time.deltaTime;
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + differenceClamped);
+        var differenceSign = Mathf.Sign(difference);
+        var differenceMaxPerSecond = 
+            Mathf.Clamp((180 - difference) / 180, minimumMagneticPower, 1) 
+            * differenceSign 
+            * HomingEulerAnglesPerSecond 
+            * Time.deltaTime;
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + differenceMaxPerSecond);
     }
 
     private GameObject Player;

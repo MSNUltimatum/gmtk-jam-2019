@@ -1906,13 +1906,19 @@ PrefabInstance:
     - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
         type: 3}
       propertyPath: commonMRMods.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
         type: 3}
       propertyPath: commonMRMods.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: c45e7594af02a324f979bf7c2d5d0195,
+      objectReference: {fileID: 11400000, guid: 2bf395dd1c145f9498ebf3e838761136,
+        type: 2}
+    - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
+        type: 3}
+      propertyPath: commonMRMods.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b5cb8ee04a8d334385065336abe1908,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
