@@ -106,13 +106,18 @@ public class MainMenuScript : MonoBehaviour
         switch (stageDifficulty)
         {
             case Difficulty.Easy:
+                Debug.Log("Easy mode new game attempt. Should not be here.");
                 SceneManager.LoadScene("EasyTutorialScene1");
                 break;
             case Difficulty.Normal:
-                SceneManager.LoadScene("TutorialScene");
+                //SceneManager.LoadScene("TutorialScene");       
+                PlayerPrefs.SetInt("Difficulty", 1);
+                SceneManager.LoadScene("LabirintChapter1");
                 break;
             case Difficulty.Hardcore:
-                SceneManager.LoadScene("HardTutorialScene");
+                //SceneManager.LoadScene("HardTutorialScene");
+                PlayerPrefs.SetInt("Difficulty", 2);
+                SceneManager.LoadScene("LabirintChapter1");
                 break;
             default:
                 break;
@@ -172,8 +177,8 @@ public class MainMenuScript : MonoBehaviour
             case Difficulty.Easy:
                 break;
             case Difficulty.Normal:
-                stageDifficulty = Difficulty.Easy;
-                DiffictultyLabel.GetComponent<Image>().sprite = Chapter1EasyDiff;
+                //stageDifficulty = Difficulty.Easy;
+                //DiffictultyLabel.GetComponent<Image>().sprite = Chapter1EasyDiff;
                 break;
             case Difficulty.Hardcore:
                 stageDifficulty = Difficulty.Normal;

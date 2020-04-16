@@ -39,7 +39,7 @@ public class ArenaFireflySpawner : MonoBehaviour
                         Random.Range(monsterManager.transform.position.y - monsterManager.RoomBounds.y, monsterManager.transform.position.x + monsterManager.RoomBounds.y));
                 }
                 else {
-                    Debug.Log("FireflySpawner cant find current room MonsterManager");
+                    //Debug.Log("FireflySpawner cant find current room MonsterManager");
                     fireflyPos = Vector2.zero;
                     // надо придумат как обрабатывать комнаты без арена спавнера и монстер менеджера
                 }
