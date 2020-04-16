@@ -4,6 +4,7 @@ public abstract class Attack : EnemyBehavior
 {
     [SerializeField, Header("Attack Block")]
     protected Vector2 cooldownRange = new Vector2(1f, 1f);
+    [HideInInspector] public float attackSpeedModifier = 1f;
 
     protected override void Awake()
     {
@@ -19,7 +20,7 @@ public abstract class Attack : EnemyBehavior
             cooldownLeft = Mathf.Max(cooldownLeft - Time.deltaTime, 0);
             if (cooldownLeft <= 0)
             {
-                cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
+                cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y) / attackSpeedModifier;
                 DoAttack();
             }
         }
@@ -27,7 +28,7 @@ public abstract class Attack : EnemyBehavior
 
     public void ForceAttack()
     {
-        cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y);
+        cooldownLeft = Random.Range(cooldownRange.x, cooldownRange.y) / attackSpeedModifier;
         DoAttack();
     }
 
