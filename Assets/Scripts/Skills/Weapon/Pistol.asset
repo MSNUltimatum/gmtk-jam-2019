@@ -22,7 +22,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
   bulletDamage: 5
-  knockPower: 200
+  knockPower: 400
   bulletSpeed: 18
   timeToBulletDestruction: 10
   maxRndShootingAngle: 0

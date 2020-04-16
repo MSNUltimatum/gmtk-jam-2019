@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    [HideInInspector]
-    public Vector2 RoomBounds = new Vector2(15, 10);
-    [SerializeField]
-    private float timeToEachSpawn = 5;
-    [SerializeField]
-    private float timeToNextSpawn = 0;
-    [SerializeField]
-    protected GameObject[] enemyWaves = null;
+    [SerializeField] private float timeToEachSpawn = 5;
+    [SerializeField] private float timeToNextSpawn = 0;
+    [SerializeField] protected GameObject[] enemyWaves = null;
 
-    [HideInInspector]
-    public bool spawnAvailable = false;
-    [HideInInspector]
-    public RoomLighting roomLighting;
-    [HideInInspector]
-    public List<GameObject> strayMonsters;
-    [HideInInspector]
-    public List<GameObject> monsterList;
+    [HideInInspector] public Vector2 RoomBounds = new Vector2(15, 10);
+    [HideInInspector] public bool spawnAvailable = false;
+    [HideInInspector] public RoomLighting roomLighting;
+    [HideInInspector] public List<GameObject> strayMonsters;
+    [HideInInspector] public List<GameObject> monsterList;
+
+    public List<MonsterRoomModifier> monsterRoomModifiers = new List<MonsterRoomModifier>();
 
     private Room room;
 
@@ -36,6 +30,7 @@ public class MonsterManager : MonoBehaviour
         {
             room = GetComponent<Room>();
             room.monsterManager = this;
+            room.externalMRMods.ForEach(mod => monsterRoomModifiers.Add(mod));
         }
         else
             Debug.LogError("MonsterManager can't find room script");
@@ -47,7 +42,9 @@ public class MonsterManager : MonoBehaviour
                 strayMonsters.Add(monster);
                 monsterList.Add(monster);
                 monster.SetActive(false);
-                monster.GetComponent<MonsterLife>().monsterManager = this;
+                var monsterLife = monster.GetComponent<MonsterLife>();
+                monsterRoomModifiers.ForEach(mod => mod.ApplyModifier(monsterLife));
+                monsterLife.monsterManager = this;
             }
             else
             {
@@ -112,7 +109,9 @@ public class MonsterManager : MonoBehaviour
             }
 
             monsterList.Add(enemy);
-            enemy.GetComponent<MonsterLife>().monsterManager = this;
+            var monsterLife = enemy.GetComponent<MonsterLife>();
+            monsterLife.monsterManager = this;
+            monsterRoomModifiers.ForEach(mod => mod.ApplyModifier(monsterLife));
 
             SetMonsterPosition(enemy);
         }
