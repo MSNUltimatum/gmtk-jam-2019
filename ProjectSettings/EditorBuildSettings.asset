@@ -129,7 +129,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapter1/EasyChapter1Level5.unity
     guid: 15a12a0178a5e6e4995786347ce8dc3f
   - enabled: 1
-    path: Assets/Scenes/Chapter1/EasyChapter1Level6.unity
+    path: Assets/Scenes/Chapter1/EasyChapter1level6.unity
     guid: 7bd6f3f69a13ff7489028d201817bb8f
   - enabled: 1
     path: Assets/Scenes/Chapter1/EasyChapter1Level7.unity
@@ -209,4 +209,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapter1/NewYearLevel.unity
     guid: 808b005500eb4bb48ac1f3eb64d905c9
+  - enabled: 1
+    path: Assets/Scenes/LabirintLevels/LabirintChapter1.unity
+    guid: a727b1dc92ba7a44f95cb82620efd1d7
   m_configObjects: {}

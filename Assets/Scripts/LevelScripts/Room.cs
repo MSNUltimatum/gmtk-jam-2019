@@ -16,12 +16,13 @@ public class Room : MonoBehaviour
 
     public Transform possibleContainerPosition;
 
-    [HideInInspector]
-    public MonsterManager monsterManager;
+    [HideInInspector] public MonsterManager monsterManager;
+    [HideInInspector] public List<MonsterRoomModifier> externalMRMods = new List<MonsterRoomModifier>();
 
     private void Awake()
     {
         labirint = Labirint.instance;
+        externalMRMods = labirint.commonMRMods;
         if (possibleContainerPosition == null) possibleContainerPosition = transform; // if forgot to set, center of room
     }
 

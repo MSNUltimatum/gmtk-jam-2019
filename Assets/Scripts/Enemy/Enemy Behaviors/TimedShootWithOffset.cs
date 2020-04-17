@@ -24,6 +24,7 @@ public class TimedShootWithOffset : TimedAttack
     protected virtual void ShootBulletStraight(Vector2 direction, GameObject bulletToSpawn, float randomAngle)
     {
         var bullet = Instantiate(bulletToSpawn, transform.position, new Quaternion());
+        bullet.GetComponent<EnemyBulletLife>().BulletSpeed *= attackSpeedModifier;
 
         var audio = GetComponent<AudioSource>();
         AudioManager.Play("MonsterShot", audio);

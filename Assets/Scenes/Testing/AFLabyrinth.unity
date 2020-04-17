@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1778,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: tresureRoomPrefabs.Array.size
@@ -1794,11 +1794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: correctPathLength
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: numberOfRooms
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[2]
@@ -1877,7 +1877,7 @@ PrefabInstance:
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 7244646154980177775, guid: d8f452c8e0cf3884489d08426c75ee9b,
+      objectReference: {fileID: 456814172241082861, guid: 484ae42691d405d49a2d7bea3894d9b7,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[2]
@@ -1903,5 +1903,22 @@ PrefabInstance:
       propertyPath: treasureRoomsNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
+        type: 3}
+      propertyPath: commonMRMods.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
+        type: 3}
+      propertyPath: commonMRMods.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bf395dd1c145f9498ebf3e838761136,
+        type: 2}
+    - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
+        type: 3}
+      propertyPath: commonMRMods.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b5cb8ee04a8d334385065336abe1908,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
