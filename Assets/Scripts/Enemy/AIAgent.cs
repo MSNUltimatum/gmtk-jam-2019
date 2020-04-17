@@ -12,6 +12,7 @@ public class AIAgent : MonoBehaviour
     public float orientation;
     public float rotation;
     public Vector2 velocity;
+    [HideInInspector] public float moveSpeedMult = 1f;
     protected EnemySteering steering;
 
     [Header("All Behaviours activation condition")]
@@ -51,7 +52,9 @@ public class AIAgent : MonoBehaviour
             velocity * velocityFallBackPower * Time.deltaTime;
 
         velocity -= velocityFallBack;
-        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
+        // main movement function
+        // max speed with knockback: triple max speed 
+        rigidbody.MovePosition(rigidbody.position + Vector2.ClampMagnitude(velocity, maxSpeed * 3) * Time.fixedDeltaTime);
     }
 
     protected virtual void Update()
@@ -81,8 +84,8 @@ public class AIAgent : MonoBehaviour
 
         rotation += Mathf.Max(steering.angular * Time.deltaTime);
         
-        var speedUp = steering.linear * Time.deltaTime;
-        if ((velocity + speedUp).magnitude < maxSpeed)
+        var speedUp = steering.linear * moveSpeedMult * Time.deltaTime;
+        if ((velocity + speedUp).magnitude < maxSpeed * moveSpeedMult)
         {
             velocity += speedUp;
         }
@@ -131,7 +134,7 @@ public class AIAgent : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.WakeUp();
         rigidbody.isKinematic = false;
-        rigidbody.AddForce(savedVelocity, ForceMode2D.Impulse);
+        velocity = savedVelocity;
     }
 
     Vector3 savedVelocity = new Vector3();

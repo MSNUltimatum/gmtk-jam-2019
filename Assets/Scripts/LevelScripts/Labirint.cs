@@ -26,6 +26,7 @@ public class Labirint : MonoBehaviour
     static public Labirint instance;
     private Vector3 respawnPoint;
     public int difficultySetting = 1;
+    public List<MonsterRoomModifier> commonMRMods;
 
     private void Awake()
     {
