@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class BossEncounter : MonoBehaviour
 {
+    public int startFromPhase = 0;
+
     public abstract class BossAttack
     {
         protected float attackLength = 5f;
@@ -148,6 +150,8 @@ public abstract class BossEncounter : MonoBehaviour
             }
         }
 
+        public virtual void DebugStartPhase() { }
+
         protected float phaseTimer = 0;
         private BossEncounter bossData;
 
@@ -161,8 +165,22 @@ public abstract class BossEncounter : MonoBehaviour
     protected virtual void Start()
     {
         bossHP = GetComponent<MonsterLife>();
-        NextPhaseOrFinish();
+        if (startFromPhase == 0)
+        {
+            StartEncounter();
+        }
+        else
+        {
+            phaseID = startFromPhase;
+            currentPhase = bossPhases[phaseID];
+            currentPhase.DebugStartPhase();
+        }
     }
+
+    protected virtual void StartEncounter()
+    {
+        NextPhaseOrFinish();
+    } 
 
     // Update is called once per frame
     void Update()

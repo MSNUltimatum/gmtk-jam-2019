@@ -68,6 +68,13 @@ public class DummyBossEncounter : BossEncounter
             };
         }
 
+        public override void DebugStartPhase()
+        {
+            AudioManager.PlayMusic(dummyBossData.GetComponent<AudioSource>(), 60);
+            var bossHP = dummyBossData.bossHP;
+            bossHP.HP = 0.5f * bossHP.maxHP;
+        }
+
         DummyBossEncounter dummyBossData;
     }
 

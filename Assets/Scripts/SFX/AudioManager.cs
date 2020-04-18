@@ -165,9 +165,10 @@ public class AudioManager : MonoBehaviour
 #endif
     }
 
-    public static void PlayMusic(AudioSource sorce)// for externall audio sorce with music volume, like on boss
+    public static void PlayMusic(AudioSource sorce, float time = 0)// for externall audio sorce with music volume, like on boss
     {
         sorce.volume = userPrefMusic;
+        sorce.time = time;
         sorce.Play();
     }
 

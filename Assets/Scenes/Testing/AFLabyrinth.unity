@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339decf2087a1c945b75383d6eae18ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startFromPhase: 2
   butterfly: {fileID: 8435594574638218104, guid: 8276eb8a9fae19545a36a477410189b5,
     type: 3}
   butterflyPurple: {fileID: 5154337578754059753, guid: b1451d0aca99c6943ad6dadf472b8907,
