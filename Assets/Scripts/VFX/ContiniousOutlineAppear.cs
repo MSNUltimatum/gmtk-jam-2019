@@ -26,7 +26,6 @@ public class ContiniousOutlineAppear : MonoBehaviour
         {
             accumulator = Accumulate(accumulator);
             continiousOutlineMaterial.SetFloat("_OutlineAppearParameter", accumulator);
-            print(continiousOutlineMaterial.GetFloat("_OutlineAppearParameter"));
         }        
     }
 
