@@ -10,6 +10,7 @@ public class ContiniousOutlineAppear : MonoBehaviour
     {
         continiousOutlineMaterial = GetComponent<SpriteRenderer>().material;
         continiousOutlineMaterial = new Material(continiousOutlineMaterial);
+        GetComponent<SpriteRenderer>().material = continiousOutlineMaterial;
         if (continiousOutlineMaterial.shader.name != "Unlit/ContiniousWithOutline")
         {
             Debug.LogError("Material shader: " + continiousOutlineMaterial.shader.name + 
@@ -25,6 +26,7 @@ public class ContiniousOutlineAppear : MonoBehaviour
         {
             accumulator = Accumulate(accumulator);
             continiousOutlineMaterial.SetFloat("_OutlineAppearParameter", accumulator);
+            print(continiousOutlineMaterial.GetFloat("_OutlineAppearParameter"));
         }        
     }
 
