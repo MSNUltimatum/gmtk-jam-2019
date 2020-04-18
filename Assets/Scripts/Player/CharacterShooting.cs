@@ -30,6 +30,11 @@ public class CharacterShooting : MonoBehaviour
         skillManager = GetComponent<SkillManager>();
     }
 
+    private void FixedUpdate()
+    {
+        RotateCharacterTowardsCursor();
+    }
+
     private void Update()
     {
         if (Pause.Paused)
@@ -38,8 +43,6 @@ public class CharacterShooting : MonoBehaviour
             return;
         }
         Cursor.visible = false;
-
-        RotateCharacterTowardsCursor();
 
         shotFrame = false;
         

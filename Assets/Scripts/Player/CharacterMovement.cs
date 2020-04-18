@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
             direction.Normalize();
         }
 
-        rigidbody.velocity = direction * speed * Time.fixedDeltaTime * 50;
+        rigidbody.velocity = direction * speed * Time.fixedDeltaTime * 50f;
         if (anim != null)
         {
             if (CharacterLife.isDeath) return;
