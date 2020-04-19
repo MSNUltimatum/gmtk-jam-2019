@@ -29,7 +29,7 @@ MonoBehaviour:
   rndShootingAngleAmplifier: 0.45
   rndShootingAngleRelease: 1.25
   bulletModifiers:
-  - {fileID: 11400000, guid: cd1403261d8c0104c83086e826358e74, type: 2}
+  - {fileID: 11400000, guid: 6d811647df89f444e92716a44d7c77fd, type: 2}
   - {fileID: 11400000, guid: ce2bb1f432e2870429fd20ee463c41dc, type: 2}
   - {fileID: 11400000, guid: 0ec781cb98240c94a9e578ded7d88f3e, type: 2}
   - {fileID: 11400000, guid: 01578a2e327695b498ec80c0347b4786, type: 2}

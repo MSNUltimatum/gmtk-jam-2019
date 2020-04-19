@@ -15,10 +15,14 @@ public class Room : MonoBehaviour
     public RoomType roomType;
 
     public Transform possibleContainerPosition;
-    
+
+    [HideInInspector] public MonsterManager monsterManager;
+    [HideInInspector] public List<MonsterRoomModifier> externalMRMods = new List<MonsterRoomModifier>();
+
     private void Awake()
     {
         labirint = Labirint.instance;
+        externalMRMods = labirint.commonMRMods;
         if (possibleContainerPosition == null) possibleContainerPosition = transform; // if forgot to set, center of room
     }
 
@@ -46,6 +50,7 @@ public class Room : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").transform.position = wayInDoor.transform.position;
         Labirint.instance.OnRoomChanged(roomID);
         ArenaInitCheck();
+        LightCheck();
     }
 
     public void ArenaInitCheck()
@@ -54,10 +59,15 @@ public class Room : MonoBehaviour
         {            
             if (!Labirint.instance.blueprints[roomID].visited) 
             {
-                GetComponent<ArenaEnemySpawner>().enabled = true;
+                if(GetComponent<ArenaEnemySpawner>()!=null)
+                    GetComponent<ArenaEnemySpawner>().enabled = true;
+                if (GetComponent<MonsterManager>() != null)
+                    GetComponent<MonsterManager>().UnfreezeMonsters();
                 LockRoom();
             }
             else {
+                if (GetComponent<ArenaEnemySpawner>() != null)
+                    GetComponent<ArenaEnemySpawner>().KillThemAll();
                 TimerUnlockRoom();
             }
         }
@@ -101,8 +111,19 @@ public class Room : MonoBehaviour
     public void LeaveRoom() {
         if (roomType == RoomType.arena)
         {
-            GetComponent<ArenaEnemySpawner>().KillThemAll();
+            GetComponent<ArenaEnemySpawner>()?.KillThemAll();
         }
         Labirint.instance.blueprints[roomID].visited = true;
+    }
+
+    public void LightCheck() {
+        if (monsterManager != null)
+            if (roomType == RoomType.arena && !labirint.blueprints[roomID].visited)
+                monsterManager.roomLighting.LabirintRoomEnterDark(monsterManager.EnemyCount());
+            else
+                monsterManager.roomLighting.LabirintRoomEnterBright();
+        else
+            GetComponent<RoomLighting>().LabirintRoomEnterBright(); // exception for room without monsters
+
     }
 }

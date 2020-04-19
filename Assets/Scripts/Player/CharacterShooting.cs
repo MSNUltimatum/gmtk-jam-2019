@@ -30,6 +30,11 @@ public class CharacterShooting : MonoBehaviour
         skillManager = GetComponent<SkillManager>();
     }
 
+    private void FixedUpdate()
+    {
+        RotateCharacterTowardsCursor();
+    }
+
     private void Update()
     {
         if (Pause.Paused)
@@ -78,6 +83,16 @@ public class CharacterShooting : MonoBehaviour
         {
             skillManager.ReloadWeaponIfNeeded();
         }
+    }
+
+    private void RotateCharacterTowardsCursor()
+    {
+        var mousepos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Quaternion rot = Quaternion.LookRotation(transform.position - mousepos, Vector3.forward);
+        transform.eulerAngles = new Vector3(0, 0, rot.eulerAngles.z);
+        Vector3 vectorToTarget = weaponTip.position - mousepos;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        weaponTip.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
     }
 
     private float timeBetweenAttacks = 0;

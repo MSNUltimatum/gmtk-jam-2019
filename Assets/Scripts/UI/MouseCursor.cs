@@ -8,6 +8,8 @@ public class MouseCursor : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private bool ShouldRotate = true;
+    [SerializeField]
+    private bool worldCoordinates = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +28,16 @@ public class MouseCursor : MonoBehaviour
         else
         {
             var mousePos = Input.mousePosition;
-            var screenPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            screenPoint.z = 0;
-            //Vector3 mousePos = Input.mousePosition;
-            transform.position = screenPoint;
+            if (worldCoordinates)
+            {
+                var screenPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
+                screenPoint.z = 0;
+                //Vector3 mousePos = Input.mousePosition;
+                transform.position = screenPoint;
+            }
+            else {
+                transform.position = mousePos;
+            }
 
             if (ShouldRotate) RotateFromCharacter(mousePos);
         }

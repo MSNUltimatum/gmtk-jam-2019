@@ -13,7 +13,7 @@ public class MainMenuCursorCreation : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        Instantiate(mouseCursorObj);
+        Instantiate(mouseCursorObj, transform);
     }
 
     void Update()

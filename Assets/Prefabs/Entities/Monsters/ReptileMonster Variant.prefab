@@ -17,7 +17,12 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   cooldownRange: {x: 3, y: 8}
+  attackSpeedModifier: 1
   boostedSpeed: 8
   boostTime: 2
 --- !u!114 &8610014839078552524
@@ -37,6 +42,10 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
@@ -374,7 +383,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 17b7a4f914d8ca74aa58ff52fb140c2d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2483354354873438170, guid: 98cd7e8f344209344a7cb9babefd9898, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98cd7e8f344209344a7cb9babefd9898, type: 3}
 --- !u!1 &1480151312411459792 stripped
 GameObject:

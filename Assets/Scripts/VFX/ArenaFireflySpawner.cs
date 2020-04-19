@@ -22,9 +22,29 @@ public class ArenaFireflySpawner : MonoBehaviour
         timeToNextSpawn -= Time.deltaTime;
         if (timeToNextSpawn < 0)
         {
-            var fireflyPos = new Vector2(
-                Random.Range(-arena.RoomBounds.x, arena.RoomBounds.x), 
-                Random.Range(-arena.RoomBounds.y, arena.RoomBounds.y));
+            Vector2 fireflyPos = Vector2.zero;
+            if (Labirint.instance == null)
+            {
+                fireflyPos = new Vector2(
+                    Random.Range(-arena.RoomBounds.x, arena.RoomBounds.x),
+                    Random.Range(-arena.RoomBounds.y, arena.RoomBounds.y));
+            }
+            else
+            {
+                MonsterManager monsterManager = Labirint.GetCurrentRoom().GetComponent<MonsterManager>();
+                if (monsterManager != null)
+                {
+                    fireflyPos = new Vector2(
+                        Random.Range(monsterManager.transform.position.x - monsterManager.RoomBounds.x, monsterManager.transform.position.x + monsterManager.RoomBounds.x),
+                        Random.Range(monsterManager.transform.position.y - monsterManager.RoomBounds.y, monsterManager.transform.position.x + monsterManager.RoomBounds.y));
+                }
+                else {
+                    //Debug.Log("FireflySpawner cant find current room MonsterManager");
+                    fireflyPos = Vector2.zero;
+                    // надо придумат как обрабатывать комнаты без арена спавнера и монстер менеджера
+                }
+
+            }
             timeToNextSpawn = Random.Range(timeToEachSpawn.x, timeToEachSpawn.y);
             var aFirefly = Instantiate(firefly, fireflyPos, Quaternion.identity);
             Destroy(aFirefly, 10);
