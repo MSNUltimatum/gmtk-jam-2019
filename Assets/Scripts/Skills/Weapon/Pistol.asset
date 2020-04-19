@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   description: Your first gun
-  pickupSprite: {fileID: 21300000, guid: f32fc59e10e8aaf4581d2e0458d58383, type: 3}
+  pickupSprite: {fileID: 21300000, guid: 69917660c905993449ef1ad3547615ce, type: 3}
   attackSound:
   - {fileID: 8300000, guid: f0e0a83e3a2a3974d9465ce770f082a2, type: 3}
   reloadTime: 1

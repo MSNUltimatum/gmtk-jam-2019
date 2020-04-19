@@ -50,7 +50,7 @@ public class CharacterShooting : MonoBehaviour
         {
             timeBetweenAttacks -= Time.deltaTime;
         }
-        else if (currentWeapon == null) return;
+        else if (currentWeapon == null || currentWeapon.logic == null) return;
         else if (Input.GetButton("Fire1"))
         {
             
