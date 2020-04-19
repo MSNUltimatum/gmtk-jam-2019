@@ -128,7 +128,7 @@ public class Room : MonoBehaviour
 
     }
     
-    public Dictionary<Direction.Side, float> GetBordersFromBitmap() {
+    public Dictionary<Direction.Side, float> GetBordersFromTilemap() {
         Dictionary<Direction.Side, float> result = new Dictionary<Direction.Side, float>();
         Tilemap[] tilemaps = GetComponentsInChildren<Tilemap>();
         float left, right, up, down;

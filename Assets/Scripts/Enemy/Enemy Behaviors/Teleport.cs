@@ -36,7 +36,7 @@ public class Teleport : TimedAttack
             bool inbounds = false;
             if (Labirint.instance != null)
             {
-                Dictionary<Direction.Side, float> borders = Labirint.GetCurrentRoom().GetComponent<Room>().GetBordersFromBitmap();
+                Dictionary<Direction.Side, float> borders = Labirint.GetCurrentRoom().GetComponent<Room>().GetBordersFromTilemap();
                 inbounds = (borders[Direction.Side.LEFT] < target.transform.position.x + NVector.x &&
                             borders[Direction.Side.RIGHT] > target.transform.position.x + NVector.x &&
                             borders[Direction.Side.DOWN] < target.transform.position.y + NVector.y &&

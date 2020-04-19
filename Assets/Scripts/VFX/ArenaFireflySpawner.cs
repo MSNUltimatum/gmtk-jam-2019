@@ -50,7 +50,7 @@ public class ArenaFireflySpawner : MonoBehaviour
             Room room = GetComponent<Room>();
             if (room != null)
             {
-                borders = room.GetBordersFromBitmap();
+                borders = room.GetBordersFromTilemap();
             }
             else Debug.LogError("Can't get room script");
         }
