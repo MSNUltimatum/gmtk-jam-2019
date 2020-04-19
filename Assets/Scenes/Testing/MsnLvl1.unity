@@ -729,7 +729,7 @@ MonoBehaviour:
   timeToEachSpawn: 3
   timeToNextSpawn: 0
   enemyWaves:
-  - {fileID: 4795927371164965385, guid: f64cc260fe9b4fa468e8f3b21929041b, type: 3}
+  - {fileID: 3093278832745272700, guid: a77b122a76dc59249b18c237895bdcb0, type: 3}
   SpawnZone: {fileID: 0}
   AllowEarlySpawns: 1
   isInfSpawn: 0
@@ -1283,7 +1283,7 @@ PrefabInstance:
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
       propertyPath: skills.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
@@ -1318,7 +1318,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: cdefae2fad0b91a458c1ccee25edaed4,
+      objectReference: {fileID: 11400000, guid: 605465533e8124143b7695b5b5621872,
         type: 2}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
@@ -1330,7 +1330,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 3c6a4e05a7eb9df4a849a4a4b888bf29,
+      objectReference: {fileID: 11400000, guid: 605465533e8124143b7695b5b5621872,
         type: 2}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
