@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour
 {
@@ -126,4 +127,41 @@ public class Room : MonoBehaviour
             GetComponent<RoomLighting>().LabirintRoomEnterBright(); // exception for room without monsters
 
     }
+    
+    public Dictionary<Direction.Side, float> GetBordersFromBitmap() {
+        Dictionary<Direction.Side, float> result = new Dictionary<Direction.Side, float>();
+        Tilemap[] tilemaps = GetComponentsInChildren<Tilemap>();
+        float left, right, up, down;
+        foreach (Tilemap tilemap in tilemaps)
+        {
+            if (tilemap.tag == "Environment")
+            { // to separete layer with walls
+                Vector3Int tilePosition;
+                left = Mathf.Infinity;
+                right = -Mathf.Infinity;
+                up = -Mathf.Infinity;
+                down = Mathf.Infinity;
+                for (int x = tilemap.origin.x; x < tilemap.size.x; x++)
+                {
+                    for (int y = tilemap.origin.y; y < tilemap.size.y; y++)
+                    {
+                        tilePosition = new Vector3Int(x, y, 0);
+                        if (tilemap.HasTile(tilePosition))
+                        {
+                            if (tilemap.CellToWorld(tilePosition).x < left) left = tilemap.CellToWorld(tilePosition).x;
+                            if (tilemap.CellToWorld(tilePosition).x > right) right = tilemap.CellToWorld(tilePosition).x;
+                            if (tilemap.CellToWorld(tilePosition).y < down) down = tilemap.CellToWorld(tilePosition).y;
+                            if (tilemap.CellToWorld(tilePosition).y > up) up = tilemap.CellToWorld(tilePosition).y;
+                        }
+                    }
+                }
+                result[Direction.Side.LEFT] = left + 1.5f; //mb need to replace with something tile size related later
+                result[Direction.Side.RIGHT] = right + 0.5f;
+                result[Direction.Side.UP] = up + 0.5f;
+                result[Direction.Side.DOWN] = down + 1.5f;                
+            }
+        }
+        return result;
+    }
+
 }

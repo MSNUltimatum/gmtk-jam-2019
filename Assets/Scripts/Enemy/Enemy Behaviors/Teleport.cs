@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Teleport : TimedAttack
 {
@@ -35,20 +36,14 @@ public class Teleport : TimedAttack
             bool inbounds = false;
             if (Labirint.instance != null)
             {
-                Transform roomTransform = Labirint.GetCurrentRoom().transform;
-                if (arena == null)
-                {
-                    MonsterManager monsterManager = Labirint.GetCurrentRoom().GetComponent<MonsterManager>();
-                    inbounds = (monsterManager.RoomBounds.x + roomTransform.position.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
-                    monsterManager.RoomBounds.y + roomTransform.position.y > Mathf.Abs(target.transform.position.y + NVector.y));
-                }
-                else
-                {
-                    inbounds = (arena.RoomBounds.x + roomTransform.position.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
-                    arena.RoomBounds.y + roomTransform.position.y > Mathf.Abs(target.transform.position.y + NVector.y));
-                }
+                Dictionary<Direction.Side, float> borders = Labirint.GetCurrentRoom().GetComponent<Room>().GetBordersFromBitmap();
+                inbounds = (borders[Direction.Side.LEFT] < target.transform.position.x + NVector.x &&
+                            borders[Direction.Side.RIGHT] > target.transform.position.x + NVector.x &&
+                            borders[Direction.Side.DOWN] < target.transform.position.y + NVector.y &&
+                            borders[Direction.Side.UP] > target.transform.position.y + NVector.y);
             }
-            else {
+            else
+            {
                 inbounds = (arena.RoomBounds.x > Mathf.Abs(target.transform.position.x + NVector.x) &&
                 arena.RoomBounds.y > Mathf.Abs(target.transform.position.y + NVector.y));
             }
