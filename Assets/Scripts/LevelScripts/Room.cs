@@ -164,4 +164,14 @@ public class Room : MonoBehaviour
         return result;
     }
 
+    public bool RectIsInbounds(float x, float y, float sizeX, float sizeY) {
+        bool result = true;
+        Dictionary<Direction.Side, float> bounds = GetBordersFromTilemap();
+        result = x > bounds[Direction.Side.LEFT] &&
+            x + sizeX < bounds[Direction.Side.RIGHT] &&
+            y > bounds[Direction.Side.DOWN] &&
+            y + sizeY < bounds[Direction.Side.UP];
+        return result;
+    }
+
 }
