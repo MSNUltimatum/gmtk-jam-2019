@@ -12,10 +12,15 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform weaponItemsContainer = null;
     [SerializeField]
+    private Transform passiveSkillsContainer = null;
+    [SerializeField]
     private Transform draggingParent = null;
 
     [SerializeField]
     private GameObject cellPrefab = null;
+
+    [SerializeField]
+    private GameObject passivePrefab = null;
 
     public void Start()
     {
@@ -23,16 +28,23 @@ public class Inventory : MonoBehaviour
         equippedActiveSkills = new List<SkillBase>();
         nonEquippedWeaponSkills = new List<SkillBase>();
         equippedWeaponSkills = new List<SkillBase>();
+        passiveSkills = new List<SkillBase>();
         var player = GameObject.FindGameObjectWithTag("Player");
         skills = player.GetComponent<SkillManager>();
         skills.InventoryActiveSkills.ForEach(skill => nonEquippedActiveSkills.Add(skill));
         skills.InventoryWeaponSkill.ForEach(skill => nonEquippedWeaponSkills.Add(skill));
         skills.ActiveSkills.ForEach(skill => equippedActiveSkills.Add(skill.skill));
         skills.EquippedWeapons.ForEach(weapon => equippedWeaponSkills.Add(weapon.logic));
+        foreach(var skill in skills.skills)
+        {
+            if (skill is PassiveSkill)
+                passiveSkills.Add(skill);
+        }
         Render(nonEquippedActiveSkills, activeItemsContainer, false);
         Render(equippedActiveSkills, activeItemsContainer, true);
         Render(nonEquippedWeaponSkills, weaponItemsContainer, false);
         Render(equippedWeaponSkills, weaponItemsContainer, true);
+        PassiveRender(passiveSkills, passiveSkillsContainer);
     }
 
     private void Render(List<SkillBase> items, Transform container, bool isActive)
@@ -51,6 +63,16 @@ public class Inventory : MonoBehaviour
                 skillImage.Render(items[k], this);
                 k++;
             }
+        }
+    }
+
+    private void PassiveRender(List<SkillBase> items, Transform container)
+    {
+        for(int i = 0;i < items.Count; i++)
+        {
+            var inst = Instantiate(passivePrefab, container);
+            var img = inst.GetComponent<PassiveItemPresenter>();
+            img.Render(items[i], this);
         }
     }
 
@@ -110,6 +132,7 @@ public class Inventory : MonoBehaviour
     private List<SkillBase> equippedActiveSkills = null;
     private List<SkillBase> nonEquippedWeaponSkills = null;
     private List<SkillBase> equippedWeaponSkills = null;
+    private List<SkillBase> passiveSkills = null;
     private SkillManager skills = null;
     private Color ActiveFrame = Color.white;
     private Color BaseFrame = Color.clear;
