@@ -17,6 +17,10 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
@@ -194,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 5894915500748629136, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: m_Name
-      value: ZombieMonster
+      value: ZombieMonster Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8624421033595261174, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
@@ -263,7 +267,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6270344768806711389, guid: c4791f48321181b4ba1eeb2dee1ab19e,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2483354354873438170, guid: 98cd7e8f344209344a7cb9babefd9898, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98cd7e8f344209344a7cb9babefd9898, type: 3}
 --- !u!1 &1618520604191442478 stripped
 GameObject:
