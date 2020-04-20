@@ -80,8 +80,8 @@ public class CharacterLife : MonoBehaviour
         GetComponent<Rigidbody2D>().drag = 10;
         GetComponent<Rigidbody2D>().mass = 100;
 
-        var CameraFollow = Camera.main.GetComponent<CameraFollowScript>();
-        if (!CameraFollow) Camera.main.gameObject.AddComponent<CameraFollowScript>();
+        //var CameraFollow = Camera.main.GetComponent<CameraFollowScript>();
+        //if (!CameraFollow) Camera.main.gameObject.AddComponent<CameraFollowScript>();
     }
 
     private IEnumerator StopGlow()
@@ -93,13 +93,18 @@ public class CharacterLife : MonoBehaviour
             
             // Also move camera "forward" together with glow fadeout
             mainCam.orthographicSize = Mathf.Lerp(cameraScale / 2, cameraScale, glowFadeTime);
-            //mainCam.gameObject.transform.position = Vector3.Lerp(cameraMovePosition, cameraStartPosition, glowFadeTime);
+            cameraMovePosition = gameObject.transform.position + new Vector3(0, 0, -20);
+            mainCam.gameObject.transform.position = Vector3.Lerp(cameraMovePosition, cameraStartPosition, glowFadeTime);
 
             //ShadowObject.transform.localEulerAngles = 
 
             yield return new WaitForFixedUpdate();
         }
         circleCollider.radius = 0.4f;
+        while (isDeath) { // still tracking camera after zoom
+            mainCam.gameObject.transform.position = gameObject.transform.position + new Vector3(0, 0, -20);
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public void Alive()

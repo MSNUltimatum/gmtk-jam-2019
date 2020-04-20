@@ -39,7 +39,15 @@ public class CameraForLabirint : MonoBehaviour
             CameraFollowSetup(room);
     }
 
-    void CameraFollowSetup(GameObject room) 
+    void CameraFollowSetup(GameObject room) {
+        Dictionary<Direction.Side, float> borders = room.GetComponent<Room>().GetBordersFromTilemap();
+        cameraBoundsLeft = borders[Direction.Side.LEFT];
+        cameraBoundsRight = borders[Direction.Side.RIGHT];
+        cameraBoundsUp = borders[Direction.Side.UP];
+        cameraBoundsDown = borders[Direction.Side.DOWN];
+    }
+
+    void CameraFollowSetupOld(GameObject room) 
     {
         Tilemap[] tilemaps = room.GetComponentsInChildren<Tilemap>();
         float left, right, up, down;
@@ -74,13 +82,28 @@ public class CameraForLabirint : MonoBehaviour
 
     void CameraFollowUpdate(){
         cameraObj.transform.position = player.transform.position - 20 * Vector3.forward;
-        if (cameraComponent.ViewportToWorldPoint(Vector3.zero).x < cameraBoundsLeft)
-            cameraObj.transform.position += Vector3.right * (cameraBoundsLeft - cameraComponent.ViewportToWorldPoint(Vector3.zero).x);
-        if (cameraComponent.ViewportToWorldPoint(Vector3.one).x > cameraBoundsRight)
-            cameraObj.transform.position += Vector3.right * (cameraBoundsRight - cameraComponent.ViewportToWorldPoint(Vector3.one).x);
-        if (cameraComponent.ViewportToWorldPoint(Vector3.one).y > cameraBoundsUp)
-            cameraObj.transform.position += Vector3.up * ( cameraBoundsUp - cameraComponent.ViewportToWorldPoint(Vector3.one).y);
-        if (cameraComponent.ViewportToWorldPoint(Vector3.zero).y < cameraBoundsDown)
-            cameraObj.transform.position += Vector3.up * (cameraBoundsDown - cameraComponent.ViewportToWorldPoint(Vector3.zero).y);
+        if (cameraComponent.ViewportToWorldPoint(Vector3.one).x - cameraComponent.ViewportToWorldPoint(Vector3.zero).x > cameraBoundsRight - cameraBoundsLeft)
+        {
+            cameraObj.transform.position = new Vector3((cameraBoundsRight + cameraBoundsLeft) / 2, cameraObj.transform.position.y, cameraObj.transform.position.z);
+        }
+        else
+        {
+            if (cameraComponent.ViewportToWorldPoint(Vector3.zero).x < cameraBoundsLeft)
+                cameraObj.transform.position += Vector3.right * (cameraBoundsLeft - cameraComponent.ViewportToWorldPoint(Vector3.zero).x);
+            if (cameraComponent.ViewportToWorldPoint(Vector3.one).x > cameraBoundsRight)
+                cameraObj.transform.position += Vector3.right * (cameraBoundsRight - cameraComponent.ViewportToWorldPoint(Vector3.one).x);
+        }
+
+        if (cameraComponent.ViewportToWorldPoint(Vector3.one).y - cameraComponent.ViewportToWorldPoint(Vector3.zero).y > cameraBoundsUp - cameraBoundsDown)
+        {
+            cameraObj.transform.position = new Vector3(cameraObj.transform.position.x, (cameraBoundsUp + cameraBoundsDown) / 2,  cameraObj.transform.position.z);
+        }
+        else
+        {
+            if (cameraComponent.ViewportToWorldPoint(Vector3.one).y > cameraBoundsUp)
+                cameraObj.transform.position += Vector3.up * (cameraBoundsUp - cameraComponent.ViewportToWorldPoint(Vector3.one).y);
+            if (cameraComponent.ViewportToWorldPoint(Vector3.zero).y < cameraBoundsDown)
+                cameraObj.transform.position += Vector3.up * (cameraBoundsDown - cameraComponent.ViewportToWorldPoint(Vector3.zero).y);
+        }
     }
 }
