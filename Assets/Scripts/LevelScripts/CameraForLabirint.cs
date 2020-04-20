@@ -18,7 +18,7 @@ public class CameraForLabirint : MonoBehaviour
 
     private Camera cameraComponent;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
         cameraObj = Camera.main.gameObject;

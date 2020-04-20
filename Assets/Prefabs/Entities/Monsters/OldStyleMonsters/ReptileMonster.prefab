@@ -390,7 +390,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 40
-  m_LinearDrag: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -422,6 +422,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  monsterManager: {fileID: 0}
+  OnThisDead:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &4922783919604684963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851423767a200cf4eaf5bea045e99598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 6
   maxAccel: 350
   maxRotation: 200
   maxAngularAccel: 10000
@@ -442,7 +448,9 @@ MonoBehaviour:
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  moveSpeedMult: 1
   proximityCheckOption: 02000000
+  timeToLoseAggro: -1
 --- !u!114 &7589481869606093919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +468,10 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: 1.5
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
 --- !u!114 &-600990550494270343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +489,12 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   cooldownRange: {x: 3, y: 8}
+  attackSpeedModifier: 1
   boostedSpeed: 8
   boostTime: 2
 --- !u!82 &-4325479809275201537
@@ -593,13 +610,17 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   targetRadius: 0
   slowRadius: 0.1
   timeToTarget: 0.1
   rotateAtStart: 1
   bypassAngleAccumulationSpeed: 50
-  wavePeriod: 1.5
-  waveAmp: 45
+  wavePeriod: 1
+  waveAmp: 30
   behaviourBlockTime: 0.5
 --- !u!1 &7414698465562440439
 GameObject:
