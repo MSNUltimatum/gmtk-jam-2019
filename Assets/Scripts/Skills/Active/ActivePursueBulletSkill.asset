@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ActivePursueBulletSkill
   m_EditorClassIdentifier: 
   description: Bang
-  pickupSprite: {fileID: 4945836708647946627, guid: 3d573d82d62517e40ae2af5d0fa34437,
-    type: 3}
+  pickupSprite: {fileID: 21300000, guid: 0627f1df50c38ad42b30bd54045694c5, type: 3}
   activeDuration: 3
   cooldownDuration: 5
   bulletMod: {fileID: 11400000, guid: 5fcc4181fb87c4d48b5f164fac6ed91a, type: 2}

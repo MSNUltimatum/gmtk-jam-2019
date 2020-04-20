@@ -84,6 +84,7 @@ MonoBehaviour:
   roomType: 1
   possibleContainerPosition: {fileID: 9143584970666565540}
   monsterManager: {fileID: 0}
+  externalMRMods: []
 --- !u!114 &6593122274603085059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +102,7 @@ MonoBehaviour:
     type: 3}
   StandartLightIncrease: 1
   maxvalue: 0
+  roomClearedLight: 0.9
   DefaultLight: 0.13
 --- !u!114 &718965895912542380
 MonoBehaviour:
@@ -114,16 +116,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bf1d570aec33f489213f9aaf8577e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomBounds: {x: 15, y: 10}
   timeToEachSpawn: 5
   timeToNextSpawn: 0
-  enemyWaves:
-  - {fileID: 7065042896263695961, guid: fb7854c9ddbb37442a62fb4ee96ea4b2, type: 3}
-  - {fileID: 2656027671443589482, guid: c0788a57d047ecb43aebd14be3a84563, type: 3}
+  enemyWaves: []
+  RoomBounds: {x: 15, y: 10}
   spawnAvailable: 0
   roomLighting: {fileID: 0}
   strayMonsters: []
   monsterList: []
+  monsterRoomModifiers: []
   AllowEarlySpawns: 0
 --- !u!1001 &4411133794665703138
 PrefabInstance:
@@ -132,6 +133,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8130426069973289690}
     m_Modifications:
+    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorL
+      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518367, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,11 +193,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorL
-      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518365, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_Offset.x
@@ -222,6 +223,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8130426069973289690}
     m_Modifications:
+    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorR
+      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518367, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -277,11 +283,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorR
-      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518364, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: direction
@@ -302,6 +303,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8130426069973289690}
     m_Modifications:
+    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorU
+      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518367, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,11 +363,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorU
-      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518365, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_Offset.x
@@ -402,6 +403,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8130426069973289690}
     m_Modifications:
+    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorD
+      objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518367, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,11 +472,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048161970502518366, guid: 1bf99529de11d894db8cd20d02720b2d,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorD
       objectReference: {fileID: 0}
     - target: {fileID: 8048161970502518365, guid: 1bf99529de11d894db8cd20d02720b2d,
         type: 3}
