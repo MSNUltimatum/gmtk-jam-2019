@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIAgent : MonoBehaviour
 {
     public float maxSpeed = 3.5f;
-    public float maxAccel = 100;
+    public float maxAccel = 20;
     public float maxRotation = 200f;
     public float maxAngularAccel = 10000f;
     public float velocityFallBackPower = 3f;
@@ -71,7 +71,7 @@ public class AIAgent : MonoBehaviour
         rotation += Mathf.Max(steering.angular * Time.deltaTime);
 
         var speedUp = steering.linear * moveSpeedMult * Time.deltaTime;
-        if ((velocity + speedUp).magnitude < maxSpeed * moveSpeedMult)
+        if ((velocity + speedUp).magnitude < maxSpeed * moveSpeedMult || (velocity + speedUp).magnitude < velocity.magnitude)
         {
             velocity += speedUp;
         }
@@ -83,7 +83,7 @@ public class AIAgent : MonoBehaviour
         velocity -= velocityFallBack;
         // main movement function
         // max speed with knockback: triple max speed 
-        rigidbody.velocity = Vector2.ClampMagnitude(velocity, maxSpeed * 3) * 50 * Time.fixedDeltaTime;
+        rigidbody.velocity = velocity * 50 * Time.fixedDeltaTime;
     }
 
     protected virtual void Update()

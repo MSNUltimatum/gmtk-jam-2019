@@ -26,8 +26,8 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField]
     private GameObject DiffictultyLabel = null;
 
-    [SerializeField]
-    private Sprite Chapter1EasyDiff = null;
+    //[SerializeField]
+    //private Sprite Chapter1EasyDiff = null;
     [SerializeField]
     private Sprite Chapter1NormalDiff = null;
     [SerializeField]
