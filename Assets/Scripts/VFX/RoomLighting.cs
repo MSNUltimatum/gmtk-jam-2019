@@ -126,20 +126,34 @@ public class RoomLighting : MonoBehaviour
     private void SetSwampMaterial()
     {
         swampMat = new Material(swampMatPrefab);
-        swampInstance = Instantiate(swampPrefab);
-        if (Labirint.instance != null) { // in labirint mode, to delete with parent
-            swampInstance.transform.parent = transform;
-            swampInstance.transform.localPosition = Vector3.zero;
+        if (Labirint.instance != null)
+        { // in labirint mode, to delete with parent
+            var borders = GetComponent<Room>()?.GetBordersFromTilemap();
+            if (borders != null)
+            {
+                if (Mathf.Abs(borders[Direction.Side.LEFT] - borders[Direction.Side.RIGHT]) < 46 &&
+                    Mathf.Abs(borders[Direction.Side.UP] - borders[Direction.Side.DOWN]) < 30)
+                {
+                    swampInstance = Instantiate(swampPrefab);
+                    swampInstance.transform.parent = transform;
+                    swampInstance.transform.localPosition = Vector3.zero;
+                }
+            }
         }
-        var sprites = swampInstance.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var sprite in sprites)
+        else
+            swampInstance = Instantiate(swampPrefab);
+        if (swampInstance != null)
         {
-            sprite.sharedMaterial = swampMat;
-        }
-        var emitters = swampInstance.GetComponentsInChildren<ParticleSystemRenderer>();
-        foreach (var emitter in emitters)
-        {
-            emitter.sharedMaterial = swampMat;
+            var sprites = swampInstance.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var sprite in sprites)
+            {
+                sprite.sharedMaterial = swampMat;
+            }
+            var emitters = swampInstance.GetComponentsInChildren<ParticleSystemRenderer>();
+            foreach (var emitter in emitters)
+            {
+                emitter.sharedMaterial = swampMat;
+            }
         }
     }
     
