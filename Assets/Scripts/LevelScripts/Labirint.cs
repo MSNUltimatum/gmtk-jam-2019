@@ -48,7 +48,6 @@ public class Labirint : MonoBehaviour
         StartingRoomSpawn();
     }
 
-
 //    private void InitBlueprints()
 //    {
 //        int arraySize = RoomPrefabs.Length;
@@ -160,7 +159,8 @@ public class Labirint : MonoBehaviour
                         newDoor = newRoom.doorsSided[Direction.InvertSide(side)];
                         oldDoor.SpawnDoor();
                         newDoor.SpawnDoor();
-                        offset = Direction.SideToVector3(side) * distanceToNewDoor;
+                        //offset = Direction.SideToVector3(side) * distanceToNewDoor;
+                        offset = OffsetFromRoomBounds(oldDoor, newDoor, side);
                     }
                 }
                 ConnectDoors(oldDoor, newDoor);
@@ -255,5 +255,30 @@ public class Labirint : MonoBehaviour
             Debug.Log("Error on difficulty load, difficultySetting = " + difficultySetting.ToString());
             difficultySetting = 1; // to avoid errors on user side, better to load wrong difficulty than to crash
         }
+    }
+
+    private Vector3 OffsetFromRoomBounds(Door oldDoor, Door newDoor, Direction.Side side) {
+        Vector3 result = Direction.SideToVector3(side) * distanceToNewDoor;
+        float distanceDoorToBorderOld;
+        float distanceDoorToBorderNew;
+        if (side == Direction.Side.UP || side == Direction.Side.DOWN)
+        {
+            distanceDoorToBorderOld = Mathf.Abs(oldDoor.room.GetBordersFromTilemap()[side] - oldDoor.transform.position.y);
+            distanceDoorToBorderNew = Mathf.Abs(newDoor.room.GetBordersFromTilemap()[Direction.InvertSide(side)] - newDoor.transform.position.y);
+        }
+        else
+        {
+            distanceDoorToBorderOld = Mathf.Abs(oldDoor.room.GetBordersFromTilemap()[side] - oldDoor.transform.position.x);
+            distanceDoorToBorderNew = Mathf.Abs(newDoor.room.GetBordersFromTilemap()[Direction.InvertSide(side)] - newDoor.transform.position.x);
+        }
+        if (distanceDoorToBorderOld + distanceDoorToBorderNew > distanceToNewDoor)
+        {
+            result = Direction.SideToVector3(side) * (distanceDoorToBorderOld + distanceDoorToBorderNew);
+        }
+        else {
+            result = Direction.SideToVector3(side) * distanceToNewDoor;
+        }
+
+        return result;
     }
 }
