@@ -9,6 +9,9 @@ public class ExplosiveBulletMod : BulletModifier
     [SerializeField]
     protected float explosionRadius = 2f;
 
+    [SerializeField]
+    protected GameObject explosiveVfxPrefab;
+
     public override void HitEnemyModifier(BulletLife bullet, Collider2D coll)
     {
         base.HitEnemyModifier(bullet, coll);
@@ -38,6 +41,7 @@ public class ExplosiveBulletMod : BulletModifier
 
     protected virtual void ExplosiveWave(Collider2D[] enemys, BulletLife bullet)
     {
+        var vfxPref = Instantiate(explosiveVfxPrefab, bullet.transform.position, bullet.transform.rotation);
         foreach (var i in enemys)
         {
             var monsterLife = i.gameObject.GetComponent<MonsterLife>();
