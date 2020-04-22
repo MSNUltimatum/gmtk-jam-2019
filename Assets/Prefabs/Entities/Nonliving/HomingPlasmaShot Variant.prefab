@@ -15,8 +15,9 @@ MonoBehaviour:
   BulletSpeed: 12
   BulletLifeLength: 5
   ignoreCollisionTime: 0.2
-  HomingEulerAnglesPerSecond: 180
-  minimumMagneticPower: 0.75
+  HomingEulerAnglesPerSecond: 75
+  minimumMagneticPower: 0.8
+  boostedAnglesForSecondsAtStart: {x: 360, y: 0.5}
 --- !u!1001 &2340314704306609378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28,21 +29,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HomingPlasmaShot Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189403762500233049, guid: 7d4327cf053de9a4797acf15c9a12277,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.19339621
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189403762500233049, guid: 7d4327cf053de9a4797acf15c9a12277,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.42724398
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189403762500233049, guid: 7d4327cf053de9a4797acf15c9a12277,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4191860714640191382, guid: 7d4327cf053de9a4797acf15c9a12277,
         type: 3}
@@ -104,6 +90,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7189403762500233049, guid: 7d4327cf053de9a4797acf15c9a12277,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.19339621
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189403762500233049, guid: 7d4327cf053de9a4797acf15c9a12277,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.42724398
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189403762500233049, guid: 7d4327cf053de9a4797acf15c9a12277,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998229327774760182, guid: 7d4327cf053de9a4797acf15c9a12277,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.425
+      objectReference: {fileID: 0}
     - target: {fileID: 8290766210984028148, guid: 7d4327cf053de9a4797acf15c9a12277,
         type: 3}
       propertyPath: m_Color.r
@@ -118,11 +124,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.9218221
-      objectReference: {fileID: 0}
-    - target: {fileID: 3998229327774760182, guid: 7d4327cf053de9a4797acf15c9a12277,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.425
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4689672640448496717, guid: 7d4327cf053de9a4797acf15c9a12277, type: 3}

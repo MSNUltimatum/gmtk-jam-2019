@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68790b4719efbd4e9ef33dcea46374d, type: 3}
   m_Name: HomingPlasmaSpawnOnDeathMod
   m_EditorClassIdentifier: 
-  probability: 0.65
+  probability: 0.1
   objectToSpawn: {fileID: 3983525382901090045, guid: 72d0fe75f09e90540b77dc5c49cc8a8c,
     type: 3}
   infusedVFX: {fileID: 8554858753005514303, guid: a44cdfa68c3f47648975130a9046b8f7,

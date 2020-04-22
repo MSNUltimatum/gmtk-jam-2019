@@ -100,7 +100,7 @@ public class MonsterLife : MonoBehaviour
                 // Trigger an event for those who listen to it (if any)
                 OnEnemyDead?.Invoke();
                 PreDestroyEffect();
-                
+                OnThisDead?.Invoke();
                 Destroy(gameObject);
             }
             else
@@ -197,4 +197,6 @@ public class MonsterLife : MonoBehaviour
     private bool THE_BOY = false;
     private TMPro.TextMeshPro monsterName;
     private static List<string> usedNames = new List<string>();
+
+    public UnityEvent OnThisDead = new UnityEvent();
 }

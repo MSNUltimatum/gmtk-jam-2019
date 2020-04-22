@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ActiveMouseBulletDkill
   m_EditorClassIdentifier: 
   description: Bang
-  pickupSprite: {fileID: 5701180388318431006, guid: 3d573d82d62517e40ae2af5d0fa34437,
-    type: 3}
+  pickupSprite: {fileID: 21300000, guid: 2dd23237ae2cee240b93f8456054a5c2, type: 3}
   activeDuration: 3
   cooldownDuration: 5
   bulletMod: {fileID: 11400000, guid: f8d59d7a5a4d72a469d859ae800b1c55, type: 2}

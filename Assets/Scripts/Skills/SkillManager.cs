@@ -285,7 +285,7 @@ public class SkillManager : MonoBehaviour
             }
             s.InitializeSkill();
         }
-        equippedWeapon = equippedWeapons[0];
+        equippedWeapon = equippedWeapons.Count != 0 ? equippedWeapons[0] : null;
 
         RefreshUI();
     }
@@ -375,7 +375,7 @@ public class SkillManager : MonoBehaviour
         if (equippedWeapon != null)
         {
             skillsUI.UpdateWeaponReloadVisualCooldown(weaponCooldownsProportion, equippedWeapon.weaponIndex);
-            equippedWeapon.logic.UpdateEquippedEffect();
+            equippedWeapon.logic?.UpdateEquippedEffect();
         }
 
         // Update effect of passive skills

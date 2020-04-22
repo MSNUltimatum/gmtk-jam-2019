@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Testing/AFLabyrinth.unity
+    guid: d20f1c41940d61f40a0fdb35d0b04267
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: e688c5e88907a994280938584720e186
   - enabled: 1
