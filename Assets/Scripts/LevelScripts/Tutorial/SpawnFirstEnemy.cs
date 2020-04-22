@@ -10,6 +10,7 @@ public class SpawnFirstEnemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        monsterSprite = monsterToActivate.transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -29,7 +30,7 @@ public class SpawnFirstEnemy : MonoBehaviour
 
     private void SpawnNegative()
     {
-
+        Instantiate(negativeEnergyBolt); // position?
     }
 
     private IEnumerator SpawnNegativeEnergy()
