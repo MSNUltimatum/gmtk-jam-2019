@@ -53,6 +53,7 @@ MonoBehaviour:
   - Pistol:ExtraFreezingExplosivePistol
   - Pistol:Freezing-Pistol
   - ShootingWeapon:Glock-17
+  - ShootingWeapon:GrenadeLauncher
   - Pistol:Passing-Pistol
   - Pistol:Pistol
   - Pistol:Pistol-Glock
@@ -70,6 +71,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdefae2fad0b91a458c1ccee25edaed4, type: 2}
   - {fileID: 11400000, guid: 5e95b9a25a9df1a4cb2c63799d0adc2d, type: 2}
   - {fileID: 11400000, guid: bd0aacf064078454d9be2ac9d35f0cef, type: 2}
+  - {fileID: 11400000, guid: b8c22706080465044b4188601627663b, type: 2}
   - {fileID: 11400000, guid: db66262821ff2a3499495d36cbe01297, type: 2}
   - {fileID: 11400000, guid: e341703b3e0de8040a445e142f93c96e, type: 2}
   - {fileID: 11400000, guid: 9c7f83ae5537bbf448f224351df4abf3, type: 2}

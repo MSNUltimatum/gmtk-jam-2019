@@ -7,9 +7,7 @@ using System.Linq;
 public class ExplosiveBulletMod : BulletModifier
 {
     [SerializeField]
-    private float explosionRadius = 2f;
-
-    bool isKilled = false;
+    protected float explosionRadius = 2f;
 
     public override void HitEnemyModifier(BulletLife bullet, Collider2D coll)
     {
@@ -46,18 +44,7 @@ public class ExplosiveBulletMod : BulletModifier
             if (monsterLife)
             {
                 var tmp = monsterLife.HP;
-                if (!isKilled)
-                    bullet.DamageMonster(monsterLife, 0.5f);
-
-                if (!isKilled && monsterLife.HP < tmp)
-                {
-                    bullet.DamageMonster(monsterLife, 0);
-                    isKilled = true;
-                }
-                else
-                {
-                    bullet.DamageMonster(monsterLife, 0);
-                }
+                bullet.DamageMonster(monsterLife, bullet.damage / 2);
             }
         }
     }

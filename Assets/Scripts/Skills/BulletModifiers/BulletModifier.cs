@@ -39,6 +39,9 @@ public class BulletModifier : ScriptableObject
     // Should be called when the bullet is spawned
     public virtual void SpawnModifier(BulletLife bullet) { }
 
+    // Should be called when the bullet is destroyed
+    public virtual void DestroyModifier(BulletLife bullet) { }
+
     // Should be called when the bullet had already been spawned
     public virtual void ApplyModifier(BulletLife bullet) { }
 
