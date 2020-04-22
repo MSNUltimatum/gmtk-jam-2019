@@ -57,6 +57,7 @@ MonoBehaviour:
   - Pistol:Passing-Pistol
   - Pistol:Pistol
   - Pistol:Pistol-Glock
+  - Shotgun:Shotgun
   - ShootingWeapon:Sniper rifle
   - MultishotPistol:Ten-shots Pistol
   - ShootingWeapon:TreeWeapon
@@ -75,6 +76,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db66262821ff2a3499495d36cbe01297, type: 2}
   - {fileID: 11400000, guid: e341703b3e0de8040a445e142f93c96e, type: 2}
   - {fileID: 11400000, guid: 9c7f83ae5537bbf448f224351df4abf3, type: 2}
+  - {fileID: 11400000, guid: f13a9ca25a754f44683bdebd378dc222, type: 2}
   - {fileID: 11400000, guid: d03d0133049e6e04e9c205f26013248c, type: 2}
   - {fileID: 11400000, guid: 37c36a0c3e6a6c34bbdbf07c1be2ea0d, type: 2}
   - {fileID: 11400000, guid: 605465533e8124143b7695b5b5621872, type: 2}

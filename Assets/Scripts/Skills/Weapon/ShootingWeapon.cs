@@ -65,7 +65,7 @@ public class ShootingWeapon : WeaponSkill
         randomShootingAngle = Mathf.Min(maxRndShootingAngle, randomShootingAngle + rndShootingAngleAmplifier * maxRndShootingAngle);
     }
 
-    private float GaussianRandom(float mean, float deviation)
+    protected float GaussianRandom(float mean, float deviation)
     {
         float u1 = 1f - Random.Range(0, 1f); //uniform(0,1] random doubles
         float u2 = 1f - Random.Range(0, 1f);

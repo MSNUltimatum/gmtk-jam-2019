@@ -9,23 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1871348090b8fc4428efb443b1b8d0d8, type: 3}
-  m_Name: GrenadeLauncher
+  m_Script: {fileID: 11500000, guid: 0fc05a0d5292eea4687939afa5afa77d, type: 3}
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  description: 
-  pickupSprite: {fileID: 21300000, guid: c34c9ce0dbfe50c4d806b89b9c7d302c, type: 3}
+  description: Blast heads to problems
+  pickupSprite: {fileID: 21300000, guid: 34f7071c531fa8a418831e792c44ffd6, type: 3}
   attackSound: []
-  reloadTime: 15
-  timeBetweenAttacks: 2
-  ammoMagazine: 5
+  reloadTime: 7
+  timeBetweenAttacks: 0.5
+  ammoMagazine: 6
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
-  bulletDamage: 15
-  knockPower: 800
-  bulletSpeed: 18
-  timeToBulletDestruction: 1.2
+  bulletDamage: 5
+  knockPower: 150
+  bulletSpeed: 25
+  timeToBulletDestruction: 0.6
   maxRndShootingAngle: 0
   rndShootingAngleAmplifier: 0.15
   rndShootingAngleRelease: 0.5
-  bulletModifiers:
-  - {fileID: 11400000, guid: 243e32586a7515644895b7e94ab19526, type: 2}
+  bulletModifiers: []
+  arcAngle: 35
+  shotNumber: 6
