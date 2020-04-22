@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1859889a2b28b04184e83a83b2777b7, type: 3}
+  m_Name: TreeGeneratorMod
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 0.1489215, g: 0.9811321, b: 0, a: 1}
+  shoodPaint: 1
+  bulletSprite: {fileID: 0}
+  bulletMaterial: {fileID: 0}
+  priority: 0
+  modifierTime: Infinity
+  moveTiming: 0
+  supportedBulletTypes: 00000000
+  treePrefab:
+  - {fileID: 6981334530658974506, guid: 8ca6336debda3304e8da442e446ea02f, type: 3}
+  - {fileID: 6418679457587547308, guid: be5a5118d143ac646bef01ad4fe1c73d, type: 3}
+  - {fileID: 9143993848955577248, guid: 7a982d24c58b9b640a2d7811faace7e8, type: 3}
+  - {fileID: 7489068297609697837, guid: 6453e7d76720b464da42ef93e9be655a, type: 3}

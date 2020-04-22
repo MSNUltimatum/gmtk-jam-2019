@@ -128,6 +128,16 @@ public class CharacterLife : MonoBehaviour
         }
     }
 
+    public int GetHp()
+    {
+        return hp;
+    }
+
+    public int GetMaxHp()
+    {
+        return maxHp;
+    }
+
     private int hp = 3;
     private int maxHp=3;
     private float invulTime = 0.5f;
