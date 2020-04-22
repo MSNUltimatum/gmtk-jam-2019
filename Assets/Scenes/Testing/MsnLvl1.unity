@@ -187,15 +187,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -18.567001
       objectReference: {fileID: 0}
-    - target: {fileID: 1986228130421800251, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: maxHP
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7434649378281125449, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986228130421800251, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: maxHP
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 764747687824734497, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -741,11 +741,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2611012751803154452, guid: e008d69018ee3cf46a35061dfdf8de46,
-        type: 3}
-      propertyPath: m_Name
-      value: GhostMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 3258448360597376789, guid: e008d69018ee3cf46a35061dfdf8de46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -800,6 +795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611012751803154452, guid: e008d69018ee3cf46a35061dfdf8de46,
+        type: 3}
+      propertyPath: m_Name
+      value: GhostMonster
       objectReference: {fileID: 0}
     - target: {fileID: 3103435485076250995, guid: e008d69018ee3cf46a35061dfdf8de46,
         type: 3}
@@ -1318,7 +1318,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 605465533e8124143b7695b5b5621872,
+      objectReference: {fileID: 11400000, guid: d03d0133049e6e04e9c205f26013248c,
         type: 2}
     - target: {fileID: 7523444530638043168, guid: 0b38f5738ea76fc47bbc9479eb38ab82,
         type: 3}
