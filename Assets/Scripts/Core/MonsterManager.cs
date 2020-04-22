@@ -7,6 +7,7 @@ public class MonsterManager : MonoBehaviour
     [SerializeField] private float timeToEachSpawn = 5;
     [SerializeField] private float timeToNextSpawn = 0;
     [SerializeField] protected GameObject[] enemyWaves = null;
+    [SerializeField] protected List<SpawnZoneScript> spawnZones = new List<SpawnZoneScript>();
 
     [HideInInspector] public Vector2 RoomBounds = new Vector2(15, 10);
     [HideInInspector] public bool spawnAvailable = false;
@@ -34,6 +35,11 @@ public class MonsterManager : MonoBehaviour
         }
         else
             Debug.LogError("MonsterManager can't find room script");
+
+        foreach (var spawnZone in spawnZones)
+        {
+            spawnZone.UseSpawnZone();
+        }
 
         foreach (GameObject monster in GameObject.FindGameObjectsWithTag("Enemy"))
         {
@@ -83,7 +89,14 @@ public class MonsterManager : MonoBehaviour
 
     protected void SetMonsterPosition(GameObject enemy)
     {
-        enemy.transform.position = RandomBorderSpawnPos();
+        if (spawnZones.Count != 0)
+        {
+            enemy.transform.position = spawnZones[Random.Range(0, spawnZones.Count)].SpawnPosition();
+        }
+        else
+        {
+            enemy.transform.position = RandomBorderSpawnPos();
+        }
     }
 
 

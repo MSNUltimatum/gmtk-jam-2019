@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SpawnZoneScript : MonoBehaviour
 {
+    private bool used = false;
     private SpriteRenderer sprite;
 
     private void Start()
     {
+        if (!used) Debug.LogWarning("SpawnZone is not attached to MonsterManager! Add it in inspector");
         sprite = GetComponent<SpriteRenderer>();
         Color color1 = sprite.color;
         color1.a = 0f;
@@ -22,5 +24,10 @@ public class SpawnZoneScript : MonoBehaviour
             gameObject.transform.localScale.y/2) + gameObject.transform.position.y);
         //Debug.Log(vector);
         return vector;
+    }
+
+    public void UseSpawnZone()
+    {
+        used = true;
     }
 }
