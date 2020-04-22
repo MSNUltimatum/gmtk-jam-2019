@@ -15,4 +15,4 @@ MonoBehaviour:
   description: 
   pickupSprite: {fileID: -3724889264531100421, guid: 7d59a9d32790d8244b9dcdf8f54a8e78,
     type: 3}
-  circularStrikeMod: {fileID: 11400000, guid: 57df758a5157bb74b974d334abfbff5d, type: 2}
+  modToAdd: {fileID: 11400000, guid: 57df758a5157bb74b974d334abfbff5d, type: 2}

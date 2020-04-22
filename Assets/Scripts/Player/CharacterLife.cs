@@ -138,6 +138,18 @@ public class CharacterLife : MonoBehaviour
         return maxHp;
     }
 
+    public float GetHpDropChanceAmplifier()
+    {
+        return HPDropChanceAmplifier;
+    }
+
+    public void AddToHPDropChanceAmp(float addValue)
+    {
+        HPDropChanceAmplifier += addValue;
+    }
+
+    private float HPDropChanceAmplifier = 1f;
+
     private int hp = 3;
     private int maxHp=3;
     private float invulTime = 0.5f;

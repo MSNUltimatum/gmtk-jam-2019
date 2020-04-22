@@ -21,8 +21,8 @@ public class LightFlicker : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        light = GetComponent<Light2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        light = GetComponentInChildren<Light2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
         if (light)
         {
             lightStartingIntensity = light.intensity;

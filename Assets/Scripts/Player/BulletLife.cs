@@ -85,7 +85,7 @@ public class BulletLife : MonoBehaviour
     public void DamageMonster(MonsterLife monster, float damageMultiplier = 1, BulletModifier initiator = null)
     {
         ActivateDamageEnemyMods(monster);
-        monster.Damage(gameObject, damage * damageMultiplier);
+        monster.Damage(gameObject, damage * damageMultiplier * this.damageMultiplier);
         if (monster.HP <= 0)
         {
             ActivateKillMods(monster);
@@ -261,7 +261,13 @@ public class BulletLife : MonoBehaviour
         bulletLight.color = newColor;
     }
 
+    public void AddToDamageMultiplier(float addValue)
+    {
+        damageMultiplier += addValue;
+    }
+
     private bool listNotSorted = true;
+    private float damageMultiplier = 1f;
 
     // Non-logic
     [SerializeField]
