@@ -108,11 +108,11 @@ public abstract class BossEncounter : MonoBehaviour
                     nextAttackNumber = Random.Range(0, attacks.Count);
                     break;
                 case AttackOrder.Sequence:
-                    nextAttackNumber = currentAttackNumber + 1;
                     if (nextAttackNumber == attacks.Count)
                     {
                         phaseEnded = true;
                     }
+                    nextAttackNumber = currentAttackNumber + 1;
                     break;
                 case AttackOrder.SequenceWithLoop:
                     nextAttackNumber = (currentAttackNumber + 1) % attacks.Count;
@@ -185,7 +185,7 @@ public abstract class BossEncounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (encounterOver) return;
+        if (encounterOver || !encounterStarted) return;
 
         if (currentPhase.HasPhaseEnded())
             NextPhaseOrFinish();
@@ -223,6 +223,7 @@ public abstract class BossEncounter : MonoBehaviour
     protected List<BossPhase> bossPhases = new List<BossPhase>() { };
     protected BossPhase currentPhase;
     protected int phaseID = -1;
+    protected bool encounterStarted = false;
     protected bool encounterOver = false;
     protected MonsterLife bossHP = null;
 }

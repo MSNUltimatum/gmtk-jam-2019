@@ -37,6 +37,7 @@ public class BulletLife : MonoBehaviour
         TTDLeft -= Time.fixedDeltaTime;
         Move();
         UpdateMods();
+        
         if (TTDLeft < 0)
         {
             DestroyBullet();
@@ -87,6 +88,7 @@ public class BulletLife : MonoBehaviour
     public void DamageMonster(MonsterLife monster, float damageMultiplier = 1, BulletModifier initiator = null)
     {
         ActivateDamageEnemyMods(monster);
+
         monster.Damage(gameObject, damage * damageMultiplier * this.damageMultiplier);
         if (monster.HP <= 0)
         {

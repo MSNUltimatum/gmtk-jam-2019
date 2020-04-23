@@ -92,6 +92,7 @@ public class DummyBossEncounter : BossEncounter
 
     protected override void Start()
     {
+        encounterStarted = true;
         bossPhases = new List<BossPhase>() {
             new DummyBossPhaseWelcome(this),
             new DummyBossEnrage(this, 0.5f, 1),

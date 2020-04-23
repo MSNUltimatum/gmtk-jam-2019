@@ -164,6 +164,7 @@ public class MonsterLife : MonoBehaviour
 
     private void ChooseMyName()
     {
+        if (!autoChooseName) return;
         List<string> possibleNames = evilDictionary.EvilNames();
         for (int i = 0; i < 200; i++) // Any ideas how to make this better?
         {
