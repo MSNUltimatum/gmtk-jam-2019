@@ -14,10 +14,10 @@ public class CharacterShooting : MonoBehaviour
     [SerializeField]
     private GameObject mouseCursorObj = null;
     
-    public void LoadNewWeapon(SkillManager.EquippedWeapon weapon, float punishmentReload)
+    public void LoadNewWeapon(SkillManager.EquippedWeapon weapon, bool instant = false)
     {
         currentWeapon = weapon;
-        timeBetweenAttacks = punishmentReload;
+        timeBetweenAttacks = instant ? 0 : weapon.logic.timeBetweenAttacks;
     }
 
     private void Start()
