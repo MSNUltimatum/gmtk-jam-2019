@@ -12,7 +12,8 @@ public class BulletLife : MonoBehaviour
     public float timeToDestruction;
     [System.NonSerialized]
     public float damage;
-    protected float TTDLeft = 0.5f;
+    [System.NonSerialized]
+    public float TTDLeft = 0.5f;
 
     public List<BulletModifier> bulletMods = new List<BulletModifier>();
 
@@ -35,6 +36,7 @@ public class BulletLife : MonoBehaviour
         if (Pause.Paused) return;
         TTDLeft -= Time.fixedDeltaTime;
         Move();
+        UpdateMods();
         if (TTDLeft < 0)
         {
             DestroyBullet();
@@ -159,6 +161,11 @@ public class BulletLife : MonoBehaviour
         foreach (var mod in SortedMods()) mod.SpawnModifier(this);
     }
 
+    private void ActivateDestroyMods()
+    {
+        foreach (var mod in SortedMods()) mod.DestroyModifier(this);
+    }
+
     private void ActivateKillMods(MonsterLife enemy)
     {
         foreach (var mod in SortedMods()) mod.KillModifier(this, enemy);
@@ -238,6 +245,7 @@ public class BulletLife : MonoBehaviour
 
     public virtual void DestroyBullet()
     {
+        ActivateDestroyMods();
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<DynamicLightInOut>().FadeOut();

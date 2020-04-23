@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe79739fba601249ad4f690c8acad06, type: 3}
-  m_Name: ExplosiveBulletMod
+  m_Script: {fileID: 11500000, guid: 404c68f78796d054cb578c0758ee3c6d, type: 3}
+  m_Name: GrenadeBulletMod
   m_EditorClassIdentifier: 
-  bulletColor: {r: 1, g: 1, b: 1, a: 1}
+  bulletColor: {r: 1, g: 0, b: 0.37434292, a: 1}
   shoodPaint: 1
   bulletSprite: {fileID: 0}
   bulletMaterial: {fileID: 0}

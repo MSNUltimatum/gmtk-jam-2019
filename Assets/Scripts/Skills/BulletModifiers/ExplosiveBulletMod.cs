@@ -7,9 +7,10 @@ using System.Linq;
 public class ExplosiveBulletMod : BulletModifier
 {
     [SerializeField]
-    private float explosionRadius = 2f;
+    protected float explosionRadius = 2f;
 
-    bool isKilled = false;
+    [SerializeField]
+    protected GameObject explosiveVfxPrefab;
 
     public override void HitEnemyModifier(BulletLife bullet, Collider2D coll)
     {
@@ -40,24 +41,14 @@ public class ExplosiveBulletMod : BulletModifier
 
     protected virtual void ExplosiveWave(Collider2D[] enemys, BulletLife bullet)
     {
+        var vfxPref = Instantiate(explosiveVfxPrefab, bullet.transform.position, bullet.transform.rotation);
         foreach (var i in enemys)
         {
             var monsterLife = i.gameObject.GetComponent<MonsterLife>();
             if (monsterLife)
             {
                 var tmp = monsterLife.HP;
-                if (!isKilled)
-                    bullet.DamageMonster(monsterLife, 0.5f);
-
-                if (!isKilled && monsterLife.HP < tmp)
-                {
-                    bullet.DamageMonster(monsterLife, 0);
-                    isKilled = true;
-                }
-                else
-                {
-                    bullet.DamageMonster(monsterLife, 0);
-                }
+                bullet.DamageMonster(monsterLife, bullet.damage / 2);
             }
         }
     }

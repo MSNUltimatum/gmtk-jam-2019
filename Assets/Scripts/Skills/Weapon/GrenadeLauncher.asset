@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1871348090b8fc4428efb443b1b8d0d8, type: 3}
+  m_Name: GrenadeLauncher
+  m_EditorClassIdentifier: 
+  description: 
+  pickupSprite: {fileID: 21300000, guid: c34c9ce0dbfe50c4d806b89b9c7d302c, type: 3}
+  attackSound: []
+  reloadTime: 15
+  timeBetweenAttacks: 2
+  ammoMagazine: 5
+  bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
+    type: 3}
+  bulletDamage: 15
+  knockPower: 800
+  bulletSpeed: 18
+  timeToBulletDestruction: 1.2
+  maxRndShootingAngle: 0
+  rndShootingAngleAmplifier: 0.15
+  rndShootingAngleRelease: 0.5
+  bulletModifiers:
+  - {fileID: 11400000, guid: 243e32586a7515644895b7e94ab19526, type: 2}

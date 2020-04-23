@@ -9,17 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe79739fba601249ad4f690c8acad06, type: 3}
-  m_Name: ExplosiveBulletMod
+  m_Script: {fileID: 11500000, guid: 5634e98c508a9f742a44675ad108453f, type: 3}
+  m_Name: SniperRifleBulletMod
   m_EditorClassIdentifier: 
   bulletColor: {r: 1, g: 1, b: 1, a: 1}
-  shoodPaint: 1
+  shoodPaint: 0
   bulletSprite: {fileID: 0}
   bulletMaterial: {fileID: 0}
   priority: 0
   modifierTime: Infinity
   moveTiming: 0
   supportedBulletTypes: 00000000
-  explosionRadius: 2
-  explosiveVfxPrefab: {fileID: 6535954345397052339, guid: 5c4df76f2a89b8d4e8630b36f85099c3,
-    type: 3}
