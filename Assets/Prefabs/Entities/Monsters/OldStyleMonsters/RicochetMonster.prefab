@@ -76,13 +76,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  HP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.5
+  autoChooseName: 1
   evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
   hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  monsterManager: {fileID: 0}
+  OnThisDead:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -200,10 +208,13 @@ MonoBehaviour:
   maxRotation: 6000
   maxAngularAccel: 10000
   velocityFallBackPower: 3
+  knockBackStability: 1
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
+  moveSpeedMult: 1
   proximityCheckOption: 01000000
+  timeToLoseAggro: -1
 --- !u!114 &-216397280895006072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +232,10 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
 --- !u!58 &-9204190189280656107
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -288,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8848207613534209724}
   - component: {fileID: 7484717461568666362}
+  - component: {fileID: 5574290319414145517}
   m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
@@ -347,18 +363,37 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6631137542716993159, guid: c08c719ab8449bf4d916c43302ae354d,
+  m_Sprite: {fileID: -6617880080247477084, guid: c08c719ab8449bf4d916c43302ae354d,
     type: 3}
   m_Color: {r: 0, g: 1, b: 0.92462564, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.3095237, y: 1.4290946}
+  m_Size: {x: 1.2352941, y: 1.882353}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5574290319414145517
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484717461568666359}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2de051cf744a7914d854eba702ee9c9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7484717462505791468
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +486,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewYearHat!
       objectReference: {fileID: 0}
+    - target: {fileID: 499891234580489623, guid: d098a848f0fc98a4b9b6fbe244568356,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 499891234580489617, guid: d098a848f0fc98a4b9b6fbe244568356,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -527,11 +567,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7368126536063414612}
     m_Modifications:
-    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
-        type: 3}
-      propertyPath: m_Name
-      value: Text
-      objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149380, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -636,6 +671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882529184434149381, guid: b7de89d6f6c44c545a0ee0a468f39a29,
+        type: 3}
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 2882529184434149377, guid: b7de89d6f6c44c545a0ee0a468f39a29,
         type: 3}

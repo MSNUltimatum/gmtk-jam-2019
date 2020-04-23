@@ -165,6 +165,11 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
     }
 
+    protected void RotateRandomlyAtStart()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+    }
+
     protected bool ProximityCheck()
     {
         timeToProximityCheck = Mathf.Max(0, timeToProximityCheck - Time.deltaTime);
