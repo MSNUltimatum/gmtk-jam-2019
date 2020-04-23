@@ -49,7 +49,7 @@ public class RicochetMovement : EnemyBehavior
     {
         if (block <= 0 && coll.gameObject.tag == "Environment")
         {
-            var hits = Physics2D.CircleCastAll(transform.position, 1, transform.up, 2);
+            var hits = Physics2D.CircleCastAll(transform.position, 0.3f, transform.up, 2);
             Debug.DrawRay(transform.position, transform.up, Color.green, 1);
             hits = (from t in hits
                     where t.transform.gameObject.tag == "Environment"
