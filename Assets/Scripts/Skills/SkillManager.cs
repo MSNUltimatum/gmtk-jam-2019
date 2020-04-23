@@ -234,7 +234,7 @@ public class SkillManager : MonoBehaviour
                 if(equippedWeapon == null)
                 {
                     equippedWeapon = equippedWeapons[0];
-                    attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
+                    attackManager.LoadNewWeapon(equippedWeapon, instant: true);
                 }
             }
 
@@ -253,7 +253,7 @@ public class SkillManager : MonoBehaviour
         attackManager = GetComponent<CharacterShooting>();
         if (attackManager != null)
         {
-            attackManager.LoadNewWeapon(equippedWeapon, 0);
+            attackManager.LoadNewWeapon(equippedWeapon, instant: true);
         }
     }
 
@@ -285,7 +285,7 @@ public class SkillManager : MonoBehaviour
             }
             s.InitializeSkill();
         }
-        equippedWeapon = equippedWeapons[0];
+        equippedWeapon = equippedWeapons.Count != 0 ? equippedWeapons[0] : null;
 
         RefreshUI();
     }
@@ -352,7 +352,7 @@ public class SkillManager : MonoBehaviour
             }
             equippedWeapon = equippedWeapons[newWeaponIndex];
             foreach (var weapon in equippedWeapons)
-            attackManager.LoadNewWeapon(equippedWeapon, equippedWeapon.logic.timeBetweenAttacks);
+            attackManager.LoadNewWeapon(equippedWeapon);
             ApplyWeaponSprites();
         }
 
@@ -375,7 +375,7 @@ public class SkillManager : MonoBehaviour
         if (equippedWeapon != null)
         {
             skillsUI.UpdateWeaponReloadVisualCooldown(weaponCooldownsProportion, equippedWeapon.weaponIndex);
-            equippedWeapon.logic.UpdateEquippedEffect();
+            equippedWeapon.logic?.UpdateEquippedEffect();
         }
 
         // Update effect of passive skills

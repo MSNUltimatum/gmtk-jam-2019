@@ -14,10 +14,21 @@ public class SpawnOnDeath : MonoBehaviour
         {
             Instantiate(infusedVFX, transform);
         }
+
+        var monster = GetComponent<MonsterLife>();
+        monster.OnThisDead.AddListener(OnMonsterDeath);
     }
 
-    private void OnDestroy()
+    private void OnApplicationQuit()
     {
+        spawnBlockCauseQuitting = true;
+    }
+
+    private void OnMonsterDeath()
+    {
+        if (spawnBlockCauseQuitting) return;
         var obj = Instantiate(toSpawn, transform.position, keepParentRotation ? transform.rotation : Quaternion.identity);
     }
+
+    private bool spawnBlockCauseQuitting = false;
 }

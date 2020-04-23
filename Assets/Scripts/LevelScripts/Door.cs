@@ -6,32 +6,52 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    [HideInInspector]
-    public Room room;
-    [HideInInspector]
-    public Door connectedDoor;
-    [HideInInspector]
-    public bool locked = false; 
+    [HideInInspector] public Room room;
+    [HideInInspector] public Door connectedDoor;
+    [HideInInspector] public bool locked = false; 
     private GameObject player;
 
-    [HideInInspector]
-    public bool unlockOnTimer = false;
+    [HideInInspector] public bool unlockOnTimer = false;
     private float timer = 1f;
     
-    [SerializeField]
-    public Direction.Side direction;
+    [SerializeField] public Direction.Side direction;
 
     public string sceneName=""; // name of scene to change on enter this door
-    public SpriteRenderer spriteRenderer;
     public Sprite openSprite;
     public Sprite closedSprite;
 
     private bool isSpawned = false;
 
+    void Awake()
+    {
+        doorVisual = transform.GetChild(0);
+        spriteRenderer = doorVisual.GetComponent<SpriteRenderer>();
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+
+        switch (direction)
+        {
+            case Direction.Side.LEFT:
+                doorVisual.localPosition += Vector3.left * 3;
+                break;
+            case Direction.Side.UP:
+                doorVisual.Rotate(0, 0, -90);
+                doorVisual.localPosition += Vector3.up * 3;
+                break;
+            case Direction.Side.DOWN:
+                doorVisual.Rotate(0, 0, 90);
+                doorVisual.localPosition += Vector3.down * 3;
+                break;
+            case Direction.Side.RIGHT:
+                doorVisual.Rotate(0, 0, 180);
+                doorVisual.localPosition += Vector3.right * 3;
+                break;
+            default:
+                break;
+        }
     }
 
     void Update()
@@ -82,6 +102,8 @@ public class Door : MonoBehaviour
         if (!isSpawned)
         {
             isSpawned = true;
+            doorVisual.gameObject.SetActive(true);
+            
             if (locked)
                 spriteRenderer.sprite = closedSprite;
             else
@@ -154,4 +176,7 @@ public class Door : MonoBehaviour
             }
         }
     }
+
+    private SpriteRenderer spriteRenderer;
+    private Transform doorVisual;
 }

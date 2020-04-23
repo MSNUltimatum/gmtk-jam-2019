@@ -12,10 +12,9 @@ public class RoomLighting : MonoBehaviour
     [SerializeField, Tooltip("Leave empty if not needed")]
     private GameObject swampPrefab = null;
 
-    [SerializeField]
-    bool StandartLightIncrease = true;
-    [SerializeField]
-    private float maxvalue = 0;
+    [SerializeField] bool StandartLightIncrease = true;
+    [SerializeField] private float maxvalue = 0;
+    [SerializeField] private float roomClearedLight = 0.8f;
     public float DefaultLight = 0.13f;
 
     private void Start()
@@ -86,7 +85,7 @@ public class RoomLighting : MonoBehaviour
 
     private void RecalculateLight()
     {
-        Light = DefaultLight + Mathf.Pow(Mathf.Clamp01(TotalValue / maxvalue), 1.7f) * (1 - DefaultLight);
+        Light = Mathf.Lerp(DefaultLight, roomClearedLight, Mathf.Pow(Mathf.Clamp01(TotalValue / maxvalue), 1.7f));
        // Debug.Log(Light);
     }
 
@@ -96,7 +95,7 @@ public class RoomLighting : MonoBehaviour
         {
             if (EXPERIMENTAL)
             {
-                CurrentVal = Mathf.Lerp(sceneLight.color.g, Light, t);
+                CurrentVal = Mathf.Lerp(sceneLight.intensity, Light, t);
 
             }
 
@@ -116,7 +115,7 @@ public class RoomLighting : MonoBehaviour
     {
         if (EXPERIMENTAL)
         {
-            sceneLight.color = new Color(light, light, light);
+            sceneLight.intensity = light;
         }
     }
 
@@ -178,7 +177,7 @@ public class RoomLighting : MonoBehaviour
     public void LabirintRoomEnterDark(int enemyCount)
     {
         t = 0.0f;
-        Light = 0;
+        Light = DefaultLight;
         maxvalue = enemyCount;
         TotalValue = 0;
         RecalculateLight();
@@ -186,7 +185,7 @@ public class RoomLighting : MonoBehaviour
 
     public void LabirintRoomEnterBright() 
     {
-        Light = 1;
+        Light = roomClearedLight;
     }
 
     public void LabirintRoomAddLight()

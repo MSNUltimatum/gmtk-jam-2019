@@ -5,7 +5,6 @@ using UnityEngine;
 public class Chest : Container
 {
     private GameObject player = null;
-    public float destanceToOpen = 5f;
 
     protected override void Awake()
     {

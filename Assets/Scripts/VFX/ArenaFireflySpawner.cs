@@ -9,7 +9,7 @@ public class ArenaFireflySpawner : MonoBehaviour
     private float timeToNextSpawn;
     [SerializeField]
     private GameObject firefly = null;
-    private Dictionary<Direction.Side, float> borders = null;
+    private Dictionary<Direction.Side, float> borders = new Dictionary<Direction.Side, float>();
 
     void Start()
     {

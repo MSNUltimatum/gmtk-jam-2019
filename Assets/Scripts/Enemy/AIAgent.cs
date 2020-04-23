@@ -5,13 +5,14 @@ using UnityEngine;
 public class AIAgent : MonoBehaviour
 {
     public float maxSpeed = 3.5f;
-    public float maxAccel = 100;
+    public float maxAccel = 20;
     public float maxRotation = 200f;
     public float maxAngularAccel = 10000f;
     public float velocityFallBackPower = 3f;
-    public float orientation;
-    public float rotation;
-    public Vector2 velocity;
+    public float knockBackStability = 1f;
+    [HideInInspector] public float orientation;
+    [HideInInspector] public float rotation;
+    [HideInInspector] public Vector2 velocity;
     [HideInInspector] public float moveSpeedMult = 1f;
     protected EnemySteering steering;
 
@@ -48,25 +49,11 @@ public class AIAgent : MonoBehaviour
     protected void FixedUpdate()
     {
         if (Pause.Paused) return;
-        Vector2 velocityFallBack =
-            velocity * velocityFallBackPower * Time.deltaTime;
-
-        velocity -= velocityFallBack;
-        // main movement function
-        // max speed with knockback: triple max speed 
-        rigidbody.MovePosition(rigidbody.position + Vector2.ClampMagnitude(velocity, maxSpeed * 3) * Time.fixedDeltaTime);
-    }
-
-    protected virtual void Update()
-    {
-        ProceedPauseUnpause();
-        if (Pause.Paused) return;
-
         if (!allowMovement) return;
 
         Vector2 displacement = velocity * Time.deltaTime;
         orientation += rotation * Time.deltaTime;
-        
+
         orientation %= 360.0f;
         if (orientation < 0.0f)
         {
@@ -83,13 +70,31 @@ public class AIAgent : MonoBehaviour
         }
 
         rotation += Mathf.Max(steering.angular * Time.deltaTime);
-        
+
         var speedUp = steering.linear * moveSpeedMult * Time.deltaTime;
-        if ((velocity + speedUp).magnitude < maxSpeed * moveSpeedMult)
+        if ((velocity + speedUp).magnitude < maxSpeed * moveSpeedMult || (velocity + speedUp).magnitude < velocity.magnitude)
         {
             velocity += speedUp;
         }
         steering = new EnemySteering();
+
+        Vector2 velocityFallBack =
+            velocity * velocityFallBackPower * Time.deltaTime;
+
+        velocity -= velocityFallBack;
+        // main movement function
+        // max speed with knockback: triple max speed 
+        rigidbody.velocity = velocity * 50 * Time.fixedDeltaTime;
+    }
+
+    protected virtual void Update()
+    {
+        ProceedPauseUnpause();
+    }
+
+    public void KnockBack(Vector2 knockVector)
+    {
+        velocity += knockVector / knockBackStability;
     }
 
     public void StopMovement(float time)

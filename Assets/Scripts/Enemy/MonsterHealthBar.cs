@@ -34,8 +34,8 @@ public class MonsterHealthBar : MonoBehaviour
         Active();
         float tmpHP = monsterLife.HP;
         Vector3 tmpScale = activeHealthBar.transform.localScale;
-        tmpScale.y = (float)tmpHP / maxHP * originalScale;
-        if(tmpScale.y / originalScale * 100 < 50.0f)
+        tmpScale.x = (float)tmpHP / maxHP * originalScale;
+        if(tmpScale.x / originalScale * 100 < 50.0f)
         {
             activeHealthBar.color = Color.red;
         }

@@ -60,7 +60,7 @@ public class RelodScene : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && (Input.GetKey(KeyCode.LeftControl) || CharacterLife.isDeath))
         {
-            Metrics.OnDeath();
+            //Metrics.OnDeath();
             if (experimentalReloadRoom)
                 Labirint.instance.ReloadRoom();
             else

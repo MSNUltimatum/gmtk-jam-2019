@@ -21,3 +21,5 @@ MonoBehaviour:
   moveTiming: 0
   supportedBulletTypes: 00000000
   explosionRadius: 2
+  explosiveVfxPrefab: {fileID: 6535954345397052339, guid: 5c4df76f2a89b8d4e8630b36f85099c3,
+    type: 3}

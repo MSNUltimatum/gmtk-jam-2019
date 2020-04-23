@@ -1380,11 +1380,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
-        type: 3}
-      propertyPath: m_Name
-      value: SimpleMonster
-      objectReference: {fileID: 0}
     - target: {fileID: 117048422991295782, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1439,6 +1434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873645921850147136, guid: 49e2859874a9916439d03436ec6cfa94,
+        type: 3}
+      propertyPath: m_Name
+      value: SimpleMonster
       objectReference: {fileID: 0}
     - target: {fileID: 764747687824734497, guid: 49e2859874a9916439d03436ec6cfa94,
         type: 3}
@@ -3050,11 +3050,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4145773307847232215, guid: d4843d19e0671504f829fbb1d6c279d1,
-        type: 3}
-      propertyPath: m_Name
-      value: SwampSpawner
-      objectReference: {fileID: 0}
     - target: {fileID: 4145773307847232212, guid: d4843d19e0671504f829fbb1d6c279d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3109,6 +3104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145773307847232215, guid: d4843d19e0671504f829fbb1d6c279d1,
+        type: 3}
+      propertyPath: m_Name
+      value: SwampSpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4843d19e0671504f829fbb1d6c279d1, type: 3}

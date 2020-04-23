@@ -12,7 +12,8 @@ public class BulletLife : MonoBehaviour
     public float timeToDestruction;
     [System.NonSerialized]
     public float damage;
-    protected float TTDLeft = 0.5f;
+    [System.NonSerialized]
+    public float TTDLeft = 0.5f;
 
     public List<BulletModifier> bulletMods = new List<BulletModifier>();
 
@@ -35,6 +36,7 @@ public class BulletLife : MonoBehaviour
         if (Pause.Paused) return;
         TTDLeft -= Time.fixedDeltaTime;
         Move();
+        UpdateMods();
         if (TTDLeft < 0)
         {
             DestroyBullet();
@@ -85,7 +87,7 @@ public class BulletLife : MonoBehaviour
     public void DamageMonster(MonsterLife monster, float damageMultiplier = 1, BulletModifier initiator = null)
     {
         ActivateDamageEnemyMods(monster);
-        monster.Damage(gameObject, damage * damageMultiplier);
+        monster.Damage(gameObject, damage * damageMultiplier * this.damageMultiplier);
         if (monster.HP <= 0)
         {
             ActivateKillMods(monster);
@@ -98,7 +100,7 @@ public class BulletLife : MonoBehaviour
             {
                 Vector2 direction = enemy.transform.position - transform.position;
                 direction = direction.normalized * knockThrust * Time.fixedDeltaTime;
-                enemy.velocity += direction;
+                enemy.KnockBack(direction);
             }
         }
     }
@@ -157,6 +159,11 @@ public class BulletLife : MonoBehaviour
     private void ActivateSpawnMods()
     {
         foreach (var mod in SortedMods()) mod.SpawnModifier(this);
+    }
+
+    private void ActivateDestroyMods()
+    {
+        foreach (var mod in SortedMods()) mod.DestroyModifier(this);
     }
 
     private void ActivateKillMods(MonsterLife enemy)
@@ -238,6 +245,7 @@ public class BulletLife : MonoBehaviour
 
     public virtual void DestroyBullet()
     {
+        ActivateDestroyMods();
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<DynamicLightInOut>().FadeOut();
@@ -261,7 +269,13 @@ public class BulletLife : MonoBehaviour
         bulletLight.color = newColor;
     }
 
+    public void AddToDamageMultiplier(float addValue)
+    {
+        damageMultiplier += addValue;
+    }
+
     private bool listNotSorted = true;
+    private float damageMultiplier = 1f;
 
     // Non-logic
     [SerializeField]

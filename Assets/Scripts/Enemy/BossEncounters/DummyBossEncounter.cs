@@ -48,6 +48,12 @@ public class DummyBossEncounter : BossEncounter
             };
         }
 
+        public override void StartPhase()
+        {
+            base.StartPhase();
+            dummyBossData.bossHP.SetMinHpPercentage(0.75f);
+        }
+
         DummyBossEncounter dummyBossData;
     }
 
@@ -73,6 +79,12 @@ public class DummyBossEncounter : BossEncounter
             AudioManager.PlayMusic(dummyBossData.GetComponent<AudioSource>(), 60);
             var bossHP = dummyBossData.bossHP;
             bossHP.HP = 0.5f * bossHP.maxHP;
+        }
+
+        public override void StartPhase()
+        {
+            base.StartPhase();
+            dummyBossData.bossHP.SetMinHpPercentage(0);
         }
 
         DummyBossEncounter dummyBossData;

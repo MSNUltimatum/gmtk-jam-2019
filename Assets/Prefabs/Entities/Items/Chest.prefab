@@ -142,13 +142,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8011d2766ddc45f488f440da1313c60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemListSize: 3
+  itemListSize: 5
   itemList:
-  - {fileID: 6597430504151711603, guid: a36ca10aeedd9804b97ff59294a85592, type: 3}
-  - {fileID: 2175323628933259560, guid: 21c21dd7cf7e5c34cabe6a7b25936d89, type: 3}
-  - {fileID: 4909608437727437222, guid: a8fda284181c65145a3c2468f330726e, type: 3}
+  - {fileID: 5086788843623388854, guid: 93a108f73501c4949bab96c24c0066aa, type: 3}
+  - {fileID: 1493822332605374298, guid: 82ab65dbd10d32e44b1f23bc69b86d89, type: 3}
+  - {fileID: 2174807728341543280, guid: e62a6c53b9425da4f99b787805ec20a4, type: 3}
+  - {fileID: 1562594075164814175, guid: 26d7c5d9a14761142ba704c48d58503a, type: 3}
+  - {fileID: 818117556107205755, guid: 1d83d5a1a797848458f36c5d8876ad4a, type: 3}
   itemChances:
-  - 1
+  - 2
   - 2
   - 3
+  - 1
+  - 2
   destanceToOpen: 3

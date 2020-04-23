@@ -4556,6 +4556,7 @@ MonoBehaviour:
   roomType: 0
   possibleContainerPosition: {fileID: 2731258711519283367}
   monsterManager: {fileID: 0}
+  externalMRMods: []
 --- !u!114 &4849212450367341071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4626,6 +4627,7 @@ MonoBehaviour:
     type: 3}
   StandartLightIncrease: 1
   maxvalue: 0
+  roomClearedLight: 0.2
   DefaultLight: 0.13
 --- !u!1001 &2667215228011776465
 PrefabInstance:

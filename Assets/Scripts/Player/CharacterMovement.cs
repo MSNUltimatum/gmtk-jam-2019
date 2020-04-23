@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
             direction.Normalize();
         }
 
-        rigidbody.velocity = direction * speed * Time.fixedDeltaTime * 50f;
+        rigidbody.velocity = direction * speed * speedMultiplier * Time.fixedDeltaTime * 50f;
         if (anim != null)
         {
             if (CharacterLife.isDeath) return;
@@ -57,6 +57,13 @@ public class CharacterMovement : MonoBehaviour
         }
         previousPosition = transform.position;
     }
+
+    public void AddToSpeedMultiplier(float addValue)
+    {
+        speedMultiplier += addValue;
+    }
+
+    private float speedMultiplier = 1f;
 
     private Camera mainCamera = null;
     private Vector3 previousPosition = new Vector3();

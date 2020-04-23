@@ -6,6 +6,7 @@ public class HomingEnemyBullet : EnemyBulletLife
 {
     [SerializeField] private float HomingEulerAnglesPerSecond = 45f;
     [SerializeField, Range(0, 1)] private float minimumMagneticPower = 0.2f;
+    [SerializeField] private Vector2 boostedAnglesForSecondsAtStart = new Vector2(0, 0);
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class HomingEnemyBullet : EnemyBulletLife
     {
         base.Update();
         RotateToPlayer();
+        boostedAnglesForSecondsAtStart.y -= Time.deltaTime;
     }
 
     private float angle180fix(float angle)
@@ -40,10 +42,11 @@ public class HomingEnemyBullet : EnemyBulletLife
         var currentAngle = gameObject.transform.rotation.eulerAngles.z;
         var difference = angle180fix(angle - currentAngle);
         var differenceSign = Mathf.Sign(difference);
+        var anglePerSecond = boostedAnglesForSecondsAtStart.y > 0 ? boostedAnglesForSecondsAtStart.x : HomingEulerAnglesPerSecond;
         var differenceMaxPerSecond = 
             Mathf.Clamp((180 - difference) / 180, minimumMagneticPower, 1) 
             * differenceSign 
-            * HomingEulerAnglesPerSecond 
+            * anglePerSecond
             * Time.deltaTime;
         gameObject.transform.rotation = Quaternion.Euler(0, 0, currentAngle + differenceMaxPerSecond);
     }

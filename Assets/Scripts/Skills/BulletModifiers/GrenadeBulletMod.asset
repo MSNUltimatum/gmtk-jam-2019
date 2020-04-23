@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404c68f78796d054cb578c0758ee3c6d, type: 3}
+  m_Name: GrenadeBulletMod
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 1, g: 0, b: 0.37434292, a: 1}
+  shoodPaint: 1
+  bulletSprite: {fileID: 0}
+  bulletMaterial: {fileID: 0}
+  priority: 0
+  modifierTime: Infinity
+  moveTiming: 0
+  supportedBulletTypes: 00000000
+  explosionRadius: 2
+  explosiveVfxPrefab: {fileID: 6535954345397052339, guid: 5c4df76f2a89b8d4e8630b36f85099c3,
+    type: 3}
