@@ -100,7 +100,7 @@ public class BulletLife : MonoBehaviour
             {
                 Vector2 direction = enemy.transform.position - transform.position;
                 direction = direction.normalized * knockThrust * Time.fixedDeltaTime;
-                enemy.velocity += direction;
+                enemy.KnockBack(direction);
             }
         }
     }

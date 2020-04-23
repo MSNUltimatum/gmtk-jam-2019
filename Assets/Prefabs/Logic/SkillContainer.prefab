@@ -52,7 +52,6 @@ MonoBehaviour:
   - MoveSpeedPassive:LavaCrystalMoveIncrease
   - AddModPassiveSkill:OnyxCrystallDamageAdd
   - HealthDropChanceUpgrade:SapphireIncreasedHPDrop
-  - ShootingWeapon:BigExplosiveRifle
   - Pistol:Explosive-Pistol
   - Pistol:ExtraFreezingExplosivePistol
   - Pistol:Freezing-Pistol
@@ -75,7 +74,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fefee928a4173246a22ea6677149e70, type: 2}
   - {fileID: 11400000, guid: 4ffdb597aae5d8e458b8c822bb964a4f, type: 2}
   - {fileID: 11400000, guid: ab91f86cd39788c4d910906606971e54, type: 2}
-  - {fileID: 11400000, guid: 6925cfe1bcf89134aa915f9a07f3e225, type: 2}
   - {fileID: 11400000, guid: 58074f79bcf764543837a5888fb06849, type: 2}
   - {fileID: 11400000, guid: cdefae2fad0b91a458c1ccee25edaed4, type: 2}
   - {fileID: 11400000, guid: 5e95b9a25a9df1a4cb2c63799d0adc2d, type: 2}

@@ -57,6 +57,6 @@ public class ExplosiveBulletMod : BulletModifier
     {
         Vector2 direction = enemy.transform.position - from;
         direction = direction.normalized * pushPower;
-        enemy.velocity += direction;
+        enemy.KnockBack(direction);
     }
 }

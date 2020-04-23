@@ -5,27 +5,21 @@ using UnityEngine.Events;
 
 public class MonsterLife : MonoBehaviour
 {
-    [SerializeField]
-    public float maxHP = 1;
-    [System.NonSerialized]
-    public float HP = 1;
+    [SerializeField] public float maxHP = 1;
+    [HideInInspector] public float HP = 1;
 
-    [SerializeField]
-    protected GameObject absorbPrefab = null;
-    [SerializeField]
-    private GameObject enemyExplosionPrefab = null;
-    [SerializeField]
-    private float fadeInTime = 0.5f;
+    [SerializeField] protected GameObject absorbPrefab = null;
+    [SerializeField] private GameObject enemyExplosionPrefab = null;
+    [SerializeField] private float fadeInTime = 0.5f;
+    [SerializeField] private bool autoChooseName = true;
 
-    [SerializeField]
-    private EvilDictionary evilDictionary = null;
+    [SerializeField] private EvilDictionary evilDictionary = null;
 
     // Apply listeners on start!!
     public static UnityEvent OnEnemyDead = new UnityEvent();
     public UnityEvent hpChangedEvent = new UnityEvent();
 
-    [HideInInspector]
-    public MonsterManager monsterManager = null;
+    [HideInInspector] public MonsterManager monsterManager = null;
 
     protected virtual bool Vulnurable()
     {
@@ -90,9 +84,10 @@ public class MonsterLife : MonoBehaviour
         if (HP <= 0) return; // Already dead
         if ((THE_BOY && Vulnurable() || ignoreInvulurability) && SpecialConditions(source))
         {
-            HP -= damage;
-            hpChangedEvent?.Invoke();
-
+            var wasHp = HP;
+            HP = Mathf.Max(minHpValue, HP - damage);
+            if (wasHp != HP) hpChangedEvent?.Invoke();
+            else UndamagedAnimation();
             if (HP <= 0)
             {
                 if (monsterManager != null)
@@ -110,12 +105,7 @@ public class MonsterLife : MonoBehaviour
         }
         else
         {
-            if (absorbPrefab)
-            {
-                var absorb = Instantiate(absorbPrefab, gameObject.transform.position, Quaternion.identity);
-                absorb.transform.SetParent(gameObject.transform);
-                Destroy(absorb, 0.5f);
-            }
+            BulletAbsorb();
         }
     }
 
@@ -191,12 +181,53 @@ public class MonsterLife : MonoBehaviour
     {
         usedNames = new List<string>();
     }
+
+    private GameObject BulletAbsorb()
+    {
+        if (absorbPrefab)
+        {
+            var absorb = Instantiate(absorbPrefab, gameObject.transform.position, Quaternion.identity);
+            absorb.transform.SetParent(gameObject.transform);
+            Destroy(absorb, 0.5f);
+            return absorb;
+        }
+        return null;
+    }
+    
+    /// <param name="percentage01Range">Should be between 0 and 1</param>
+    public void SetMinHpPercentage(float percentage01Range)
+    {
+        if (percentage01Range > 1) Debug.LogError("Percentage parameter should be in range [0, 1]");
+        SetMinHpValue(maxHP * percentage01Range);
+    }
+
+    public void SetMinHpValue(float minValue)
+    {
+        if (invulnurabilityShield)
+        {
+            Destroy(invulnurabilityShield);
+        }
+        minHpValue = minValue;
+    }
+
+    private void UndamagedAnimation()
+    {
+        if (!invulnurabilityShield && absorbPrefab)
+        {
+            invulnurabilityShield = Instantiate(absorbPrefab, gameObject.transform.position, Quaternion.identity);
+            invulnurabilityShield.transform.SetParent(gameObject.transform);
+            invulnurabilityShield.GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        }
+    }
+
+    private float minHpValue = 0;
     
     private float fadeInLeft;
     private SpriteRenderer[] sprites;
     private bool THE_BOY = false;
     private TMPro.TextMeshPro monsterName;
     private static List<string> usedNames = new List<string>();
+    private GameObject invulnurabilityShield = null;
 
     public UnityEvent OnThisDead = new UnityEvent();
 }
