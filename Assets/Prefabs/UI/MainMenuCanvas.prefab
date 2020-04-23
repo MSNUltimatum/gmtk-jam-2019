@@ -625,7 +625,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000019073, y: -89.5}
-  m_SizeDelta: {x: 91.81, y: 25.04}
+  m_SizeDelta: {x: 75, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1003388101
 CanvasRenderer:
@@ -1722,7 +1722,6 @@ MonoBehaviour:
   Credits: {fileID: 206383884}
   Chapter1: {fileID: 3517432861230699337}
   DiffictultyLabel: {fileID: 819231285283277749}
-  Chapter1EasyDiff: {fileID: 21300000, guid: 3946c4c7915ba3a4b8094a4fd34e97ac, type: 3}
   Chapter1NormalDiff: {fileID: 21300000, guid: 056fca0360a7f1641b39a5d1213f3973, type: 3}
   Chapter1HardcoreDiff: {fileID: 21300000, guid: 5c5cfbd43a3c8c24a928d6433814e61e,
     type: 3}
