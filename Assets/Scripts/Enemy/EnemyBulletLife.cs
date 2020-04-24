@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyBulletLife : MonoBehaviour
 {
-    [SerializeField]
     public float BulletSpeed = 12f;
-    [SerializeField]
-    protected float BulletLifeLength = 3f;
-    [SerializeField]
-    protected float ignoreCollisionTime = 0.35f;
+    public float BulletLifeLength = 3f;
+    public float ignoreCollisionTime = 0.35f;
+
+    protected virtual void Start()
+    {
+        Destroy(gameObject, BulletLifeLength);
+    }
 
     protected virtual void Update()
     {
@@ -17,7 +19,6 @@ public class EnemyBulletLife : MonoBehaviour
 
         transform.Translate(Vector2.right * BulletSpeed * Time.deltaTime, Space.Self);
         ignoreCollisionTime -= Time.deltaTime;
-        Destroy(gameObject, BulletLifeLength);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)
