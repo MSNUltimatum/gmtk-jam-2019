@@ -4627,7 +4627,7 @@ MonoBehaviour:
     type: 3}
   StandartLightIncrease: 1
   maxvalue: 0
-  roomClearedLight: 0.8
+  roomClearedLight: 0.2
   DefaultLight: 0.13
 --- !u!1001 &2667215228011776465
 PrefabInstance:

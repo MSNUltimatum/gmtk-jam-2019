@@ -16,7 +16,7 @@ MonoBehaviour:
   pickupSprite: {fileID: 21300000, guid: c34c9ce0dbfe50c4d806b89b9c7d302c, type: 3}
   attackSound: []
   reloadTime: 15
-  timeBetweenAttacks: 2
+  timeBetweenAttacks: 1.25
   ammoMagazine: 5
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}

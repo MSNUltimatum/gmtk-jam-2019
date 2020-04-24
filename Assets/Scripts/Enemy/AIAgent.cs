@@ -9,9 +9,10 @@ public class AIAgent : MonoBehaviour
     public float maxRotation = 200f;
     public float maxAngularAccel = 10000f;
     public float velocityFallBackPower = 3f;
-    public float orientation;
-    public float rotation;
-    public Vector2 velocity;
+    public float knockBackStability = 1f;
+    [HideInInspector] public float orientation;
+    [HideInInspector] public float rotation;
+    [HideInInspector] public Vector2 velocity;
     [HideInInspector] public float moveSpeedMult = 1f;
     protected EnemySteering steering;
 
@@ -89,6 +90,11 @@ public class AIAgent : MonoBehaviour
     protected virtual void Update()
     {
         ProceedPauseUnpause();
+    }
+
+    public void KnockBack(Vector2 knockVector)
+    {
+        velocity += knockVector / knockBackStability;
     }
 
     public void StopMovement(float time)

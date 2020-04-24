@@ -5,16 +5,17 @@ using UnityEngine;
 [ExecuteAlways]
 public class PickupableSkill : PickupableItem
 {
+    public bool autoChangeIcon = true;
     public SkillBase skill;
     private Sprite sprite;
 
     protected override void Update()
     {
         base.Update();
-        if ( sprite != skill.pickupSprite)
+        if (autoChangeIcon && sprite != skill.pickupSprite)
         {
-        GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
-        sprite = skill.pickupSprite;
+            GetComponent<SpriteRenderer>().sprite = skill.pickupSprite;
+            sprite = skill.pickupSprite;
         }
     }
     protected override void PickUp(Collider2D player)

@@ -235,7 +235,7 @@ MonoBehaviour:
   maxAccel: 15
   maxRotation: 200
   maxAngularAccel: 10000
-  velocityFallBackPower: 3
+  velocityFallBackPower: 1.5
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}

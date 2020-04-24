@@ -14,10 +14,9 @@ public class MonsterManager : MonoBehaviour
     [HideInInspector] public RoomLighting roomLighting;
     [HideInInspector] public List<GameObject> strayMonsters;
     [HideInInspector] public List<GameObject> monsterList;
+    [HideInInspector] public Room room;
 
     public List<MonsterRoomModifier> monsterRoomModifiers = new List<MonsterRoomModifier>();
-
-    private Room room;
 
     [SerializeField]
     protected bool AllowEarlySpawns = true;

@@ -21,11 +21,20 @@ public class CameraShaker : MonoBehaviour
         shaker.m_AmplitudeGain = shakeAccumulator;
         // I don't understand why but it works, wow :)
         transform.localEulerAngles = Vector3.zero;
+        shakeTimeLeft -= Time.deltaTime;
+        if (shakeTimeLeft <= 0)
+        {
+            shakeAccumulator = 0;
+        }
     }
 
     public void ShakeCamera(float shakeIntensity = 0.5f, float shakeTiming = 0.2f)
     {
-        StartCoroutine(ShakeMe(shakeIntensity, shakeTiming));
+        if (shakeIntensity > shakeAccumulator)
+        {
+            shakeAccumulator = shakeIntensity;
+            shakeTimeLeft = shakeTiming;
+        }
     }
 
     private IEnumerator ShakeMe(float shakeIntensity, float shakeTiming)
@@ -34,5 +43,7 @@ public class CameraShaker : MonoBehaviour
         yield return new WaitForSeconds(shakeTiming);
         shakeAccumulator -= shakeIntensity;
     }
+    
+    private float shakeTimeLeft = 0;
 
 }
