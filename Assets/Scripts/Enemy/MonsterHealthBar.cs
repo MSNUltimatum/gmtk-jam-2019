@@ -10,11 +10,11 @@ public class MonsterHealthBar : MonoBehaviour
     public Image activeHealthBar;
     private void Start()
     {
-        originalScale = activeHealthBar.transform.localScale.y;
         Deactive();
         monsterLife = GetComponentInParent<MonsterLife>();
         maxHP = monsterLife.maxHP;
         monsterLife.hpChangedEvent.AddListener(HealthBarChange);
+        hpSlider = GetComponent<Slider>();
     }
 
     private void Update()
@@ -32,14 +32,11 @@ public class MonsterHealthBar : MonoBehaviour
     public void HealthBarChange()
     {
         Active();
-        float tmpHP = monsterLife.HP;
-        Vector3 tmpScale = activeHealthBar.transform.localScale;
-        tmpScale.x = (float)tmpHP / maxHP * originalScale;
-        if(tmpScale.x / originalScale * 100 < 50.0f)
+        hpSlider.value = monsterLife.HP / monsterLife.maxHP;
+        if(hpSlider.value < 0.33)
         {
             activeHealthBar.color = Color.red;
         }
-        activeHealthBar.transform.localScale = tmpScale;
         currentTimeToOff = timeToOff;
     }
 
@@ -61,8 +58,9 @@ public class MonsterHealthBar : MonoBehaviour
         }
     }
     private MonsterLife monsterLife;
+    private Slider hpSlider;
 
-    private float originalScale;
+    
     private float currentTimeToOff;
     private float maxHP;
 }
