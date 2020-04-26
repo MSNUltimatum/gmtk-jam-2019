@@ -104,6 +104,11 @@ PrefabInstance:
       propertyPath: maxHP
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 3028496621113866837, guid: 905a829c24a49a248bd9eb057fd5d175,
+        type: 3}
+      propertyPath: autoChooseName
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3005494113147030418, guid: 905a829c24a49a248bd9eb057fd5d175,
         type: 3}
       propertyPath: m_Color.r
@@ -142,12 +147,12 @@ PrefabInstance:
     - target: {fileID: 4254762210083192393, guid: 905a829c24a49a248bd9eb057fd5d175,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 7
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4254762210083192393, guid: 905a829c24a49a248bd9eb057fd5d175,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4254762210083192393, guid: 905a829c24a49a248bd9eb057fd5d175,
         type: 3}
@@ -157,6 +162,16 @@ PrefabInstance:
     - target: {fileID: 4254762210083192393, guid: 905a829c24a49a248bd9eb057fd5d175,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254762210083192393, guid: 905a829c24a49a248bd9eb057fd5d175,
+        type: 3}
+      propertyPath: m_text
+      value: Friendly boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254762210083192393, guid: 905a829c24a49a248bd9eb057fd5d175,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6995242457459252460, guid: 905a829c24a49a248bd9eb057fd5d175,

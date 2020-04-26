@@ -17,7 +17,12 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   cooldownRange: {x: 5, y: 8}
+  attackSpeedModifier: 1
   GhostBoostSpeed: 7
   PacifistInBoost: 1
   BoostTime: 2.5
@@ -373,15 +378,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8134463785630515483, guid: 0aa1b81b52f950047969568a2592a7b9,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8134463785630515486, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134463785630515483, guid: 0aa1b81b52f950047969568a2592a7b9,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8826921468404025010, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
@@ -389,6 +394,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6617880080247477084, guid: c08c719ab8449bf4d916c43302ae354d,
         type: 3}
+    - target: {fileID: 3325605106829218352, guid: 0aa1b81b52f950047969568a2592a7b9,
+        type: 3}
+      propertyPath: bypassAngleAccumulationSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa1b81b52f950047969568a2592a7b9, type: 3}
 --- !u!1 &5058627307541784233 stripped

@@ -35,7 +35,7 @@ public class MonsterLife : MonoBehaviour
         ChooseMyName();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         FadeIn(fadeInTime);
         sprites = GetComponentsInChildren<SpriteRenderer>();
@@ -50,6 +50,12 @@ public class MonsterLife : MonoBehaviour
     {
         if (Pause.Paused) return;
         if (fadeInLeft != 0) FadeInLogic();
+        CustomUpdate();
+    }
+
+    protected virtual void CustomUpdate()
+    {
+
     }
 
     private void FadeInLogic()
@@ -164,6 +170,7 @@ public class MonsterLife : MonoBehaviour
 
     private void ChooseMyName()
     {
+        if (!autoChooseName) return;
         List<string> possibleNames = evilDictionary.EvilNames();
         for (int i = 0; i < 200; i++) // Any ideas how to make this better?
         {

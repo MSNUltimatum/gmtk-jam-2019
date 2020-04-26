@@ -47,6 +47,7 @@ MonoBehaviour:
   - ActiveMouseBullet:ActiveMouseBulletDkill
   - ActivePursueBulletSkill:ActivePursueBulletSkill
   - ActiveSpeedSkill:ActiveSpeedSkill
+  - NextMonsterSkill:NextMonsterSkill
   - AttackSpeedPassiveSkill:AmethystAttackSpeed
   - AddModPassiveSkill:HugeCircularStrikeOnDeathSkill
   - MoveSpeedPassive:LavaCrystalMoveIncrease
@@ -69,6 +70,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df6ea92976338684e957044a2c786dd2, type: 2}
   - {fileID: 11400000, guid: d37267932cec60543a7dace5e65ef121, type: 2}
   - {fileID: 11400000, guid: f0fe970116203044e875a369e68e8610, type: 2}
+  - {fileID: 11400000, guid: f95d70430242fbe43bf897d0b94ec350, type: 2}
   - {fileID: 11400000, guid: d1014e3dcd0f8c040ab9ef0ff83053be, type: 2}
   - {fileID: 11400000, guid: 3c6a4e05a7eb9df4a849a4a4b888bf29, type: 2}
   - {fileID: 11400000, guid: 2fefee928a4173246a22ea6677149e70, type: 2}

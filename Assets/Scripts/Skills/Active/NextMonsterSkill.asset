@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d224eba228135c4996e7b34bebe0872, type: 3}
+  m_Name: NextMonsterSkill
+  m_EditorClassIdentifier: 
+  description: Yoo could show a enemy
+  pickupSprite: {fileID: 4756629594960088363, guid: 6db3c0d4b81892641898d3135ec8d17b,
+    type: 3}
+  activeDuration: 3
+  cooldownDuration: 7
+  outlinePrefab: {fileID: 6925927986127740254, guid: df9e3e0793a95d24abb25d98ba947bcb,
+    type: 3}

@@ -158,6 +158,9 @@ MonoBehaviour:
   FlickerValueRange: {x: -0.1, y: 0.2}
   FlickerPeriodRange: {x: 0.05, y: 0.1}
   SinFactor: 0
+  sinSpeed: 1
+  lightFlicker: 1
+  spriteFlicker: 0
 --- !u!1 &8514799866707657762
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +230,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 5624568987592750774, guid: 3bdfcf077764d49428573d6c71a1f852,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

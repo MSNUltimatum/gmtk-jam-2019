@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.LWRP;
+using UnityEngine.Events;
 
 public class CharacterLife : MonoBehaviour
 {
     public static bool isDeath = false;
-    [SerializeField]
-    private GameObject ShadowObject = null;
+    [SerializeField] private GameObject ShadowObject = null;
+    [SerializeField] private GameObject hitEffect = null;
     new private AudioSource audio;
+
+    public UnityEvent hpChangedEvent = new UnityEvent();
 
     public void Damage(int damage = 1)
     {
         if (isDeath || invulTimeLeft > 0) return; // Already died
 
+        if (hitEffect)
+        {
+            var hitEff = Instantiate(hitEffect, transform.position, Quaternion.identity).GetComponent<PlayerDamagedVFX>();
+            hitEff.player = transform;
+        }
         hp -= damage;
-        
+        hpChangedEvent.Invoke();
 
         if (hp <= 0)
         {
@@ -122,7 +130,8 @@ public class CharacterLife : MonoBehaviour
     }
 
     public void Heal(int healAmmount) {
-        if (!isDeath) { 
+        if (!isDeath) {
+            hpChangedEvent.Invoke();
             hp += healAmmount;
             if (hp > maxHp) hp = maxHp;
         }

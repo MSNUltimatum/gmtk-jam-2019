@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerHpBar : MonoBehaviour
+public class PlayerHpBar : HpBar
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
+        playerLife = GetComponentInParent<CharacterLife>();
+        playerLife.hpChangedEvent.AddListener(HealthBarChange);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override Vector2 GetCurrentMaxHp()
     {
-        
+        return new Vector2(playerLife.GetHp(), playerLife.GetMaxHp());
     }
+
+    private CharacterLife playerLife;
 }
