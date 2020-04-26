@@ -2481,27 +2481,27 @@ PrefabInstance:
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 7982246235811314717, guid: dda96c9701cebc4418f3f244bbb5703e,
+      objectReference: {fileID: 456814172241082861, guid: 484ae42691d405d49a2d7bea3894d9b7,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 3026997417321168337, guid: 8ebcd637a0924c049b2449d0620d399d,
+      objectReference: {fileID: 2322609429073374979, guid: 2daf3ae21c9ef834c90e9a1eab49a2dc,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 7557523555709609451, guid: c181f6f94fad9734cb70ce8fd2f59a55,
+      objectReference: {fileID: 2381128140080152364, guid: 74362401b6e66d54d8e063a222b9992c,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 7557523555709609451, guid: c181f6f94fad9734cb70ce8fd2f59a55,
+      objectReference: {fileID: 3026997417321168337, guid: 8ebcd637a0924c049b2449d0620d399d,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 7557523555709609451, guid: c181f6f94fad9734cb70ce8fd2f59a55,
+      objectReference: {fileID: 6740989659020397486, guid: 1ef534366da84b24aae303b4373b31e4,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[7]
@@ -2521,12 +2521,12 @@ PrefabInstance:
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 456814172241082861, guid: 484ae42691d405d49a2d7bea3894d9b7,
+      objectReference: {fileID: 6740989659020397486, guid: 1ef534366da84b24aae303b4373b31e4,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 6740989659020397486, guid: 1ef534366da84b24aae303b4373b31e4,
+      objectReference: {fileID: 3026997417321168337, guid: 8ebcd637a0924c049b2449d0620d399d,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[7]
@@ -2546,7 +2546,7 @@ PrefabInstance:
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 2322609429073374979, guid: 2daf3ae21c9ef834c90e9a1eab49a2dc,
+      objectReference: {fileID: 7982246235811314717, guid: dda96c9701cebc4418f3f244bbb5703e,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: roomRepeatAllowed
@@ -2555,17 +2555,17 @@ PrefabInstance:
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2381128140080152364, guid: 74362401b6e66d54d8e063a222b9992c,
+      objectReference: {fileID: 8625831560032640773, guid: 2ffcc2999271ffd46985400358190636,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 3026997417321168337, guid: 8ebcd637a0924c049b2449d0620d399d,
+      objectReference: {fileID: 456814172241082861, guid: 484ae42691d405d49a2d7bea3894d9b7,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 2381128140080152364, guid: 74362401b6e66d54d8e063a222b9992c,
+      objectReference: {fileID: 2322609429073374979, guid: 2daf3ae21c9ef834c90e9a1eab49a2dc,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: treasureRoomPrefabs.Array.data[0]
@@ -2589,12 +2589,12 @@ PrefabInstance:
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: peacefulRoomPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 456814172241082861, guid: 484ae42691d405d49a2d7bea3894d9b7,
+      objectReference: {fileID: 7982246235811314717, guid: dda96c9701cebc4418f3f244bbb5703e,
         type: 3}
     - target: {fileID: 1687432345, guid: 6269f040c638a864e94169dd44ff0d5c, type: 3}
       propertyPath: combatRoomPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 2144849724505643308, guid: ece50ee0aa19ba049b73e43d6d3a36e9,
+      objectReference: {fileID: 6086347480339552460, guid: 286460df8ac3c6041b9d90668ba26f0b,
         type: 3}
     - target: {fileID: 3387014766477757507, guid: 6269f040c638a864e94169dd44ff0d5c,
         type: 3}

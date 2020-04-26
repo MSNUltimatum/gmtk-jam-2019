@@ -95,11 +95,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8985563269723331825, guid: 98cd7e8f344209344a7cb9babefd9898,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8985563269723331828, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -212,6 +207,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2de051cf744a7914d854eba702ee9c9d, type: 2}
+    - target: {fileID: 8985563269723331825, guid: 98cd7e8f344209344a7cb9babefd9898,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5798568959489288007, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: offset.x
@@ -220,6 +220,16 @@ PrefabInstance:
     - target: {fileID: 5798568959489288007, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749680861489563573, guid: 98cd7e8f344209344a7cb9babefd9898,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849849318250332381, guid: 98cd7e8f344209344a7cb9babefd9898,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

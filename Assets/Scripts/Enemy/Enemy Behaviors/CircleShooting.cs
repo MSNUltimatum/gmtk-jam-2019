@@ -15,6 +15,9 @@ public class CircleShooting : MonoBehaviour
     private int bulletsWasShootCounter = 0;
     [SerializeField] private float ramdomAngleRange = 10f;
 
+    [SerializeField] private Animator spriteAnimation = null;
+    [SerializeField] private Animator shadowAnimation = null;
+
     private enum Status { move, open, shoot, close };
     private Status status = Status.move;
 
@@ -43,6 +46,7 @@ public class CircleShooting : MonoBehaviour
                     status = Status.close;
                     timer = closeTime;
                     bulletsWasShootCounter = 0;
+                    spriteAnimation.Play("Attack-end");
                 }
             }
             else if (status == Status.close)
@@ -65,6 +69,7 @@ public class CircleShooting : MonoBehaviour
                     status = Status.open;
                     timer = openTime;
                     agent.moveSpeedMult = 0;
+                    spriteAnimation.Play("Attack-start");
                 }
             }
             else if (status == Status.open)

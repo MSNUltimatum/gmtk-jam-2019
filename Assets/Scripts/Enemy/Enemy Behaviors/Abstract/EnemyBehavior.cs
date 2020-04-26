@@ -218,7 +218,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     }
 
     private float proximityCheckPeriod = 0.5f;
-    private float timeToProximityCheck = 0.5f;
+    private float timeToProximityCheck = 0.01f;
     [System.NonSerialized]
     public bool isGroupeAggroed;
     private float currentTimeBeforeGroupeAgroOff;

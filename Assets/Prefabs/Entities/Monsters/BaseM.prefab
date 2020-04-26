@@ -202,11 +202,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 4
+  HP: 1
   absorbPrefab: {fileID: 4561057029417634086, guid: aa5acee1df1ebfd458c19c796b2c701c,
     type: 3}
   enemyExplosionPrefab: {fileID: 3286946789625850104, guid: cd1b0312ce994734bb0fa0f780502358,
     type: 3}
   fadeInTime: 0.75
+  autoChooseName: 1
   evilDictionary: {fileID: 11400000, guid: 47d5640f33727af4a981a6aaa575bbeb, type: 2}
   hpChangedEvent:
     m_PersistentCalls:
@@ -236,6 +238,7 @@ MonoBehaviour:
   maxRotation: 200
   maxAngularAccel: 10000
   velocityFallBackPower: 1.5
+  knockBackStability: 1
   orientation: 0
   rotation: 0
   velocity: {x: 0, y: 0}
@@ -629,6 +632,16 @@ PrefabInstance:
         type: 3}
       propertyPath: baseEulerRotation.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 207385517049205066, guid: d40250721e21fb640a3bd4181e3f06b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666994749709915682, guid: d40250721e21fb640a3bd4181e3f06b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d40250721e21fb640a3bd4181e3f06b5, type: 3}
