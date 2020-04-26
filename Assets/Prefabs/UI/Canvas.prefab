@@ -742,11 +742,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeItemsContainer: {fileID: 995060888527918808}
   weaponItemsContainer: {fileID: 5084823747278539399}
-  passiveSkillsContainer: {fileID: 0}
-  draggingParent: {fileID: 0}
+  passiveSkillsContainer: {fileID: 3452797954296825727}
+  draggingParent: {fileID: 2892025730329295085}
   cellPrefab: {fileID: 1601648343120544096, guid: c626e35e89c03a9418b84dae0cae71f5,
     type: 3}
-  passivePrefab: {fileID: 0}
+  passivePrefab: {fileID: 1974224021992319065, guid: 436fa04747731bb428462eccdd778421,
+    type: 3}
 --- !u!1 &1353122621857010769
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000088915085}
+  m_AnchoredPosition: {x: 0, y: 107.62001}
   m_SizeDelta: {x: 0, y: 81.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5192993594594522797
@@ -2590,7 +2591,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1456598429588633067}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4969,11 +4970,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2892025730329295085}
     m_Modifications:
-    - target: {fileID: 1463643769930889649, guid: 8cf1d1cee5cd37f448b016a955f6e90f,
-        type: 3}
-      propertyPath: m_Name
-      value: GameVersion
-      objectReference: {fileID: 0}
     - target: {fileID: 3046562904198405484, guid: 8cf1d1cee5cd37f448b016a955f6e90f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5078,6 +5074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463643769930889649, guid: 8cf1d1cee5cd37f448b016a955f6e90f,
+        type: 3}
+      propertyPath: m_Name
+      value: GameVersion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf1d1cee5cd37f448b016a955f6e90f, type: 3}

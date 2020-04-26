@@ -72,6 +72,7 @@ public class Inventory : MonoBehaviour
         {
             var inst = Instantiate(passivePrefab, container);
             var img = inst.GetComponent<PassiveItemPresenter>();
+            Debug.Log(img);
             img.Render(items[i], this);
         }
     }
