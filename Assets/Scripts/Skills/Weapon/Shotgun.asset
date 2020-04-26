@@ -16,11 +16,11 @@ MonoBehaviour:
   pickupSprite: {fileID: 21300000, guid: 34f7071c531fa8a418831e792c44ffd6, type: 3}
   attackSound: []
   reloadTime: 7
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 0.7
   ammoMagazine: 6
   bulletPrefab: {fileID: 6191924688321695861, guid: ee50d9a2dc4a6074fac8d27b86a21ee4,
     type: 3}
-  bulletDamage: 5
+  bulletDamage: 3
   knockPower: 150
   bulletSpeed: 25
   timeToBulletDestruction: 0.6
@@ -28,5 +28,5 @@ MonoBehaviour:
   rndShootingAngleAmplifier: 0.15
   rndShootingAngleRelease: 0.5
   bulletModifiers: []
-  arcAngle: 35
+  arcAngle: 45
   shotNumber: 6

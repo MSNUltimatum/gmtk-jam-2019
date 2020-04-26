@@ -96,6 +96,7 @@ MonoBehaviour:
   cycleLength: 0.667
   fadeOutTime: 0.2
   fadeOffset: 0.375
+  fadeMedian: 0
 --- !u!114 &6595875477321535360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,8 +114,13 @@ MonoBehaviour:
   proximityCheckDistance: 19
   invertProximityCheck: 0
   timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
   cooldownRange: {x: 5, y: 7}
-  castTime: 0.8
+  attackSpeedModifier: 1
+  castTime: 0.7
   Scatter: 8.3
   shakeAmp: 0.1
 --- !u!1001 &6999363874888286760
@@ -127,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 5894915500748629136, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: m_Name
-      value: TeleportMonster
+      value: TeleportMonster Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8624421033595261174, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
@@ -184,6 +190,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4023892104855816099, guid: 98cd7e8f344209344a7cb9babefd9898,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0c12f09e61b148145a7d2473b4df9f5f, type: 2}
     - target: {fileID: 6462026421937733049, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: m_Sprite
@@ -200,11 +211,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4023892104855816099, guid: 98cd7e8f344209344a7cb9babefd9898,
+    - target: {fileID: 8516253945559817047, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 0c12f09e61b148145a7d2473b4df9f5f, type: 2}
+      objectReference: {fileID: 9100000, guid: b1b17cdb4889ad245a19e4f56a3b859f, type: 2}
     - target: {fileID: 8516253945559817048, guid: 98cd7e8f344209344a7cb9babefd9898,
         type: 3}
       propertyPath: m_Sprite
@@ -221,11 +232,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.5000348
       objectReference: {fileID: 0}
-    - target: {fileID: 8516253945559817047, guid: 98cd7e8f344209344a7cb9babefd9898,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: b1b17cdb4889ad245a19e4f56a3b859f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98cd7e8f344209344a7cb9babefd9898, type: 3}
 --- !u!1 &3525278604231173816 stripped

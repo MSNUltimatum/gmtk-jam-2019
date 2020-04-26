@@ -1,5 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3747445399722445782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996579439583093842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d6d99741fb00348ba7f96253780e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
+  shiftAmp: 3
+--- !u!114 &7907844154190584189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996579439583093842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d8c4bd69472334caff87427c061567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  proximityCheckOption: 
+  proximityCheckDistance: 19
+  invertProximityCheck: 0
+  timeToLoseAggro: -1
+  moveInviteRadius: 2
+  maxInviteLevel: 1
+  timeBeforeGroupeAggroOff: 3
+  agroBlockTime: 2
+  cooldownRange: {x: 1, y: 1}
+  attackSpeedModifier: 1
+  castTime: 0.2
+  randomShotAngle: 15
+  bullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca, type: 3}
+  bulletSpawnOffset: {x: 0, y: -0.2}
+  isSpawnOffsetWorldCoordinates: 1
+  attackVFX: {fileID: 1617143983919096118, guid: bdcbf7b9eb5e86c4b90f3e0f8816dfa5,
+    type: 3}
 --- !u!1 &5444191797989255001
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,49 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   baseEulerRotation: {x: 0, y: 0, z: 0}
---- !u!114 &3747445399722445782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996579439583093842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d6d99741fb00348ba7f96253780e9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  proximityCheckOption: 
-  proximityCheckDistance: 19
-  invertProximityCheck: 0
-  timeToLoseAggro: -1
-  shiftAmp: 3
---- !u!114 &7907844154190584189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996579439583093842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d8c4bd69472334caff87427c061567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  proximityCheckOption: 
-  proximityCheckDistance: 19
-  invertProximityCheck: 0
-  timeToLoseAggro: -1
-  cooldownRange: {x: 1, y: 1}
-  castTime: 0.3
-  randomShotAngle: 15
-  bullet: {fileID: 7556247329906426865, guid: 6bc2ceb2c6a7d274496e5ba2eaf163ca, type: 3}
-  bulletSpawnOffset: {x: 0, y: -0.2}
-  isSpawnOffsetWorldCoordinates: 1
-  attackVFX: {fileID: 1617143983919096118, guid: bdcbf7b9eb5e86c4b90f3e0f8816dfa5,
-    type: 3}
 --- !u!1 &6316973692257733691
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicMonster Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4872449274570011911, guid: 0aa1b81b52f950047969568a2592a7b9,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8926223131966377244, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -300,11 +314,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4872449274570011911, guid: 0aa1b81b52f950047969568a2592a7b9,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8134463785630515486, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -346,16 +355,16 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 3.3619049
       objectReference: {fileID: 0}
-    - target: {fileID: 4289666643154393673, guid: 0aa1b81b52f950047969568a2592a7b9,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 877016c4e294ae447814520f6406712d, type: 2}
     - target: {fileID: 8134463785630515483, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8826921468404025021, guid: 0aa1b81b52f950047969568a2592a7b9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c45dfccef7cccae40ba21f67d8eaab41, type: 2}
     - target: {fileID: 8826921468404025010, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
       propertyPath: m_Sprite
@@ -372,11 +381,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.9569397
       objectReference: {fileID: 0}
-    - target: {fileID: 8826921468404025021, guid: 0aa1b81b52f950047969568a2592a7b9,
+    - target: {fileID: 4289666643154393673, guid: 0aa1b81b52f950047969568a2592a7b9,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: c45dfccef7cccae40ba21f67d8eaab41, type: 2}
+      objectReference: {fileID: 9100000, guid: 877016c4e294ae447814520f6406712d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa1b81b52f950047969568a2592a7b9, type: 3}
 --- !u!1 &996579439583093842 stripped
