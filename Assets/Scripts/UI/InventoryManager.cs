@@ -6,7 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     private CharacterShooting shooting;
     [SerializeField]
-    private GameObject inventory = null;
+    public GameObject inventory = null;
     public void Start()
     {
         inventory.SetActive(false);

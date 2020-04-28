@@ -15,54 +15,122 @@ public class Inventory : MonoBehaviour
     private Transform passiveSkillsContainer = null;
     [SerializeField]
     private Transform draggingParent = null;
-
     [SerializeField]
-    private GameObject cellPrefab = null;
-
+    public GameObject cellPrefab = null;
     [SerializeField]
     private GameObject passivePrefab = null;
 
     public void Start()
     {
-        nonEquippedActiveSkills = new List<SkillBase>();
-        equippedActiveSkills = new List<SkillBase>();
-        nonEquippedWeaponSkills = new List<SkillBase>();
-        equippedWeaponSkills = new List<SkillBase>();
-        passiveSkills = new List<SkillBase>();
         var player = GameObject.FindGameObjectWithTag("Player");
         skills = player.GetComponent<SkillManager>();
+        nonEquippedWeaponSkills = new List<SkillBase>();
+        equippedWeaponSkills = new List<SkillBase>();
+        nonEquippedActiveSkills = new List<SkillBase>();
+        equippedActiveSkills = new List<SkillBase>();
+        passiveSkills = new List<SkillBase>();
+        makecontainer(activeItemsContainer);
+        makecontainer(weaponItemsContainer);
+        makecontainer(passiveSkillsContainer);
+        addActiveSkills();
+        addWeaponSkills();
+        addPassiveSkills();
+        isStarted = true;
+    }
+
+    public void addSkill(SkillBase skill)
+    {
+        if(skill is ActiveSkill)
+        {
+            rebootContainer(activeItemsContainer);
+            addActiveSkills();
+        }
+        else if(skill is PassiveSkill)
+        {
+            rebootContainer(passiveSkillsContainer);
+            addPassiveSkills();
+        }
+        else if(skill is WeaponSkill) 
+        {
+            rebootContainer(weaponItemsContainer);
+            addWeaponSkills();
+        }
+    }
+
+    private void addActiveSkills()
+    {
+        if (nonEquippedActiveSkills != null)
+            nonEquippedActiveSkills.Clear();
+        if (equippedActiveSkills != null)
+            equippedActiveSkills.Clear();
         skills.InventoryActiveSkills.ForEach(skill => nonEquippedActiveSkills.Add(skill));
-        skills.InventoryWeaponSkill.ForEach(skill => nonEquippedWeaponSkills.Add(skill));
         skills.ActiveSkills.ForEach(skill => equippedActiveSkills.Add(skill.skill));
+        Render(nonEquippedActiveSkills, activeItemsContainer, false);
+        Render(equippedActiveSkills, activeItemsContainer, true);
+    }
+
+    private void addWeaponSkills()
+    {
+        if (nonEquippedWeaponSkills.Count > 0)
+            nonEquippedWeaponSkills.Clear();
+        if (equippedWeaponSkills.Count > 0)
+            equippedWeaponSkills.Clear();
+
+        skills.InventoryWeaponSkill.ForEach(skill => nonEquippedWeaponSkills.Add(skill));
         skills.EquippedWeapons.ForEach(weapon => equippedWeaponSkills.Add(weapon.logic));
-        foreach(var skill in skills.skills)
+        Render(nonEquippedWeaponSkills, weaponItemsContainer, false);
+        Render(equippedWeaponSkills, weaponItemsContainer, true);
+    }
+
+    private void addPassiveSkills()
+    {
+        foreach (var skill in skills.skills)
         {
             if (skill is PassiveSkill)
                 passiveSkills.Add(skill);
         }
-        Render(nonEquippedActiveSkills, activeItemsContainer, false);
-        Render(equippedActiveSkills, activeItemsContainer, true);
-        Render(nonEquippedWeaponSkills, weaponItemsContainer, false);
-        Render(equippedWeaponSkills, weaponItemsContainer, true);
         PassiveRender(passiveSkills, passiveSkillsContainer);
+    }
+
+    private void rebootContainer(Transform container)
+    {
+        for (int i = 0; i < container.childCount; i++)
+        {
+            var cell = container.GetChild(i);
+            if (cell.childCount > 0)
+            {
+                for (int j = 0; j < cell.childCount; j++)
+                    cell.GetChild(0).GetComponent<Image>().sprite = cellPrefab.GetComponent<Image>().sprite;
+            }
+            MakeFrame(cell.gameObject, BaseFrame);
+        }
     }
 
     private void Render(List<SkillBase> items, Transform container, bool isActive)
     {
         int k = 0;
-        for(int i = 0;i < container.childCount; i++)
+        for(int i = 0; i < container.childCount; i++)
         {
             var empCell = container.GetChild(i);
-            if (k < items.Count && empCell.childCount == 0)
+            if (k < items.Count && empCell.GetChild(0).GetComponent<Image>().sprite == cellPrefab.GetComponent<Image>().sprite)
             {
                 if (isActive)
                     MakeFrame(empCell.gameObject, ActiveFrame);
-                var inst = Instantiate(cellPrefab, empCell);
-                var skillImage = inst.GetComponent<InventoryItemPresenter>();
+                var skillImage = empCell.GetChild(0).GetComponent<InventoryItemPresenter>();
                 skillImage.Init(draggingParent);
                 skillImage.Render(items[k], this);
                 k++;
             }
+        }
+    }
+
+    private void makecontainer(Transform container)
+    {
+        for (int i = 0; i < container.childCount; i++)
+        {
+            var empCell = container.GetChild(i);
+            MakeFrame(empCell.gameObject, BaseFrame);
+            var inst = Instantiate(cellPrefab, empCell);
         }
     }
 
@@ -72,7 +140,6 @@ public class Inventory : MonoBehaviour
         {
             var inst = Instantiate(passivePrefab, container);
             var img = inst.GetComponent<PassiveItemPresenter>();
-            Debug.Log(img);
             img.Render(items[i], this);
         }
     }
@@ -137,4 +204,5 @@ public class Inventory : MonoBehaviour
     private SkillManager skills = null;
     private Color ActiveFrame = Color.white;
     private Color BaseFrame = Color.clear;
+    public bool isStarted = false;
 }
