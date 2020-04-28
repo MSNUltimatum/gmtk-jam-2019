@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
     private Animator shadowAnim;
     new private AudioSource audio;
 
+
     private void Start()
     {
         audio = GetComponent<AudioSource>();       
